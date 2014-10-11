@@ -1,6 +1,6 @@
 # Abrupt
 
-Tools for the AbRUPt project, See [http://wba.cs.hs-rm.de/AbRUPt/service/](http://wba.cs.hs-rm.de/AbRUPt/service/)
+Tools for the AbRUPt project, see [http://wba.cs.hs-rm.de/AbRUPt/service/](http://wba.cs.hs-rm.de/AbRUPt/service/)
 
 ## Installation
 
