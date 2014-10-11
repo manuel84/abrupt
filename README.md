@@ -19,7 +19,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Agenda:
+
+- [ ] add vocabulary file for wdm ontology
+- [ ] converter binary, e.g. aprupt -c (--convert) input_file [output_file] ... options (xml2owl)
+- [ ] analyze tool binary, e.g. abrupt -a (--analyze) file1 file2 output_file
+
 
 ## Contributing
 
