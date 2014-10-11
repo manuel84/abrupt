@@ -1,5 +1,5 @@
 # Abrupt
-![Travis CI Build Status](https://travis-ci.org/manuel84/abrupt.svg?branch=master)
+[![Build Status](https://travis-ci.org/manuel84/abrupt.svg?branch=master)](https://travis-ci.org/manuel84/abrupt)
 
 Tools for the AbRUPt project, see [http://wba.cs.hs-rm.de/AbRUPt/service/](http://wba.cs.hs-rm.de/AbRUPt/service/)
 
