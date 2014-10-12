@@ -1,9 +1,12 @@
 # @author Manuel Dudda
 
-require 'abrupt/version'
+%w(version crawler).each { |f| require "abrupt/#{f}" }
 
 # This module is cool
 # @abstract
 module Abrupt
-  # Your code goes here...
+  def self.crawl(uri)
+    crawler = Abrupt::Crawler.new uri
+    crawler.crawl_site
+  end
 end

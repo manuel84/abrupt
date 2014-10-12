@@ -22,8 +22,9 @@ Or install it yourself as:
 Agenda:
 
 - [ ] add vocabulary file for wdm ontology
+- [ ] crawler binary, e.g. aprupt uri [output_file] ... options
 - [ ] converter binary, e.g. aprupt -c (--convert) input_file [output_file] ... options (xml2owl)
-- [ ] analyze tool binary, e.g. abrupt -a (--analyze) file1 file2 output_file
+- [ ] analyze tool binary, e.g. abrupt -a (--analyze) file1 file2 [output_file] ... options
 
 
 ## Contributing

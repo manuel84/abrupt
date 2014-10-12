@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'abrupt'
+uri = ARGV[0]
+Abrupt.crawl uri
