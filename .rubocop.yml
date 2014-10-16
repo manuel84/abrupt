@@ -1,3 +1,6 @@
 AllCops:
   Include:
     - '**/aburupt.gemspec'
+Style/IndentHash:
+  Description: 'Checks the indentation of the first key in a hash literal.'
+  Enabled: false

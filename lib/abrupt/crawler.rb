@@ -52,9 +52,12 @@ module Abrupt
 
     def perform_services(html)
       result = {}
-      # Readability
-      service = Abrupt::Service::Readability.new(html)
-      result[:readability] = service.execute
+      {
+          readability: Abrupt::Service::Readability.new(html),
+          complexity: Abrupt::Service::Complexity.new(html)
+      }.each do |json_field, service_class|
+        result[json_field] = service_class.execute
+      end
       result
     end
   end
