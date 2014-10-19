@@ -1,6 +1,8 @@
 # @author Manuel Dudda
 require 'rest_client'
-require 'abrupt/service/readability'
+%w(base readability subject input complexity picture link).each do |f|
+  require "abrupt/service/#{f}"
+end
 module Abrupt
   # Crawler for a website including all followed urls
   # with performing abrupt services
@@ -23,7 +25,7 @@ module Abrupt
           uris_to_crawl.merge(new_uris.select { |u| !crawled_uris.include?(u) })
         end
       end
-      puts @result
+      puts @result.to_json
     end
 
     # Crawls a page, saves the service results in result hash
@@ -37,7 +39,7 @@ module Abrupt
       case response.code
       when 200...400
         @result[uri] ||= {}
-        @result[uri] = perform_services response.to_str if html?(content_type)
+        @result[uri] = perform_services(response.to_str) if html?(content_type)
       else
 
       end
@@ -50,13 +52,30 @@ module Abrupt
       content_type.start_with?('text/html')
     end
 
+    def init_services_hash(html)
+      {
+          readability: Abrupt::Service::Readability.new(html, lang: @lang),
+          input: Abrupt::Service::Input.new(html), # no options
+          subject: Abrupt::Service::Subject.new(html,
+                                                lang: @lang,
+                                                word_limit: 20,
+                                                depth: 3),
+          complexity: Abrupt::Service::Complexity.new(html), # {adblock: true,
+          # vicram: true, vizweb: true,color: true, contrast: true, ratio: true}
+          link: Abrupt::Service::Link.new(html), # no options
+          picture: Abrupt::Service::Picture.new(html) # {format: json}
+      }
+    end
+
     def perform_services(html)
       result = {}
-      {
-          readability: Abrupt::Service::Readability.new(html),
-          complexity: Abrupt::Service::Complexity.new(html)
-      }.each do |json_field, service_class|
-        result[json_field] = service_class.execute
+      services_hash = init_services_hash(html)
+      services_hash.each do |json_field, service_class|
+        begin
+          result[json_field] = service_class.execute
+        rescue
+          puts "some problems with #{service_class.uri}"
+        end
       end
       result
     end

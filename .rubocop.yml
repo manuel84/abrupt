@@ -4,3 +4,8 @@ AllCops:
 Style/IndentHash:
   Description: 'Checks the indentation of the first key in a hash literal.'
   Enabled: false
+Metrics/MethodLength:
+  Max: 15
+  Description: 'Avoid methods longer than 15 lines of code.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#short-methods'
+  Enabled: true
