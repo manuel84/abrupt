@@ -1,6 +1,6 @@
 # @author Manuel Dudda
 
-%w(version crawler).each { |f| require "abrupt/#{f}" }
+%w(version crawler converter).each { |f| require "abrupt/#{f}" }
 
 # This module is cool
 # @abstract

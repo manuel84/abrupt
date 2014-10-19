@@ -25,7 +25,7 @@ before_script:
 
 script:
   - bundle exec rubocop
-  #- bundle exec rake
+  - bundle exec rake # doing rspec
   #- bundle exec rspec
 
 after_script:
