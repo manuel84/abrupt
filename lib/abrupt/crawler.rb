@@ -1,6 +1,6 @@
 # @author Manuel Dudda
 require 'rest_client'
-%w(base readability subject input complexity picture link).each do |f|
+%w(base readability subject input complexity picture link absolute_url).each do |f|
   require "abrupt/service/#{f}"
 end
 module Abrupt
@@ -67,8 +67,19 @@ module Abrupt
       }
     end
 
+    def canonize_html(html)
+      u = URI(@uri)
+      begin
+        converter = Abrupt::Service::AbsoluteUrl.new(html, baseurl: "#{u.scheme}://#{u.host}")
+        converter.execute
+      rescue
+        puts "some problems with #{converter.uri}"
+      end
+    end
+
     def perform_services(html)
       result = {}
+      html = canonize_html(html)
       services_hash = init_services_hash(html)
       services_hash.each do |json_field, service_class|
         begin
