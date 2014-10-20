@@ -7,6 +7,10 @@ module Abrupt
       # TODO: outsource service uri to module Service
       SERVICE_URI = 'http://wba.cs.hs-rm.de/AbRUPt/service/readability/'
 
+      def self.available_options
+        ['lang']
+      end
+
       def service_uri
         SERVICE_URI
       end

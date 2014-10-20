@@ -26,10 +26,29 @@ module Abrupt
         @options = []
       end
 
+      def self.available_options
+        []
+      end
+
+      def self.keyname
+        name.split('::').last.downcase
+      end
+
       # TODO: naming of interface execute
       def execute
-        options = {method: :post, timeout: 6000, open_timeout: 6000}
-        RestClient::Request.execute(options.merge(url: @url, payload: @html)).to_str
+        options = {
+            method: :post,
+            timeout: 6000,
+            open_timeout: 6000
+        }
+        options.merge!(url: @url, payload: @html)
+        begin
+          RestClient::Request.execute(options).to_str
+        rescue => e
+          puts "some problems with #{@url}"
+          puts e
+          nil
+        end
       end
     end
   end

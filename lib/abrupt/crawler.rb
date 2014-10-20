@@ -1,7 +1,14 @@
 # @author Manuel Dudda
 require 'rest_client'
 require 'addressable/uri'
-%w(base readability subject input complexity picture link absolute_url).each do |f|
+%w( base
+    readability
+    subject
+    input
+    complexity
+    picture
+    link
+    absolute_url).each do |f|
   require "abrupt/service/#{f}"
 end
 module Abrupt
@@ -9,20 +16,26 @@ module Abrupt
   # with performing abrupt services
   class Crawler
     SERVICE_MAPPING = {
-        r: {name: :readability, class: Abrupt::Service::Readability, options: ['lang']},
-        i: {name: :input, class: Abrupt::Service::Input, options: []},
-        s: {name: :subject, class: Abrupt::Service::Subject, options: %w(lang word_limit depth)},
-        c: {name: :complexity, class: Abrupt::Service::Complexity, options: %w(adblock vicram vizweb color contrast ratio)},
-        l: {name: :link, class: Abrupt::Service::Link, options: []},
-        p: {name: :picture, class: Abrupt::Service::Picture, options: ['url']}
+        r: Abrupt::Service::Readability,
+        i: Abrupt::Service::Input,
+        s: Abrupt::Service::Subject,
+        c: Abrupt::Service::Complexity,
+        l: Abrupt::Service::Link,
+        p: Abrupt::Service::Picture
     }
 
     def initialize(uri, *args)
       @uri = Addressable::URI.parse(uri).normalize
-      o = args.first
-      @options = {lang: 'en', services: %w(r i s c l p)}
-      @options[:services] = o[:services] if o[:services]
-      @options[:lang] = o[:lang] if o[:lang]
+      opts = args.first
+      @options = {
+          lang: 'en',
+          services: %w(r i s c l p),
+          depth: '3',
+          word_limit: 20
+      }
+      @options[:services] = opts[:services] if opts[:services]
+      @options[:lang] = opts[:lang] if opts[:lang]
+      @follow_links = opts[:nofollow]
       @result = {}
     end
 
@@ -31,7 +44,8 @@ module Abrupt
     #
     # @param uri [String] the uri to crawl
     # @return [JSON] result
-    def crawl(uri = nil, follow_links = true)
+    def crawl(uri = nil)
+      Abrupt.log '.'
       uri ||= @uri.to_str
       unless @result[uri]
         html = fetch_html(uri)
@@ -39,19 +53,20 @@ module Abrupt
         @result[uri] = perform_services(html) if html
         # determine uris on this page
         new_uris = []
-        if @result[uri][:link]
-          links_json = JSON.parse(@result[uri][:link])
+        if @result[uri]['link']
+          links_json = JSON.parse(@result[uri]['link'])
           new_uris += links_json['a'].map { |link| link['href'] } if links_json
         end
-        new_uris.select! { |uri| same_host?(uri) } # filter
-        new_uris.uniq.each { |uri| crawl(uri, follow_links) } if follow_links
+        new_uris.select! { |url| same_host?(url) } # filter
+        new_uris.uniq.each { |url| crawl(url) } if @follow_links
       end
       @result.to_json
     end
 
     def fetch_html(uri)
+      uri = Addressable::URI.parse(uri.strip).normalize.to_str
       begin
-        response = ::RestClient.get Addressable::URI.parse(uri.strip).normalize.to_str, {accept: :html}
+        response = ::RestClient.get uri, accept: :html
         content_type = response.headers[:content_type].to_s
         case response.code
         when 200...400
@@ -77,19 +92,18 @@ module Abrupt
     def init_services_hash(html)
       @options[:services].map do |s|
         s = s.to_sym
-        options = SERVICE_MAPPING[s][:options].map { |o| [o, @options[o]] }.to_h
-        [SERVICE_MAPPING[s][:name], SERVICE_MAPPING[s][:class].new(html, options)]
+        service_class = SERVICE_MAPPING[s]
+        available_options = service_class.available_options
+        opts = available_options.map { |o| [o, @options[o.to_sym]] }.to_h
+        service = service_class.new(html, opts)
+        [service_class.keyname, service]
       end.to_h
     end
 
     def canonize_html(html)
-      begin
-        baseurl = "#{@uri.scheme}://#{@uri.host}"
-        converter = Abrupt::Service::AbsoluteUrl.new(html, baseurl: baseurl)
-        converter.execute
-      rescue
-        puts "some problems with #{converter.url}"
-      end
+      baseurl = "#{@uri.scheme}://#{@uri.host}"
+      converter = Abrupt::Service::AbsoluteUrl.new(html, baseurl: baseurl)
+      converter.execute
     end
 
     def perform_services(html)
@@ -97,12 +111,7 @@ module Abrupt
       html = canonize_html(html)
       services_hash = init_services_hash(html)
       services_hash.each do |json_field, service_class|
-        begin
-          result[json_field] = service_class.execute
-        rescue => e
-          puts "some problems with #{service_class.url}"
-          puts e
-        end
+        result[json_field] = service_class.execute
       end
       result
     end

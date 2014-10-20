@@ -3,8 +3,8 @@
 require 'slop'
 require 'abrupt'
 
-opts = Slop.parse do
-  on "-v", "--version" do
+Slop.parse do
+  on '-v', '--version' do
     puts "abrupt v#{Abrupt::VERSION}"
   end
 
@@ -12,6 +12,7 @@ opts = Slop.parse do
     description 'Crawl a website'
 
     on :v, :verbose, 'Enable verbose mode'
+    on :nofollow, "don't follow links"
     on :services=, as: Array
     on :lang=, 'specify language, default=en'
 
@@ -21,4 +22,3 @@ opts = Slop.parse do
   end
 
 end
-
