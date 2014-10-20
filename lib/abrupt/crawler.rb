@@ -35,6 +35,8 @@ module Abrupt
           new_uris = crawl(uri)
           crawled_uris << uri && uris_to_crawl.delete(uri)
           # add new uris
+          new_uris.select! { |uri| same_host?(uri) }
+          puts new_uris.inspect
           uris_to_crawl.merge(new_uris.select { |u| !crawled_uris.include?(u) })
         end
       end
@@ -61,13 +63,8 @@ module Abrupt
       result = [uri]
       if @result[uri][:link]
         links_json = JSON.parse(@result[uri][:link])
-        puts links_json
-        if links_json
-          links_json['a'].select! { |link| same_host?(link['href']) }
-          result += links_json['a'].map { |link| link['href'] }
-        end
+        result += links_json['a'].map { |link| link['href'] } if links_json
       end
-      puts result
       result.to_set
     end
 
