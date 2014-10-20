@@ -18,26 +18,7 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
     <Ontology rdf:about="http://wba.cs.hs-rm.de/wdm-service/wdmOWL#"/>
-    
 
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotation properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#vicram -->
-
-    <AnnotationProperty rdf:about="&wdmOWL;vicram">
-        <rdfs:domain rdf:resource="&wdmOWL;Vicram"/>
-    </AnnotationProperty>
-    
 
 
     <!-- 
