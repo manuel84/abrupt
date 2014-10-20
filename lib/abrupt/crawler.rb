@@ -35,7 +35,7 @@ module Abrupt
       }
       @options[:services] = opts[:services] if opts[:services]
       @options[:lang] = opts[:lang] if opts[:lang]
-      @follow_links = opts[:nofollow]
+      @follow_links = !opts[:nofollow]
       @result = {}
     end
 
