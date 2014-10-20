@@ -1,5 +1,24 @@
 #!/usr/bin/env ruby
 
+require 'slop'
 require 'abrupt'
-uri = ARGV[0]
-Abrupt.crawl uri
+
+opts = Slop.parse do
+  on "-v", "--version" do
+    puts "abrupt v#{Abrupt::VERSION}"
+  end
+
+  command 'crawl' do
+    description 'Crawl a website'
+
+    on :v, :verbose, 'Enable verbose mode'
+    on :services=, as: Array
+    on :lang=, 'specify language, default=en'
+
+    run do |opts, args|
+      Abrupt.crawl args.first, opts.to_hash
+    end
+  end
+
+end
+

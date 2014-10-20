@@ -1,5 +1,6 @@
 # @author Manuel Dudda
 require 'rest_client'
+require 'addressable/uri'
 %w(base readability subject input complexity picture link absolute_url).each do |f|
   require "abrupt/service/#{f}"
 end
@@ -7,15 +8,27 @@ module Abrupt
   # Crawler for a website including all followed urls
   # with performing abrupt services
   class Crawler
-    def initialize(uri, lang = 'en')
-      @uri = uri
-      @lang = lang
+    SERVICE_MAPPING = {
+        r: {name: :readability, class: Abrupt::Service::Readability, options: ['lang']},
+        i: {name: :input, class: Abrupt::Service::Input, options: []},
+        s: {name: :subject, class: Abrupt::Service::Subject, options: %w(lang word_limit depth)},
+        c: {name: :complexity, class: Abrupt::Service::Complexity, options: %w(adblock vicram vizweb color contrast ratio)},
+        l: {name: :link, class: Abrupt::Service::Link, options: []},
+        p: {name: :picture, class: Abrupt::Service::Picture, options: ['url']}
+    }
+
+    def initialize(uri, *args)
+      @uri = Addressable::URI.parse(uri).normalize
+      o = args.first
+      @options = {lang: 'en', services: %w(r i s c l p)}
+      @options[:services] = o[:services] if o[:services]
+      @options[:lang] = o[:lang] if o[:lang]
       @result = {}
     end
 
     # Crawls the whole website
     def crawl_site
-      uris_to_crawl = [@uri].to_set
+      uris_to_crawl = [@uri.to_str].to_set
       crawled_uris = Set.new
       until uris_to_crawl.empty?
         uris_to_crawl.each do |uri|
@@ -45,35 +58,42 @@ module Abrupt
       end
       # determine uris on this page
       # filter to only the same domain
-      [uri]
+      result = [uri]
+      if @result[uri][:link]
+        links_json = JSON.parse(@result[uri][:link])
+        puts links_json
+        if links_json
+          links_json['a'].select! { |link| same_host?(link['href']) }
+          result += links_json['a'].map { |link| link['href'] }
+        end
+      end
+      puts result
+      result.to_set
     end
 
     def html?(content_type)
       content_type.start_with?('text/html')
     end
 
+    def same_host?(uri)
+      !uri.to_s.empty? && Addressable::URI.parse(uri).host.eql?(@uri.host)
+    end
+
     def init_services_hash(html)
-      {
-          readability: Abrupt::Service::Readability.new(html, lang: @lang),
-          input: Abrupt::Service::Input.new(html), # no options
-          subject: Abrupt::Service::Subject.new(html,
-                                                lang: @lang,
-                                                word_limit: 20,
-                                                depth: 3),
-          complexity: Abrupt::Service::Complexity.new(html), # {adblock: true,
-          # vicram: true, vizweb: true,color: true, contrast: true, ratio: true}
-          link: Abrupt::Service::Link.new(html), # no options
-          picture: Abrupt::Service::Picture.new(html) # {format: json}
-      }
+      @options[:services].map do |s|
+        s = s.to_sym
+        options = SERVICE_MAPPING[s][:options].map { |o| [o, @options[o]] }.to_h
+        [SERVICE_MAPPING[s][:name], SERVICE_MAPPING[s][:class].new(html, options)]
+      end.to_h
     end
 
     def canonize_html(html)
-      u = URI(@uri)
       begin
-        converter = Abrupt::Service::AbsoluteUrl.new(html, baseurl: "#{u.scheme}://#{u.host}")
+        baseurl = "#{@uri.scheme}://#{@uri.host}"
+        converter = Abrupt::Service::AbsoluteUrl.new(html, baseurl: baseurl)
         converter.execute
       rescue
-        puts "some problems with #{converter.uri}"
+        puts "some problems with #{converter.url}"
       end
     end
 
@@ -84,8 +104,9 @@ module Abrupt
       services_hash.each do |json_field, service_class|
         begin
           result[json_field] = service_class.execute
-        rescue
-          puts "some problems with #{service_class.uri}"
+        rescue => e
+          puts "some problems with #{service_class.url}"
+          puts e
         end
       end
       result
