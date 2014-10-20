@@ -7,6 +7,6 @@
 module Abrupt
   def self.crawl(uri, *args)
     crawler = Abrupt::Crawler.new uri, args.first
-    crawler.crawl_site
+    puts crawler.crawl
   end
 end

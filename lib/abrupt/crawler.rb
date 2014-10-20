@@ -26,46 +26,44 @@ module Abrupt
       @result = {}
     end
 
-    # Crawls the whole website
-    def crawl_site
-      uris_to_crawl = [@uri.to_str].to_set
-      crawled_uris = Set.new
-      until uris_to_crawl.empty?
-        uris_to_crawl.each do |uri|
-          new_uris = crawl(uri)
-          crawled_uris << uri && uris_to_crawl.delete(uri)
-          # add new uris
-          new_uris.select! { |uri| same_host?(uri) }
-          puts new_uris.inspect
-          uris_to_crawl.merge(new_uris.select { |u| !crawled_uris.include?(u) })
-        end
-      end
-      puts @result.to_json
-    end
-
     # Crawls a page, saves the service results in result hash
     # and returns an array with the existing uris of this page.
     #
     # @param uri [String] the uri to crawl
-    # @return [Array] available uris on this page
-    def crawl(uri)
-      response = ::RestClient.get uri
-      content_type = response.headers[:content_type].to_s
-      case response.code
-      when 200...400
+    # @return [JSON] result
+    def crawl(uri = nil, follow_links = true)
+      uri ||= @uri.to_str
+      unless @result[uri]
+        html = fetch_html(uri)
         @result[uri] ||= {}
-        @result[uri] = perform_services(response.to_str) if html?(content_type)
-      else
+        @result[uri] = perform_services(html) if html
+        # determine uris on this page
+        new_uris = []
+        if @result[uri][:link]
+          links_json = JSON.parse(@result[uri][:link])
+          new_uris += links_json['a'].map { |link| link['href'] } if links_json
+        end
+        new_uris.select! { |uri| same_host?(uri) } # filter
+        new_uris.uniq.each { |uri| crawl(uri, follow_links) } if follow_links
+      end
+      @result.to_json
+    end
 
+    def fetch_html(uri)
+      begin
+        response = ::RestClient.get Addressable::URI.parse(uri.strip).normalize.to_str, {accept: :html}
+        content_type = response.headers[:content_type].to_s
+        case response.code
+        when 200...400
+          response.to_str if html?(content_type)
+        else
+          false
+        end
+      rescue => e
+        puts "error fetching html on #{uri}"
+        puts e
+        nil
       end
-      # determine uris on this page
-      # filter to only the same domain
-      result = [uri]
-      if @result[uri][:link]
-        links_json = JSON.parse(@result[uri][:link])
-        result += links_json['a'].map { |link| link['href'] } if links_json
-      end
-      result.to_set
     end
 
     def html?(content_type)
