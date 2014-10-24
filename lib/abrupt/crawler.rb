@@ -60,7 +60,7 @@ module Abrupt
         new_uris.select! { |url| same_host?(url) } # filter
         new_uris.uniq.each { |url| crawl(url) } if @follow_links
       end
-      @result.to_json
+      @result
     end
 
     def fetch_html(uri)

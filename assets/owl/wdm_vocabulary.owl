@@ -12,13 +12,13 @@
 
 <rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
      xml:base="http://www.w3.org/2002/07/owl"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:wdmOWL="http://wba.cs.hs-rm.de/wdm-service/wdmOWL#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <Ontology rdf:about="http://wba.cs.hs-rm.de/wdm-service/wdmOWL#"/>
-
+    
 
 
     <!-- 
@@ -45,7 +45,7 @@
 
     <ObjectProperty rdf:about="&wdmOWL;hasCheckbox">
         <rdfs:range rdf:resource="&wdmOWL;Checkbox"/>
-        <rdfs:domain rdf:resource="&wdmOWL;Page"/>
+        <rdfs:domain rdf:resource="&wdmOWL;Form"/>
     </ObjectProperty>
     
 
@@ -63,7 +63,7 @@
 
     <ObjectProperty rdf:about="&wdmOWL;hasDate">
         <rdfs:range rdf:resource="&wdmOWL;Date"/>
-        <rdfs:domain rdf:resource="&wdmOWL;Page"/>
+        <rdfs:domain rdf:resource="&wdmOWL;Form"/>
     </ObjectProperty>
     
 
@@ -72,6 +72,15 @@
 
     <ObjectProperty rdf:about="&wdmOWL;hasEmail">
         <rdfs:range rdf:resource="&wdmOWL;Email"/>
+        <rdfs:domain rdf:resource="&wdmOWL;Form"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasForm -->
+
+    <ObjectProperty rdf:about="&wdmOWL;hasForm">
+        <rdfs:range rdf:resource="&wdmOWL;Form"/>
         <rdfs:domain rdf:resource="&wdmOWL;Page"/>
     </ObjectProperty>
     
@@ -80,8 +89,8 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasLink -->
 
     <ObjectProperty rdf:about="&wdmOWL;hasLink">
+        <rdfs:domain rdf:resource="&wdmOWL;Form"/>
         <rdfs:range rdf:resource="&wdmOWL;Link"/>
-        <rdfs:domain rdf:resource="&wdmOWL;Page"/>
     </ObjectProperty>
     
 
@@ -89,6 +98,8 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasPage -->
 
     <ObjectProperty rdf:about="&wdmOWL;hasPage">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:comment>A page belongs to one website. Because of this restriction the whole URL is saved as name. The domain, path, query and fragment can be reasoned by the URL.</rdfs:comment>
         <rdfs:range rdf:resource="&wdmOWL;Page"/>
         <rdfs:domain rdf:resource="&wdmOWL;Website"/>
     </ObjectProperty>
@@ -98,7 +109,7 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasPassword -->
 
     <ObjectProperty rdf:about="&wdmOWL;hasPassword">
-        <rdfs:domain rdf:resource="&wdmOWL;Page"/>
+        <rdfs:domain rdf:resource="&wdmOWL;Form"/>
         <rdfs:range rdf:resource="&wdmOWL;Password"/>
     </ObjectProperty>
     
@@ -116,7 +127,7 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasRadio -->
 
     <ObjectProperty rdf:about="&wdmOWL;hasRadio">
-        <rdfs:domain rdf:resource="&wdmOWL;Page"/>
+        <rdfs:domain rdf:resource="&wdmOWL;Form"/>
         <rdfs:range rdf:resource="&wdmOWL;Radio"/>
     </ObjectProperty>
     
@@ -125,7 +136,7 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasRange -->
 
     <ObjectProperty rdf:about="&wdmOWL;hasRange">
-        <rdfs:domain rdf:resource="&wdmOWL;Page"/>
+        <rdfs:domain rdf:resource="&wdmOWL;Form"/>
         <rdfs:range rdf:resource="&wdmOWL;Range"/>
     </ObjectProperty>
     
@@ -134,7 +145,7 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasSelect -->
 
     <ObjectProperty rdf:about="&wdmOWL;hasSelect">
-        <rdfs:domain rdf:resource="&wdmOWL;Page"/>
+        <rdfs:domain rdf:resource="&wdmOWL;Form"/>
         <rdfs:range rdf:resource="&wdmOWL;Select"/>
     </ObjectProperty>
     
@@ -143,7 +154,7 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasSelectScroll -->
 
     <ObjectProperty rdf:about="&wdmOWL;hasSelectScroll">
-        <rdfs:domain rdf:resource="&wdmOWL;Page"/>
+        <rdfs:domain rdf:resource="&wdmOWL;Form"/>
         <rdfs:range rdf:resource="&wdmOWL;SelectScroll"/>
     </ObjectProperty>
     
@@ -170,7 +181,7 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasText -->
 
     <ObjectProperty rdf:about="&wdmOWL;hasText">
-        <rdfs:domain rdf:resource="&wdmOWL;Page"/>
+        <rdfs:domain rdf:resource="&wdmOWL;Form"/>
         <rdfs:range rdf:resource="&wdmOWL;Text"/>
     </ObjectProperty>
     
@@ -179,7 +190,7 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasTextarea -->
 
     <ObjectProperty rdf:about="&wdmOWL;hasTextarea">
-        <rdfs:domain rdf:resource="&wdmOWL;Page"/>
+        <rdfs:domain rdf:resource="&wdmOWL;Form"/>
         <rdfs:range rdf:resource="&wdmOWL;Textarea"/>
     </ObjectProperty>
     
@@ -193,6 +204,15 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#bigWords -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;bigWords">
+        <rdfs:domain rdf:resource="&wdmOWL;Page"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </DatatypeProperty>
     
 
 
@@ -232,11 +252,29 @@
     
 
 
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#duration -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;duration">
+        <rdfs:domain rdf:resource="&wdmOWL;Picture"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#frequency -->
 
     <DatatypeProperty rdf:about="&wdmOWL;frequency">
         <rdfs:domain rdf:resource="&wdmOWL;Subjects"/>
         <rdfs:range rdf:resource="&xsd;integer"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#geometry -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;geometry">
+        <rdfs:domain rdf:resource="&wdmOWL;Picture"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
     </DatatypeProperty>
     
 
@@ -250,405 +288,135 @@
     
 
 
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasBigWords -->
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#minBaseColorProcessTime -->
 
-    <DatatypeProperty rdf:about="&wdmOWL;hasBigWords">
-        <rdfs:domain rdf:resource="&wdmOWL;Page"/>
-        <rdfs:range rdf:resource="&xsd;integer"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasDuration -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasDuration">
-        <rdfs:domain rdf:resource="&wdmOWL;Picture"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasGeometry -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasGeometry">
-        <rdfs:domain rdf:resource="&wdmOWL;Picture"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasImageType -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasImageType">
-        <rdfs:domain rdf:resource="&wdmOWL;Picture"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasLanguage -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasLanguage">
-        <rdfs:domain rdf:resource="&wdmOWL;Page"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMatrix -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMatrix">
-        <rdfs:domain rdf:resource="&wdmOWL;Page"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMaxBaseColorProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMaxBaseColorProcessTime">
+    <DatatypeProperty rdf:about="&wdmOWL;minBaseColorProcessTime">
         <rdfs:domain rdf:resource="&wdmOWL;BaseColor"/>
         <rdfs:range rdf:resource="&xsd;decimal"/>
     </DatatypeProperty>
     
 
 
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMaxCheckboxProcessTime -->
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#minCheckboxProcessTime -->
 
-    <DatatypeProperty rdf:about="&wdmOWL;hasMaxCheckboxProcessTime">
+    <DatatypeProperty rdf:about="&wdmOWL;minCheckboxProcessTime">
         <rdfs:domain rdf:resource="&wdmOWL;Checkbox"/>
         <rdfs:range rdf:resource="&xsd;decimal"/>
     </DatatypeProperty>
     
 
 
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMaxColorProcessTime -->
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#minColorProcessTime -->
 
-    <DatatypeProperty rdf:about="&wdmOWL;hasMaxColorProcessTime">
+    <DatatypeProperty rdf:about="&wdmOWL;minColorProcessTime">
         <rdfs:domain rdf:resource="&wdmOWL;Color"/>
         <rdfs:range rdf:resource="&xsd;decimal"/>
     </DatatypeProperty>
     
 
 
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMaxDateProcessTime -->
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#minDateProcessTime -->
 
-    <DatatypeProperty rdf:about="&wdmOWL;hasMaxDateProcessTime">
+    <DatatypeProperty rdf:about="&wdmOWL;minDateProcessTime">
         <rdfs:domain rdf:resource="&wdmOWL;Date"/>
         <rdfs:range rdf:resource="&xsd;decimal"/>
     </DatatypeProperty>
     
 
 
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMaxEmailProcessTime -->
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#minEmailProcessTime -->
 
-    <DatatypeProperty rdf:about="&wdmOWL;hasMaxEmailProcessTime">
+    <DatatypeProperty rdf:about="&wdmOWL;minEmailProcessTime">
         <rdfs:domain rdf:resource="&wdmOWL;Email"/>
         <rdfs:range rdf:resource="&xsd;decimal"/>
     </DatatypeProperty>
     
 
 
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMaxLinkProcessTime -->
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#minPageProcessTime -->
 
-    <DatatypeProperty rdf:about="&wdmOWL;hasMaxLinkProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Link"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMaxPageProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMaxPageProcessTime">
+    <DatatypeProperty rdf:about="&wdmOWL;minPageProcessTime">
         <rdfs:domain rdf:resource="&wdmOWL;Page"/>
         <rdfs:range rdf:resource="&xsd;decimal"/>
     </DatatypeProperty>
     
 
 
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMaxPasswordProcessTime -->
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#minPasswordProcessTime -->
 
-    <DatatypeProperty rdf:about="&wdmOWL;hasMaxPasswordProcessTime">
+    <DatatypeProperty rdf:about="&wdmOWL;minPasswordProcessTime">
         <rdfs:domain rdf:resource="&wdmOWL;Password"/>
         <rdfs:range rdf:resource="&xsd;decimal"/>
     </DatatypeProperty>
     
 
 
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMaxPictureProcessTime -->
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#minRadioProcessTime -->
 
-    <DatatypeProperty rdf:about="&wdmOWL;hasMaxPictureProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Picture"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMaxRadioProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMaxRadioProcessTime">
+    <DatatypeProperty rdf:about="&wdmOWL;minRadioProcessTime">
         <rdfs:domain rdf:resource="&wdmOWL;Radio"/>
         <rdfs:range rdf:resource="&xsd;decimal"/>
     </DatatypeProperty>
     
 
 
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMaxRangeProcessTime -->
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#minRangeProcessTime -->
 
-    <DatatypeProperty rdf:about="&wdmOWL;hasMaxRangeProcessTime">
+    <DatatypeProperty rdf:about="&wdmOWL;minRangeProcessTime">
         <rdfs:domain rdf:resource="&wdmOWL;Range"/>
         <rdfs:range rdf:resource="&xsd;decimal"/>
     </DatatypeProperty>
     
 
 
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMaxSelectProcessTime -->
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#minSubjectsProcessTime -->
 
-    <DatatypeProperty rdf:about="&wdmOWL;hasMaxSelectProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Select"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMaxSelectScrollProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMaxSelectScrollProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;SelectScroll"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMaxSubjectProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMaxSubjectProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Subject"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMaxSubjectsProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMaxSubjectsProcessTime">
+    <DatatypeProperty rdf:about="&wdmOWL;minSubjectsProcessTime">
         <rdfs:domain rdf:resource="&wdmOWL;Subjects"/>
         <rdfs:range rdf:resource="&xsd;decimal"/>
     </DatatypeProperty>
     
 
 
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMaxTextProcessTime -->
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#minTextProcessTime -->
 
-    <DatatypeProperty rdf:about="&wdmOWL;hasMaxTextProcessTime">
+    <DatatypeProperty rdf:about="&wdmOWL;minTextProcessTime">
         <rdfs:domain rdf:resource="&wdmOWL;Text"/>
         <rdfs:range rdf:resource="&xsd;decimal"/>
     </DatatypeProperty>
     
 
 
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMaxTextareaProcessTime -->
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#minTextareaProcessTime -->
 
-    <DatatypeProperty rdf:about="&wdmOWL;hasMaxTextareaProcessTime">
+    <DatatypeProperty rdf:about="&wdmOWL;minTextareaProcessTime">
         <rdfs:domain rdf:resource="&wdmOWL;Textarea"/>
         <rdfs:range rdf:resource="&xsd;decimal"/>
     </DatatypeProperty>
     
 
 
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMaxWebsiteProcessTime -->
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#minWebsiteProcessTime -->
 
-    <DatatypeProperty rdf:about="&wdmOWL;hasMaxWebsiteProcessTime">
+    <DatatypeProperty rdf:about="&wdmOWL;minWebsiteProcessTime">
         <rdfs:domain rdf:resource="&wdmOWL;Website"/>
         <rdfs:range rdf:resource="&xsd;decimal"/>
     </DatatypeProperty>
     
 
 
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMimeType -->
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#pageName -->
 
-    <DatatypeProperty rdf:about="&wdmOWL;hasMimeType">
-        <rdfs:domain rdf:resource="&wdmOWL;Picture"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMinBaseColorProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMinBaseColorProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;BaseColor"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMinCheckboxProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMinCheckboxProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Checkbox"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMinColorProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMinColorProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Color"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMinDateProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMinDateProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Date"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMinEmailProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMinEmailProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Email"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMinLinkProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMinLinkProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Link"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMinPageProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMinPageProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Page"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMinPasswordProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMinPasswordProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Password"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMinPictureProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMinPictureProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Picture"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMinRadioProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMinRadioProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Radio"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMinRangeProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMinRangeProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Range"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMinSelectProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMinSelectProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Select"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMinSelectScrollProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMinSelectScrollProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;SelectScroll"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMinSubjectProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMinSubjectProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Subject"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMinSubjectsProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMinSubjectsProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Subjects"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMinTextProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMinTextProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Text"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMinTextareaProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMinTextareaProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Textarea"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasMinWebsiteProcessTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasMinWebsiteProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Website"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasPageName -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasPageName">
+    <DatatypeProperty rdf:about="&wdmOWL;pageName">
         <rdfs:domain rdf:resource="&wdmOWL;Page"/>
         <rdfs:range rdf:resource="&xsd;string"/>
     </DatatypeProperty>
     
 
 
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasPalette -->
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#palette -->
 
-    <DatatypeProperty rdf:about="&wdmOWL;hasPalette">
+    <DatatypeProperty rdf:about="&wdmOWL;palette">
         <rdfs:domain rdf:resource="&wdmOWL;Page"/>
         <rdfs:range rdf:resource="&xsd;decimal"/>
     </DatatypeProperty>
@@ -687,15 +455,6 @@
     <DatatypeProperty rdf:about="&wdmOWL;hasSyllables">
         <rdfs:domain rdf:resource="&wdmOWL;Page"/>
         <rdfs:range rdf:resource="&xsd;integer"/>
-    </DatatypeProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasTextReadingTime -->
-
-    <DatatypeProperty rdf:about="&wdmOWL;hasTextReadingTime">
-        <rdfs:domain rdf:resource="&wdmOWL;Page"/>
-        <rdfs:range rdf:resource="&xsd;decimal"/>
     </DatatypeProperty>
     
 
@@ -745,6 +504,15 @@
     
 
 
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#imageType -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;imageType">
+        <rdfs:domain rdf:resource="&wdmOWL;Picture"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#imgAreaInPixelSquared -->
 
     <DatatypeProperty rdf:about="&wdmOWL;imgAreaInPixelSquared">
@@ -775,8 +543,234 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#language -->
 
     <DatatypeProperty rdf:about="&wdmOWL;language">
+        <rdfs:domain rdf:resource="&wdmOWL;Page"/>
         <rdfs:domain rdf:resource="&wdmOWL;Subject"/>
         <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#matrix -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;matrix">
+        <rdfs:domain rdf:resource="&wdmOWL;Page"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#maxBaseColorProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;maxBaseColorProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;BaseColor"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#maxCheckboxProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;maxCheckboxProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Checkbox"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#maxColorProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;maxColorProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Color"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#maxDateProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;maxDateProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Date"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#maxEmailProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;maxEmailProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Email"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#maxLinkProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;maxLinkProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Link"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#maxPageProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;maxPageProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Page"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#maxPasswordProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;maxPasswordProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Password"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#maxPictureProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;maxPictureProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Picture"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#maxRadioProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;maxRadioProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Radio"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#maxRangeProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;maxRangeProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Range"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#maxSelectProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;maxSelectProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Select"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#maxSelectScrollProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;maxSelectScrollProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;SelectScroll"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#maxSubjectProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;maxSubjectProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Subject"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#maxSubjectsProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;maxSubjectsProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Subjects"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#maxTextProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;maxTextProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Text"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#maxTextareaProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;maxTextareaProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Textarea"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#maxWebsiteProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;maxWebsiteProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Website"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#mimeType -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;mimeType">
+        <rdfs:domain rdf:resource="&wdmOWL;Picture"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#minLinkProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;minLinkProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Link"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#minPictureProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;minPictureProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Picture"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#minSelectProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;minSelectProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Select"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#minSelectScrollProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;minSelectScrollProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;SelectScroll"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#minSubjectProcessTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;minSubjectProcessTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Subject"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
     </DatatypeProperty>
     
 
@@ -889,6 +883,15 @@
     
 
 
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#textReadingTime -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;textReadingTime">
+        <rdfs:domain rdf:resource="&wdmOWL;Page"/>
+        <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#vicram -->
 
     <DatatypeProperty rdf:about="&wdmOWL;vicram">
@@ -961,6 +964,12 @@
     <Class rdf:about="&wdmOWL;Email">
         <rdfs:subClassOf rdf:resource="&wdmOWL;Input"/>
     </Class>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#Form -->
+
+    <Class rdf:about="&wdmOWL;Form"/>
     
 
 
@@ -1063,5 +1072,5 @@
 
 
 
-<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net -->
 

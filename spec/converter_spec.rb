@@ -1,4 +1,4 @@
 require 'spec_helper'
-describe Abrupt::Converter do
+describe Abrupt::Converter, :vcr do
   pending 'write it'
 end
