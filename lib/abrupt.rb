@@ -16,6 +16,6 @@ module Abrupt
     result = crawler.crawl
     end_time = Time.now
     Abrupt.log "\nfinished in #{(end_time - start_time).round} sec.\n\n"
-    puts result.to_xml
+    puts Abrupt::Converter.xml(result)
   end
 end

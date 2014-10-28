@@ -14,6 +14,14 @@ module Abrupt
       def service_uri
         SERVICE_URI
       end
+
+      def execute
+        super
+        @response['differenceMatrix']['matrix'].flatten!
+        @response['differenceMatrix']['palette'].flatten!
+        @response['contrast']['_1'] = @response['contrast'].delete '1'
+        @response
+      end
     end
   end
 end

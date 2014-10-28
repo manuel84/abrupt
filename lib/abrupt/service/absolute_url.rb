@@ -10,6 +10,23 @@ module Abrupt
       def service_uri
         SERVICE_URI
       end
+
+      def execute
+        options = {
+            method: :post,
+            timeout: 6000,
+            open_timeout: 6000,
+            accept: :html
+        }
+        options.merge!(url: @url, payload: @html)
+        begin
+          RestClient::Request.execute(options).to_str
+        rescue => e
+          puts "some problems with #{@url}"
+          puts e
+          nil
+        end
+      end
     end
   end
 end

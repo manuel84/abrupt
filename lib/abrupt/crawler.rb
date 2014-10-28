@@ -50,17 +50,17 @@ module Abrupt
       unless @result[uri]
         html = fetch_html(uri)
         @result[uri] ||= {}
-        @result[uri] = perform_services(html) if html
+        @result[uri]['state'] = perform_services(html) if html
         # determine uris on this page
-        new_uris = []
-        if @result[uri]['link']
-          links_json = JSON.parse(@result[uri]['link'])
-          new_uris += links_json['a'].map { |link| link['href'] } if links_json
-        end
+        new_uris = if @result[uri]['link']
+                     @result[uri]['link']['a'].map { |link| link['href'] }
+                   else
+                     []
+                   end
         new_uris.select! { |url| same_host?(url) } # filter
         new_uris.uniq.each { |url| crawl(url) } if @follow_links
       end
-      @result
+      Abrupt::Converter.transform_hash(@result)
     end
 
     def fetch_html(uri)

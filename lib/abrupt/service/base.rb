@@ -4,7 +4,7 @@ module Abrupt
   module Service
     # base class
     class Base
-      attr_accessor :url, :abbr, :options
+      attr_accessor :url, :abbr, :options, :response
       # TODO: outsource service uri to module Service
       SERVICE_URI = 'http://wba.cs.hs-rm.de/AbRUPt/service/complexity/public/index.php/api/v1/complexity'
 
@@ -39,11 +39,13 @@ module Abrupt
         options = {
             method: :post,
             timeout: 6000,
-            open_timeout: 6000
+            open_timeout: 6000,
+            accept: :json
         }
         options.merge!(url: @url, payload: @html)
         begin
-          RestClient::Request.execute(options).to_str
+          res = RestClient::Request.execute(options).to_str
+          @response = JSON.parse(res)
         rescue => e
           puts "some problems with #{@url}"
           puts e

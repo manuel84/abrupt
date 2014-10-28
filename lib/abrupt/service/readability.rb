@@ -14,6 +14,13 @@ module Abrupt
       def service_uri
         SERVICE_URI
       end
+
+      def execute
+        super
+        superfluous_keys = %w(originalText hyphenText)
+        @response.delete_if { |key, _value| superfluous_keys.include?(key) }
+        @response
+      end
     end
   end
 end
