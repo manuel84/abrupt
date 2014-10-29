@@ -29,5 +29,9 @@ module Abrupt
     def self.json(input)
       input.to_json
     end
+
+    def self.owl(input)
+
+    end
   end
 end

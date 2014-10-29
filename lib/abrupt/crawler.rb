@@ -50,10 +50,10 @@ module Abrupt
       unless @result[uri]
         html = fetch_html(uri)
         @result[uri] ||= {}
-        @result[uri]['state'] = perform_services(html) if html
+        @result[uri] = perform_services(html) if html
         # determine uris on this page
-        new_uris = if @result[uri]['link']
-                     @result[uri]['link']['a'].map { |link| link['href'] }
+        new_uris = if @result[uri][:link]
+                     @result[uri][:link]['a'].map { |link| link['href'] }
                    else
                      []
                    end
@@ -111,7 +111,7 @@ module Abrupt
       html = canonize_html(html)
       services_hash = init_services_hash(html)
       services_hash.each do |json_field, service_class|
-        result[json_field] = service_class.execute
+        result[json_field.to_sym] = service_class.execute
       end
       result
     end
