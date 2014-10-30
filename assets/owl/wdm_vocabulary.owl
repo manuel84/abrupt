@@ -296,6 +296,15 @@
     
 
 
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hostName -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;hostName">
+        <rdfs:domain rdf:resource="&wdmOWL;Website"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#href -->
 
     <DatatypeProperty rdf:about="&wdmOWL;href">
@@ -866,6 +875,15 @@
     <DatatypeProperty rdf:about="&wdmOWL;visualComplexity">
         <rdfs:domain rdf:resource="&wdmOWL;Page"/>
         <rdfs:range rdf:resource="&xsd;decimal"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#websiteName -->
+
+    <DatatypeProperty rdf:about="&wdmOWL;websiteName">
+        <rdfs:domain rdf:resource="&wdmOWL;Website"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
     </DatatypeProperty>
     
 
