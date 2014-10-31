@@ -6,6 +6,8 @@ Bundler.setup
 
 require 'abrupt' # and any other gems you need
 require 'vcr'
+require 'factory_girl'
+require_relative '../spec/factories/crawled_hashes.rb'
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/cassettes'
@@ -16,4 +18,5 @@ end
 RSpec.configure do |config|
   # some (optional) config here
   config.formatter = 'documentation'
+  config.include FactoryGirl::Syntax::Methods
 end

@@ -22,6 +22,11 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'addressable', '~> 2.3'
   spec.add_runtime_dependency 'slop', '~> 3.6'
   spec.add_runtime_dependency 'gyoku', '~> 1.2'
+  spec.add_runtime_dependency 'rdf', '~> 1.1'
+  spec.add_runtime_dependency 'linkeddata'
+  # spec.add_runtime_dependency  'rdf-turtle'
+  spec.add_runtime_dependency  'rdf-rdfxml'
+  spec.add_runtime_dependency  'rdf-raptor', '~> 1.2'
 
   spec.add_development_dependency 'bundler', '~> 1.6'
   spec.add_development_dependency 'rake', '~> 10.3'
@@ -30,4 +35,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'vcr', '~> 2.9'
   spec.add_development_dependency 'webmock', '~> 1.20'
   spec.add_development_dependency 'codeclimate-test-reporter', '~> 0.4'
+  spec.add_development_dependency 'factory_girl', '~> 4.5'
 end

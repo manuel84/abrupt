@@ -1,6 +1,8 @@
 # @author Manuel Dudda
 require 'rest_client'
 require 'gyoku'
+require 'rdf'
+require 'linkeddata'
 module Abrupt
   # Converter
   class Converter
@@ -31,7 +33,9 @@ module Abrupt
     end
 
     def self.owl(input)
-
+      graph = RDF::Graph.load(
+          'spec/fixtures/rikscha-mainz.owl'
+      )
     end
   end
 end
