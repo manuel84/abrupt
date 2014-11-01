@@ -3,9 +3,13 @@ require 'rest_client'
 require 'gyoku'
 require 'rdf'
 require 'linkeddata'
+require 'active_support/core_ext/hash'
 module Abrupt
   # Converter
   class Converter
+    include RDF
+    WDM = RDF::Vocabulary.new('http://wba.cs.hs-rm.de/wdm-service/wdmOWL#')
+
     def self.transform_hash(input)
       uri = Addressable::URI.parse(input.keys.first).normalize
       result = {
@@ -33,9 +37,26 @@ module Abrupt
     end
 
     def self.owl(input)
-      graph = RDF::Graph.load(
-          'spec/fixtures/rikscha-mainz.owl'
-      )
+      input = input.with_indifferent_access
+      result = Repository.load('assets/owl/wdm_vocabulary.owl') # extend given vocabulary
+      domain = RDF::URI(input[:website][:domain])
+      result << Statement.new(domain, RDF.type, WDM.Website)
+      input[:website][:url].each do |url|
+        page_uri = RDF::URI(url[:name])
+        result << Statement.new(page_uri, RDF.type, WDM.Page)
+        if url[:state]
+          if url[:state][:readability]
+            url[:state][:readability].each do |key, value| # readability => { :sentences => 32}
+              result << Statement.new(page_uri, WDM[key], value)
+            end
+          end
+        end
+        result << Statement.new(domain, WDM.hasPage, page_uri)
+      end
+
+      puts result.dump :rdfxml
+      result
     end
+
   end
 end
