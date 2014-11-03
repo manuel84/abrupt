@@ -941,7 +941,7 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#BaseColor -->
 
     <owl:Class rdf:about="&wdmOWL;BaseColor">
-        <disjointWith rdf:resource="&wdmOWL;Page"/>
+        <owl:disjointWith rdf:resource="&wdmOWL;Page"/>
     </owl:Class>
     
 
@@ -1013,7 +1013,7 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#Form -->
 
     <owl:Class rdf:about="&wdmOWL;Form">
-        <disjointWith rdf:resource="&wdmOWL;Page"/>
+        <owl:disjointWith rdf:resource="&wdmOWL;Page"/>
     </owl:Class>
     
 
@@ -1021,7 +1021,7 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#FormElement -->
 
     <owl:Class rdf:about="&wdmOWL;FormElement">
-        <disjointWith rdf:resource="&wdmOWL;Page"/>
+        <owl:disjointWith rdf:resource="&wdmOWL;Page"/>
     </owl:Class>
     
 
@@ -1051,7 +1051,7 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#Link -->
 
     <owl:Class rdf:about="&wdmOWL;Link">
-        <disjointWith rdf:resource="&wdmOWL;Page"/>
+        <owl:disjointWith rdf:resource="&wdmOWL;Page"/>
     </owl:Class>
     
 
@@ -1088,9 +1088,9 @@
                 <onDataRange rdf:resource="&xsd;float"/>
             </Restriction>
         </equivalentClass>
-        <disjointWith rdf:resource="&wdmOWL;Picture"/>
-        <disjointWith rdf:resource="&wdmOWL;Subject"/>
-        <disjointWith rdf:resource="&wdmOWL;Website"/>
+        <owl:disjointWith rdf:resource="&wdmOWL;Picture"/>
+        <owl:disjointWith rdf:resource="&wdmOWL;Subject"/>
+        <owl:disjointWith rdf:resource="&wdmOWL;Website"/>
     </owl:Class>
     
 
