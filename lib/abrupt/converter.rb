@@ -67,7 +67,7 @@ module Abrupt
     end
 
     def self.owl(hsh)
-      self.class.to_repository(hsh).dump :rdfxml
+      Abrupt::Converter.to_repository(hsh).dump :rdfxml
     end
 
     def self.from_xml(file)

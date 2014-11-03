@@ -1,24 +1,40 @@
 #!/usr/bin/env ruby
 
-require 'slop'
+require 'commander'
 require 'abrupt'
 
-Slop.parse do
-  on '-v', '--version' do
-    puts "abrupt v#{Abrupt::VERSION}"
-  end
+class AbruptApp
+  include Commander::Methods
 
-  command 'crawl' do
-    description 'Crawl a website'
+  def run
+    program :name, 'Abrupt'
+    program :version, Abrupt::VERSION
+    program :help, 'Author', 'Manuel Dudda <manuelddudda@redpeppix.de>'
+    program :help, 'Source Code', 'https://github.com/manuel84/abrupt'
+    program :description, 'Automated Reasoning for Web Usability Problems'
 
-    on :v, :verbose, 'Enable verbose mode'
-    on :nofollow, "don't follow links"
-    on :services=, as: Array
-    on :lang=, 'specify language, default=en'
-
-    run do |opts, args|
-      Abrupt.crawl args.first, opts.to_hash
+    command :crawl do |c|
+      c.syntax = 'abrupt crawl [options]'
+      c.description = 'Crawls a website'
+      c.option '-nofollow', "don't follow links"
+      c.option '--lang STRING', String, 'language'
+      c.option '--services STRING', Array, 'riscpl'
+      c.option '--verbose STRING', String, ''
+      c.action do |args, options|
+        Abrupt.crawl args.first, options.__hash__
+      end
     end
-  end
 
+    command :convert do |c|
+      c.syntax = 'abrupt convert src [options]'
+      c.description = 'Converts a xml file to owl'
+      c.action do |args, options|
+        Abrupt.convert args.first, options.__hash__
+      end
+    end
+
+    run!
+  end
 end
+
+AbruptApp.new.run # if $0 == __FILE__

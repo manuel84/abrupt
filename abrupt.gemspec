@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'rest-client', '~> 1.7'
   spec.add_runtime_dependency 'nokogiri', '~> 1.6'
   spec.add_runtime_dependency 'addressable', '~> 2.3'
-  spec.add_runtime_dependency 'slop', '~> 3.6'
+  spec.add_runtime_dependency 'commander', '~> 4.2'
   spec.add_runtime_dependency 'gyoku', '~> 1.2'
   spec.add_runtime_dependency 'rdf', '~> 1.1'
   spec.add_runtime_dependency 'linkeddata', '~> 1.1'
