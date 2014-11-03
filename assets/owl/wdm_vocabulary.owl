@@ -1120,6 +1120,13 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#Page -->
 
     <owl:Class rdf:about="&wdmOWL;Page">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&wdmOWL;readability"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;float"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&wdmOWL;Picture"/>
         <owl:disjointWith rdf:resource="&wdmOWL;Subject"/>
         <owl:disjointWith rdf:resource="&wdmOWL;Website"/>
@@ -1316,20 +1323,6 @@
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&swrl;Imp"/>
-        <swrl:head>
-            <rdf:Description>
-                <rdf:type rdf:resource="&swrl;AtomList"/>
-                <rdf:rest rdf:resource="&rdf;nil"/>
-                <rdf:first>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
-                        <swrl:propertyPredicate rdf:resource="&wdmOWL;hasPageForm"/>
-                        <swrl:argument2 rdf:resource="urn:swrl#form"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#website"/>
-                    </rdf:Description>
-                </rdf:first>
-            </rdf:Description>
-        </swrl:head>
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -1357,6 +1350,20 @@
                 </rdf:first>
             </rdf:Description>
         </swrl:body>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&wdmOWL;hasPageForm"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#form"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#website"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
     </rdf:Description>
 </rdf:RDF>
 
