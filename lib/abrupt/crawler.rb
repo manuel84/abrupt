@@ -46,7 +46,7 @@ module Abrupt
     # @return [JSON] result
     def crawl(uri = nil)
       Abrupt.log '.'
-      uri ||= @uri.to_str
+      uri ||= @uri.to_str.gsub(/([^\/])$/, '\1/') # extend with / if not
       unless @result[uri]
         html = fetch_html(uri)
         @result[uri] ||= {}

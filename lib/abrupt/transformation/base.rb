@@ -16,8 +16,10 @@ module Abrupt
       end
 
       def transform
-        result = if @state[self.class.keyname]
-                   @state[self.class.keyname].map do |k, v|
+        keyname = self.class.keyname
+        result = if @state[keyname]
+                   @state[keyname].map do |k, v|
+                     k = k.eql?('language') ? "#{keyname}Language" : k
                      Statement.new(@page_uri, Abrupt::Converter::WDM[k], v)
                    end
                  else

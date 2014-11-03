@@ -1,0 +1,33 @@
+<website>
+  <domain>http://www.rikscha-mainz.de</domain>
+  <url>
+    <name>http://www.rikscha-mainz.de/Bild/klein/Galerie/SchlossWaldhausen/</name>
+    <state>
+      <name>state59</name>
+      <readability>
+        <readability>6.6552643905041</readability>
+        <syllables>287</syllables>
+        <words>163</words>
+        <numberOfLinks>21</numberOfLinks>
+        <bigwords>44</bigwords>
+        <sentences>46</sentences>
+        <language>de</language>
+      </readability>
+    </state>
+  </url>
+  <url>
+    <name>http://www.rikscha-mainz.de/Bild/klein/Galerie/123/</name>
+    <state>
+      <name>state59</name>
+      <readability>
+        <readability>6.65643905041</readability>
+        <syllables>28</syllables>
+        <words>123</words>
+        <numberOfLinks>21</numberOfLinks>
+        <bigwords>24</bigwords>
+        <sentences>26</sentences>
+        <language>de</language>
+      </readability>
+    </state>
+  </url>
+</website>

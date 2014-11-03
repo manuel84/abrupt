@@ -40,7 +40,7 @@ module Abrupt
             method: :post,
             timeout: 6000,
             open_timeout: 6000,
-            accept: :json
+            accept: :schema
         }
         options.merge!(url: @url, payload: @html)
         begin

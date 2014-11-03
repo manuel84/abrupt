@@ -8,6 +8,7 @@ require 'abrupt' # and any other gems you need
 require 'vcr'
 require 'factory_girl'
 require_relative '../spec/factories/crawled_hashes.rb'
+require 'json-schema'
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/cassettes'

@@ -7,6 +7,16 @@ describe Abrupt::Converter, :vcr do
       readed_hash = Abrupt::Converter.from_xml filename
       expect(crawled_hash[:data]).to eq(readed_hash)
     end
+
+    it 'validates with schema' do
+      filename = 'spec/fixtures/rikscha_min.xml'
+      schema_filename = 'assets/schema/schema.json'
+      readed_hash = Abrupt::Converter.from_xml filename
+      puts readed_hash.to_json
+      expect do
+        JSON::Validator.validate!(schema_filename, readed_hash.to_json)
+      end.not_to raise_error
+    end
   end
 
   context 'converting' do

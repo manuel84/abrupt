@@ -17,16 +17,17 @@ end
 module Abrupt
   # Converter
   class Converter
+    # rubocop:disable all
     TRANSFORMATIONS =
         [
-          Abrupt::Transformation::Readability,
-          Abrupt::Transformation::Input,
-          Abrupt::Transformation::Subject,
-          Abrupt::Transformation::Complexity,
-          Abrupt::Transformation::Link,
-          Abrupt::Transformation::Picture
+            Abrupt::Transformation::Readability,
+        # Abrupt::Transformation::Input,
+        # Abrupt::Transformation::Subject,
+        # Abrupt::Transformation::Complexity,
+        # Abrupt::Transformation::Link,
+        # Abrupt::Transformation::Picture
         ]
-
+    # rubocop:enable all
     include RDF
     WDM = RDF::Vocabulary.new('http://wba.cs.hs-rm.de/wdm-service/wdmOWL#')
 
@@ -60,7 +61,7 @@ module Abrupt
       hsh.deep_symbolize_keys!
       # extend given vocabulary
       result = Repository.load('assets/owl/wdm_vocabulary.owl')
-      domain = RDF::URI(hsh[:website][:domain])
+      domain = RDF::URI(WDM.to_s + hsh[:website][:domain])
       result << Statement.new(domain, RDF.type, WDM.Website)
       Converter.perform(hsh[:website][:url], result, domain)
       result
@@ -72,14 +73,29 @@ module Abrupt
 
     def self.from_xml(file)
       xml = Nokogiri::XML(File.read(file))
-      result = Hash.from_xml(xml.to_s)
-      result.deep_symbolize_keys!
+      result = Hash.from_xml(xml.to_s).deep_symbolize_keys!
+      Abrupt::Converter.customize(result)
     end
+
+    # rubocop:disable all
+    def self.customize(hsh)
+      hsh[:website][:url].each do |url|
+        url[:state][:readability][:readability] = url[:state][:readability][:readability].to_f
+        url[:state][:readability][:syllables] = url[:state][:readability][:syllables].to_i
+        url[:state][:readability][:words] = url[:state][:readability][:words].to_i
+        url[:state][:readability][:numberOfLinks] = url[:state][:readability][:numberOfLinks].to_i
+        url[:state][:readability][:bigwords] = url[:state][:readability][:bigwords].to_i
+        url[:state][:readability][:sentences] = url[:state][:readability][:sentences].to_i
+      end
+      hsh
+    end
+
+    # rubocop:enable all
 
     def self.perform(hsh, result, domain)
       # TODO: extract domain as class var
       hsh.each do |url|
-        page_uri = RDF::URI(url[:name])
+        page_uri = RDF::URI(WDM.to_s + url[:name].gsub(/([^\/])$/, '\1/'))
         result << Statement.new(page_uri, RDF.type, WDM.Page)
         if url[:state]
           state = url[:state]

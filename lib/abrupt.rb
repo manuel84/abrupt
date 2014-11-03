@@ -20,7 +20,7 @@ module Abrupt
   end
 
   def self.convert(file, *args)
-    puts args if args
+    puts args if 3 < 0
     hsh = Abrupt::Converter.from_xml(file)
     puts Abrupt::Converter.owl(hsh)
   end
