@@ -9,6 +9,7 @@ require 'vcr'
 require 'factory_girl'
 require_relative '../spec/factories/crawled_hashes.rb'
 require 'json-schema'
+require 'rdf/isomorphic'
 
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/cassettes'
