@@ -4,10 +4,29 @@ require 'gyoku'
 require 'rdf'
 require 'linkeddata'
 require 'active_support/core_ext/hash'
+%w( base
+    readability
+    subject
+    input
+    complexity
+    picture
+    link).each do |f|
+  require "abrupt/transformation/#{f}"
+end
 # Abrupt Converter
 module Abrupt
   # Converter
   class Converter
+    TRANSFORMATIONS =
+        [
+          Abrupt::Transformation::Readability,
+          Abrupt::Transformation::Input,
+          Abrupt::Transformation::Subject,
+          Abrupt::Transformation::Complexity,
+          Abrupt::Transformation::Link,
+          Abrupt::Transformation::Picture
+        ]
+
     include RDF
     WDM = RDF::Vocabulary.new('http://wba.cs.hs-rm.de/wdm-service/wdmOWL#')
 
@@ -37,16 +56,18 @@ module Abrupt
       hsh.to_json
     end
 
-    def self.owl(hsh)
+    def self.to_repository(hsh)
       hsh.deep_symbolize_keys!
       # extend given vocabulary
       result = Repository.load('assets/owl/wdm_vocabulary.owl')
       domain = RDF::URI(hsh[:website][:domain])
       result << Statement.new(domain, RDF.type, WDM.Website)
-      Converter.perform(hsh, result)
-
-      puts result.dump :rdfxml
+      Converter.perform(hsh[:website][:url], result, domain)
       result
+    end
+
+    def self.owl(hsh)
+      self.class.to_repository(hsh).dump :rdfxml
     end
 
     def self.from_xml(file)
@@ -55,21 +76,20 @@ module Abrupt
       result.deep_symbolize_keys!
     end
 
-    def self.perform(hsh, result)
-      hsh[:website][:url].each do |url|
+    def self.perform(hsh, result, domain)
+      # TODO: extract domain as class var
+      hsh.each do |url|
         page_uri = RDF::URI(url[:name])
         result << Statement.new(page_uri, RDF.type, WDM.Page)
         if url[:state]
-          if url[:state][:readability]
-            # readability => { :sentences => 32}
-            url[:state][:readability].each do |key, value|
-              result << Statement.new(page_uri, WDM[key], value)
-            end
+          state = url[:state]
+          TRANSFORMATIONS.each do |transformation_class|
+            new_statements = transformation_class.new(state, page_uri).transform
+            new_statements.each { |stmt| result << stmt }
           end
         end
         result << Statement.new(domain, WDM.hasPage, page_uri)
       end
     end
   end
-
 end

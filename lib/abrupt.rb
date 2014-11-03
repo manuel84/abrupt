@@ -18,4 +18,10 @@ module Abrupt
     Abrupt.log "\nfinished in #{(end_time - start_time).round} sec.\n\n"
     puts Abrupt::Converter.xml(result)
   end
+
+  def self.convert(file, *args)
+    puts args
+    hsh = Abrupt::Converter.from_xml(file)
+    puts Abrupt::Converter.owl(hsh)
+  end
 end
