@@ -4,21 +4,22 @@ require 'gyoku'
 require 'rdf'
 require 'linkeddata'
 require 'active_support/core_ext/hash'
+# Abrupt Converter
 module Abrupt
   # Converter
   class Converter
     include RDF
     WDM = RDF::Vocabulary.new('http://wba.cs.hs-rm.de/wdm-service/wdmOWL#')
 
-    def self.transform_hash(input)
-      uri = Addressable::URI.parse(input.keys.first).normalize
+    def self.transform_hash(hsh)
+      uri = Addressable::URI.parse(hsh.keys.first).normalize
       result = {
           website: {
               domain: "#{uri.scheme}://#{uri.host}",
               url: []
           }
       }
-      input.each_with_index do |(key, value), _index|
+      hsh.each_with_index do |(key, value), _index|
         page = {
             name: key,
             state: value
@@ -28,35 +29,47 @@ module Abrupt
       result
     end
 
-    def self.xml(input)
-      Gyoku.xml input
+    def self.xml(hsh)
+      Gyoku.xml hsh
     end
 
-    def self.json(input)
-      input.to_json
+    def self.json(hsh)
+      hsh.to_json
     end
 
-    def self.owl(input)
-      input = input.with_indifferent_access
-      result = Repository.load('assets/owl/wdm_vocabulary.owl') # extend given vocabulary
-      domain = RDF::URI(input[:website][:domain])
+    def self.owl(hsh)
+      hsh.deep_symbolize_keys!
+      # extend given vocabulary
+      result = Repository.load('assets/owl/wdm_vocabulary.owl')
+      domain = RDF::URI(hsh[:website][:domain])
       result << Statement.new(domain, RDF.type, WDM.Website)
-      input[:website][:url].each do |url|
+      Converter.perform(hsh, result)
+
+      puts result.dump :rdfxml
+      result
+    end
+
+    def self.from_xml(file)
+      xml = Nokogiri::XML(File.read(file))
+      result = Hash.from_xml(xml.to_s)
+      result.deep_symbolize_keys!
+    end
+
+    def self.perform(hsh, result)
+      hsh[:website][:url].each do |url|
         page_uri = RDF::URI(url[:name])
         result << Statement.new(page_uri, RDF.type, WDM.Page)
         if url[:state]
           if url[:state][:readability]
-            url[:state][:readability].each do |key, value| # readability => { :sentences => 32}
+            # readability => { :sentences => 32}
+            url[:state][:readability].each do |key, value|
               result << Statement.new(page_uri, WDM[key], value)
             end
           end
         end
         result << Statement.new(domain, WDM.hasPage, page_uri)
       end
-
-      puts result.dump :rdfxml
-      result
     end
-
   end
+
 end
