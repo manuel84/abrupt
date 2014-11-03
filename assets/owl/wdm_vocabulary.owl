@@ -13,7 +13,7 @@
 
 
 <rdf:RDF xmlns="http://wba.cs.hs-rm.de/wdm-service/wdmOWL#"
-     xml:base="http://wba.cs.hs-rm.de/wdm-service/wdmOWL#"
+     xml:base="http://wba.cs.hs-rm.de/wdm-service/wdmOWL"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
      xmlns:wdmOWL="http://wba.cs.hs-rm.de/wdm-service/wdmOWL#"
@@ -22,15 +22,36 @@
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
     <owl:Ontology rdf:about="http://wba.cs.hs-rm.de/wdm-service/wdmOWL#">
-        <owl:imports rdf:resource="http://www.w3.org/2003/11/swrl"/>
-            <owl:imports rdf:resource="http://www.w3.org/2003/11/swrlb"/>
-            <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
-            <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/built-ins/3.3/temporal.owl"/>
-            <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/built-ins/3.3/abox.owl"/>
-            <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/built-ins/3.3/tbox.owl"/>
-            <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/built-ins/3.3/swrlx.owl"/>
-            <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/built-ins/3.3/query.owl"/>
     </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#equivalentClass -->
+
+    <owl:AnnotationProperty rdf:about="&wdmOWL;equivalentClass"/>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#onDataRange -->
+
+    <owl:AnnotationProperty rdf:about="&wdmOWL;onDataRange"/>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#onProperty -->
+
+    <owl:AnnotationProperty rdf:about="&wdmOWL;onProperty"/>
     
 
 
@@ -113,6 +134,15 @@
         <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
         <rdfs:comment>A page belongs to one website. Because of this restriction the whole URL is saved as name. The domain, path, query and fragment can be reasoned by the URL.</rdfs:comment>
         <rdfs:range rdf:resource="&wdmOWL;Page"/>
+        <rdfs:domain rdf:resource="&wdmOWL;Website"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#hasPageForm -->
+
+    <owl:ObjectProperty rdf:about="&wdmOWL;hasPageForm">
+        <rdfs:range rdf:resource="&wdmOWL;Form"/>
         <rdfs:domain rdf:resource="&wdmOWL;Website"/>
     </owl:ObjectProperty>
     
@@ -1081,16 +1111,16 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#Page -->
 
     <owl:Class rdf:about="&wdmOWL;Page">
-        <equivalentClass>
-            <Restriction>
-                <onProperty rdf:resource="&wdmOWL;readability"/>
-                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
-                <onDataRange rdf:resource="&xsd;float"/>
-            </Restriction>
-        </equivalentClass>
         <owl:disjointWith rdf:resource="&wdmOWL;Picture"/>
         <owl:disjointWith rdf:resource="&wdmOWL;Subject"/>
         <owl:disjointWith rdf:resource="&wdmOWL;Website"/>
+        <equivalentClass>
+            <rdf:Description>
+                <rdf:type rdf:resource="&wdmOWL;Restriction"/>
+                <onProperty rdf:resource="&wdmOWL;readability"/>
+                <onDataRange rdf:resource="&xsd;float"/>
+            </rdf:Description>
+        </equivalentClass>
     </owl:Class>
     
 
@@ -1130,6 +1160,12 @@
     <owl:Class rdf:about="&wdmOWL;Reset">
         <rdfs:subClassOf rdf:resource="&wdmOWL;Input"/>
     </owl:Class>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL#Restriction -->
+
+    <owl:Class rdf:about="&wdmOWL;Restriction"/>
     
 
 
@@ -1265,6 +1301,15 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    <rdf:Description rdf:about="urn:swrl#page">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#form">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
+    <rdf:Description rdf:about="urn:swrl#website">
+        <rdf:type rdf:resource="&swrl;Variable"/>
+    </rdf:Description>
     <rdf:Description rdf:about="urn:swrl#x">
         <rdf:type rdf:resource="&swrl;Variable"/>
     </rdf:Description>
@@ -1273,14 +1318,29 @@
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&swrl;Imp"/>
+        <swrl:head>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest rdf:resource="&rdf;nil"/>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&wdmOWL;hasPageForm"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#form"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#website"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:head>
         <swrl:body>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
                 <rdf:first>
                     <rdf:Description>
-                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
-                        <swrl:classPredicate rdf:resource="&wdmOWL;Website"/>
-                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                        <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                        <swrl:propertyPredicate rdf:resource="&wdmOWL;hasForm"/>
+                        <swrl:argument2 rdf:resource="urn:swrl#form"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#page"/>
                     </rdf:Description>
                 </rdf:first>
                 <rdf:rest>
@@ -1289,16 +1349,19 @@
                         <rdf:rest rdf:resource="&rdf;nil"/>
                         <rdf:first>
                             <rdf:Description>
-                                <rdf:type rdf:resource="&swrl;DatavaluedPropertyAtom"/>
-                                <swrl:propertyPredicate rdf:resource="&wdmOWL;websiteName"/>
-                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
-                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
+                                <rdf:type rdf:resource="&swrl;IndividualPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="&wdmOWL;hasPage"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#page"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#website"/>
                             </rdf:Description>
                         </rdf:first>
                     </rdf:Description>
                 </rdf:rest>
             </rdf:Description>
         </swrl:body>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&swrl;Imp"/>
         <swrl:head>
             <rdf:Description>
                 <rdf:type rdf:resource="&swrl;AtomList"/>
@@ -1313,6 +1376,32 @@
                 </rdf:first>
             </rdf:Description>
         </swrl:head>
+        <swrl:body>
+            <rdf:Description>
+                <rdf:type rdf:resource="&swrl;AtomList"/>
+                <rdf:rest>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;AtomList"/>
+                        <rdf:rest rdf:resource="&rdf;nil"/>
+                        <rdf:first>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="&swrl;DatavaluedPropertyAtom"/>
+                                <swrl:propertyPredicate rdf:resource="&wdmOWL;websiteName"/>
+                                <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                                <swrl:argument2 rdf:resource="urn:swrl#y"/>
+                            </rdf:Description>
+                        </rdf:first>
+                    </rdf:Description>
+                </rdf:rest>
+                <rdf:first>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="&swrl;ClassAtom"/>
+                        <swrl:classPredicate rdf:resource="&wdmOWL;Website"/>
+                        <swrl:argument1 rdf:resource="urn:swrl#x"/>
+                    </rdf:Description>
+                </rdf:first>
+            </rdf:Description>
+        </swrl:body>
     </rdf:Description>
 </rdf:RDF>
 
