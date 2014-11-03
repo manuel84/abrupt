@@ -2,12 +2,11 @@ require 'spec_helper'
 describe Abrupt::Converter, :vcr do
   context 'reading' do
     it 'from xml to correct hash' do
-      crawled_hash = FactoryGirl.attributes_for(:rikscha_old).deep_symbolize_keys
-
-      pp crawled_hash
+      crawled_hash = FactoryGirl.attributes_for(:rikscha_old)
+      crawled_hash = crawled_hash.deep_symbolize_keys[:data]
       filename = 'spec/fixtures/rikscha_Result.xml'
       readed_hash = Abrupt::Converter.from_xml filename
-      expect(readed_hash).to eq(crawled_hash[:data])
+      expect(readed_hash).to eq(crawled_hash)
     end
 
     it 'validates with schema' do
@@ -22,16 +21,19 @@ describe Abrupt::Converter, :vcr do
 
   context 'converting' do
     it 'from hash to the correct repo' do
-      crawled_hash = FactoryGirl.attributes_for(:rikscha).deep_symbolize_keys
-      converted_repo = Abrupt::Converter.owl crawled_hash[:data]
+      crawled_hash = FactoryGirl.attributes_for(:rikscha)
+      crawled_hash = crawled_hash.deep_symbolize_keys[:data]
+      converted_repo = Abrupt::Converter.to_repository crawled_hash
       expected_repo = RDF::Repository.load(
           'spec/fixtures/rikscha-mainz.owl'
       )
       expect(converted_repo).to be_isomorphic_with(expected_repo)
     end
     it 'from xml to the correct repo' do
-      crawled_hash = FactoryGirl.attributes_for(:rikscha).deep_symbolize_keys
-      converted_repo = Abrupt::Converter.owl crawled_hash[:data]
+      pending 'pending'
+      crawled_hash = FactoryGirl.attributes_for(:rikscha)
+      crawled_hash = crawled_hash.deep_symbolize_keys[:data]
+      converted_repo = Abrupt::Converter.to_repository crawled_hash
       expected_repo = RDF::Repository.load(
           'spec/fixtures/rikscha-mainz.owl'
       )
