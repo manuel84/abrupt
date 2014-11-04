@@ -20,8 +20,8 @@ module Abrupt
         result = []
         if @state[keyname]
           result += @state[keyname].map do |k, v|
-            k = k.eql?('language') ? "#{keyname}Language" : k
-            Statement.new(@page_uri, WDM[k], v)
+            s = k.to_s.eql?('language') ? "#{keyname}Language" : k
+            Statement.new(@page_uri, WDM[s], v)
           end
         end
         result
