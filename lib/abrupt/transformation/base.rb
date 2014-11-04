@@ -3,6 +3,7 @@ module Abrupt
   module Transformation
     # base class
     class Base
+      WDM = RDF::Vocabulary.new('http://wba.cs.hs-rm.de/wdm-service/wdmOWL#')
       include RDF
       attr_accessor :state, :page_uri
 
@@ -17,14 +18,13 @@ module Abrupt
 
       def transform
         keyname = self.class.keyname
-        result = if @state[keyname]
-                   @state[keyname].map do |k, v|
-                     k = k.eql?('language') ? "#{keyname}Language" : k
-                     Statement.new(@page_uri, Abrupt::Converter::WDM[k], v)
-                   end
-                 else
-                   []
-                 end
+        result = []
+        if @state[keyname]
+          result += @state[keyname].map do |k, v|
+            k = k.eql?('language') ? "#{keyname}Language" : k
+            Statement.new(@page_uri, WDM[k], v)
+          end
+        end
         result
       end
     end

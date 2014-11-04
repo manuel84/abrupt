@@ -21,7 +21,7 @@ module Abrupt
     TRANSFORMATIONS =
         [
             Abrupt::Transformation::Readability,
-        # Abrupt::Transformation::Input,
+            Abrupt::Transformation::Input,
         # Abrupt::Transformation::Subject,
         # Abrupt::Transformation::Complexity,
         # Abrupt::Transformation::Link,
