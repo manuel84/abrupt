@@ -24,9 +24,9 @@ module Abrupt
         RDF::URI("#{WDM}#{class_name}/#{name}")
       end
 
-      def add_individual(uri, type = class_name, add_to_page = true)
+      def add_individual(uri, type = class_name, parent_uri = @page_uri)
         @result << Statement.new(uri, RDF.type, type)
-        add_object_property(@page_uri, class_name, uri)
+        add_object_property(parent_uri, type, uri)
       end
 
       def add_data_property(uri, type, value)
@@ -36,7 +36,6 @@ module Abrupt
       def add_object_property(parent_uri, type, child_uri)
         @result << Statement.new(parent_uri, WDM["has#{type}"], child_uri)
       end
-
 
       def transform
         if @state[keyname]

@@ -5,7 +5,7 @@ module Abrupt
     # documentation see 'http://wba.cs.hs-rm.de/AbRUPt/service/readability/'
     class Link < Base
       def transform
-        transform_anchors (@state[:link][:a]) if @state[:link]
+        transform_anchors(@state[:link][:a]) if @state[:link]
         @result
       end
 
@@ -13,7 +13,9 @@ module Abrupt
         anchors.each do |link|
           link_uri = rdf_uri(link[:href])
           add_individual link_uri
-          link.each { |type, value| add_data_property(link_uri, type, CGI.escapeHTML(value)) }
+          link.each do |type, value|
+            add_data_property(link_uri, type, CGI.escapeHTML(value))
+          end
         end
       end
     end
