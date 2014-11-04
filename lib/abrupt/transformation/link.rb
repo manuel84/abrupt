@@ -5,25 +5,16 @@ module Abrupt
     # documentation see 'http://wba.cs.hs-rm.de/AbRUPt/service/readability/'
     class Link < Base
       def transform
-        result = []
-        if @state[:link]
-          result += transform_anchors(@state[:link][:a])
-        end
-        result
+        transform_anchors (@state[:link][:a]) if @state[:link]
+        @result
       end
 
       def transform_anchors(anchors)
-        result = []
         anchors.each do |link|
-          link_uri = uri(link[:href])
-          # Individual
-          result << Statement.new(link_uri, RDF.type, WDM['Link'])
-          # Data Properties
-          result += link.map { |k, v| Statement.new(link_uri, WDM[k], CGI.escapeHTML(v)) }
-          # Object Properties
-          result << Statement.new(@page_uri, WDM['hasLink'], link_uri)
+          link_uri = rdf_uri(link[:href])
+          add_individual link_uri
+          link.each { |type, value| add_data_property(link_uri, type, CGI.escapeHTML(value)) }
         end
-        result
       end
     end
   end

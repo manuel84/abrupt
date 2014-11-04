@@ -9,8 +9,10 @@ module Abrupt
       def transform
         result = []
         if @state[keyname]
+          # Individual
           @form_uri = RDF::URI("#{@page_uri}-form-#{@state[keyname].__id__}")
           result << Statement.new(form_uri, RDF.type, WDM['Form'])
+          # Object Properties
           result << Statement.new(@page_uri, WDM['hasForm'], @form_uri)
           result += transform_inputs(@state[keyname])
         end
@@ -31,9 +33,12 @@ module Abrupt
         [inputs_arr].to_a.flatten.each do |input|
           id = input[:id] || input.__id__
           input_uri = RDF::URI("#{@page_uri}-form_element-#{id}")
+          # Individual
           result << Statement.new(input_uri, RDF.type, WDM[type])
           input.select! { |key, value| key && value }
+          # Data Properties
           input.each { |k, v| result << Statement.new(input_uri, WDM[k], v) }
+          # Object Property
           result << Statement.new(@form_uri, WDM["has#{type}"], input_uri)
         end
         result
