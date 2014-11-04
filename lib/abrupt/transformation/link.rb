@@ -10,9 +10,9 @@ module Abrupt
           @state[:link].each do |link|
             link_uri = RDF::URI(link[:href])
             result += link.map do |k, v|
-              Statement.new(link_uri, Abrupt::Converter::WDM[k], v)
+              Statement.new(link_uri, WDM[k], v)
             end
-            has_link = Abrupt::Converter::WDM['hasLink']
+            has_link = WDM['hasLink']
             result << Statement.new(@page_uri, has_link, link_uri)
           end
         end

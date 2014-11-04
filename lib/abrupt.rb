@@ -5,6 +5,8 @@
 # This module is cool
 # @abstract
 module Abrupt
+  WDM = RDF::Vocabulary.new('http://wba.cs.hs-rm.de/wdm-service/wdmOWL/')
+
   def self.log(msg)
     print msg
   end
@@ -13,21 +15,21 @@ module Abrupt
     opts = args.first
     crawler = Abrupt::Crawler.new uri, opts
     start_time = Time.now
-    Abrupt.log "begin: #{start_time}\n"
+    log "begin: #{start_time}\n"
     result = crawler.crawl
     end_time = Time.now
-    Abrupt.log "\nfinished in #{(end_time - start_time).round} sec.\n\n"
+    log "\nfinished in #{(end_time - start_time).round} sec.\n\n"
     case opts[:format]
     when 'xml'
-      puts Abrupt::Converter.xml(result)
+      puts Converter.xml(result)
     else # owl as default
-      puts Abrupt::Converter.owl(result)
+      puts Converter.owl(result)
     end
   end
 
   def self.convert(file, *args)
     puts args if 3 < 0
-    hsh = Abrupt::Converter.from_xml(file)
-    puts Abrupt::Converter.owl(hsh)
+    hsh = Converter.from_xml(file)
+    puts Converter.owl(hsh)
   end
 end

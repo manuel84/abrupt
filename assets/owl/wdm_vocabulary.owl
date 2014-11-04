@@ -847,7 +847,7 @@
 
     <owl:DatatypeProperty rdf:about="&wdmOWL2;readability">
         <rdfs:domain rdf:resource="&wdmOWL2;Page"/>
-        <rdfs:range rdf:resource="&xsd;float"/>
+        <rdfs:range rdf:resource="&xsd;double"/>
     </owl:DatatypeProperty>
     
 

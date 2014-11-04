@@ -17,6 +17,7 @@ end
 module Abrupt
   # Converter
   class Converter
+    include RDF
     # rubocop:disable all
     TRANSFORMATIONS =
         [
@@ -28,9 +29,6 @@ module Abrupt
         # Abrupt::Transformation::Picture
         ]
     # rubocop:enable all
-    include RDF
-    WDM = RDF::Vocabulary.new('http://wba.cs.hs-rm.de/wdm-service/wdmOWL#')
-
     def self.transform_hash(hsh)
       uri = Addressable::URI.parse(hsh.keys.first).normalize
       result = {
@@ -68,13 +66,13 @@ module Abrupt
     end
 
     def self.owl(hsh)
-      Abrupt::Converter.to_repository(hsh).dump :rdfxml
+      Converter.to_repository(hsh).dump :rdfxml
     end
 
     def self.from_xml(file)
       xml = Nokogiri::XML(File.read(file))
       result = Hash.from_xml(xml.to_s).deep_symbolize_keys!
-      Abrupt::Converter.customize(result)
+      Converter.customize(result)
     end
 
     # rubocop:disable all

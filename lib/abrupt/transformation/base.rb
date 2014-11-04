@@ -3,7 +3,6 @@ module Abrupt
   module Transformation
     # base class
     class Base
-      WDM = RDF::Vocabulary.new('http://wba.cs.hs-rm.de/wdm-service/wdmOWL#')
       include RDF
       attr_accessor :state, :page_uri
 

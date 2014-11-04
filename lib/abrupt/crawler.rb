@@ -16,12 +16,12 @@ module Abrupt
   # with performing abrupt services
   class Crawler
     SERVICE_MAPPING = {
-        r: Abrupt::Service::Readability,
-        i: Abrupt::Service::Input,
-        s: Abrupt::Service::Subject,
-        c: Abrupt::Service::Complexity,
-        l: Abrupt::Service::Link,
-        p: Abrupt::Service::Picture
+        r: Service::Readability,
+        i: Service::Input,
+        s: Service::Subject,
+        c: Service::Complexity,
+        l: Service::Link,
+        p: Service::Picture
     }
 
     def initialize(uri, *args)
@@ -60,7 +60,7 @@ module Abrupt
         new_uris.select! { |url| same_host?(url) } # filter
         new_uris.uniq.each { |url| crawl(url) } if @follow_links
       end
-      Abrupt::Converter.transform_hash(@result).deep_symbolize_keys
+      Converter.transform_hash(@result).deep_symbolize_keys
     end
 
     def fetch_html(uri)
@@ -102,7 +102,7 @@ module Abrupt
 
     def canonize_html(html)
       baseurl = "#{@uri.scheme}://#{@uri.host}"
-      converter = Abrupt::Service::AbsoluteUrl.new(html, baseurl: baseurl)
+      converter = Service::AbsoluteUrl.new(html, baseurl: baseurl)
       converter.execute
     end
 
