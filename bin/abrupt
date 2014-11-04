@@ -20,6 +20,7 @@ class AbruptApp
       c.option '--lang STRING', String, 'language'
       c.option '--services STRING', Array, 'riscpl'
       c.option '--verbose STRING', String, ''
+      c.option '--format STRING', String, 'xml or owl'
       c.action do |args, options|
         Abrupt.crawl args.first, options.__hash__
       end
