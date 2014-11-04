@@ -6,6 +6,7 @@
 # @abstract
 module Abrupt
   WDM = RDF::Vocabulary.new('http://wba.cs.hs-rm.de/wdm-service/wdmOWL/')
+  DELIMITER = ''
 
   def self.log(msg)
     print msg

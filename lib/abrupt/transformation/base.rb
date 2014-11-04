@@ -11,12 +11,19 @@ module Abrupt
         @page_uri = page_uri
       end
 
-      def self.keyname
-        name.split('::').last.downcase.to_sym
+      def class_name
+        self.class.name.split('::').last
+      end
+
+      def keyname
+        class_name.downcase.to_sym
+      end
+
+      def uri(name)
+        RDF::URI("#{WDM}#{class_name}/#{name}")
       end
 
       def transform
-        keyname = self.class.keyname
         result = []
         if @state[keyname]
           result += @state[keyname].map do |k, v|

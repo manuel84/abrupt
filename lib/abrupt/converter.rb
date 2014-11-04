@@ -23,9 +23,9 @@ module Abrupt
         [
             Abrupt::Transformation::Readability,
             Abrupt::Transformation::Input,
-        # Abrupt::Transformation::Subject,
-        # Abrupt::Transformation::Complexity,
-        # Abrupt::Transformation::Link,
+            # Abrupt::Transformation::Subject,
+            # Abrupt::Transformation::Complexity,
+            Abrupt::Transformation::Link,
         # Abrupt::Transformation::Picture
         ]
     # rubocop:enable all

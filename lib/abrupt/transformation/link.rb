@@ -7,14 +7,21 @@ module Abrupt
       def transform
         result = []
         if @state[:link]
-          @state[:link].each do |link|
-            link_uri = RDF::URI(link[:href])
-            result += link.map do |k, v|
-              Statement.new(link_uri, WDM[k], v)
-            end
-            has_link = WDM['hasLink']
-            result << Statement.new(@page_uri, has_link, link_uri)
-          end
+          result += transform_anchors(@state[:link][:a])
+        end
+        result
+      end
+
+      def transform_anchors(anchors)
+        result = []
+        anchors.each do |link|
+          link_uri = uri(link[:href])
+          # Individual
+          result << Statement.new(link_uri, RDF.type, WDM['Link'])
+          # Data Properties
+          result += link.map { |k, v| Statement.new(link_uri, WDM[k], CGI.escapeHTML(v)) }
+          # Object Properties
+          result << Statement.new(@page_uri, WDM['hasLink'], link_uri)
         end
         result
       end

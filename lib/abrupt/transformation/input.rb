@@ -7,7 +7,6 @@ module Abrupt
       attr_accessor :form_uri
 
       def transform
-        keyname = self.class.keyname
         result = []
         if @state[keyname]
           @form_uri = RDF::URI("#{@page_uri}-form-#{@state[keyname].__id__}")
