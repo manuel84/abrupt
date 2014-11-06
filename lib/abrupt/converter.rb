@@ -23,9 +23,9 @@ module Abrupt
         [
             Abrupt::Transformation::Readability,
             Abrupt::Transformation::Input,
-            #Abrupt::Transformation::Subject,
+            # Abrupt::Transformation::Subject,
             # Abrupt::Transformation::Complexity,
-            Abrupt::Transformation::Link,
+            # Abrupt::Transformation::Link,
         # Abrupt::Transformation::Picture
         ]
     # rubocop:enable all
@@ -93,16 +93,18 @@ module Abrupt
     def self.perform(hsh, result, domain)
       # TODO: extract domain as class var
       hsh.each do |url|
-        page_uri = RDF::URI(WDM.to_s + url[:name].gsub(/([^\/])$/, '\1/'))
-        result << Statement.new(page_uri, RDF.type, WDM.Page)
+        page_name = url[:name].gsub(/([^\/])$/, '\1/')
+        page_uri = RDF::URI("#{WDM}Page/#{page_name}")
+        result << Statement.new(page_uri, RDF.type, WDM['Page'])
+        result << Statement.new(domain, WDM['hasPage'], page_uri)
         if url[:state]
           state = url[:state]
           TRANSFORMATIONS.each do |transformation_class|
-            new_statements = transformation_class.new(state, page_uri).result
+            new_statements = transformation_class.new(state, page_name).result
             new_statements.each { |stmt| result << stmt }
           end
         end
-        result << Statement.new(domain, WDM.hasPage, page_uri)
+
       end
     end
   end

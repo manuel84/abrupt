@@ -8,12 +8,13 @@ module Abrupt
 
       def transform
         return unless @state[keyname]
-        form_uri = RDF::URI("#{@page_uri}-form-#{@state[keyname].__id__}")
+        form_id = @state[keyname].__id__
+        form_uri = rdf_uri(form_id, 'Form')
         add_individual(form_uri, 'Form')
         @state[keyname].each do |input_type, inputs|
           [inputs].to_a.flatten.each do |input|
-            id = input[:id] || input.__id__
-            input_uri = RDF::URI("#{@page_uri}-form_element-#{id}")
+            form_element_id = input[:id] || input.__id__
+            input_uri = rdf_uri(form_element_id)
             type = input_type.to_s.camelcase
             # input_uri type Input
             # form_uri hasFormElement input_uri
