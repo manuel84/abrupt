@@ -23,9 +23,9 @@ module Abrupt
         [
             Abrupt::Transformation::Readability,
             Abrupt::Transformation::Input,
-            # Abrupt::Transformation::Subject,
-            # Abrupt::Transformation::Complexity,
-            # Abrupt::Transformation::Link,
+        # Abrupt::Transformation::Subject,
+        # Abrupt::Transformation::Complexity,
+        # Abrupt::Transformation::Link,
         # Abrupt::Transformation::Picture
         ]
     # rubocop:enable all
@@ -97,12 +97,11 @@ module Abrupt
         page_uri = RDF::URI("#{WDM}Page/#{page_name}")
         result << Statement.new(page_uri, RDF.type, WDM['Page'])
         result << Statement.new(domain, WDM['hasPage'], page_uri)
-        if url[:state]
-          state = url[:state]
-          TRANSFORMATIONS.each do |transformation_class|
-            new_statements = transformation_class.new(state, page_name).result
-            new_statements.each { |stmt| result << stmt }
-          end
+        next unless url[:state]
+        state = url[:state]
+        TRANSFORMATIONS.each do |transformation_class|
+          new_statements = transformation_class.new(state, page_name).result
+          new_statements.each { |stmt| result << stmt }
         end
 
       end
