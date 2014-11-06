@@ -76,46 +76,20 @@
     
 
 
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasCheckbox -->
-
-    <owl:ObjectProperty rdf:about="&wdmOWL2;hasCheckbox">
-        <rdfs:range rdf:resource="&wdmOWL2;Checkbox"/>
-        <rdfs:domain rdf:resource="&wdmOWL2;Form"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasColor -->
-
-    <owl:ObjectProperty rdf:about="&wdmOWL2;hasColor">
-        <rdfs:domain rdf:resource="&wdmOWL2;Page"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasDate -->
-
-    <owl:ObjectProperty rdf:about="&wdmOWL2;hasDate">
-        <rdfs:range rdf:resource="&wdmOWL2;Date"/>
-        <rdfs:domain rdf:resource="&wdmOWL2;Form"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasEmail -->
-
-    <owl:ObjectProperty rdf:about="&wdmOWL2;hasEmail">
-        <rdfs:range rdf:resource="&wdmOWL2;Email"/>
-        <rdfs:domain rdf:resource="&wdmOWL2;Form"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasForm -->
 
     <owl:ObjectProperty rdf:about="&wdmOWL2;hasForm">
         <rdfs:range rdf:resource="&wdmOWL2;Form"/>
         <rdfs:domain rdf:resource="&wdmOWL2;Page"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasFormElement -->
+
+    <owl:ObjectProperty rdf:about="&wdmOWL2;hasFormElement">
+        <rdfs:range rdf:resource="&wdmOWL2;Checkbox"/>
+        <rdfs:domain rdf:resource="&wdmOWL2;Form"/>
     </owl:ObjectProperty>
     
 
@@ -140,64 +114,11 @@
     
 
 
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasPageForm -->
-
-    <owl:ObjectProperty rdf:about="&wdmOWL2;hasPageForm">
-        <rdfs:range rdf:resource="&wdmOWL2;Form"/>
-        <rdfs:domain rdf:resource="&wdmOWL2;Website"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasPassword -->
-
-    <owl:ObjectProperty rdf:about="&wdmOWL2;hasPassword">
-        <rdfs:domain rdf:resource="&wdmOWL2;Form"/>
-        <rdfs:range rdf:resource="&wdmOWL2;Password"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasPicture -->
 
     <owl:ObjectProperty rdf:about="&wdmOWL2;hasPicture">
         <rdfs:domain rdf:resource="&wdmOWL2;Page"/>
         <rdfs:range rdf:resource="&wdmOWL2;Picture"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasRadio -->
-
-    <owl:ObjectProperty rdf:about="&wdmOWL2;hasRadio">
-        <rdfs:domain rdf:resource="&wdmOWL2;Form"/>
-        <rdfs:range rdf:resource="&wdmOWL2;Radio"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasRange -->
-
-    <owl:ObjectProperty rdf:about="&wdmOWL2;hasRange">
-        <rdfs:domain rdf:resource="&wdmOWL2;Form"/>
-        <rdfs:range rdf:resource="&wdmOWL2;Range"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasSelect -->
-
-    <owl:ObjectProperty rdf:about="&wdmOWL2;hasSelect">
-        <rdfs:domain rdf:resource="&wdmOWL2;Form"/>
-        <rdfs:range rdf:resource="&wdmOWL2;Select"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasSelectScroll -->
-
-    <owl:ObjectProperty rdf:about="&wdmOWL2;hasSelectScroll">
-        <rdfs:domain rdf:resource="&wdmOWL2;Form"/>
     </owl:ObjectProperty>
     
 
@@ -216,24 +137,6 @@
     <owl:ObjectProperty rdf:about="&wdmOWL2;hasSubjects">
         <rdfs:domain rdf:resource="&wdmOWL2;Subject"/>
         <rdfs:range rdf:resource="&wdmOWL2;Subjects"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasText -->
-
-    <owl:ObjectProperty rdf:about="&wdmOWL2;hasText">
-        <rdfs:domain rdf:resource="&wdmOWL2;Form"/>
-        <rdfs:range rdf:resource="&wdmOWL2;Text"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasTextarea -->
-
-    <owl:ObjectProperty rdf:about="&wdmOWL2;hasTextarea">
-        <rdfs:domain rdf:resource="&wdmOWL2;Form"/>
-        <rdfs:range rdf:resource="&wdmOWL2;Textarea"/>
     </owl:ObjectProperty>
     
 
@@ -879,6 +782,15 @@
     
 
 
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/priority -->
+
+    <owl:DatatypeProperty rdf:about="&wdmOWL2;priority">
+        <rdfs:domain rdf:resource="&wdmOWL2;Problem"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/readability -->
 
     <owl:DatatypeProperty rdf:about="&wdmOWL2;readability">
@@ -1239,6 +1151,12 @@
     <owl:Class rdf:about="&wdmOWL2;Picture">
         <rdfs:subClassOf rdf:resource="&wdmOWL2;HtmlElement"/>
     </owl:Class>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Problem -->
+
+    <owl:Class rdf:about="&wdmOWL2;Problem"/>
     
 
 

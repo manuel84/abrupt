@@ -98,7 +98,7 @@ module Abrupt
         if url[:state]
           state = url[:state]
           TRANSFORMATIONS.each do |transformation_class|
-            new_statements = transformation_class.new(state, page_uri).transform
+            new_statements = transformation_class.new(state, page_uri).result
             new_statements.each { |stmt| result << stmt }
           end
         end

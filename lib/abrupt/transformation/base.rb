@@ -10,6 +10,7 @@ module Abrupt
         @state = state
         @page_uri = page_uri
         @result = []
+        transform
       end
 
       def class_name
@@ -24,10 +25,13 @@ module Abrupt
         RDF::URI("#{WDM}#{class_name}/#{name}")
       end
 
-      def add_individual(uri, type = class_name, parent_uri = @page_uri, object_property_type = nil)
-        object_property_type ||= type
+      def add_individual(uri,
+                         type = class_name,
+                         parent_uri = @page_uri,
+                         parent_type = nil)
+        parent_type ||= type
         @result << Statement.new(uri, RDF.type, type)
-        add_object_property(parent_uri, object_property_type, uri)
+        add_object_property(parent_uri, parent_type, uri)
       end
 
       def add_data_property(uri, type, value)
@@ -39,13 +43,11 @@ module Abrupt
       end
 
       def transform
-        if @state[keyname]
-          @state[keyname].each do |k, v|
-            s = k.to_s.eql?('language') ? "#{keyname}Language" : k
-            add_data_property(@page_uri, s, v)
-          end
+        return unless @state[keyname]
+        @state[keyname].each do |k, v|
+          s = k.to_s.eql?('language') ? "#{keyname}Language" : k
+          add_data_property(@page_uri, s, v)
         end
-        @result
       end
     end
   end
