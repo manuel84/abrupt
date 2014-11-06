@@ -17,7 +17,9 @@ module Abrupt
             form_element_id = input[:id] || md5.hexdigest(input.to_s)
             @uri = [input_type.to_s.camelcase, form_element_id]
             add_individual
-            input.each { |type, value| add_data_property type, CGI.escapeHTML(value) if type && value }
+            input.each do |type, value|
+              add_data_property type, CGI.escapeHTML(value) if type && value
+            end
           end
         end
       end

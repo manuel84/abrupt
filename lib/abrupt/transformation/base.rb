@@ -6,7 +6,7 @@ module Abrupt
       include RDF
       attr_accessor :parent_uri, :uri, :values, :result, :md5
 
-      # Initializes Transformator for Individual Statement for parent_uri & uri.
+      # Initializes Transformer for Individual Statement for parent_uri & uri.
       # @param parent_uri [Array] the parent uri in array structure of paths
       # @param uri [Array] the uri as array structure of path and id
       # @example
@@ -73,8 +73,9 @@ module Abrupt
 
       def add_individual(name = @values[:name], klass = nil)
         klass ||= @uri.empty? ? class_name : @uri.first
-        @result << Statement.new(resolve_uri(name), RDF.type, WDM[klass])
-        @result << Statement.new(resolve_parent_uri, WDM["has#{klass}"], resolve_uri(name))
+        uri = resolve_uri(name)
+        @result << Statement.new(uri, RDF.type, WDM[klass])
+        @result << Statement.new(resolve_parent_uri, WDM["has#{klass}"], uri)
       end
 
       def add_data_property(type, value, name = @values[:name])
