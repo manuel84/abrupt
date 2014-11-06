@@ -24,9 +24,10 @@ module Abrupt
         RDF::URI("#{WDM}#{class_name}/#{name}")
       end
 
-      def add_individual(uri, type = class_name, parent_uri = @page_uri)
+      def add_individual(uri, type = class_name, parent_uri = @page_uri, object_property_type = nil)
+        object_property_type ||= type
         @result << Statement.new(uri, RDF.type, type)
-        add_object_property(parent_uri, type, uri)
+        add_object_property(parent_uri, object_property_type, uri)
       end
 
       def add_data_property(uri, type, value)

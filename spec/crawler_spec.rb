@@ -1,6 +1,7 @@
 require 'spec_helper'
 describe Abrupt::Crawler, :vcr do
   it 'outputs correct hash' do
+    pending 'out of development'
     crawler = Abrupt::Crawler.new 'http://www.rikscha-mainz.de', lang: 'de'
     result = crawler.crawl
     expected_hash = FactoryGirl.attributes_for(:rikscha)

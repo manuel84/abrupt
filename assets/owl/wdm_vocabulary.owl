@@ -1164,7 +1164,7 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Input -->
 
     <owl:Class rdf:about="&wdmOWL2;Input">
-        <rdfs:subClassOf rdf:resource="&wdmOWL2;HtmlElement"/>
+        <rdfs:subClassOf rdf:resource="&wdmOWL2;FormElement"/>
     </owl:Class>
     
 
@@ -1197,7 +1197,7 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Option -->
 
     <owl:Class rdf:about="&wdmOWL2;Option">
-        <rdfs:subClassOf rdf:resource="&wdmOWL2;HtmlElement"/>
+        <rdfs:subClassOf rdf:resource="&wdmOWL2;FormElement"/>
     </owl:Class>
     
 
@@ -1277,7 +1277,7 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Select -->
 
     <owl:Class rdf:about="&wdmOWL2;Select">
-        <rdfs:subClassOf rdf:resource="&wdmOWL2;HtmlElement"/>
+        <rdfs:subClassOf rdf:resource="&wdmOWL2;FormElement"/>
     </owl:Class>
     
 
@@ -1321,7 +1321,7 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Textarea -->
 
     <owl:Class rdf:about="&wdmOWL2;Textarea">
-        <rdfs:subClassOf rdf:resource="&wdmOWL2;HtmlElement"/>
+        <rdfs:subClassOf rdf:resource="&wdmOWL2;FormElement"/>
     </owl:Class>
     
 

@@ -14,7 +14,9 @@ module Abrupt
             [inputs].to_a.flatten.each do |input|
               id = input[:id] || input.__id__
               input_uri = RDF::URI("#{@page_uri}-form_element-#{id}")
-              add_individual(input_uri, input_type.to_s.camelcase, form_uri)
+              # input_uri type Input
+              # form_uri hasFormElement input_uri
+              add_individual(input_uri, input_type.to_s.camelcase, form_uri, 'FormElement')
               input.select { |key, v| key && v }.each do |type, value|
                 add_data_property(input_uri, type, value)
               end
