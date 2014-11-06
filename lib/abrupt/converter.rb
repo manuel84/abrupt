@@ -22,12 +22,17 @@ module Abrupt
     TRANSFORMATIONS =
         [
             Abrupt::Transformation::Readability,
-            #Abrupt::Transformation::Input,
+            Abrupt::Transformation::Input,
             # Abrupt::Transformation::Subject,
             # Abrupt::Transformation::Complexity,
             Abrupt::Transformation::Link,
-        # Abrupt::Transformation::Picture
+            Abrupt::Transformation::Picture
         ]
+    SCHEMA_MAPPING = {
+        integer: :to_i,
+        number: :to_f,
+        string: :to_s
+    }
     # rubocop:enable all
     def self.transform_hash(hsh)
       uri = Addressable::URI.parse(hsh.keys.first).normalize
@@ -77,13 +82,14 @@ module Abrupt
 
     # rubocop:disable all
     def self.customize(hsh)
-      hsh[:website][:url].each do |url|
-        url[:state][:readability][:readability] = url[:state][:readability][:readability].to_f
-        url[:state][:readability][:syllables] = url[:state][:readability][:syllables].to_i
-        url[:state][:readability][:words] = url[:state][:readability][:words].to_i
-        url[:state][:readability][:numberOfLinks] = url[:state][:readability][:numberOfLinks].to_i
-        url[:state][:readability][:bigwords] = url[:state][:readability][:bigwords].to_i
-        url[:state][:readability][:sentences] = url[:state][:readability][:sentences].to_i
+      schema = ::JSON.load(File.read('assets/schema/readability.json'))
+      schema.deep_symbolize_keys!
+      schema[:properties].each do |state_key, values|
+        values[:properties].each do |key, value|
+          hsh[:website][:url].each do |url|
+            url[:state][state_key][key] = url[:state][state_key][key].send SCHEMA_MAPPING[value[:type].to_sym]
+          end
+        end
       end
       hsh
     end
@@ -102,15 +108,20 @@ module Abrupt
         page_name = url[:name].gsub(/([^\/])$/, '\1/') # append /
         website = ['Website', domain]
         page = ['Page', page_name]
-        self::add_to_repository result, Abrupt::Transformation::Base.new(website, page).result
+        add_to_repository result, Abrupt::Transformation::Base.new(website, page).result
         next unless url[:state]
-        states = url[:state].is_a?(Array) ? url[:state] : [url[:state]]
-        states.each do |value|
-          state = ['State', value[:name]]
-          self::add_to_repository result, Abrupt::Transformation::Base.new(website + page, state).result
-          TRANSFORMATIONS.each do |transformation_class|
-            self::add_to_repository result, transformation_class.new(website + page + state, nil, value).result
-          end
+        perform_states url[:state], result, website + page
+      end
+    end
+
+    def self.perform_states(states, result, parent_uri)
+      states = states.is_a?(Array) ? states : [states]
+      states.each do |value|
+        state = ['State', value[:name]]
+        state_uri = parent_uri + state
+        add_to_repository result, Abrupt::Transformation::Base.new(parent_uri, state).result
+        TRANSFORMATIONS.each do |transformation_class|
+          add_to_repository result, transformation_class.new(state_uri, nil, value).result
         end
       end
     end
