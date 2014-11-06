@@ -20,13 +20,11 @@ Or install it yourself as:
 
 ## Usage
 
-Agenda:
+For converting owl file from xml use: 
 
-- [ ] add vocabulary file for wdm ontology
-- [ ] crawler binary, e.g. aprupt uri [output_file] ... options
-- [ ] converter binary, e.g. aprupt -c (--convert) input_file [output_file] ... options (xml2owl)
-- [ ] analyze tool binary, e.g. abrupt -a (--analyze) file1 file2 [output_file] ... options
-
+```shell
+abrupt convert spec/fixtures/rikscha_Result.xml > output.owl
+```
 
 ## Contributing
 
