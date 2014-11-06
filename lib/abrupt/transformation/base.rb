@@ -21,13 +21,22 @@ module Abrupt
       #     'state54'
       #   ])
       def initialize(parent_uri, uri, values = {})
-        @parent_uri = parent_uri.freeze
-        @uri = uri.freeze
+        @parent_uri = parent_uri.to_a.map { |u| u.gsub(/([\/]*)$/, '') }
+        @uri = uri.to_a.map { |u| u.gsub(/([\/]*)$/, '') }
         @values = values
         @result = []
         @md5 = Digest::MD5
+        add_individuals
+        # transform
+      end
+
+      def add_individuals
         add_individual
-        transform
+        return unless @values[keyname]
+        @values[keyname].each do |k, v|
+          s = k.to_s.eql?('language') ? "#{keyname}Language" : k
+          add_data_property s, v
+        end
       end
 
       # Returns the class name
@@ -44,37 +53,33 @@ module Abrupt
       end
 
       def resolve_parent_uri_part
-        "#{WDM}#{@parent_uri.join('/')}".gsub(/([\/]*)$/, '')
+        "#{WDM}#{@parent_uri.join('/')}"
       end
 
       def resolve_parent_uri
         RDF::URI(resolve_parent_uri_part)
       end
 
-      def resolve_uri_part
-        "#{@uri.join('/')}".gsub(/([\/]*)$/, '')
+      def resolve_uri_part(name)
+        if @uri.empty?
+          "#{class_name}/#{name}"
+        else
+          "#{@uri.join('/')}"
+        end
       end
 
-      def resolve_uri
-        RDF::URI(resolve_parent_uri_part + '/' + resolve_uri_part)
+      def resolve_uri(name)
+        RDF::URI(resolve_parent_uri_part + '/' + resolve_uri_part(name))
       end
 
-      def add_individual
-        @result << Statement.new(resolve_uri, RDF.type, WDM[@uri.first])
-        @result << Statement.new(resolve_parent_uri, WDM["has#{@uri.first}"], resolve_uri)
+      def add_individual(name = @values[:name])
+        klass = @uri.empty? ? class_name : @uri.first
+        @result << Statement.new(resolve_uri(name), RDF.type, WDM[klass])
+        @result << Statement.new(resolve_parent_uri, WDM["has#{klass}"], resolve_uri(name))
       end
 
-      def x2(uri,
-             type = class_name,
-             parent_uri = rdf_uri(nil, 'Page'),
-             parent_type = nil)
-        parent_type ||= type
-        @result << Statement.new(uri, RDF.type, type)
-        add_object_property(parent_uri, parent_type, uri)
-      end
-
-      def add_data_property(uri, type, value)
-        @result << Statement.new(uri, WDM[type], value)
+      def add_data_property(type, value, name = @values[:name])
+        @result << Statement.new(resolve_uri(name), WDM[type], value)
       end
 
       def add_object_property(parent_uri, type, child_uri)
@@ -82,11 +87,7 @@ module Abrupt
       end
 
       def transform
-        return unless @values[keyname]
-        @values[keyname].each do |k, v|
-          s = k.to_s.eql?('language') ? "#{keyname}Language" : k
-          # add_data_property(resolve_uri, s, v)
-        end
+
       end
     end
   end

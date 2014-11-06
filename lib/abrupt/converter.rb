@@ -21,12 +21,12 @@ module Abrupt
     # rubocop:disable all
     TRANSFORMATIONS =
         [
-            #Abrupt::Transformation::Readability,
+            Abrupt::Transformation::Readability,
             #Abrupt::Transformation::Input,
             # Abrupt::Transformation::Subject,
             # Abrupt::Transformation::Complexity,
-            # Abrupt::Transformation::Link,
-            # Abrupt::Transformation::Picture
+            Abrupt::Transformation::Link,
+        # Abrupt::Transformation::Picture
         ]
     # rubocop:enable all
     def self.transform_hash(hsh)
@@ -109,7 +109,7 @@ module Abrupt
           state = ['State', value[:name]]
           self::add_to_repository result, Abrupt::Transformation::Base.new(website + page, state).result
           TRANSFORMATIONS.each do |transformation_class|
-            self::add_to_repository result, transformation_class.new(website + page, state, value).result
+            self::add_to_repository result, transformation_class.new(website + page + state, nil, value).result
           end
         end
       end
