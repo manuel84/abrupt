@@ -21,12 +21,12 @@ module Abrupt
     # rubocop:disable all
     TRANSFORMATIONS =
         [
-            Abrupt::Transformation::Readability,
-            Abrupt::Transformation::Input,
-        # Abrupt::Transformation::Subject,
-        # Abrupt::Transformation::Complexity,
-        # Abrupt::Transformation::Link,
-        # Abrupt::Transformation::Picture
+            #Abrupt::Transformation::Readability,
+            #Abrupt::Transformation::Input,
+            # Abrupt::Transformation::Subject,
+            # Abrupt::Transformation::Complexity,
+            # Abrupt::Transformation::Link,
+            # Abrupt::Transformation::Picture
         ]
     # rubocop:enable all
     def self.transform_hash(hsh)
@@ -59,9 +59,9 @@ module Abrupt
       hsh.deep_symbolize_keys!
       # extend given vocabulary
       result = Repository.load('assets/owl/wdm_vocabulary.owl')
-      domain = RDF::URI(WDM.to_s + hsh[:website][:domain])
+      domain = RDF::URI("#{WDM}Website/#{hsh[:website][:domain]}")
       result << Statement.new(domain, RDF.type, WDM.Website)
-      Converter.perform(hsh[:website][:url], result, domain)
+      Converter.perform(hsh[:website][:url], result, hsh[:website][:domain])
       result
     end
 
@@ -90,20 +90,28 @@ module Abrupt
 
     # rubocop:enable all
 
+    def self.add_to_repository(repository, statements)
+      statements.each do |stmt|
+        repository << stmt
+      end
+    end
+
     def self.perform(hsh, result, domain)
       # TODO: extract domain as class var
       hsh.each do |url|
-        page_name = url[:name].gsub(/([^\/])$/, '\1/')
-        page_uri = RDF::URI("#{WDM}Page/#{page_name}")
-        result << Statement.new(page_uri, RDF.type, WDM['Page'])
-        result << Statement.new(domain, WDM['hasPage'], page_uri)
+        page_name = url[:name].gsub(/([^\/])$/, '\1/') # append /
+        website = ['Website', domain]
+        page = ['Page', page_name]
+        self::add_to_repository result, Abrupt::Transformation::Base.new(website, page).result
         next unless url[:state]
-        state = url[:state]
-        TRANSFORMATIONS.each do |transformation_class|
-          new_statements = transformation_class.new(state, page_name).result
-          new_statements.each { |stmt| result << stmt }
+        states = url[:state].is_a?(Array) ? url[:state] : [url[:state]]
+        states.each do |value|
+          state = ['State', value[:name]]
+          self::add_to_repository result, Abrupt::Transformation::Base.new(website + page, state).result
+          TRANSFORMATIONS.each do |transformation_class|
+            self::add_to_repository result, transformation_class.new(website + page, state, value).result
+          end
         end
-
       end
     end
   end

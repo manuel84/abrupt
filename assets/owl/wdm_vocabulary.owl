@@ -123,6 +123,16 @@
     
 
 
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasState -->
+
+    <owl:ObjectProperty rdf:about="&wdmOWL2;hasState">
+        <rdfs:domain rdf:resource="&wdmOWL2;Page"/>
+        <rdfs:range rdf:resource="&wdmOWL2;State"/>
+        <rdfs:domain rdf:resource="&wdmOWL2;Website"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasSubject -->
 
     <owl:ObjectProperty rdf:about="&wdmOWL2;hasSubject">
@@ -1117,20 +1127,6 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Page -->
 
     <owl:Class rdf:about="&wdmOWL2;Page">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&wdmOWL2;readability"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;float"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&wdmOWL2;readability"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;float"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <owl:disjointWith rdf:resource="&wdmOWL2;Picture"/>
         <owl:disjointWith rdf:resource="&wdmOWL2;Subject"/>
         <owl:disjointWith rdf:resource="&wdmOWL2;Website"/>
@@ -1196,6 +1192,14 @@
 
     <owl:Class rdf:about="&wdmOWL2;Select">
         <rdfs:subClassOf rdf:resource="&wdmOWL2;FormElement"/>
+    </owl:Class>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/State -->
+
+    <owl:Class rdf:about="&wdmOWL2;State">
+        <rdfs:subClassOf rdf:resource="&wdmOWL2;Page"/>
     </owl:Class>
     
 
