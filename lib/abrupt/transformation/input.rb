@@ -18,7 +18,9 @@ module Abrupt
             @uri = [input_type.to_s.camelcase, form_element_id]
             add_individual
             input.each do |type, value|
-              add_data_property type, CGI.escapeHTML(value) if type && value
+              next unless type && value
+              v = value.is_a?(String) ? CGI.escapeHTML(value) : value
+              add_data_property type, v
             end
           end
         end

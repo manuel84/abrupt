@@ -28,11 +28,6 @@ module Abrupt
             Transformation::Link,
             Transformation::Picture
         ]
-    SCHEMA_MAPPING = {
-        integer: :to_i,
-        number: :to_f,
-        string: :to_s
-    }
     # rubocop:enable all
 
     attr_accessor :hsh, :values, :result
@@ -88,25 +83,8 @@ module Abrupt
 
     def self.from_xml(file)
       xml = Nokogiri::XML(File.read(file))
-      result = Hash.from_xml(xml.to_s).deep_symbolize_keys!
-      Converter.customize(result)
+      Hash.from_xml(xml.to_s).deep_symbolize_keys!
     end
-
-    # rubocop:disable all
-    def self.customize(hsh)
-      schema = ::JSON.load(File.read('assets/schema/readability.json'))
-      schema.deep_symbolize_keys!
-      schema[:properties].each do |state_key, values|
-        values[:properties].each do |key, value|
-          hsh[:website][:url].each do |url|
-            url[:state][state_key][key] = url[:state][state_key][key].send SCHEMA_MAPPING[value[:type].to_sym]
-          end
-        end
-      end
-      hsh
-    end
-
-    # rubocop:enable all
 
     def add_to_result(statements)
       statements.each do |stmt|

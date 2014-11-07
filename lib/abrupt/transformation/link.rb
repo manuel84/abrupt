@@ -9,8 +9,9 @@ module Abrupt
         @values[keyname][:a].each do |link|
           add_individual link[:href]
           link.each do |type, value|
-            next unless type || value
-            add_data_property type, CGI.escapeHTML(value), link[:href]
+            next unless type && value
+            v = value.is_a?(String) ? CGI.escapeHTML(value) : value
+            add_data_property type, v, link[:href]
           end
         end
       end

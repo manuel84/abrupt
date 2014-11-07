@@ -1070,6 +1070,16 @@
     
 
 
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/required -->
+
+    <owl:DatatypeProperty rdf:about="&wdmOWL2;required">
+        <rdfs:domain rdf:resource="&wdmOWL2;Input"/>
+        <rdfs:domain rdf:resource="&wdmOWL2;Textarea"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/rows -->
 
     <owl:DatatypeProperty rdf:about="&wdmOWL2;rows">

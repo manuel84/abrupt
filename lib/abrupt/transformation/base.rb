@@ -6,6 +6,13 @@ module Abrupt
       include RDF
       attr_accessor :parent_uri, :uri, :values, :result, :md5
 
+      SCHEMA_MAPPING = {
+          integer: :to_i,
+          number: :to_f,
+          string: :to_s,
+          boolean: [:kind_of?, Object]
+      }
+
       # Initializes Transformer for Individual Statement for parent_uri & uri.
       # @param parent_uri [Array] the parent uri in array structure of paths
       # @param uri [Array] the uri as array structure of path and id
@@ -23,10 +30,41 @@ module Abrupt
         @parent_uri = parent_uri.to_a.map { |u| u.gsub(/([\/]*)$/, '') }
         @uri = uri.to_a.map { |u| u.gsub(/([\/]*)$/, '') }
         @values = values
+        customize_to_schema
         @result = []
         @md5 = Digest::MD5
         add_individuals
         # transform
+      end
+
+      def customize_to_schema
+        schema_file = "assets/schema/v1/#{keyname}.json"
+        return unless File.exist?(schema_file)
+        schema = ::JSON.load(File.read(schema_file))
+        schema.deep_symbolize_keys!
+        schema[:properties].each do |state_key, values|
+          set_value(values, @values[state_key]) if @values[state_key]
+        end
+      end
+
+      def set_value(schema_value, value)
+        return unless schema_value || value
+        case schema_value[:type]
+        when 'object'
+          schema_value[:properties].each do |k, v|
+            value[k] = set_value(v, value[k])
+          end
+        when 'array'
+          # make sure that value is an array
+          [value].flatten.compact.each do |obj|
+            obj.each do |k, v|
+              next unless schema_value[:items][:properties][k]
+              obj[k] = set_value(schema_value[:items][:properties][k], v)
+            end
+          end
+        else
+          value = value.send *SCHEMA_MAPPING[schema_value[:type].to_sym]
+        end
       end
 
       def add_individuals
