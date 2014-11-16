@@ -44,12 +44,12 @@ module Abrupt
         end
       end
 
-      def set_value(schema, value)
-        return unless schema && value # NAND
+      def set_value(schema, value, *ref)
+        return value unless schema && value # NAND
         case schema[:type]
         when 'object'
-          schema[:properties].each do |k, v|
-            value[k] = set_value(v, value[k])
+          schema[:properties].each do |k, schema_data|
+            set_value(schema_data, value[k], *(ref + [k])) if value[k]
           end
         when 'array'
           # make sure that value is an array
@@ -58,18 +58,57 @@ module Abrupt
             if schema[:items][:type].eql?('object')
               obj.each do |k, v|
                 next unless schema[:items][:properties][k]
-                obj[k] = set_value(schema[:items][:properties][k], v)
+                set_value(schema[:items][:properties][k], v, *(ref + [k]))
               end
             else
             end
           end
         else
-          if value.is_a? Array
-            value.each do |v|
-              v = v.send *SCHEMA_MAPPING[schema[:type].to_sym]
+          update_value(ref, value, schema) rescue nil
+        end
+      end
+
+      def update_value(ref, value, schema)
+        case ref.count
+        when 1
+          if @values[keyname][ref[0]].is_a? Array
+            @values[keyname][ref[0]].each do |i|
+              @values[keyname][ref[0]][i] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
             end
           else
-            value = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
+            @values[keyname][ref[0]] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
+          end
+        when 2
+          if @values[keyname][ref[0]][ref[1]].is_a? Array
+            @values[keyname][ref[0]][ref[1]].each_with_index do |value, i|
+              @values[keyname][ref[0]][ref[1]][i] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
+            end
+          else
+            @values[keyname][ref[0]][ref[1]] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
+          end
+        when 3
+          if @values[keyname][ref[0]][ref[1]][ref[2]].is_a? Array
+            @values[keyname][ref[0]][ref[1]][ref[2]].each_with_index do |value, i|
+              @values[keyname][ref[0]][ref[1]][ref[2]][i] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
+            end
+          else
+            @values[keyname][ref[0]][ref[1]][ref[2]] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
+          end
+        when 4
+          if @values[keyname][ref[0]][ref[1]][ref[2]][ref[3]].is_a? Array
+            @values[keyname][ref[0]][ref[1]][ref[2]][ref[3]].each_with_index do |value, i|
+              @values[keyname][ref[0]][ref[1]][ref[2]][ref[3]][i] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
+            end
+          else
+            @values[keyname][ref[0]][ref[1]][ref[2]][ref[3]] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
+          end
+        when 5
+          if @values[keyname][ref[0]][ref[1]][ref[2]][ref[3]][ref[4]].is_a? Array
+            @values[keyname][ref[0]][ref[1]][ref[2]][ref[3]][ref[4]].each_with_index do |value, i|
+              @values[keyname][ref[0]][ref[1]][ref[2]][ref[3]][ref[4]][i] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
+            end
+          else
+            @values[keyname][ref[0]][ref[1]][ref[2]][ref[3]][ref[4]] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
           end
         end
       end

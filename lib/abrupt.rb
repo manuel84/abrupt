@@ -31,7 +31,6 @@ module Abrupt
   def self.convert(file, *args)
     puts args if 3 < 0
     hsh = Converter.from_xml(file)
-    pp hsh
-    #puts Converter.new(hsh).owl
+    puts Converter.new(hsh).owl
   end
 end
