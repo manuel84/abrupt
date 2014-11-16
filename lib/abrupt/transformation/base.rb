@@ -48,7 +48,7 @@ module Abrupt
       end
 
       def set_value(schema_value, value)
-        return unless schema_value || value
+        return unless schema_value && value # NAND
         case schema_value[:type]
         when 'object'
           schema_value[:properties].each do |k, v|
@@ -56,6 +56,7 @@ module Abrupt
           end
         when 'array'
           # make sure that value is an array
+          # subject service word to array
           [value].flatten.compact.each do |obj|
             obj.each do |k, v|
               next unless schema_value[:items][:properties][k]

@@ -13,7 +13,7 @@ module Abrupt
         add_individual
         @parent_uri += @uri
         @values[keyname].each do |input_type, inputs|
-          [inputs].to_a.flatten.each do |input|
+          [inputs].flatten.compact.each do |input|
             form_element_id = input[:id] || md5.hexdigest(input.to_s)
             @uri = [input_type.to_s.camelcase, form_element_id]
             add_individual

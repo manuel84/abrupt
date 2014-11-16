@@ -23,8 +23,8 @@ module Abrupt
         [
             Transformation::Readability,
             Transformation::Input,
-            # Abrupt::Transformation::Subject,
-            # Abrupt::Transformation::Complexity,
+            Abrupt::Transformation::Subject,
+            Abrupt::Transformation::Complexity,
             Transformation::Link,
             Transformation::Picture
         ]
