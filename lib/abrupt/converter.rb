@@ -83,7 +83,14 @@ module Abrupt
 
     def self.from_xml(file)
       xml = Nokogiri::XML(File.read(file))
-      Hash.from_xml(xml.to_s).deep_symbolize_keys!
+      hsh = Hash.from_xml(xml.to_s).deep_symbolize_keys!
+      hsh[:website][:url].each do |state|
+        TRANSFORMATIONS.each do |trafo|
+          t = trafo.new(nil, nil, state[:state])
+          t.customize_to_schema
+        end
+      end
+      hsh
     end
 
     def add_to_result(statements)
@@ -110,7 +117,9 @@ module Abrupt
         state_uri = parent_uri + state
         add_to_result Transformation::Base.new(parent_uri, state).result
         TRANSFORMATIONS.each do |trafo|
-          add_to_result trafo.new(state_uri, nil, value).result
+          t = trafo.new(state_uri, nil, value)
+          t.add_individuals
+          add_to_result t.result
         end
       end
     end

@@ -1207,7 +1207,7 @@
 
     <owl:DatatypeProperty rdf:about="&wdmOWL2;words">
         <rdfs:domain rdf:resource="&wdmOWL2;Page"/>
-        <rdfs:range rdf:resource="&xsd;integer"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
     </owl:DatatypeProperty>
     
 

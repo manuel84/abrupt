@@ -30,107 +30,107 @@
                                     "type": "string"
                                 }
                             }
-                        },
-                        "vizweb": {
+                        }
+                    }
+                },
+                "vizweb": {
+                    "description": "",
+                    "type": "object",
+                    "properties": {
+                        "numberOfLeaves": {
                             "description": "",
+                            "type": "integer"
+                        },
+                        "textArea": {
+                            "description": "",
+                            "type": "string"
+                        },
+                        "numberOfTextGroups": {
+                            "description": "",
+                            "type": "integer"
+                        },
+                        "visualComplexity": {
+                            "description": "",
+                            "type": "number"
+                        },
+                        "numberOfImageAreas": {
+                            "description": "",
+                            "type": "integer"
+                        },
+                        "hue": {
+                            "description": "",
+                            "type": "number"
+                        },
+                        "horizontalSymmetry": {
+                            "description": "",
+                            "type": "string"
+                        },
+                        "horizontalBalance": {
+                            "description": "",
+                            "type": "string"
+                        },
+                        "colorfulness": {
+                            "description": "",
+                            "type": "number"
+                        },
+                        "nontextArea": {
+                            "description": "",
+                            "type": "number"
+                        }
+                    }
+                },
+                "differenceMatrix": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "matrix": {
+                                "description": "",
+                                "type": "number"
+                            },
+                            "palette": {
+                                "description": "",
+                                "type": "number"
+                            }
+                        }
+                    }
+                },
+                "vicram": {
+                    "type": "object",
+                    "properties": {
+                        "complexity": {
+                            "type": "number"
+                        }
+                    }
+                },
+                "ratios": {
+                    "type": "object",
+                    "properties": {
+                        "pageSize": {
                             "type": "object",
                             "properties": {
-                                "numberOfLeaves": {
-                                    "description": "",
+                                "pageSize_in_pixel_squared": {
                                     "type": "integer"
                                 },
-                                "textArea": {
-                                    "description": "",
-                                    "type": "string"
-                                },
-                                "numberOfTextGroups": {
-                                    "description": "",
+                                "pageWidth_in_pixel": {
                                     "type": "integer"
                                 },
-                                "visualComplexity": {
-                                    "description": "",
-                                    "type": "number"
-                                },
-                                "numberOfImageAreas": {
-                                    "description": "",
+                                "pageHeight_in_pixel": {
                                     "type": "integer"
-                                },
-                                "hue": {
-                                    "description": "",
-                                    "type": "number"
-                                },
-                                "horizontalSymmetry": {
-                                    "description": "",
-                                    "type": "string"
-                                },
-                                "horizontalBalance": {
-                                    "description": "",
-                                    "type": "string"
-                                },
-                                "colorfulness": {
-                                    "description": "",
-                                    "type": "number"
-                                },
-                                "nontextArea": {
-                                    "description": "",
-                                    "type": "number"
                                 }
                             }
                         },
-                        "differenceMatrix": {
-                            "type": "array",
-                            "items": {
-                                "type": "object",
-                                "properties": {
-                                    "matrix": {
-                                        "description": "",
-                                        "type": "number"
-                                    },
-                                    "palette": {
-                                        "description": "",
-                                        "type": "number"
-                                    }
-                                }
-                            }
-                        },
-                        "vicram": {
+                        "img_Tag": {
                             "type": "object",
                             "properties": {
-                                "complexity": {
-                                    "type": "number"
-                                }
-                            }
-                        },
-                        "ratios": {
-                            "type": "object",
-                            "properties": {
-                                "pageSize": {
-                                    "type": "object",
-                                    "properties": {
-                                        "pageSize_in_pixel_squared": {
-                                            "type": "integer"
-                                        },
-                                        "pageWidth_in_pixel": {
-                                            "type": "integer"
-                                        },
-                                        "pageHeight_in_pixel": {
-                                            "type": "integer"
-                                        }
-                                    }
+                                "img_Area_in_pixel_squared": {
+                                    "type": "integer"
                                 },
-                                "img_Tag": {
-                                    "type": "object",
-                                    "properties": {
-                                        "img_Area_in_pixel_squared": {
-                                            "type": "integer"
-                                        },
-                                        "img_document_tag_percentage": {
-                                            "type": "number"
-                                        },
-                                        "img_document_tag_ratio": {
-                                            "type": "number"
-                                        }
-                                    }
+                                "img_document_tag_percentage": {
+                                    "type": "number"
+                                },
+                                "img_document_tag_ratio": {
+                                    "type": "number"
                                 }
                             }
                         }

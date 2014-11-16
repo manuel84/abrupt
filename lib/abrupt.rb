@@ -1,7 +1,7 @@
 # @author Manuel Dudda
 
 %w(version crawler converter).each { |f| require "abrupt/#{f}" }
-
+require 'pp'
 # This module is cool
 # @abstract
 module Abrupt
@@ -31,6 +31,7 @@ module Abrupt
   def self.convert(file, *args)
     puts args if 3 < 0
     hsh = Converter.from_xml(file)
-    puts Converter.new(hsh).owl
+    pp hsh
+    #puts Converter.new(hsh).owl
   end
 end

@@ -30,11 +30,8 @@ module Abrupt
         @parent_uri = parent_uri.to_a.map { |u| u.gsub(/([\/]*)$/, '') }
         @uri = uri.to_a.map { |u| u.gsub(/([\/]*)$/, '') }
         @values = values
-        customize_to_schema
         @result = []
         @md5 = Digest::MD5
-        add_individuals
-        # transform
       end
 
       def customize_to_schema
@@ -42,29 +39,38 @@ module Abrupt
         return unless File.exist?(schema_file)
         schema = ::JSON.load(File.read(schema_file))
         schema.deep_symbolize_keys!
-        schema[:properties].each do |state_key, values|
-          set_value(values, @values[state_key]) if @values[state_key]
+        schema[:properties].each do |state_key, state_schema|
+          set_value(state_schema, @values[state_key]) if @values[state_key]
         end
       end
 
-      def set_value(schema_value, value)
-        return unless schema_value && value # NAND
-        case schema_value[:type]
+      def set_value(schema, value)
+        return unless schema && value # NAND
+        case schema[:type]
         when 'object'
-          schema_value[:properties].each do |k, v|
+          schema[:properties].each do |k, v|
             value[k] = set_value(v, value[k])
           end
         when 'array'
           # make sure that value is an array
           # subject service word to array
           [value].flatten.compact.each do |obj|
-            obj.each do |k, v|
-              next unless schema_value[:items][:properties][k]
-              obj[k] = set_value(schema_value[:items][:properties][k], v)
+            if schema[:items][:type].eql?('object')
+              obj.each do |k, v|
+                next unless schema[:items][:properties][k]
+                obj[k] = set_value(schema[:items][:properties][k], v)
+              end
+            else
             end
           end
         else
-          value = value.send *SCHEMA_MAPPING[schema_value[:type].to_sym]
+          if value.is_a? Array
+            value.each do |v|
+              v = v.send *SCHEMA_MAPPING[schema[:type].to_sym]
+            end
+          else
+            value = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
+          end
         end
       end
 
