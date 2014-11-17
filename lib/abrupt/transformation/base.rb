@@ -44,6 +44,7 @@ module Abrupt
         end
       end
 
+      # rubocop:disable all
       def set_value(schema, value, *ref)
         return value unless schema && value # NAND
         case schema[:type]
@@ -55,12 +56,10 @@ module Abrupt
           # make sure that value is an array
           # subject service word to array
           [value].flatten.compact.each do |obj|
-            if schema[:items][:type].eql?('object')
-              obj.each do |k, v|
-                next unless schema[:items][:properties][k]
-                set_value(schema[:items][:properties][k], v, *(ref + [k]))
-              end
-            else
+            next unless schema[:items][:type].eql?('object')
+            obj.each do |k, v|
+              next unless schema[:items][:properties][k]
+              set_value(schema[:items][:properties][k], v, *(ref + [k]))
             end
           end
         else
@@ -112,6 +111,8 @@ module Abrupt
           end
         end
       end
+
+      # rubocop:enable all
 
       def add_individuals
         add_individual

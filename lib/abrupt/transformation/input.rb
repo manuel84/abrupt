@@ -2,7 +2,7 @@
 module Abrupt
   module Transformation
     # Readability service
-    # documentation see 'http://wba.cs.hs-rm.de/AbRUPt/service/readability/'
+    # documentation see 'http://wba.cs.hs-rm.de/AbRUPt/service/input/'
     class Input < Base
       attr_accessor :form_uri
 
@@ -17,12 +17,16 @@ module Abrupt
             form_element_id = input[:id] || md5.hexdigest(input.to_s)
             @uri = [input_type.to_s.camelcase, form_element_id]
             add_individual
-            input.each do |type, value|
-              next unless type && value
-              v = value.is_a?(String) ? CGI.escapeHTML(value) : value
-              add_data_property type, v
-            end
+            add_data_properties input
           end
+        end
+      end
+
+      def add_data_properties(input)
+        input.each do |type, value|
+          next unless type && value
+          v = value.is_a?(String) ? CGI.escapeHTML(value) : value
+          add_data_property type, v
         end
       end
     end

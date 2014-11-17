@@ -18,17 +18,13 @@ module Abrupt
   # Converter
   class Converter
     include RDF
-    # rubocop:disable all
     TRANSFORMATIONS =
-        [
-            Transformation::Readability,
-            Transformation::Input,
-            Abrupt::Transformation::Subject,
-            Abrupt::Transformation::Complexity,
-            Transformation::Link,
-            Transformation::Picture
-        ]
-    # rubocop:enable all
+        [Transformation::Readability,
+         Transformation::Input,
+         Abrupt::Transformation::Subject,
+         Abrupt::Transformation::Complexity,
+         Transformation::Link,
+         Transformation::Picture]
 
     attr_accessor :hsh, :values, :result
 
