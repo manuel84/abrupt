@@ -67,16 +67,6 @@ module Abrupt
       hsh.to_json
     end
 
-    def self.to_repository(hsh)
-      hsh.deep_symbolize_keys!
-      # extend given vocabulary
-      result = Repository.load('assets/owl/wdm_vocabulary.owl')
-      domain = RDF::URI("#{WDM}Website/#{hsh[:website][:domain]}")
-      result << Statement.new(domain, RDF.type, WDM.Website)
-      Converter.perform(hsh[:website][:url], result, hsh[:website][:domain])
-      result
-    end
-
     def owl
       @result.dump :rdfxml
     end
@@ -104,7 +94,9 @@ module Abrupt
         page_name = url[:name].gsub(/([^\/])$/, '\1/') # append /
         website = ['Website', @hsh[:website][:domain]]
         page = ['Page', page_name]
-        add_to_result Transformation::Base.new(website, page).result
+        page_transformator = Transformation::Base.new(website, page)
+        page_transformator.add_individuals # add Page
+        add_to_result page_transformator.result
         next unless url[:state]
         perform_states url[:state], website + page
       end

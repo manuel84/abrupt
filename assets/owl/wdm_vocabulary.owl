@@ -312,15 +312,6 @@
     
 
 
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasSubjects -->
-
-    <owl:ObjectProperty rdf:about="&wdmOWL2;hasSubjects">
-        <rdfs:domain rdf:resource="&wdmOWL2;Subject"/>
-        <rdfs:range rdf:resource="&wdmOWL2;Subjects"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasSubmit -->
 
     <owl:ObjectProperty rdf:about="&wdmOWL2;hasSubmit">
@@ -461,7 +452,6 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/frequency -->
 
     <owl:DatatypeProperty rdf:about="&wdmOWL2;frequency">
-        <rdfs:domain rdf:resource="&wdmOWL2;Subjects"/>
         <rdfs:range rdf:resource="&xsd;integer"/>
     </owl:DatatypeProperty>
     
@@ -704,7 +694,6 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxSubjectsProcessTime -->
 
     <owl:DatatypeProperty rdf:about="&wdmOWL2;maxSubjectsProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL2;Subjects"/>
         <rdfs:range rdf:resource="&xsd;decimal"/>
     </owl:DatatypeProperty>
     
@@ -884,7 +873,6 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minSubjectsProcessTime -->
 
     <owl:DatatypeProperty rdf:about="&wdmOWL2;minSubjectsProcessTime">
-        <rdfs:domain rdf:resource="&wdmOWL2;Subjects"/>
         <rdfs:range rdf:resource="&xsd;decimal"/>
     </owl:DatatypeProperty>
     
@@ -1115,15 +1103,6 @@
     
 
 
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/subject -->
-
-    <owl:DatatypeProperty rdf:about="&wdmOWL2;subject">
-        <rdfs:domain rdf:resource="&wdmOWL2;Subjects"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
-    </owl:DatatypeProperty>
-    
-
-
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/subjectLanguage -->
 
     <owl:DatatypeProperty rdf:about="&wdmOWL2;subjectLanguage">
@@ -1168,10 +1147,11 @@
     
 
 
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/vicram -->
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/vicramComplexity -->
 
-    <owl:DatatypeProperty rdf:about="&wdmOWL2;vicram">
-        <rdfs:range rdf:resource="&xsd;decimal"/>
+    <owl:DatatypeProperty rdf:about="&wdmOWL2;vicramComplexity">
+        <rdfs:domain rdf:resource="&wdmOWL2;State"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
     </owl:DatatypeProperty>
     
 
@@ -1207,7 +1187,7 @@
 
     <owl:DatatypeProperty rdf:about="&wdmOWL2;words">
         <rdfs:domain rdf:resource="&wdmOWL2;Page"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
     </owl:DatatypeProperty>
     
 
@@ -1459,12 +1439,6 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Subject -->
 
     <owl:Class rdf:about="&wdmOWL2;Subject"/>
-    
-
-
-    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Subjects -->
-
-    <owl:Class rdf:about="&wdmOWL2;Subjects"/>
     
 
 
