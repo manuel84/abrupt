@@ -444,7 +444,7 @@
 
     <owl:DatatypeProperty rdf:about="&wdmOWL2;duration">
         <rdfs:domain rdf:resource="&wdmOWL2;Picture"/>
-        <rdfs:range rdf:resource="&xsd;string"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
     </owl:DatatypeProperty>
     
 
@@ -1090,6 +1090,7 @@
 
     <owl:DatatypeProperty rdf:about="&wdmOWL2;size">
         <rdfs:domain rdf:resource="&wdmOWL2;Input"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
     </owl:DatatypeProperty>
     
 

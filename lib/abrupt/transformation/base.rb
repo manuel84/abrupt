@@ -78,7 +78,11 @@ module Abrupt
             @values[keyname][ref[0]] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
           end
         when 2
-          if @values[keyname][ref[0]][ref[1]].is_a? Array
+          if @values[keyname][ref[0]].is_a? Array
+            @values[keyname][ref[0]].each_with_index do |value, i|
+              @values[keyname][ref[0]][i][ref[1]] = value[ref[1]].send *SCHEMA_MAPPING[schema[:type].to_sym]
+            end
+          elsif @values[keyname][ref[0]][ref[1]].is_a? Array
             @values[keyname][ref[0]][ref[1]].each_with_index do |value, i|
               @values[keyname][ref[0]][ref[1]][i] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
             end

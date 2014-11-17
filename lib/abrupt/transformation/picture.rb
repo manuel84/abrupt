@@ -9,7 +9,8 @@ module Abrupt
         @values[keyname][:images].each do |img|
           add_individual img[:filename]
           img.each do |type, value|
-            add_data_property type, CGI.escapeHTML(value), img[:filename]
+            value = CGI.escapeHTML(value) if value.is_a? String
+            add_data_property type, value, img[:filename]
           end
         end
       end
