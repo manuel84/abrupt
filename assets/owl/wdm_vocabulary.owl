@@ -1385,7 +1385,23 @@
 
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Problem -->
 
-    <owl:Class rdf:about="&wdmOWL2;Problem"/>
+    <owl:Class rdf:about="&wdmOWL2;Problem">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&wdmOWL2;readability"/>
+                <owl:someValuesFrom>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="&xsd;double"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="&xsd;double">7.0</xsd:minInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
     
 
 

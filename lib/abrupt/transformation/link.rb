@@ -5,7 +5,7 @@ module Abrupt
     # documentation see 'http://wba.cs.hs-rm.de/AbRUPt/service/readability/'
     class Link < Base
       def add_individuals
-        return unless @values[keyname][:a]
+        return unless @values[keyname] && @values[keyname][:a]
         @values[keyname][:a].each do |link|
           add_individual link[:href]
           link.each do |type, value|

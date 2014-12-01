@@ -64,7 +64,7 @@ module Abrupt
     end
 
     def owl
-      @result.dump :rdfxml
+      @result.dump :ntriples # dump :rdfxml
     end
 
     def self.from_xml(file)

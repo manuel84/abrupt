@@ -27,10 +27,14 @@ class AbruptApp
     end
 
     command :convert do |c|
-      c.syntax = 'abrupt convert src [options]'
-      c.description = 'Converts a xml file to owl'
+      c.syntax = 'abrupt convert src_crawled_data src_user_data [options]'
+      c.description = 'Converts and merges xml files to owl'
       c.action do |args, options|
-        Abrupt.convert args.first, options.__hash__
+        case args.count
+        when 0 then puts "arg error"
+        when 1 then Abrupt.convert args.first, options.__hash__
+        else Abrupt.convert args.first, args.second, options.__hash__
+        end
       end
     end
 

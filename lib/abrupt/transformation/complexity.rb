@@ -6,6 +6,7 @@ module Abrupt
     class Complexity < Base
       def add_individuals
         @uri = @parent_uri.slice!(-2, 2)
+        return unless @values[keyname]
         # flatten vicram complexity
         @values[keyname][:vicramComplexity] =
             @values[keyname][:vicram].delete(:complexity)
