@@ -21,6 +21,7 @@
 \usepackage{amssymb}
 \setcounter{tocdepth}{3}
 \usepackage{graphicx}
+\usepackage{IEEEtrantools}
 
 \usepackage{url}
 \urldef{\mailsa}\path|manuel.b.dudda@student.hs-rm.de|    
@@ -75,6 +76,26 @@ Die Usability von Internetauftritten ist größtenteils eine subjektive Wahrnehm
 
 
 \section{TODO:Einleitung}
+
+\newpage
+\section{TODO: Theorie Logik und Berechenbarkeit}
+
+Mit der Aussagenlogik lassen sich beschränkt Formeln aufstellen. Sie entspricht in der Programmierung dem Datentyp "Boolean", also Elementarussagen, die verknüpft und negiert erscheinen können und deren Wahrheitsgehalt Wahr oder falsch.
+
+Aussagenlogik
+\begin{IEEEeqnarray}{rCl}
+A = Das Kontrollkastchen hat den Namen AGB und ist kein Pflichtfeld \\
+A -> B = Wenn das Kontrollkastschen den Namen AGB hat und kein Pflichtfeld ist, gibt es ein Usability-Problem. \\
+A, A -> B Das Kontrollkatschen hat den Namen AGB und ist kein Pflichtfeld, es gibt ein Usability-Problem  
+\end{IEEEeqnarray}
+
+\begin{IEEEeqnarray}{rCl}
+wdm:Website/http://www.rikscha-mainz.de/Page/http://www.rikscha-mainz.de/Kontakt/State/state5/Form/32a0380204d524f2f1c9d3a3222a0a2a/Checkbox/agb \\
+a wdm:Checkbox; \\
+wdm:required true^^boolean
+\end{IEEEeqnarray}
+
+Über Wahrheitstafeln können jegliche (zusammengesetzte) Aussagen auf deren Wahrheitsgehalt überprüft werden. Damit verdeutlicht sich einfach, dass das Schlussfolgern über die Aussagenlogik entscheidbar ist.
 
 \newpage
 \section{TODO: Erweiterung und Anpassung von Brieger}
