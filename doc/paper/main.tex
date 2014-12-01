@@ -1,0 +1,131 @@
+
+%%%%%%%%%%%%%%%%%%%%%%% paper_sem_web.tex %%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% This is the LaTeX source for the instructions to authors using
+% the LaTeX document class 'llncs.cls' for contributions to
+% the Lecture Notes in Computer Sciences series.
+% http://www.springer.com/lncs       Springer Heidelberg 2006/05/04
+%
+% It may be used as a template for your own input - copy it
+% to a new file with a new name and use it as the basis
+% for your article.
+%
+% NB: the document class 'llncs' has its own and detailed documentation, see
+% ftp://ftp.springer.de/data/pubftp/pub/tex/latex/llncs/latex2e/llncsdoc.pdf
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\documentclass[runningheads,a4paper]{llncs}
+\usepackage[utf8x]{inputenc}
+\usepackage{amssymb}
+\setcounter{tocdepth}{3}
+\usepackage{graphicx}
+
+\usepackage{url}
+\urldef{\mailsa}\path|manuel.b.dudda@student.hs-rm.de|    
+\newcommand{\keywords}[1]{\par\addvspace\baselineskip
+\noindent\keywordname\enspace\ignorespaces#1}
+
+\begin{document}
+
+\mainmatter  % start of an individual contribution
+
+% first the title is needed
+\title{Schließen auf Usability-Probleme mit OWL 2 RL}
+
+% a short form should be given in case it is too long for the running head
+\titlerunning{TODO: }
+
+% the name(s) of the author(s) follow(s) next
+%
+% NB: Chinese authors should write their first names(s) in front of
+% their surnames. This ensures that the names appear correctly in
+% the running heads and the author index.
+%
+\author{Manuel Dudda}
+%
+\authorrunning{TODO:}
+% (feature abused for this document to repeat the title also on left hand pages)
+
+% the affiliations are given next; don't give your e-mail address
+% unless you accept that it will be published
+\institute{Hochschule RheinMain Informatik Master of Science \\
+Fachbereich Design Informatik Medien \\
+Campus Unter den Eichen 5
+65195 Wiesbaden , Deutschland\\
+\mailsa\\
+\url{https://github.com/manuel84/abrupt}}
+
+%
+% NB: a more complex sample for affiliations and the mapping to the
+% corresponding authors can be found in the file "llncs.dem"
+% (search for the string "\mainmatter" where a contribution starts).
+% "llncs.dem" accompanies the document class "llncs.cls".
+%
+
+\toctitle{Lecture Notes in Computer Science}
+\tocauthor{Authors' Instructions}
+\maketitle
+
+
+\begin{abstract}
+Die Usability von Internetauftritten ist größtenteils eine subjektive Wahrnehmung. Es existiert zwar eine Normierung durch die ISO für die Anforderungen an die Gebrauchstauglichkeit einer Software (EN ISO 9241-11) doch diese ist sehr schwammig formuliert und orientiert sich stark am Nutzungskontext. Trotzdem gibt es Merkmale einer Website, die allgemein als Usability-Probleme eingestuft werden können, so zum Beispiel schlechte Kontrastverhältnisse, hoher Lesbarkeitsindex und Diskrepanzen zwischen erwarteten und tatsächlichen Besucherverhalten. Das "AbRUPt"-System der Hochschule RheinMain ist in der Lage viele dieser Merkmale einer Website automatisiert zu erfassen. Durch die Konvertierung, Modellirung und ein durchdachtes Regelsystem in der semantischen Ontologiesprache OWL 2 RL ensteht ein System, welches eine Schlussfolgerung auf Usability-Probleme ermöglicht.
+\end{abstract}
+
+
+\section{TODO:Einleitung}
+
+\newpage
+\section{TODO: Erweiterung und Anpassung von Brieger}
+
+- Entfernen der Klassenhierarchie, da nicht intuitiv.
+- Erweitern der Object- und Dataproperties um Restriktionen und Eigenschaften (maxCardinality, functional, transitivity...)
+- Anpassen der Ontology IRI aus unique Gründen (Vermeiden doppeltes )
+- IRI-Aufbau: {wdm}/{type}/{page}{id}
+
+- Inferbesipiel, siehe http://dior.ics.muni.cz/~makub/owl/  
+
+- Errorstruktur
+Problem
+    ->priority
+\newpage
+
+\section{TODO: Converter}
+
+- alter Converter ~ 2000 Zeilen, kein Testcode
+- in nur 4 Klassen
+- Konfigurationen hartgecodet, schlecht wartbar
+- neuer Converter nur 800 Zeilen inkl. Cralr (beta), Testcode
+- Vokabular ausgelagert
+- höchstens 130 Zeilen pro Klasse
+- Rubygem: Kommandozeilentool, aber auch Code einbettbar in Ruby Web-Projekt
+
+\section{TODO: Regeln}
+
+Open World Assumption (Annahme zur Weltoffenheit)
+Zunächst war es die Idee aus fehlenden FormElementen (hasFormElement = 0) eines Formulars (Form) zu erschließen, dass es ein Problem gibt (Formular ohne Inhalt). Für Ontologien gilt anders wie für konventionelle Datenbanken die Open World Consumption. Man kann der Ontologie nicht entnehmen, wenn ein Form keine Relationen hasFormElement hat, dass das Formular tatsächlich keine Formular-Elemente hat (diese könnten nachträglich im DOM über JS hinzugeüft werden).
+Für den Reasoner gilt die gleiche Betrachtungsweise, daher ist die Umsetzung dieser Regel nicht möglich.
+Eine Möglichkeit ist diese Problemschlussfolgerung über Konsistenzeigenschaften der Ontologie abzudecken. Dies hat dann allerindgs  zur Folge, dass die Ontolgie ungültig ist, anstatt Problemklassen abzuleiten, die über Sparql-Abfragen/Anwendungen Aufschluss geben soll.
+
+RIF vs OWL vs SWIRL, Wahl OWL plain (falls möglich)
+
+- Aus Language (readability + subject + ...?) folgte pageLangauge
+- wenn nicht einheitlich -> Notice->Warning
+- FormElemente Input
+
+\newpage
+\section{TODO: Zusammenfassung und Ausblick}
+
+
+
+
+\begin{thebibliography}{4}
+
+\bibitem{url_fifa}FIFA com,
+Letzter Zugriff: 12. Juli 2014\\
+\url{http://http://www.fifa.com/}
+
+\end{thebibliography}
+
+\end{document}
