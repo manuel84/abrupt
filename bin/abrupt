@@ -33,7 +33,7 @@ class AbruptApp
         case args.count
         when 0 then puts "arg error"
         when 1 then Abrupt.convert args.first, options.__hash__
-        else Abrupt.convert args.first, args.second, options.__hash__
+        else Abrupt.convert args.first, args[1], options.__hash__
         end
       end
     end

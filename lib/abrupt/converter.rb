@@ -13,6 +13,7 @@ require 'active_support/core_ext/hash'
     link).each do |f|
   require "abrupt/transformation/#{f}"
 end
+require 'abrupt/transformation/client/page'
 # Abrupt Converter
 module Abrupt
   # Converter
@@ -103,6 +104,7 @@ module Abrupt
       states.each do |value|
         state = ['State', value[:name]]
         state_uri = parent_uri + state
+        # MAYBE empty?
         add_to_result Transformation::Base.new(parent_uri, state).result
         TRANSFORMATIONS.each do |trafo|
           t = trafo.new(state_uri, nil, value)
@@ -111,5 +113,26 @@ module Abrupt
         end
       end
     end
+
+    def append_user_data(file)
+      return unless File.exist?(file)
+      time_format = '%d/%b/%Y:%H:%M:%S'
+      time_output_format = '%Y-%m-%d_%H%M%S'
+      xml = Nokogiri::XML(File.read(file))
+      result = {}
+      xml.css('visitor').each do |visitor|
+        visitor.css('pages page').each do |page|
+          transformator = Transformation::Client::Page.new(
+              ['Website', @hsh[:website][:domain], 'Page', @hsh[:website][:domain]+page.css('uri').text],
+              ['Visit', visitor.css('ip').text, 'Time', Time.strptime(visitor.css('entertime').text, time_format).strftime(time_output_format)])
+          transformator.add_individuals
+          # add Visitor
+          # add properties
+          add_to_result transformator.result
+        end
+      end
+      result
+    end
+
   end
 end

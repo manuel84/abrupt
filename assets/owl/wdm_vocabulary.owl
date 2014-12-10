@@ -366,6 +366,24 @@
     
 
 
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasVisit -->
+
+    <owl:ObjectProperty rdf:about="&wdmOWL2;hasVisit">
+        <rdfs:domain rdf:resource="&wdmOWL2;Page"/>
+        <rdfs:range rdf:resource="&wdmOWL2;Visit"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasVisitor -->
+
+    <owl:ObjectProperty rdf:about="&wdmOWL2;hasVisitor">
+        <rdfs:domain rdf:resource="&wdmOWL2;Visit"/>
+        <rdfs:range rdf:resource="&wdmOWL2;Visitor"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasWeek -->
 
     <owl:ObjectProperty rdf:about="&wdmOWL2;hasWeek">
@@ -1504,6 +1522,18 @@
     <owl:Class rdf:about="&wdmOWL2;Url">
         <rdfs:subClassOf rdf:resource="&wdmOWL2;Input"/>
     </owl:Class>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Visit -->
+
+    <owl:Class rdf:about="&wdmOWL2;Visit"/>
+    
+
+
+    <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Visitor -->
+
+    <owl:Class rdf:about="&wdmOWL2;Visitor"/>
     
 
 

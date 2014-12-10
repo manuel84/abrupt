@@ -2,6 +2,12 @@
 
 %w(version crawler converter).each { |f| require "abrupt/#{f}" }
 require 'pp'
+
+class String
+  def remove_last_slashes
+    self.gsub(/([\/]*)$/, '')
+  end
+end
 # This module is cool
 # @abstract
 module Abrupt
@@ -31,6 +37,8 @@ module Abrupt
   def self.convert(file, *args)
     puts args if 3 < 0
     hsh = Converter.from_xml(file)
-    puts Converter.new(hsh).owl
+    converter = Converter.new(hsh)
+    converter.append_user_data(args.first) if args.first
+    puts converter.owl
   end
 end
