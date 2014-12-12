@@ -19,11 +19,26 @@
 \documentclass[runningheads,a4paper]{llncs}
 \usepackage[utf8x]{inputenc}
 \usepackage{amssymb}
+
 \setcounter{tocdepth}{3}
 \usepackage{graphicx}
-\usepackage{IEEEtrantools}
-
+\usepackage{mathtools}
 \usepackage{url}
+
+\usepackage{listings}
+
+
+\usepackage{xcolor}       
+\definecolor{olivegreen}{rgb}{0.2,0.8,0.5}
+\definecolor{grey}{rgb}{0.5,0.5,0.5}
+\lstdefinelanguage{ttl}{
+sensitive=true,
+morecomment=[l][\color{grey}]{@},
+morecomment=[l][\color{olivegreen}]{\#},
+morestring=[b][\color{blue}]\",
+}
+
+
 \urldef{\mailsa}\path|manuel.b.dudda@student.hs-rm.de|    
 \newcommand{\keywords}[1]{\par\addvspace\baselineskip
 \noindent\keywordname\enspace\ignorespaces#1}
@@ -71,81 +86,122 @@ Campus Unter den Eichen 5
 
 
 \begin{abstract}
-Die Usability von Internetauftritten ist größtenteils eine subjektive Wahrnehmung. Es existiert zwar eine Normierung durch die ISO für die Anforderungen an die Gebrauchstauglichkeit einer Software (EN ISO 9241-11) doch diese ist sehr schwammig formuliert und orientiert sich stark am Nutzungskontext. Trotzdem gibt es Merkmale einer Website, die allgemein als Usability-Probleme eingestuft werden können, so zum Beispiel schlechte Kontrastverhältnisse, hoher Lesbarkeitsindex und Diskrepanzen zwischen erwarteten und tatsächlichen Besucherverhalten. Das "AbRUPt"-System der Hochschule RheinMain ist in der Lage viele dieser Merkmale einer Website automatisiert zu erfassen. Durch die Konvertierung, Modellirung und ein durchdachtes Regelsystem in der semantischen Ontologiesprache OWL 2 RL ensteht ein System, welches eine Schlussfolgerung auf Usability-Probleme ermöglicht.
+Die Usability von Internetauftritten ist größtenteils eine subjektive Wahrnehmung. Es existiert zwar eine Normierung durch die ISO für die Anforderungen an die Gebrauchstauglichkeit einer Software (EN ISO 9241-11) doch diese ist sehr schwammig formuliert und orientiert sich stark am Nutzungskontext. Trotzdem gibt es Merkmale einer Website, die allgemein als Usability-Probleme eingestuft werden können, so zum Beispiel schlechte Kontrastverhältnisse, hoher Lesbarkeitsindex und Diskrepanzen zwischen erwarteten und tatsächlichen Besucherverhalten. Das "AbRUPt"-System der Hochschule RheinMain ist in der Lage viele dieser Merkmale einer Website automatisiert zu erfassen. Durch die Konvertierung, Modellierung und ein durchdachtes Regelsystem in der semantischen Ontologiesprache OWL 2 RL ensteht ein System, welches Folgerungen auf Usability-Probleme ermöglicht.
 \end{abstract}
 
 
-\section{TODO:Einleitung}
+\section{Einleitung}
+\# TODO
+\newpage
+\section{Logik und Berechenbarkeit}
+
+\# [WiP]
+
+Mit der Aussagenlogik lassen sich beschränkt Formeln aufstellen. Sie entsprechen in der Programmierung dem Datentyp "Boolean", also Elementarussagen, die verknüpft und negiert erscheinen können und deren Wahrheitsgehalt Wahr oder falsch.
+
+\begin{align}
+\begin{split}
+A = & \\
+& \textnormal{Das Kontrollkästchen hat den Namen \textit{AGB} und ist kein Pflichtfeld}
+\end{split}\\
+\begin{split}
+A \to B = & \\
+& \textnormal{Wenn das Kontrollkästschen den Namen \textit{AGB} hat und kein Pflichtfeld ist,} \\
+& \textnormal{gibt es ein Usability-Problem.}
+\end{split}\\
+\begin{split}
+A, A \to B = & \\
+& \textnormal{Das Kontrollkätschen hat den Namen \textit{AGB} und ist kein Pflichtfeld,} \\
+& \textnormal{es gibt ein Usability-Problem}
+\end{split}
+\end{align}
+
+\lstinputlisting[breaklines=true,language=ttl]{listings/propositional_logic.ttl} 
+
+
+%\begin{align}
+%\begin{split}
+%\url{wdm:Website/http://www.rikscha-mainz.de/Page/http://www.rikscha-mainz.de/Kontakt/State/state5/Form/32a0380204d524f2f1c9d3a3222a0a2a/Checkbox/agb} 
+%a wdm:Checkbox; \\
+%wdm:required true^^boolean 
+%\end{split}
+%\end{align}
+
+Über Wahrheitstafeln können jegliche (zusammengesetzte) Aussagen auf deren Wahrheitsgehalt überprüft werden. Damit verdeutlicht sich einfach, dass das Schlussfolgern über die Aussagenlogik ein entscheidbares Problem darstellt.
+
+\# TODO:
+
+- Prädikatenlogik mit Beispiel (Unentscheidbarkeit)
+
+- Beschreibungslogik (Einschränkungen bez. Prädikatenlogik, Entscheidbarkeit, OWL 2 RL)
 
 \newpage
-\section{TODO: Theorie Logik und Berechenbarkeit}
 
-Mit der Aussagenlogik lassen sich beschränkt Formeln aufstellen. Sie entspricht in der Programmierung dem Datentyp "Boolean", also Elementarussagen, die verknüpft und negiert erscheinen können und deren Wahrheitsgehalt Wahr oder falsch.
+\section{Website-Usability und der \textit{AbRUPt}-Web-Service}
 
-Aussagenlogik
-\begin{IEEEeqnarray}{rCl}
-A = Das Kontrollkastchen hat den Namen AGB und ist kein Pflichtfeld \\
-A -> B = Wenn das Kontrollkastschen den Namen AGB hat und kein Pflichtfeld ist, gibt es ein Usability-Problem. \\
-A, A -> B Das Kontrollkatschen hat den Namen AGB und ist kein Pflichtfeld, es gibt ein Usability-Problem  
-\end{IEEEeqnarray}
+\# TODO maybe section 2, nach Einleitung
+\section{Implementierung}
 
-\begin{IEEEeqnarray}{rCl}
-wdm:Website/http://www.rikscha-mainz.de/Page/http://www.rikscha-mainz.de/Kontakt/State/state5/Form/32a0380204d524f2f1c9d3a3222a0a2a/Checkbox/agb \\
-a wdm:Checkbox; \\
-wdm:required true^^boolean
-\end{IEEEeqnarray}
-
-Über Wahrheitstafeln können jegliche (zusammengesetzte) Aussagen auf deren Wahrheitsgehalt überprüft werden. Damit verdeutlicht sich einfach, dass das Schlussfolgern über die Aussagenlogik entscheidbar ist.
-
-\newpage
-\section{TODO: Erweiterung und Anpassung von Brieger}
+\subsection{Anpassungen und Erweiterung der Arbeit von Brieger}
+\# TODO
 
 - Entfernen der Klassenhierarchie, da nicht intuitiv.
+
 - Erweitern der Object- und Dataproperties um Restriktionen und Eigenschaften (maxCardinality, functional, transitivity...)
+
 - Anpassen der Ontology IRI aus unique Gründen (Vermeiden doppeltes )
+
 - IRI-Aufbau: {wdm}/{type}/{page}{id}
 
-- Inferbesipiel, siehe http://dior.ics.muni.cz/~makub/owl/  
+- Inferbeispiel
 
 - Errorstruktur
 Problem
-    ->priority
+\subsection{Das abrupt-Gem (Converter-Lib + Binary)}
+\# TODO
+
+- T-Box mit Protege (Vokabular + Regeln)
+
+- A-Box: Instanzen durch Parameterübergabe der XML-Dateien an abrupt-binary Website-Data + CLient-Data
+
 \newpage
 
-\section{TODO: Converter}
+\section{Schließen auf Probleme mit Inferenz-Regeln}
+\subsection{Triple-Pattern-Rules}
+\subsection{Inkonsistenz-Regeln}
+\subsection{Listen-Regeln}
+\subsection{Datentyp-Regeln}
 
-- alter Converter ~ 2000 Zeilen, kein Testcode
+\section{Zusammenfassung \& Ausblick}
+alter Converter:
+
+- ~ 2000 Zeilen, kein Testcode
+
 - in nur 4 Klassen
+
 - Konfigurationen hartgecodet, schlecht wartbar
-- neuer Converter nur 800 Zeilen inkl. Cralr (beta), Testcode
-- Vokabular ausgelagert
+\\
+neuer Converter:
+
+- nur 800 Zeilen inkl. Crawlr (beta), Testcode
+
+- Vokabular (T-Box) ausgelagert
+
 - höchstens 130 Zeilen pro Klasse
+
 - Rubygem: Kommandozeilentool, aber auch Code einbettbar in Ruby Web-Projekt
 
-\section{TODO: Regeln}
-
-Open World Assumption (Annahme zur Weltoffenheit)
-Zunächst war es die Idee aus fehlenden FormElementen (hasFormElement = 0) eines Formulars (Form) zu erschließen, dass es ein Problem gibt (Formular ohne Inhalt). Für Ontologien gilt anders wie für konventionelle Datenbanken die Open World Consumption. Man kann der Ontologie nicht entnehmen, wenn ein Form keine Relationen hasFormElement hat, dass das Formular tatsächlich keine Formular-Elemente hat (diese könnten nachträglich im DOM über JS hinzugeüft werden).
-Für den Reasoner gilt die gleiche Betrachtungsweise, daher ist die Umsetzung dieser Regel nicht möglich.
-Eine Möglichkeit ist diese Problemschlussfolgerung über Konsistenzeigenschaften der Ontologie abzudecken. Dies hat dann allerindgs  zur Folge, dass die Ontolgie ungültig ist, anstatt Problemklassen abzuleiten, die über Sparql-Abfragen/Anwendungen Aufschluss geben soll.
-
-RIF vs OWL vs SWIRL, Wahl OWL plain (falls möglich)
-
-- Aus Language (readability + subject + ...?) folgte pageLangauge
-- wenn nicht einheitlich -> Notice->Warning
-- FormElemente Input
-
-\newpage
-\section{TODO: Zusammenfassung und Ausblick}
 
 
 
 
 \begin{thebibliography}{4}
 
-\bibitem{url_fifa}FIFA com,
-Letzter Zugriff: 12. Juli 2014\\
-\url{http://http://www.fifa.com/}
+\bibitem{url_abrupt}AbRUPt,
+Letzter Zugriff: 12. Dezember 2014\\
+\url{http://wba.cs.hs-rm.de/AbRUPt/service/}
+\bibitem{url_dl_primer}A Description Logic Primer\\
+\url{http://arxiv.org/pdf/1201.4089v3.pdf}
 
 \end{thebibliography}
 

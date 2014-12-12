@@ -1,0 +1,5 @@
+wdm:Website/http://www.rikscha-mainz.de/Page/http://www.rikscha-mainz.de/Kontakt/State/state5/Form/32a0380204d524f2f1c9d3a3222a0a2a/Checkbox/agb
+  [
+    a wdm:Checkbox;
+    wdm:required true^^boolean
+  ]
