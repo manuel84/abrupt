@@ -1,13 +1,16 @@
 # @author Manuel Dudda
-
-%w(version crawler converter).each { |f| require "abrupt/#{f}" }
+Dir[File.dirname(__FILE__) + '/abrupt/*.rb'].each do |file|
+  require file
+end
 require 'pp'
 
+# Extension for String class
 class String
   def remove_last_slashes
-    self.gsub(/([\/]*)$/, '')
+    gsub(/([\/]*)$/, '')
   end
 end
+
 # This module is cool
 # @abstract
 module Abrupt

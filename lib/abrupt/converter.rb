@@ -4,28 +4,24 @@ require 'gyoku'
 require 'rdf'
 require 'linkeddata'
 require 'active_support/core_ext/hash'
-%w( base
-    readability
-    subject
-    input
-    complexity
-    picture
-    link).each do |f|
-  require "abrupt/transformation/#{f}"
+Dir[File.dirname(__FILE__) + '/transformation/*.rb',
+    File.dirname(__FILE__) + '/transformation/website/*.rb',
+    File.dirname(__FILE__) + '/transformation/client/*.rb'].each do |file|
+  require file
 end
-require 'abrupt/transformation/client/page'
+
 # Abrupt Converter
 module Abrupt
   # Converter
   class Converter
     include RDF
     TRANSFORMATIONS =
-        [Transformation::Readability,
-         Transformation::Input,
-         Abrupt::Transformation::Subject,
-         Abrupt::Transformation::Complexity,
-         Transformation::Link,
-         Transformation::Picture]
+        [Transformation::Website::Readability,
+         Transformation::Website::Input,
+         Transformation::Website::Subject,
+         Transformation::Website::Complexity,
+         Transformation::Website::Link,
+         Transformation::Website::Picture]
 
     attr_accessor :hsh, :values, :result
 
@@ -123,7 +119,7 @@ module Abrupt
       xml.css('visitor').each do |visitor|
         visitor.css('pages page').each do |page|
           transformator = Transformation::Client::Page.new(
-              ['Website', @hsh[:website][:domain], 'Page', @hsh[:website][:domain]+page.css('uri').text],
+              ['Website', @hsh[:website][:domain], 'Page', @hsh[:website][:domain] + page.css('uri').text],
               ['Visit', visitor.css('ip').text, 'Time', Time.strptime(visitor.css('entertime').text, time_format).strftime(time_output_format)])
           transformator.add_individuals
           # add Visitor
@@ -133,6 +129,5 @@ module Abrupt
       end
       result
     end
-
   end
 end

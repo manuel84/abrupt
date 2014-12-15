@@ -27,8 +27,8 @@ module Abrupt
       #     'state54'
       #   ])
       def initialize(parent_uri, uri, values = {})
-        @parent_uri = parent_uri.to_a.map { |u| u.remove_last_slashes }
-        @uri = uri.to_a.map { |u| u.remove_last_slashes }
+        @parent_uri = parent_uri.to_a.map(&:remove_last_slashes)
+        @uri = uri.to_a.map(&:remove_last_slashes)
         @values = values
         @result = []
         @md5 = Digest::MD5
