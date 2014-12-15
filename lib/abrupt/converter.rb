@@ -112,15 +112,12 @@ module Abrupt
 
     def append_user_data(file)
       return unless File.exist?(file)
-      time_format = '%d/%b/%Y:%H:%M:%S'
-      time_output_format = '%Y-%m-%d_%H%M%S'
       xml = Nokogiri::XML(File.read(file))
       result = {}
       xml.css('visitor').each do |visitor|
         visitor.css('pages page').each do |page|
-          transformator = Transformation::Client::Page.new(
-              ['Website', @hsh[:website][:domain], 'Page', @hsh[:website][:domain] + page.css('uri').text],
-              ['Visit', visitor.css('ip').text, 'Time', Time.strptime(visitor.css('entertime').text, time_format).strftime(time_output_format)])
+          transformator = Transformation::Client::Visit.new(
+              @hsh[:website][:domain], page, visitor)
           transformator.add_individuals
           # add Visitor
           # add properties
