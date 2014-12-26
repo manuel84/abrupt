@@ -68,54 +68,20 @@ module Abrupt
       end
 
       def update_value(ref, value, schema)
-        case ref.count
-        when 1
-          if @values[keyname][ref[0]].is_a? Array
-            @values[keyname][ref[0]].each do |i|
-              @values[keyname][ref[0]][i] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
-            end
-          else
-            @values[keyname][ref[0]] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
+        key_string = ''
+        val = @values[keyname]
+        ref.each_with_index do |key, i|
+          key_string += "[ref[#{i}]]"
+          val = val[key]
+        end
+        if val.is_a? Array
+          val.each_with_index do |value, i|
+            eval "@values[keyname]#{key_string}[i] = value.send(*SCHEMA_MAPPING[schema[:type].to_sym])"
           end
-        when 2
-          if @values[keyname][ref[0]].is_a? Array
-            @values[keyname][ref[0]].each_with_index do |value, i|
-              @values[keyname][ref[0]][i][ref[1]] = value[ref[1]].send *SCHEMA_MAPPING[schema[:type].to_sym]
-            end
-          elsif @values[keyname][ref[0]][ref[1]].is_a? Array
-            @values[keyname][ref[0]][ref[1]].each_with_index do |value, i|
-              @values[keyname][ref[0]][ref[1]][i] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
-            end
-          else
-            @values[keyname][ref[0]][ref[1]] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
-          end
-        when 3
-          if @values[keyname][ref[0]][ref[1]][ref[2]].is_a? Array
-            @values[keyname][ref[0]][ref[1]][ref[2]].each_with_index do |value, i|
-              @values[keyname][ref[0]][ref[1]][ref[2]][i] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
-            end
-          else
-            @values[keyname][ref[0]][ref[1]][ref[2]] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
-          end
-        when 4
-          if @values[keyname][ref[0]][ref[1]][ref[2]][ref[3]].is_a? Array
-            @values[keyname][ref[0]][ref[1]][ref[2]][ref[3]].each_with_index do |value, i|
-              @values[keyname][ref[0]][ref[1]][ref[2]][ref[3]][i] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
-            end
-          else
-            @values[keyname][ref[0]][ref[1]][ref[2]][ref[3]] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
-          end
-        when 5
-          if @values[keyname][ref[0]][ref[1]][ref[2]][ref[3]][ref[4]].is_a? Array
-            @values[keyname][ref[0]][ref[1]][ref[2]][ref[3]][ref[4]].each_with_index do |value, i|
-              @values[keyname][ref[0]][ref[1]][ref[2]][ref[3]][ref[4]][i] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
-            end
-          else
-            @values[keyname][ref[0]][ref[1]][ref[2]][ref[3]][ref[4]] = value.send *SCHEMA_MAPPING[schema[:type].to_sym]
-          end
+        else
+          eval "@values[keyname]#{key_string} = value.send(*SCHEMA_MAPPING[schema[:type].to_sym])"
         end
       end
-
       # rubocop:enable all
 
       def add_individuals
