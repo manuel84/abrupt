@@ -61,18 +61,21 @@ module Abrupt
     end
 
     def owl
-      @result.dump :ntriples # dump :rdfxml
+      # @result.dump :turtle
+      # @result.dump :ntriples
+      # @result.dump :rdfxml
     end
 
     def self.from_xml(file)
       xml = Nokogiri::XML(File.read(file))
       hsh = Hash.from_xml(xml.to_s).deep_symbolize_keys!
-      hsh[:website][:url].each do |state|
+      hsh[:website][:url].each_with_index do |state, index|
         TRANSFORMATIONS.each do |trafo|
-          t = trafo.new(nil, nil, state[:state])
-          t.customize_to_schema
+          hsh[:website][:url][index] = trafo.customize_to_schema(state[:state])
         end
       end
+      #hsh[:website][:url][i][:state][:input][:text][:size]
+      pp hsh
       hsh
     end
 

@@ -1,56 +1,19 @@
 require 'spec_helper'
-
-shared_examples 'transformable object' do |key, value, expected, type|
-  let(:values) do
-    {
-        base: {
-            example: {
-                key: {
-                    string_value: 'hallo',
-                    boolean_value: 'present',
-                    integer_value: '-2',
-                    float_value: '3.14',
-                    array_string_values: ['hallo', 'Welt', 3],
-                    array_boolean_values: [true, false, nil, 'present'],
-                    array_integer_values: [-3, '1'],
-                    array_float_values: ['1.4', 3]
-                },
-                simple_string: 'tada'
-            }
-        }
-    }
-  end
-  it "the reference is transformed to #{key}" do
-    subject.update_value([:example, :key, key], value, type: type)
-    expect(subject.values[:base][:example][:key][key]).to eql(expected)
-    subject.values[:base][:example][:key].delete key
-    values[:base][:example][:key].delete key
-    expect(subject.values).to eql(values)
-  end
-end
-
-describe Abrupt::Transformation::Base do
+# TODO: move to shared directory with a matching name
+shared_examples 'convertable object' do
 
   let(:subject) do
-    website = %w(Website http://www.dudda-und-dudda.de)
-    page = %w(Page kontakt)
-    Abrupt::Transformation::Base.new(website, page, values.dup)
+    file = 'spec/fixtures/rikscha_min.xml'
+    xml = Nokogiri::XML(File.read(file))
+    values = Hash.from_xml(xml.to_s).deep_symbolize_keys!
+    described_class.customize_to_schema(values)
   end
-  it_should_behave_like 'transformable object', :string_value,
-                        'Welt', 'Welt', :string
-  it_should_behave_like 'transformable object', :boolean_value,
-                        'present', true, :boolean
-  it_should_behave_like 'transformable object', :integer_value,
-                        '-2', -2, :integer
-  it_should_behave_like 'transformable object', :float_value,
-                        '3.14', 3.14, :number
-  it_should_behave_like 'transformable object', :array_string_values,
-                        ['hallo', 'Welt', 3], %w(hallo Welt 3), :string
-  it_should_behave_like 'transformable object', :array_boolean_values,
-                        [true, false, nil, 'present'], [true] * 4, :boolean
-  it_should_behave_like 'transformable object', :array_integer_values,
-                        [-3, '1'], [-3, 1], :integer
-  it_should_behave_like 'transformable object', :array_float_values,
-                        ['1.4', 3], [1.4, 3.0], :number
-
+  let(:expected_values) do
+    []
+  end
+  it 'part is converted' do
+    keyname = described_class.name.split('::').last.downcase.to_sym
+    actual = subject[:website][:url].map { |state| state[:state][keyname] }.compact
+    expect(actual).to eql(expected_values)
+  end
 end

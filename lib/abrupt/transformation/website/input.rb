@@ -2,8 +2,9 @@
 module Abrupt
   module Transformation
     module Website
-      # Readability service
+      # Input service
       # documentation see 'http://wba.cs.hs-rm.de/AbRUPt/service/input/'
+      # schema located in {PROJECT_ROOT}/assets/schema/v1/input.json
       class Input < Base
         attr_accessor :form_uri
 

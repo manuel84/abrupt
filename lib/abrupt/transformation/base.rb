@@ -34,14 +34,16 @@ module Abrupt
         @md5 = Digest::MD5
       end
 
-      def customize_to_schema
-        schema_file = "assets/schema/v1/#{keyname}.json"
-        return unless File.exist?(schema_file)
+      def self.customize_to_schema(values)
+        keyname = name.split('::').last.downcase
+        schema_file = File.join Abrupt.root, 'assets', 'schema', 'v1', "#{keyname}.json"
+        return values unless File.exist?(schema_file)
         schema = ::JSON.load(File.read(schema_file))
         schema.deep_symbolize_keys!
         schema[:properties].each do |state_key, state_schema|
-          set_value(state_schema, @values[state_key]) if @values[state_key]
+          set_value(state_schema, values[state_key]) if values.has_key?(state_key)
         end
+        values
       end
 
       # rubocop:disable all
@@ -55,33 +57,45 @@ module Abrupt
         when 'array'
           # make sure that value is an array
           # subject service word to array
-          [value].flatten.compact.each do |obj|
+          [value].flatten.compact.each_with_index do |obj, i|
             next unless schema[:items][:type].eql?('object')
             obj.each do |k, v|
               next unless schema[:items][:properties][k]
-              set_value(schema[:items][:properties][k], v, *(ref + [k]))
+              # set_value(schema[:items][:properties][k], v, *(ref + [i, k]))
             end
           end
         else
+          if value == '424242'
+            puts ref.inspect
+            puts schema.inspect
+          end
           update_value(ref, value, schema) rescue nil
         end
       end
 
       def update_value(ref, value, schema)
-        key_string = ''
+        key_string = '[ref[' + (0...ref.count).to_a.join(']][ref[') + ']]'
         val = @values[keyname]
-        ref.each_with_index do |key, i|
-          key_string += "[ref[#{i}]]"
+        ref.each do |key|
+          break if val.is_a?(Array) || !val.has_key?(key)
           val = val[key]
         end
-        if val.is_a? Array
-          val.each_with_index do |value, i|
-            eval "@values[keyname]#{key_string}[i] = value.send(*SCHEMA_MAPPING[schema[:type].to_sym])"
+        if value.is_a? Array
+          value.each_with_index do |v, i|
+            key_string = '[ref[' + (0...ref.count-1).to_a.join(']][ref[') + "]][#{i}][ref[#{ref.count-1}]]"
+            eval "@values[keyname]#{key_string} = v.send(*SCHEMA_MAPPING[schema[:type].to_sym])"
           end
         else
-          eval "@values[keyname]#{key_string} = value.send(*SCHEMA_MAPPING[schema[:type].to_sym])"
+          if val.is_a? Array
+            val.each_with_index do |v, i|
+              eval "@values[keyname]#{key_string}[i] = v.send(*SCHEMA_MAPPING[schema[:type].to_sym])"
+            end
+          else
+            eval "@values[keyname]#{key_string} = value.send(*SCHEMA_MAPPING[schema[:type].to_sym])"
+          end
         end
       end
+
       # rubocop:enable all
 
       def add_individuals

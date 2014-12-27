@@ -17,6 +17,10 @@ module Abrupt
   WDM = RDF::Vocabulary.new('http://wba.cs.hs-rm.de/wdm-service/wdmOWL/')
   DELIMITER = '#'
 
+  def self.root
+    File.dirname __dir__
+  end
+
   def self.log(msg)
     print msg
   end
