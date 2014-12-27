@@ -34,14 +34,14 @@ module Abrupt
         @md5 = Digest::MD5
       end
 
+      # rubocop:disable all
       def self.customize_to_schema(values)
         @values = values
         keyname = name.split('::').last.downcase.to_sym
         schema_file = File.join Abrupt.root, 'assets', 'schema', 'v1', "#{keyname}.json"
         return values unless File.exist?(schema_file)
-        schema = ::JSON.load(File.read(schema_file))
-        schema.deep_symbolize_keys!
-        @values[:website][:url].each_with_index do |state, index|
+        schema = ::JSON.load(File.read(schema_file)).deep_symbolize_keys
+        @values[:website][:url].each_with_index do |_state, index|
           # :button => ..., :text => {:type => "array", :items => {...}}
           schema[:properties][keyname][:properties].each do |state_key, state_schema|
             set_value(state_key, state_schema, [':website', ':url', index, ':state', ":#{keyname}"])
@@ -61,14 +61,11 @@ module Abrupt
           when 'object'
             # :name => { :type => :string }
             schema[:items][:properties].each do |arr_key, arr_val|
-              unless value.is_a? Array
-                eval "@values#{key_string} = [value].flatten.compact"
-              end
+              eval "@values#{key_string} = [value].flatten.compact" unless value.is_a? Array
               value.each_with_index do |_obj, i|
                 set_value arr_key, arr_val, ref.dup + [i]
               end
             end
-          else
           end
         when 'object'
           schema[:properties].each do |schema_key, schema_value|
@@ -84,6 +81,7 @@ module Abrupt
           end
         end
       end
+      # rubocop:enable all
 
       def add_individuals
         add_individual

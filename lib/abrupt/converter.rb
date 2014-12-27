@@ -74,8 +74,6 @@ module Abrupt
           hsh[:website][:url][index] = trafo.customize_to_schema(state[:state])
         end
       end
-      #hsh[:website][:url][i][:state][:input][:text][:size]
-      pp hsh
       hsh
     end
 

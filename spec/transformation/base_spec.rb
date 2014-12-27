@@ -13,7 +13,7 @@ shared_examples 'convertable object' do
   end
   it 'part is converted' do
     keyname = described_class.name.split('::').last.downcase.to_sym
-    actual = subject[:website][:url].map { |state| state[:state][keyname] }.compact
+    actual = subject[:website][:url].map { |s| s[:state][keyname] }.compact
     expect(actual).to eql(expected_values)
   end
 end
