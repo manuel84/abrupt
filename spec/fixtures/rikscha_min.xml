@@ -347,7 +347,21 @@
         </a>
       </link>
       <picture>
-        <duration>0</duration>
+        <duration>3.9</duration>
+        <images>
+          <mimetype>image/JPEG</mimetype>
+          <duration>3.9</duration>
+          <filename>random.jpg</filename>
+          <type>normal</type>
+          <geometry>285x379</geometry>
+        </images>
+        <images>
+          <mimetype>image/PNG</mimetype>
+          <duration>0</duration>
+          <filename>RikschaLogo.png</filename>
+          <type>article</type>
+          <geometry>135x111</geometry>
+        </images>
       </picture>
     </state>
   </url>

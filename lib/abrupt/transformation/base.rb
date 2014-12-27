@@ -71,8 +71,17 @@ module Abrupt
           else
           end
         when 'object'
+          schema[:properties].each do |schema_key, schema_value|
+            set_value(schema_key, schema_value, ref.dup)
+          end
         else
-          eval "@values#{key_string} = value.send(*SCHEMA_MAPPING[schema[:type].to_sym])"
+          if value.is_a? Array
+            value.each_with_index do |val, i|
+              eval "@values#{key_string}[i] = val.send(*SCHEMA_MAPPING[schema[:type].to_sym])"
+            end
+          else
+            eval "@values#{key_string} = value.send(*SCHEMA_MAPPING[schema[:type].to_sym])"
+          end
         end
       end
 
