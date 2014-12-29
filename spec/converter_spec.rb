@@ -30,5 +30,4 @@ describe Abrupt::Converter, :vcr do
       expect(converted_repo).to be_isomorphic_with(expected_repo)
     end
   end
-
 end

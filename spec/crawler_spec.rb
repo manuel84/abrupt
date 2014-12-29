@@ -8,5 +8,4 @@ describe Abrupt::Crawler, :vcr do
     expected_hash = expected_hash.deep_symbolize_keys[:data]
     expect(result).to eq(expected_hash)
   end
-
 end

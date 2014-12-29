@@ -1,7 +1,6 @@
 require 'spec_helper'
 # TODO: move to shared directory with a matching name
 shared_examples 'convertable object' do
-
   let(:subject) do
     file = 'spec/fixtures/rikscha_min.xml'
     xml = Nokogiri::XML(File.read(file))

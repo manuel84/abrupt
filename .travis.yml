@@ -24,7 +24,7 @@ before_script:
   # - bundle exec rake db:setup
 
 script:
-  - bundle exec rubocop lib spec
+  - bundle exec rubocop lib spec -c .rubocop.yml
   - CODECLIMATE_REPO_TOKEN=d88b1f8e253a70c58d685384637fc7b1768fc3fb74dac98c29ca2fb119744c8d bundle exec rake # doing rspec
   - bundle exec rspec
 
