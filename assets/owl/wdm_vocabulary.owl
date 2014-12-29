@@ -747,8 +747,7 @@
     <!-- http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxlength -->
 
     <owl:DatatypeProperty rdf:about="&wdmOWL2;maxlength">
-        <rdfs:domain rdf:resource="&wdmOWL2;Input"/>
-        <rdfs:domain rdf:resource="&wdmOWL2;Textarea"/>
+        <rdfs:domain rdf:resource="&wdmOWL2;FormElement"/>
     </owl:DatatypeProperty>
     
 
