@@ -42,9 +42,8 @@ module Abrupt
   end
 
   def self.convert(file, *args)
-    puts args if 3 < 0
     hsh = Converter.from_xml(file)
-    converter = Converter.new(hsh)
+    converter = Converter.new(hsh, args[1])
     converter.append_user_data(args.first) if args.first
     puts converter.owl
   end

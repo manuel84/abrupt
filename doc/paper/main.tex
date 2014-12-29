@@ -97,35 +97,29 @@ Die Usability von Internetauftritten wird größtenteils subjektiv wahrgenommen.
 
 \# [WiP]
 
-Mit der Aussagenlogik lassen sich beschränkt Formeln aufstellen. Sie entsprechen in der Programmierung dem Datentyp "Boolean", also Elementarussagen, die verknüpft und negiert erscheinen können und deren Wahrheitsgehalt Wahr oder falsch.
+Mit der Aussagenlogik lassen sich beschränkt Formeln aufstellen. Sie entsprechen in der Programmierung dem Datentyp "Boolean", also Elementarussagen, die verknüpft und negiert erscheinen und deren Wahrheitsgehalt Wahr oder falsch ist.
 
 \begin{align}
 \begin{split}
-A = & \\
-& \textnormal{Das Kontrollkästchen hat den Namen \textit{AGB} und ist kein Pflichtfeld}
-\end{split}\\
-\begin{split}
-A \to B = & \\
-& \textnormal{Wenn das Kontrollkästschen den Namen \textit{AGB} hat und kein Pflichtfeld ist,} \\
-& \textnormal{gibt es ein Usability-Problem.}
-\end{split}\\
-\begin{split}
-A, A \to B = & \\
-& \textnormal{Das Kontrollkätschen hat den Namen \textit{AGB} und ist kein Pflichtfeld,} \\
-& \textnormal{es gibt ein Usability-Problem}
+A = & \textnormal{Die Checkbox A hat den Namen \textit{agb}}\\
+B = & \textnormal{Die Checkbox ist ein Pflichtfeld}\\
+A \to B = & \textnormal{Wenn eine Checkbox den Namen \textit{agb} hat,} \\
+& \textnormal{dann ist sie ein Pflichtfeld}\\
+A, A \to B = & \textnormal{Die Checkbox A hat den Namen \textit{agb}} \\
+B = & \textnormal{Checkbox A ist ein Pflichtfeld}
 \end{split}
 \end{align}
 
 \lstinputlisting[breaklines=true,language=ttl]{listings/propositional_logic.ttl} 
 
+Aus der oben genannten Regel (1), kann gefolgert werden, dass die Checkbox mit dem Namen "agb" ein Pflichtfeld ist. Eine gängige Darstellung solcher Regeln erfolgt durch Trennung der Prämisse und Konklusion mit einem Bruchstrich:
 
-%\begin{align}
-%\begin{split}
-%\url{wdm:Website/http://www.rikscha-mainz.de/Page/http://www.rikscha-mainz.de/Kontakt/State/state5/Form/32a0380204d524f2f1c9d3a3222a0a2a/Checkbox/agb} 
-%a wdm:Checkbox; \\
-%wdm:required true^^boolean 
-%\end{split}
-%\end{align}
+\begin{equation}
+\frac{A, A \to B}{B}
+\end{equation}
+
+ 
+\lstinputlisting[breaklines=true,language=ttl]{listings/propositional_logic_infered.ttl} 
 
 Über Wahrheitstafeln können jegliche (zusammengesetzte) Aussagen auf deren Wahrheitsgehalt überprüft werden. Damit verdeutlicht sich einfach, dass das Schlussfolgern über die Aussagenlogik ein entscheidbares Problem darstellt.
 

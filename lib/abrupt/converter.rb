@@ -23,9 +23,10 @@ module Abrupt
          Transformation::Website::Link,
          Transformation::Website::Picture]
 
-    attr_accessor :hsh, :values, :result
+    attr_accessor :hsh, :values, :result, :format
 
-    def initialize(hsh)
+    def initialize(hsh, options)
+      @format = options[:format].to_sym || :turtle
       @hsh = hsh.deep_symbolize_keys
       # extend given vocabulary
       @result = Repository.load('assets/owl/wdm_vocabulary.owl')
@@ -61,17 +62,15 @@ module Abrupt
     end
 
     def owl
-      # @result.dump :turtle
-      # @result.dump :ntriples
-      # @result.dump :rdfxml
+      @result.dump @format
     end
 
     def self.from_xml(file)
       xml = Nokogiri::XML(File.read(file))
       hsh = Hash.from_xml(xml.to_s).deep_symbolize_keys!
-      hsh[:website][:url].each_with_index do |state, index|
+      hsh[:website][:url].each_with_index do |value, state|
         TRANSFORMATIONS.each do |trafo|
-          hsh[:website][:url][index] = trafo.customize_to_schema(state[:state])
+          hsh[:website][:url][state] = trafo.customize_to_schema(value)
         end
       end
       hsh

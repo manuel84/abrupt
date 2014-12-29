@@ -6,14 +6,14 @@ shared_examples 'convertable object' do
     file = 'spec/fixtures/rikscha_min.xml'
     xml = Nokogiri::XML(File.read(file))
     values = Hash.from_xml(xml.to_s).deep_symbolize_keys!
-    described_class.customize_to_schema(values)
+    values[:website][:url].map { |values| described_class.customize_to_schema(values) }
   end
   let(:expected_values) do
     []
   end
   it 'part is converted' do
     keyname = described_class.name.split('::').last.downcase.to_sym
-    actual = subject[:website][:url].map { |s| s[:state][keyname] }.compact
+    actual = subject.map { |s| s[:state][keyname] }.compact
     expect(actual).to eql(expected_values)
   end
 end

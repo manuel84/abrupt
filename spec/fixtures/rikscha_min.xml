@@ -160,11 +160,6 @@
         <words>Fahrtbeginn</words>
         <words>web</words>
         <words>write</words>
-        <words>Rikscha</words>
-        <words>catch</words>
-        <words>display</words>
-        <words>location</words>
-        <words>push</words>
         <subjects>
           <Liste__Sprache_>4</Liste__Sprache_>
           <Portal_Abkürzungen>4</Portal_Abkürzungen>
@@ -381,6 +376,8 @@
         <words>src</words>
         <words>jpg</words>
         <words>write</words>
+        <words>location</words>
+        <words>push</words>
         <subjects>
           <Liste__Sprache_>3</Liste__Sprache_>
           <Portal_Abkürzungen>3</Portal_Abkürzungen>

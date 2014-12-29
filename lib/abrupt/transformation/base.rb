@@ -41,11 +41,9 @@ module Abrupt
         schema_file = File.join Abrupt.root, 'assets', 'schema', 'v1', "#{keyname}.json"
         return values unless File.exist?(schema_file)
         schema = ::JSON.load(File.read(schema_file)).deep_symbolize_keys
-        @values[:website][:url].each_with_index do |_state, index|
-          # :button => ..., :text => {:type => "array", :items => {...}}
-          schema[:properties][keyname][:properties].each do |state_key, state_schema|
-            set_value(state_key, state_schema, [':website', ':url', index, ':state', ":#{keyname}"])
-          end
+        # :button => ..., :text => {:type => "array", :items => {...}}
+        schema[:properties][keyname][:properties].each do |state_key, state_schema|
+          set_value(state_key, state_schema, [':state', ":#{keyname}"])
         end
         @values
       end
@@ -81,6 +79,7 @@ module Abrupt
           end
         end
       end
+
       # rubocop:enable all
 
       def add_individuals

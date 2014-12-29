@@ -2,4 +2,5 @@ wdm:Website/http://www.rikscha-mainz.de/Page/http://www.rikscha-mainz.de/Kontakt
   [
     a wdm:Checkbox;
     wdm:name "agb"
+    wdm:required true^^boolean # Schlussfolgerung
   ]
