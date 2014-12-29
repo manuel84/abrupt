@@ -1,6 +1,6 @@
 require 'spec_helper'
 describe Abrupt::Crawler, :vcr do
-  it 'outputs correct hash' do
+  it 'outputs correct hash', beta: true do
     pending 'out of development'
     crawler = Abrupt::Crawler.new 'http://www.rikscha-mainz.de', lang: 'de'
     result = crawler.crawl

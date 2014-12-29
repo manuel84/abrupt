@@ -5,8 +5,8 @@ shared_examples 'convertable object' do
   let(:subject) do
     file = 'spec/fixtures/rikscha_min.xml'
     xml = Nokogiri::XML(File.read(file))
-    values = Hash.from_xml(xml.to_s).deep_symbolize_keys!
-    values[:website][:url].map { |values| described_class.customize_to_schema(values) }
+    values = Hash.from_xml(xml.to_s).deep_symbolize_keys![:website][:url]
+    values.map { |states| described_class.customize_to_schema(states) }
   end
   let(:expected_values) do
     []

@@ -20,4 +20,6 @@ RSpec.configure do |config|
   # some (optional) config here
   config.formatter = 'documentation'
   config.include FactoryGirl::Syntax::Methods
+  config.filter_run_excluding dev: true
+  config.filter_run_excluding beta: true
 end
