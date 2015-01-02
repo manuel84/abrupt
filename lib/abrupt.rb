@@ -42,9 +42,9 @@ module Abrupt
   end
 
   def self.convert(file, *args)
-    hsh = Converter.from_xml(file)
-    converter = Converter.new(hsh, args[1])
-    converter.append_user_data(args.first) if args.first
-    puts converter.owl
+    converter = Converter.new(file, args[1])
+    converter.append_rules
+    #converter.append_user_data(args.first) if args.first
+    #puts converter.owl
   end
 end

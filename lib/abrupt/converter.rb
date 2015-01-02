@@ -5,6 +5,7 @@ require 'rdf'
 require 'linkeddata'
 require 'active_support/core_ext/hash'
 Dir[File.dirname(__FILE__) + '/transformation/*.rb',
+    File.dirname(__FILE__) + '/transformation/rules/*.rb',
     File.dirname(__FILE__) + '/transformation/website/*.rb',
     File.dirname(__FILE__) + '/transformation/client/*.rb'].each do |file|
   require file
@@ -27,6 +28,7 @@ module Abrupt
 
     def initialize(hsh, options)
       @format = options[:format].to_sym || :turtle
+      hsh = self.class.from_xml(hsh) unless hsh.is_a?(Hash)
       @hsh = hsh.deep_symbolize_keys
       # extend given vocabulary
       @result = Repository.load('assets/owl/wdm_vocabulary.owl')
@@ -125,6 +127,10 @@ module Abrupt
         end
       end
       result
+    end
+
+    def append_rules
+      Transformation::Rif.new('assets/rules/xxx.rif').owl
     end
   end
 end
