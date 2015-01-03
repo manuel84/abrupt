@@ -1,43 +1,12 @@
-@prefix : <http://wba.cs.hs-rm.de/wdm-service/wdmOWL#> .
+@prefix : <http://wba.cs.hs-rm.de/wdm-service/wdmOWL/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix swrl: <http://www.w3.org/2003/11/swrl#> .
-@prefix swrlb: <http://www.w3.org/2003/11/swrlb#> .
-@prefix wdmOWL: <http://wba.cs.hs-rm.de/wdm-service/wdmOWL#> .
-@prefix wdmOWL2: <http://wba.cs.hs-rm.de/wdm-service/wdmOWL/> .
 @base <http://wba.cs.hs-rm.de/wdm-service/wdmOWL/> .
 
 <http://wba.cs.hs-rm.de/wdm-service/wdmOWL/> rdf:type owl:Ontology .
-
-
-#################################################################
-#
-#    Annotation properties
-#
-#################################################################
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/equivalentClass
-
-wdmOWL2:equivalentClass rdf:type owl:AnnotationProperty .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/onDataRange
-
-wdmOWL2:onDataRange rdf:type owl:AnnotationProperty .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/onProperty
-
-wdmOWL2:onProperty rdf:type owl:AnnotationProperty .
-
-
-
 
 
 #################################################################
@@ -49,364 +18,364 @@ wdmOWL2:onProperty rdf:type owl:AnnotationProperty .
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasBaseColor
 
-wdmOWL2:hasBaseColor rdf:type owl:ObjectProperty ;
-                     
-                     rdfs:range wdmOWL2:BaseColor ;
-                     
-                     rdfs:domain wdmOWL2:Page .
+:hasBaseColor rdf:type owl:ObjectProperty ;
+              
+              rdfs:range :BaseColor ;
+              
+              rdfs:domain :Page .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasButton
 
-wdmOWL2:hasButton rdf:type owl:ObjectProperty ;
-                  
-                  rdfs:range wdmOWL2:Button ;
-                  
-                  rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasButton rdf:type owl:ObjectProperty ;
+           
+           rdfs:range :Button ;
+           
+           rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasCheckbox
 
-wdmOWL2:hasCheckbox rdf:type owl:ObjectProperty ;
-                    
-                    rdfs:range wdmOWL2:Checkbox ;
-                    
-                    rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasCheckbox rdf:type owl:ObjectProperty ;
+             
+             rdfs:range :Checkbox ;
+             
+             rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasColor
 
-wdmOWL2:hasColor rdf:type owl:ObjectProperty ;
-                 
-                 rdfs:range wdmOWL2:Color ;
-                 
-                 rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasColor rdf:type owl:ObjectProperty ;
+          
+          rdfs:range :Color ;
+          
+          rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasDate
 
-wdmOWL2:hasDate rdf:type owl:ObjectProperty ;
-                
-                rdfs:range wdmOWL2:Date ;
-                
-                rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasDate rdf:type owl:ObjectProperty ;
+         
+         rdfs:range :Date ;
+         
+         rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasDatetime
 
-wdmOWL2:hasDatetime rdf:type owl:ObjectProperty ;
-                    
-                    rdfs:range wdmOWL2:Datetime ;
-                    
-                    rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasDatetime rdf:type owl:ObjectProperty ;
+             
+             rdfs:range :Datetime ;
+             
+             rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasDatetime-local
 
-wdmOWL2:hasDatetime-local rdf:type owl:ObjectProperty ;
-                          
-                          rdfs:range wdmOWL2:Datetime-local ;
-                          
-                          rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasDatetime-local rdf:type owl:ObjectProperty ;
+                   
+                   rdfs:range :Datetime-local ;
+                   
+                   rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasEmail
 
-wdmOWL2:hasEmail rdf:type owl:ObjectProperty ;
-                 
-                 rdfs:range wdmOWL2:Email ;
-                 
-                 rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasEmail rdf:type owl:ObjectProperty ;
+          
+          rdfs:range :Email ;
+          
+          rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasFile
 
-wdmOWL2:hasFile rdf:type owl:ObjectProperty ;
-                
-                rdfs:range wdmOWL2:File ;
-                
-                rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasFile rdf:type owl:ObjectProperty ;
+         
+         rdfs:range :File ;
+         
+         rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasForm
 
-wdmOWL2:hasForm rdf:type owl:ObjectProperty ;
-                
-                rdfs:range wdmOWL2:Form ;
-                
-                rdfs:domain wdmOWL2:Page .
+:hasForm rdf:type owl:ObjectProperty ;
+         
+         rdfs:range :Form ;
+         
+         rdfs:domain :Page .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasFormElement
 
-wdmOWL2:hasFormElement rdf:type owl:ObjectProperty ;
-                       
-                       rdfs:domain wdmOWL2:Form ;
-                       
-                       rdfs:range wdmOWL2:FormElement .
+:hasFormElement rdf:type owl:ObjectProperty ;
+                
+                rdfs:domain :Form ;
+                
+                rdfs:range :FormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasHidden
 
-wdmOWL2:hasHidden rdf:type owl:ObjectProperty ;
-                  
-                  rdfs:range wdmOWL2:Hidden ;
-                  
-                  rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasHidden rdf:type owl:ObjectProperty ;
+           
+           rdfs:range :Hidden ;
+           
+           rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasImage
 
-wdmOWL2:hasImage rdf:type owl:ObjectProperty ;
-                 
-                 rdfs:range wdmOWL2:Image ;
-                 
-                 rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasImage rdf:type owl:ObjectProperty ;
+          
+          rdfs:range :Image ;
+          
+          rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasLink
 
-wdmOWL2:hasLink rdf:type owl:ObjectProperty ;
-                
-                rdfs:range wdmOWL2:Link ;
-                
-                rdfs:domain wdmOWL2:Page .
+:hasLink rdf:type owl:ObjectProperty ;
+         
+         rdfs:range :Link ;
+         
+         rdfs:domain :Page .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasMonth
 
-wdmOWL2:hasMonth rdf:type owl:ObjectProperty ;
-                 
-                 rdfs:range wdmOWL2:Month ;
-                 
-                 rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasMonth rdf:type owl:ObjectProperty ;
+          
+          rdfs:range :Month ;
+          
+          rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasNumber
 
-wdmOWL2:hasNumber rdf:type owl:ObjectProperty ;
-                  
-                  rdfs:range wdmOWL2:Number ;
-                  
-                  rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasNumber rdf:type owl:ObjectProperty ;
+           
+           rdfs:range :Number ;
+           
+           rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasOption
 
-wdmOWL2:hasOption rdf:type owl:ObjectProperty ;
-                  
-                  rdfs:range wdmOWL2:Option ;
-                  
-                  rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasOption rdf:type owl:ObjectProperty ;
+           
+           rdfs:range :Option ;
+           
+           rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasPage
 
-wdmOWL2:hasPage rdf:type owl:InverseFunctionalProperty ,
-                         owl:ObjectProperty ;
-                
-                rdfs:comment "A page belongs to one website. Because of this restriction the whole URL is saved as name. The domain, path, query and fragment can be reasoned by the URL." ;
-                
-                rdfs:range wdmOWL2:Page ;
-                
-                rdfs:domain wdmOWL2:Website .
+:hasPage rdf:type owl:InverseFunctionalProperty ,
+                  owl:ObjectProperty ;
+         
+         rdfs:comment "A page belongs to one website. Because of this restriction the whole URL is saved as name. The domain, path, query and fragment can be reasoned by the URL." ;
+         
+         rdfs:range :Page ;
+         
+         rdfs:domain :Website .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasPassword
 
-wdmOWL2:hasPassword rdf:type owl:ObjectProperty ;
-                    
-                    rdfs:range wdmOWL2:Password ;
-                    
-                    rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasPassword rdf:type owl:ObjectProperty ;
+             
+             rdfs:range :Password ;
+             
+             rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasPicture
 
-wdmOWL2:hasPicture rdf:type owl:ObjectProperty ;
-                   
-                   rdfs:domain wdmOWL2:Page ;
-                   
-                   rdfs:range wdmOWL2:Picture .
+:hasPicture rdf:type owl:ObjectProperty ;
+            
+            rdfs:domain :Page ;
+            
+            rdfs:range :Picture .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasRadio
 
-wdmOWL2:hasRadio rdf:type owl:ObjectProperty ;
-                 
-                 rdfs:range wdmOWL2:Radio ;
-                 
-                 rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasRadio rdf:type owl:ObjectProperty ;
+          
+          rdfs:range :Radio ;
+          
+          rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasRange
 
-wdmOWL2:hasRange rdf:type owl:ObjectProperty ;
-                 
-                 rdfs:range wdmOWL2:Range ;
-                 
-                 rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasRange rdf:type owl:ObjectProperty ;
+          
+          rdfs:range :Range ;
+          
+          rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasReset
 
-wdmOWL2:hasReset rdf:type owl:ObjectProperty ;
-                 
-                 rdfs:range wdmOWL2:Reset ;
-                 
-                 rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasReset rdf:type owl:ObjectProperty ;
+          
+          rdfs:range :Reset ;
+          
+          rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasSearch
 
-wdmOWL2:hasSearch rdf:type owl:ObjectProperty ;
-                  
-                  rdfs:range wdmOWL2:Search ;
-                  
-                  rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasSearch rdf:type owl:ObjectProperty ;
+           
+           rdfs:range :Search ;
+           
+           rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasSelect
 
-wdmOWL2:hasSelect rdf:type owl:ObjectProperty ;
-                  
-                  rdfs:range wdmOWL2:Select ;
-                  
-                  rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasSelect rdf:type owl:ObjectProperty ;
+           
+           rdfs:range :Select ;
+           
+           rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasState
 
-wdmOWL2:hasState rdf:type owl:ObjectProperty ;
-                 
-                 rdfs:domain wdmOWL2:Page ;
-                 
-                 rdfs:range wdmOWL2:State .
+:hasState rdf:type owl:ObjectProperty ;
+          
+          rdfs:domain :Page ;
+          
+          rdfs:range :State .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasSubject
 
-wdmOWL2:hasSubject rdf:type owl:ObjectProperty ;
-                   
-                   rdfs:domain wdmOWL2:Page ;
-                   
-                   rdfs:range wdmOWL2:Subject .
+:hasSubject rdf:type owl:ObjectProperty ;
+            
+            rdfs:domain :Page ;
+            
+            rdfs:range :Subject .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasSubmit
 
-wdmOWL2:hasSubmit rdf:type owl:ObjectProperty ;
-                  
-                  rdfs:range wdmOWL2:Submit ;
-                  
-                  rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasSubmit rdf:type owl:ObjectProperty ;
+           
+           rdfs:range :Submit ;
+           
+           rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasTel
 
-wdmOWL2:hasTel rdf:type owl:ObjectProperty ;
-               
-               rdfs:range wdmOWL2:Tel ;
-               
-               rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasTel rdf:type owl:ObjectProperty ;
+        
+        rdfs:range :Tel ;
+        
+        rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasText
 
-wdmOWL2:hasText rdf:type owl:ObjectProperty ;
-                
-                rdfs:range wdmOWL2:Text ;
-                
-                rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasText rdf:type owl:ObjectProperty ;
+         
+         rdfs:range :Text ;
+         
+         rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasTextarea
 
-wdmOWL2:hasTextarea rdf:type owl:ObjectProperty ;
-                    
-                    rdfs:range wdmOWL2:Textarea ;
-                    
-                    rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasTextarea rdf:type owl:ObjectProperty ;
+             
+             rdfs:range :Textarea ;
+             
+             rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasTime
 
-wdmOWL2:hasTime rdf:type owl:ObjectProperty ;
-                
-                rdfs:range wdmOWL2:Time ;
-                
-                rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasTime rdf:type owl:ObjectProperty ;
+         
+         rdfs:range :Time ;
+         
+         rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasUrl
 
-wdmOWL2:hasUrl rdf:type owl:ObjectProperty ;
-               
-               rdfs:range wdmOWL2:Url ;
-               
-               rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasUrl rdf:type owl:ObjectProperty ;
+        
+        rdfs:range :Url ;
+        
+        rdfs:subPropertyOf :hasFormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasVisit
 
-wdmOWL2:hasVisit rdf:type owl:ObjectProperty ;
-                 
-                 rdfs:domain wdmOWL2:Page ;
-                 
-                 rdfs:range wdmOWL2:Visit .
+:hasVisit rdf:type owl:ObjectProperty ;
+          
+          rdfs:domain :Page ;
+          
+          rdfs:range :Visit .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasVisitor
 
-wdmOWL2:hasVisitor rdf:type owl:ObjectProperty ;
-                   
-                   rdfs:domain wdmOWL2:Visit ;
-                   
-                   rdfs:range wdmOWL2:Visitor .
+:hasVisitor rdf:type owl:ObjectProperty ;
+            
+            rdfs:domain :Visit ;
+            
+            rdfs:range :Visitor .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasWeek
 
-wdmOWL2:hasWeek rdf:type owl:ObjectProperty ;
-                
-                rdfs:range wdmOWL2:Week ;
-                
-                rdfs:subPropertyOf wdmOWL2:hasFormElement .
+:hasWeek rdf:type owl:ObjectProperty ;
+         
+         rdfs:range :Week ;
+         
+         rdfs:subPropertyOf :hasFormElement .
 
 
 
@@ -421,897 +390,897 @@ wdmOWL2:hasWeek rdf:type owl:ObjectProperty ;
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/bigwords
 
-wdmOWL2:bigwords rdf:type owl:DatatypeProperty ;
-                 
-                 rdfs:domain wdmOWL2:Page ;
-                 
-                 rdfs:range xsd:integer .
+:bigwords rdf:type owl:DatatypeProperty ;
+          
+          rdfs:domain :Page ;
+          
+          rdfs:range xsd:integer .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/blue
 
-wdmOWL2:blue rdf:type owl:DatatypeProperty ;
-             
-             rdfs:domain wdmOWL2:BaseColor ;
-             
-             rdfs:range xsd:decimal .
+:blue rdf:type owl:DatatypeProperty ;
+      
+      rdfs:domain :BaseColor ;
+      
+      rdfs:range xsd:decimal .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/classLimit
 
-wdmOWL2:classLimit rdf:type owl:DatatypeProperty ;
-                   
-                   rdfs:domain wdmOWL2:Subject ;
-                   
-                   rdfs:range xsd:integer .
+:classLimit rdf:type owl:DatatypeProperty ;
+            
+            rdfs:domain :Subject ;
+            
+            rdfs:range xsd:integer .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/colorfulness
 
-wdmOWL2:colorfulness rdf:type owl:DatatypeProperty ;
-                     
-                     rdfs:domain wdmOWL2:Page ;
-                     
-                     rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/cols
-
-wdmOWL2:cols rdf:type owl:DatatypeProperty ;
-             
-             rdfs:domain wdmOWL2:Textarea ;
-             
-             rdfs:range xsd:nonNegativeInteger .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/depth
-
-wdmOWL2:depth rdf:type owl:DatatypeProperty ;
+:colorfulness rdf:type owl:DatatypeProperty ;
               
-              rdfs:domain wdmOWL2:Subject ;
-              
-              rdfs:range xsd:integer .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/duration
-
-wdmOWL2:duration rdf:type owl:DatatypeProperty ;
-                 
-                 rdfs:domain wdmOWL2:Picture ;
-                 
-                 rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/frequency
-
-wdmOWL2:frequency rdf:type owl:DatatypeProperty ;
-                  
-                  rdfs:range xsd:integer .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/geometry
-
-wdmOWL2:geometry rdf:type owl:DatatypeProperty ;
-                 
-                 rdfs:domain wdmOWL2:Picture ;
-                 
-                 rdfs:range xsd:string .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/green
-
-wdmOWL2:green rdf:type owl:DatatypeProperty ;
-              
-              rdfs:domain wdmOWL2:BaseColor ;
+              rdfs:domain :Page ;
               
               rdfs:range xsd:decimal .
 
 
 
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/cols
+
+:cols rdf:type owl:DatatypeProperty ;
+      
+      rdfs:domain :Textarea ;
+      
+      rdfs:range xsd:nonNegativeInteger .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/depth
+
+:depth rdf:type owl:DatatypeProperty ;
+       
+       rdfs:domain :Subject ;
+       
+       rdfs:range xsd:integer .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/duration
+
+:duration rdf:type owl:DatatypeProperty ;
+          
+          rdfs:domain :Picture ;
+          
+          rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/frequency
+
+:frequency rdf:type owl:DatatypeProperty ;
+           
+           rdfs:range xsd:integer .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/geometry
+
+:geometry rdf:type owl:DatatypeProperty ;
+          
+          rdfs:domain :Picture ;
+          
+          rdfs:range xsd:string .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/green
+
+:green rdf:type owl:DatatypeProperty ;
+       
+       rdfs:domain :BaseColor ;
+       
+       rdfs:range xsd:decimal .
+
+
+
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/horizontalBalance
 
-wdmOWL2:horizontalBalance rdf:type owl:DatatypeProperty ;
-                          
-                          rdfs:domain wdmOWL2:Page ;
-                          
-                          rdfs:range xsd:decimal .
+:horizontalBalance rdf:type owl:DatatypeProperty ;
+                   
+                   rdfs:domain :Page ;
+                   
+                   rdfs:range xsd:decimal .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/horizontalSymmetry
 
-wdmOWL2:horizontalSymmetry rdf:type owl:DatatypeProperty ;
-                           
-                           rdfs:domain wdmOWL2:Page ;
-                           
-                           rdfs:range xsd:decimal .
+:horizontalSymmetry rdf:type owl:DatatypeProperty ;
+                    
+                    rdfs:domain :Page ;
+                    
+                    rdfs:range xsd:decimal .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hostName
 
-wdmOWL2:hostName rdf:type owl:DatatypeProperty ;
-                 
-                 rdfs:domain wdmOWL2:Website ;
-                 
-                 rdfs:range xsd:string .
+:hostName rdf:type owl:DatatypeProperty ;
+          
+          rdfs:domain :Website ;
+          
+          rdfs:range xsd:string .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/href
 
-wdmOWL2:href rdf:type owl:DatatypeProperty ;
-             
-             rdfs:domain wdmOWL2:Link ;
-             
-             rdfs:range xsd:string .
+:href rdf:type owl:DatatypeProperty ;
+      
+      rdfs:domain :Link ;
+      
+      rdfs:range xsd:string .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hue
 
-wdmOWL2:hue rdf:type owl:DatatypeProperty ;
-            
-            rdfs:domain wdmOWL2:Page ;
-            
-            rdfs:range xsd:decimal .
+:hue rdf:type owl:DatatypeProperty ;
+     
+     rdfs:domain :Page ;
+     
+     rdfs:range xsd:decimal .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/id
 
-wdmOWL2:id rdf:type owl:DatatypeProperty ;
-           
-           rdfs:domain wdmOWL2:HtmlElement ;
-           
-           rdfs:range xsd:string .
+:id rdf:type owl:DatatypeProperty ;
+    
+    rdfs:domain :HtmlElement ;
+    
+    rdfs:range xsd:string .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/imageType
 
-wdmOWL2:imageType rdf:type owl:DatatypeProperty ;
-                  
-                  rdfs:domain wdmOWL2:Picture ;
-                  
-                  rdfs:range xsd:string .
+:imageType rdf:type owl:DatatypeProperty ;
+           
+           rdfs:domain :Picture ;
+           
+           rdfs:range xsd:string .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/imgAreaInPixelSquared
 
-wdmOWL2:imgAreaInPixelSquared rdf:type owl:DatatypeProperty ;
-                              
-                              rdfs:domain wdmOWL2:Page ;
-                              
-                              rdfs:range xsd:decimal .
+:imgAreaInPixelSquared rdf:type owl:DatatypeProperty ;
+                       
+                       rdfs:domain :Page ;
+                       
+                       rdfs:range xsd:decimal .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/imgDocumentTagPercentage
 
-wdmOWL2:imgDocumentTagPercentage rdf:type owl:DatatypeProperty ;
-                                 
-                                 rdfs:domain wdmOWL2:Page ;
-                                 
-                                 rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/imgDocumentTagRatio
-
-wdmOWL2:imgDocumentTagRatio rdf:type owl:DatatypeProperty ;
-                            
-                            rdfs:domain wdmOWL2:Page ;
-                            
-                            rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/matrix
-
-wdmOWL2:matrix rdf:type owl:DatatypeProperty ;
-               
-               rdfs:domain wdmOWL2:Page ;
-               
-               rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxBaseColorProcessTime
-
-wdmOWL2:maxBaseColorProcessTime rdf:type owl:DatatypeProperty ;
-                                
-                                rdfs:domain wdmOWL2:BaseColor ;
-                                
-                                rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxCheckboxProcessTime
-
-wdmOWL2:maxCheckboxProcessTime rdf:type owl:DatatypeProperty ;
-                               
-                               rdfs:domain wdmOWL2:Checkbox ;
-                               
-                               rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxColorProcessTime
-
-wdmOWL2:maxColorProcessTime rdf:type owl:DatatypeProperty ;
-                            
-                            rdfs:domain wdmOWL2:Color ;
-                            
-                            rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxDateProcessTime
-
-wdmOWL2:maxDateProcessTime rdf:type owl:DatatypeProperty ;
-                           
-                           rdfs:domain wdmOWL2:Date ;
-                           
-                           rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxEmailProcessTime
-
-wdmOWL2:maxEmailProcessTime rdf:type owl:DatatypeProperty ;
-                            
-                            rdfs:domain wdmOWL2:Email ;
-                            
-                            rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxLinkProcessTime
-
-wdmOWL2:maxLinkProcessTime rdf:type owl:DatatypeProperty ;
-                           
-                           rdfs:domain wdmOWL2:Link ;
-                           
-                           rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxPageProcessTime
-
-wdmOWL2:maxPageProcessTime rdf:type owl:DatatypeProperty ;
-                           
-                           rdfs:domain wdmOWL2:Page ;
-                           
-                           rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxPasswordProcessTime
-
-wdmOWL2:maxPasswordProcessTime rdf:type owl:DatatypeProperty ;
-                               
-                               rdfs:domain wdmOWL2:Password ;
-                               
-                               rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxPictureProcessTime
-
-wdmOWL2:maxPictureProcessTime rdf:type owl:DatatypeProperty ;
-                              
-                              rdfs:domain wdmOWL2:Picture ;
-                              
-                              rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxRadioProcessTime
-
-wdmOWL2:maxRadioProcessTime rdf:type owl:DatatypeProperty ;
-                            
-                            rdfs:domain wdmOWL2:Radio ;
-                            
-                            rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxRangeProcessTime
-
-wdmOWL2:maxRangeProcessTime rdf:type owl:DatatypeProperty ;
-                            
-                            rdfs:domain wdmOWL2:Range ;
-                            
-                            rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxSelectProcessTime
-
-wdmOWL2:maxSelectProcessTime rdf:type owl:DatatypeProperty ;
-                             
-                             rdfs:domain wdmOWL2:Select ;
-                             
-                             rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxSubjectProcessTime
-
-wdmOWL2:maxSubjectProcessTime rdf:type owl:DatatypeProperty ;
-                              
-                              rdfs:domain wdmOWL2:Subject ;
-                              
-                              rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxSubjectsProcessTime
-
-wdmOWL2:maxSubjectsProcessTime rdf:type owl:DatatypeProperty ;
-                               
-                               rdfs:domain wdmOWL2:Subject ;
-                               
-                               rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxTextProcessTime
-
-wdmOWL2:maxTextProcessTime rdf:type owl:DatatypeProperty ;
-                           
-                           rdfs:domain wdmOWL2:Text ;
-                           
-                           rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxTextareaProcessTime
-
-wdmOWL2:maxTextareaProcessTime rdf:type owl:DatatypeProperty ;
-                               
-                               rdfs:domain wdmOWL2:Textarea ;
-                               
-                               rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxWebsiteProcessTime
-
-wdmOWL2:maxWebsiteProcessTime rdf:type owl:DatatypeProperty ;
-                              
-                              rdfs:domain wdmOWL2:Website ;
-                              
-                              rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxlength
-
-wdmOWL2:maxlength rdf:type owl:DatatypeProperty ;
-                  
-                  rdfs:domain wdmOWL2:FormElement ;
-                  
-                  rdfs:range xsd:nonNegativeInteger .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/mimeType
-
-wdmOWL2:mimeType rdf:type owl:DatatypeProperty ;
-                 
-                 rdfs:domain wdmOWL2:Picture ;
-                 
-                 rdfs:range xsd:string .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/mimetype
-
-wdmOWL2:mimetype rdf:type owl:DatatypeProperty ;
-                 
-                 rdfs:domain wdmOWL2:Picture ;
-                 
-                 rdfs:range xsd:string .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minBaseColorProcessTime
-
-wdmOWL2:minBaseColorProcessTime rdf:type owl:DatatypeProperty ;
-                                
-                                rdfs:domain wdmOWL2:BaseColor ;
-                                
-                                rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minCheckboxProcessTime
-
-wdmOWL2:minCheckboxProcessTime rdf:type owl:DatatypeProperty ;
-                               
-                               rdfs:domain wdmOWL2:Checkbox ;
-                               
-                               rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minColorProcessTime
-
-wdmOWL2:minColorProcessTime rdf:type owl:DatatypeProperty ;
-                            
-                            rdfs:domain wdmOWL2:Color ;
-                            
-                            rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minDateProcessTime
-
-wdmOWL2:minDateProcessTime rdf:type owl:DatatypeProperty ;
-                           
-                           rdfs:domain wdmOWL2:Date ;
-                           
-                           rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minEmailProcessTime
-
-wdmOWL2:minEmailProcessTime rdf:type owl:DatatypeProperty ;
-                            
-                            rdfs:domain wdmOWL2:Email ;
-                            
-                            rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minLinkProcessTime
-
-wdmOWL2:minLinkProcessTime rdf:type owl:DatatypeProperty ;
-                           
-                           rdfs:domain wdmOWL2:Link ;
-                           
-                           rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minPageProcessTime
-
-wdmOWL2:minPageProcessTime rdf:type owl:DatatypeProperty ;
-                           
-                           rdfs:domain wdmOWL2:Page ;
-                           
-                           rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minPasswordProcessTime
-
-wdmOWL2:minPasswordProcessTime rdf:type owl:DatatypeProperty ;
-                               
-                               rdfs:domain wdmOWL2:Password ;
-                               
-                               rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minPictureProcessTime
-
-wdmOWL2:minPictureProcessTime rdf:type owl:DatatypeProperty ;
-                              
-                              rdfs:domain wdmOWL2:Picture ;
-                              
-                              rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minRadioProcessTime
-
-wdmOWL2:minRadioProcessTime rdf:type owl:DatatypeProperty ;
-                            
-                            rdfs:domain wdmOWL2:Radio ;
-                            
-                            rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minRangeProcessTime
-
-wdmOWL2:minRangeProcessTime rdf:type owl:DatatypeProperty ;
-                            
-                            rdfs:domain wdmOWL2:Range ;
-                            
-                            rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minSelectProcessTime
-
-wdmOWL2:minSelectProcessTime rdf:type owl:DatatypeProperty ;
-                             
-                             rdfs:domain wdmOWL2:Select ;
-                             
-                             rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minSubjectProcessTime
-
-wdmOWL2:minSubjectProcessTime rdf:type owl:DatatypeProperty ;
-                              
-                              rdfs:domain wdmOWL2:Subject ;
-                              
-                              rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minSubjectsProcessTime
-
-wdmOWL2:minSubjectsProcessTime rdf:type owl:DatatypeProperty ;
-                               
-                               rdfs:domain wdmOWL2:Subject ;
-                               
-                               rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minTextProcessTime
-
-wdmOWL2:minTextProcessTime rdf:type owl:DatatypeProperty ;
-                           
-                           rdfs:domain wdmOWL2:Text ;
-                           
-                           rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minTextareaProcessTime
-
-wdmOWL2:minTextareaProcessTime rdf:type owl:DatatypeProperty ;
-                               
-                               rdfs:domain wdmOWL2:Textarea ;
-                               
-                               rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minWebsiteProcessTime
-
-wdmOWL2:minWebsiteProcessTime rdf:type owl:DatatypeProperty ;
-                              
-                              rdfs:domain wdmOWL2:Website ;
-                              
-                              rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/name
-
-wdmOWL2:name rdf:type owl:DatatypeProperty ;
-             
-             rdfs:domain wdmOWL2:FormElement ;
-             
-             rdfs:range xsd:string .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/nontextArea
-
-wdmOWL2:nontextArea rdf:type owl:DatatypeProperty ;
-                    
-                    rdfs:domain wdmOWL2:Page ;
-                    
-                    rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/numberOfImageAreas
-
-wdmOWL2:numberOfImageAreas rdf:type owl:DatatypeProperty ;
-                           
-                           rdfs:domain wdmOWL2:Page ;
-                           
-                           rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/numberOfLeaves
-
-wdmOWL2:numberOfLeaves rdf:type owl:DatatypeProperty ;
-                       
-                       rdfs:domain wdmOWL2:Page ;
-                       
-                       rdfs:range xsd:integer .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/numberOfTextGroups
-
-wdmOWL2:numberOfTextGroups rdf:type owl:DatatypeProperty ;
-                           
-                           rdfs:domain wdmOWL2:Page ;
-                           
-                           rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pageHeightInPixel
-
-wdmOWL2:pageHeightInPixel rdf:type owl:DatatypeProperty ;
+:imgDocumentTagPercentage rdf:type owl:DatatypeProperty ;
                           
-                          rdfs:domain wdmOWL2:Page ;
+                          rdfs:domain :Page ;
                           
                           rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pageLanguage
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/imgDocumentTagRatio
 
-wdmOWL2:pageLanguage rdf:type owl:DatatypeProperty ;
+:imgDocumentTagRatio rdf:type owl:DatatypeProperty ;
                      
-                     rdfs:domain wdmOWL2:Page ;
+                     rdfs:domain :Page ;
                      
-                     rdfs:range xsd:string .
+                     rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pageName
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/matrix
 
-wdmOWL2:pageName rdf:type owl:DatatypeProperty ;
-                 
-                 rdfs:domain wdmOWL2:Page ;
-                 
-                 rdfs:range xsd:string .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pageSizeInPixelSquared
-
-wdmOWL2:pageSizeInPixelSquared rdf:type owl:DatatypeProperty ;
-                               
-                               rdfs:domain wdmOWL2:Page ;
-                               
-                               rdfs:range xsd:decimal .
+:matrix rdf:type owl:DatatypeProperty ;
+        
+        rdfs:domain :Page ;
+        
+        rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pageWidthInPixel
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxBaseColorProcessTime
 
-wdmOWL2:pageWidthInPixel rdf:type owl:DatatypeProperty ;
+:maxBaseColorProcessTime rdf:type owl:DatatypeProperty ;
                          
-                         rdfs:domain wdmOWL2:Page ;
+                         rdfs:domain :BaseColor ;
                          
                          rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/palette
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxCheckboxProcessTime
 
-wdmOWL2:palette rdf:type owl:DatatypeProperty ;
-                
-                rdfs:domain wdmOWL2:Page ;
-                
-                rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pictureFileName
-
-wdmOWL2:pictureFileName rdf:type owl:DatatypeProperty ;
+:maxCheckboxProcessTime rdf:type owl:DatatypeProperty ;
                         
-                        rdfs:domain wdmOWL2:Picture ;
-                        
-                        rdfs:range xsd:string .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/plaintext
-
-wdmOWL2:plaintext rdf:type owl:DatatypeProperty ;
-                  
-                  rdfs:domain wdmOWL2:Link ;
-                  
-                  rdfs:range xsd:string .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/priority
-
-wdmOWL2:priority rdf:type owl:DatatypeProperty ;
-                 
-                 rdfs:domain wdmOWL2:Problem ;
-                 
-                 rdfs:range xsd:nonNegativeInteger .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/readability
-
-wdmOWL2:readability rdf:type owl:DatatypeProperty ;
-                    
-                    rdfs:domain wdmOWL2:Page ;
-                    
-                    rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/readabilityLanguage
-
-wdmOWL2:readabilityLanguage rdf:type owl:DatatypeProperty ;
-                            
-                            rdfs:domain wdmOWL2:Page ;
-                            
-                            rdfs:range xsd:string .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/red
-
-wdmOWL2:red rdf:type owl:DatatypeProperty ;
-            
-            rdfs:domain wdmOWL2:BaseColor ;
-            
-            rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/required
-
-wdmOWL2:required rdf:type owl:DatatypeProperty ;
-                 
-                 rdfs:domain wdmOWL2:FormElement ;
-                 
-                 rdfs:range xsd:boolean .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/rows
-
-wdmOWL2:rows rdf:type owl:DatatypeProperty ;
-             
-             rdfs:domain wdmOWL2:Textarea ;
-             
-             rdfs:range xsd:nonNegativeInteger .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/sentences
-
-wdmOWL2:sentences rdf:type owl:DatatypeProperty ;
-                  
-                  rdfs:domain wdmOWL2:Page ;
-                  
-                  rdfs:range xsd:integer .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/size
-
-wdmOWL2:size rdf:type owl:DatatypeProperty ;
-             
-             rdfs:domain wdmOWL2:Input ;
-             
-             rdfs:range xsd:nonNegativeInteger .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/state
-
-wdmOWL2:state rdf:type owl:DatatypeProperty ;
-              
-              rdfs:domain wdmOWL2:Page ;
-              
-              rdfs:range xsd:string .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/subjectLanguage
-
-wdmOWL2:subjectLanguage rdf:type owl:DatatypeProperty ;
-                        
-                        rdfs:domain wdmOWL2:Subject ;
-                        
-                        rdfs:range xsd:string .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/syllables
-
-wdmOWL2:syllables rdf:type owl:DatatypeProperty ;
-                  
-                  rdfs:domain wdmOWL2:Page ;
-                  
-                  rdfs:range xsd:integer .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/textArea
-
-wdmOWL2:textArea rdf:type owl:DatatypeProperty ;
-                 
-                 rdfs:domain wdmOWL2:Page ;
-                 
-                 rdfs:range xsd:decimal .
-
-
-
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/textReadingTime
-
-wdmOWL2:textReadingTime rdf:type owl:DatatypeProperty ;
-                        
-                        rdfs:domain wdmOWL2:Page ;
+                        rdfs:domain :Checkbox ;
                         
                         rdfs:range xsd:decimal .
 
 
 
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxColorProcessTime
+
+:maxColorProcessTime rdf:type owl:DatatypeProperty ;
+                     
+                     rdfs:domain :Color ;
+                     
+                     rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxDateProcessTime
+
+:maxDateProcessTime rdf:type owl:DatatypeProperty ;
+                    
+                    rdfs:domain :Date ;
+                    
+                    rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxEmailProcessTime
+
+:maxEmailProcessTime rdf:type owl:DatatypeProperty ;
+                     
+                     rdfs:domain :Email ;
+                     
+                     rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxLinkProcessTime
+
+:maxLinkProcessTime rdf:type owl:DatatypeProperty ;
+                    
+                    rdfs:domain :Link ;
+                    
+                    rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxPageProcessTime
+
+:maxPageProcessTime rdf:type owl:DatatypeProperty ;
+                    
+                    rdfs:domain :Page ;
+                    
+                    rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxPasswordProcessTime
+
+:maxPasswordProcessTime rdf:type owl:DatatypeProperty ;
+                        
+                        rdfs:domain :Password ;
+                        
+                        rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxPictureProcessTime
+
+:maxPictureProcessTime rdf:type owl:DatatypeProperty ;
+                       
+                       rdfs:domain :Picture ;
+                       
+                       rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxRadioProcessTime
+
+:maxRadioProcessTime rdf:type owl:DatatypeProperty ;
+                     
+                     rdfs:domain :Radio ;
+                     
+                     rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxRangeProcessTime
+
+:maxRangeProcessTime rdf:type owl:DatatypeProperty ;
+                     
+                     rdfs:domain :Range ;
+                     
+                     rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxSelectProcessTime
+
+:maxSelectProcessTime rdf:type owl:DatatypeProperty ;
+                      
+                      rdfs:domain :Select ;
+                      
+                      rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxSubjectProcessTime
+
+:maxSubjectProcessTime rdf:type owl:DatatypeProperty ;
+                       
+                       rdfs:domain :Subject ;
+                       
+                       rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxSubjectsProcessTime
+
+:maxSubjectsProcessTime rdf:type owl:DatatypeProperty ;
+                        
+                        rdfs:domain :Subject ;
+                        
+                        rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxTextProcessTime
+
+:maxTextProcessTime rdf:type owl:DatatypeProperty ;
+                    
+                    rdfs:domain :Text ;
+                    
+                    rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxTextareaProcessTime
+
+:maxTextareaProcessTime rdf:type owl:DatatypeProperty ;
+                        
+                        rdfs:domain :Textarea ;
+                        
+                        rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxWebsiteProcessTime
+
+:maxWebsiteProcessTime rdf:type owl:DatatypeProperty ;
+                       
+                       rdfs:domain :Website ;
+                       
+                       rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxlength
+
+:maxlength rdf:type owl:DatatypeProperty ;
+           
+           rdfs:domain :FormElement ;
+           
+           rdfs:range xsd:nonNegativeInteger .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/mimeType
+
+:mimeType rdf:type owl:DatatypeProperty ;
+          
+          rdfs:domain :Picture ;
+          
+          rdfs:range xsd:string .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/mimetype
+
+:mimetype rdf:type owl:DatatypeProperty ;
+          
+          rdfs:domain :Picture ;
+          
+          rdfs:range xsd:string .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minBaseColorProcessTime
+
+:minBaseColorProcessTime rdf:type owl:DatatypeProperty ;
+                         
+                         rdfs:domain :BaseColor ;
+                         
+                         rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minCheckboxProcessTime
+
+:minCheckboxProcessTime rdf:type owl:DatatypeProperty ;
+                        
+                        rdfs:domain :Checkbox ;
+                        
+                        rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minColorProcessTime
+
+:minColorProcessTime rdf:type owl:DatatypeProperty ;
+                     
+                     rdfs:domain :Color ;
+                     
+                     rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minDateProcessTime
+
+:minDateProcessTime rdf:type owl:DatatypeProperty ;
+                    
+                    rdfs:domain :Date ;
+                    
+                    rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minEmailProcessTime
+
+:minEmailProcessTime rdf:type owl:DatatypeProperty ;
+                     
+                     rdfs:domain :Email ;
+                     
+                     rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minLinkProcessTime
+
+:minLinkProcessTime rdf:type owl:DatatypeProperty ;
+                    
+                    rdfs:domain :Link ;
+                    
+                    rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minPageProcessTime
+
+:minPageProcessTime rdf:type owl:DatatypeProperty ;
+                    
+                    rdfs:domain :Page ;
+                    
+                    rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minPasswordProcessTime
+
+:minPasswordProcessTime rdf:type owl:DatatypeProperty ;
+                        
+                        rdfs:domain :Password ;
+                        
+                        rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minPictureProcessTime
+
+:minPictureProcessTime rdf:type owl:DatatypeProperty ;
+                       
+                       rdfs:domain :Picture ;
+                       
+                       rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minRadioProcessTime
+
+:minRadioProcessTime rdf:type owl:DatatypeProperty ;
+                     
+                     rdfs:domain :Radio ;
+                     
+                     rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minRangeProcessTime
+
+:minRangeProcessTime rdf:type owl:DatatypeProperty ;
+                     
+                     rdfs:domain :Range ;
+                     
+                     rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minSelectProcessTime
+
+:minSelectProcessTime rdf:type owl:DatatypeProperty ;
+                      
+                      rdfs:domain :Select ;
+                      
+                      rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minSubjectProcessTime
+
+:minSubjectProcessTime rdf:type owl:DatatypeProperty ;
+                       
+                       rdfs:domain :Subject ;
+                       
+                       rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minSubjectsProcessTime
+
+:minSubjectsProcessTime rdf:type owl:DatatypeProperty ;
+                        
+                        rdfs:domain :Subject ;
+                        
+                        rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minTextProcessTime
+
+:minTextProcessTime rdf:type owl:DatatypeProperty ;
+                    
+                    rdfs:domain :Text ;
+                    
+                    rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minTextareaProcessTime
+
+:minTextareaProcessTime rdf:type owl:DatatypeProperty ;
+                        
+                        rdfs:domain :Textarea ;
+                        
+                        rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minWebsiteProcessTime
+
+:minWebsiteProcessTime rdf:type owl:DatatypeProperty ;
+                       
+                       rdfs:domain :Website ;
+                       
+                       rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/name
+
+:name rdf:type owl:DatatypeProperty ;
+      
+      rdfs:domain :FormElement ;
+      
+      rdfs:range xsd:string .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/nontextArea
+
+:nontextArea rdf:type owl:DatatypeProperty ;
+             
+             rdfs:domain :Page ;
+             
+             rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/numberOfImageAreas
+
+:numberOfImageAreas rdf:type owl:DatatypeProperty ;
+                    
+                    rdfs:domain :Page ;
+                    
+                    rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/numberOfLeaves
+
+:numberOfLeaves rdf:type owl:DatatypeProperty ;
+                
+                rdfs:domain :Page ;
+                
+                rdfs:range xsd:integer .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/numberOfTextGroups
+
+:numberOfTextGroups rdf:type owl:DatatypeProperty ;
+                    
+                    rdfs:domain :Page ;
+                    
+                    rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pageHeightInPixel
+
+:pageHeightInPixel rdf:type owl:DatatypeProperty ;
+                   
+                   rdfs:domain :Page ;
+                   
+                   rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pageLanguage
+
+:pageLanguage rdf:type owl:DatatypeProperty ;
+              
+              rdfs:domain :Page ;
+              
+              rdfs:range xsd:string .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pageName
+
+:pageName rdf:type owl:DatatypeProperty ;
+          
+          rdfs:domain :Page ;
+          
+          rdfs:range xsd:string .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pageSizeInPixelSquared
+
+:pageSizeInPixelSquared rdf:type owl:DatatypeProperty ;
+                        
+                        rdfs:domain :Page ;
+                        
+                        rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pageWidthInPixel
+
+:pageWidthInPixel rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:domain :Page ;
+                  
+                  rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/palette
+
+:palette rdf:type owl:DatatypeProperty ;
+         
+         rdfs:domain :Page ;
+         
+         rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pictureFileName
+
+:pictureFileName rdf:type owl:DatatypeProperty ;
+                 
+                 rdfs:domain :Picture ;
+                 
+                 rdfs:range xsd:string .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/plaintext
+
+:plaintext rdf:type owl:DatatypeProperty ;
+           
+           rdfs:domain :Link ;
+           
+           rdfs:range xsd:string .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/priority
+
+:priority rdf:type owl:DatatypeProperty ;
+          
+          rdfs:domain :Problem ;
+          
+          rdfs:range xsd:nonNegativeInteger .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/readability
+
+:readability rdf:type owl:DatatypeProperty ;
+             
+             rdfs:domain :Page ;
+             
+             rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/readabilityLanguage
+
+:readabilityLanguage rdf:type owl:DatatypeProperty ;
+                     
+                     rdfs:domain :Page ;
+                     
+                     rdfs:range xsd:string .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/red
+
+:red rdf:type owl:DatatypeProperty ;
+     
+     rdfs:domain :BaseColor ;
+     
+     rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/required
+
+:required rdf:type owl:DatatypeProperty ;
+          
+          rdfs:domain :FormElement ;
+          
+          rdfs:range xsd:boolean .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/rows
+
+:rows rdf:type owl:DatatypeProperty ;
+      
+      rdfs:domain :Textarea ;
+      
+      rdfs:range xsd:nonNegativeInteger .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/sentences
+
+:sentences rdf:type owl:DatatypeProperty ;
+           
+           rdfs:domain :Page ;
+           
+           rdfs:range xsd:integer .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/size
+
+:size rdf:type owl:DatatypeProperty ;
+      
+      rdfs:domain :Input ;
+      
+      rdfs:range xsd:nonNegativeInteger .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/state
+
+:state rdf:type owl:DatatypeProperty ;
+       
+       rdfs:domain :Page ;
+       
+       rdfs:range xsd:string .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/subjectLanguage
+
+:subjectLanguage rdf:type owl:DatatypeProperty ;
+                 
+                 rdfs:domain :Subject ;
+                 
+                 rdfs:range xsd:string .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/syllables
+
+:syllables rdf:type owl:DatatypeProperty ;
+           
+           rdfs:domain :Page ;
+           
+           rdfs:range xsd:integer .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/textArea
+
+:textArea rdf:type owl:DatatypeProperty ;
+          
+          rdfs:domain :Page ;
+          
+          rdfs:range xsd:decimal .
+
+
+
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/textReadingTime
+
+:textReadingTime rdf:type owl:DatatypeProperty ;
+                 
+                 rdfs:domain :Page ;
+                 
+                 rdfs:range xsd:decimal .
+
+
+
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/value
 
-wdmOWL2:value rdf:type owl:DatatypeProperty ;
-              
-              rdfs:domain wdmOWL2:FormElement .
+:value rdf:type owl:DatatypeProperty ;
+       
+       rdfs:domain :FormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/vicramComplexity
 
-wdmOWL2:vicramComplexity rdf:type owl:DatatypeProperty ;
-                         
-                         rdfs:domain wdmOWL2:State ;
-                         
-                         rdfs:range xsd:decimal .
+:vicramComplexity rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:domain :State ;
+                  
+                  rdfs:range xsd:decimal .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/visualComplexity
 
-wdmOWL2:visualComplexity rdf:type owl:DatatypeProperty ;
-                         
-                         rdfs:domain wdmOWL2:Page ;
-                         
-                         rdfs:range xsd:decimal .
+:visualComplexity rdf:type owl:DatatypeProperty ;
+                  
+                  rdfs:domain :Page ;
+                  
+                  rdfs:range xsd:decimal .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/websiteName
 
-wdmOWL2:websiteName rdf:type owl:DatatypeProperty ;
-                    
-                    rdfs:domain wdmOWL2:Website ;
-                    
-                    rdfs:range xsd:string .
+:websiteName rdf:type owl:DatatypeProperty ;
+             
+             rdfs:domain :Website ;
+             
+             rdfs:range xsd:string .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/wordLimit
 
-wdmOWL2:wordLimit rdf:type owl:DatatypeProperty ;
-                  
-                  rdfs:domain wdmOWL2:Subject ;
-                  
-                  rdfs:range xsd:integer .
+:wordLimit rdf:type owl:DatatypeProperty ;
+           
+           rdfs:domain :Subject ;
+           
+           rdfs:range xsd:integer .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/words
 
-wdmOWL2:words rdf:type owl:DatatypeProperty ;
-              
-              rdfs:domain wdmOWL2:Page ;
-              
-              rdfs:range xsd:integer .
+:words rdf:type owl:DatatypeProperty ;
+       
+       rdfs:domain :Page ;
+       
+       rdfs:range xsd:integer .
 
 
 
@@ -1326,332 +1295,317 @@ wdmOWL2:words rdf:type owl:DatatypeProperty ;
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/BaseColor
 
-wdmOWL2:BaseColor rdf:type owl:Class ;
-                  
-                  owl:disjointWith wdmOWL2:Page .
+:BaseColor rdf:type owl:Class ;
+           
+           owl:disjointWith :Page .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Button
 
-wdmOWL2:Button rdf:type owl:Class ;
-               
-               rdfs:subClassOf wdmOWL2:Input .
+:Button rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Checkbox
 
-wdmOWL2:Checkbox rdf:type owl:Class ;
-                 
-                 rdfs:subClassOf wdmOWL2:Input .
+:Checkbox rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Color
 
-wdmOWL2:Color rdf:type owl:Class ;
-              
-              rdfs:subClassOf wdmOWL2:Input .
+:Color rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Date
 
-wdmOWL2:Date rdf:type owl:Class ;
-             
-             rdfs:subClassOf wdmOWL2:Input .
+:Date rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Datetime
 
-wdmOWL2:Datetime rdf:type owl:Class ;
-                 
-                 rdfs:subClassOf wdmOWL2:Input .
+:Datetime rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Datetime-local
 
-wdmOWL2:Datetime-local rdf:type owl:Class ;
-                       
-                       rdfs:subClassOf wdmOWL2:Input .
+:Datetime-local rdf:type owl:Class ;
+                
+                rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Email
 
-wdmOWL2:Email rdf:type owl:Class ;
-              
-              rdfs:subClassOf wdmOWL2:Input .
+:Email rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/File
 
-wdmOWL2:File rdf:type owl:Class ;
-             
-             rdfs:subClassOf wdmOWL2:Input .
+:File rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Form
 
-wdmOWL2:Form rdf:type owl:Class ;
-             
-             rdfs:subClassOf wdmOWL2:HtmlElement ;
-             
-             owl:disjointWith wdmOWL2:Page .
+:Form rdf:type owl:Class ;
+      
+      rdfs:subClassOf :HtmlElement ;
+      
+      owl:disjointWith :Page .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/FormElement
 
-wdmOWL2:FormElement rdf:type owl:Class ;
-                    
-                    rdfs:subClassOf wdmOWL2:HtmlElement ;
-                    
-                    owl:disjointWith wdmOWL2:Page .
+:FormElement rdf:type owl:Class ;
+             
+             rdfs:subClassOf :HtmlElement ;
+             
+             owl:disjointWith :Page .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Hidden
 
-wdmOWL2:Hidden rdf:type owl:Class ;
-               
-               rdfs:subClassOf wdmOWL2:Input .
+:Hidden rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/HtmlElement
 
-wdmOWL2:HtmlElement rdf:type owl:Class .
+:HtmlElement rdf:type owl:Class .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Image
 
-wdmOWL2:Image rdf:type owl:Class ;
-              
-              rdfs:subClassOf wdmOWL2:Input .
+:Image rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Input
 
-wdmOWL2:Input rdf:type owl:Class ;
-              
-              rdfs:subClassOf wdmOWL2:FormElement .
+:Input rdf:type owl:Class ;
+       
+       rdfs:subClassOf :FormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Link
 
-wdmOWL2:Link rdf:type owl:Class ;
-             
-             rdfs:subClassOf wdmOWL2:HtmlElement ;
-             
-             owl:disjointWith wdmOWL2:Page .
+:Link rdf:type owl:Class ;
+      
+      rdfs:subClassOf :HtmlElement ;
+      
+      owl:disjointWith :Page .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Month
 
-wdmOWL2:Month rdf:type owl:Class ;
-              
-              rdfs:subClassOf wdmOWL2:Input .
+:Month rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Number
 
-wdmOWL2:Number rdf:type owl:Class ;
-               
-               rdfs:subClassOf wdmOWL2:Input .
+:Number rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Option
 
-wdmOWL2:Option rdf:type owl:Class ;
-               
-               rdfs:subClassOf wdmOWL2:FormElement .
+:Option rdf:type owl:Class ;
+        
+        rdfs:subClassOf :FormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Page
 
-wdmOWL2:Page rdf:type owl:Class ;
-             
-             owl:disjointWith wdmOWL2:Picture ,
-                              wdmOWL2:Subject ,
-                              wdmOWL2:Website .
+:Page rdf:type owl:Class ;
+      
+      owl:disjointWith :Picture ,
+                       :Subject ,
+                       :Website .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Password
 
-wdmOWL2:Password rdf:type owl:Class ;
-                 
-                 rdfs:subClassOf wdmOWL2:Input .
+:Password rdf:type owl:Class ;
+          
+          rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Picture
 
-wdmOWL2:Picture rdf:type owl:Class ;
-                
-                rdfs:subClassOf wdmOWL2:HtmlElement .
+:Picture rdf:type owl:Class ;
+         
+         rdfs:subClassOf :HtmlElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Problem
 
-wdmOWL2:Problem rdf:type owl:Class ;
-                
-                rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                  owl:onProperty wdmOWL2:required ;
-                                  owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger ;
-                                  owl:onDataRange xsd:boolean
-                                ] ,
-                                [ rdf:type owl:Restriction ;
-                                  owl:onProperty wdmOWL2:readability ;
-                                  owl:someValuesFrom [ rdf:type rdfs:Datatype ;
-                                                       owl:onDatatype xsd:decimal ;
-                                                       owl:withRestrictions ( [ xsd:minInclusive 7.0
-                                                                              ]
-                                                                            )
-                                                     ]
-                                ] .
+:Problem rdf:type owl:Class .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Radio
 
-wdmOWL2:Radio rdf:type owl:Class ;
-              
-              rdfs:subClassOf wdmOWL2:Input .
+:Radio rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Range
 
-wdmOWL2:Range rdf:type owl:Class ;
-              
-              rdfs:subClassOf wdmOWL2:Input .
+:Range rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Reset
 
-wdmOWL2:Reset rdf:type owl:Class ;
-              
-              rdfs:subClassOf wdmOWL2:Input .
+:Reset rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Search
 
-wdmOWL2:Search rdf:type owl:Class ;
-               
-               rdfs:subClassOf wdmOWL2:Input .
+:Search rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Select
 
-wdmOWL2:Select rdf:type owl:Class ;
-               
-               rdfs:subClassOf wdmOWL2:FormElement .
+:Select rdf:type owl:Class ;
+        
+        rdfs:subClassOf :FormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/State
 
-wdmOWL2:State rdf:type owl:Class ;
-              
-              rdfs:subClassOf wdmOWL2:Page .
+:State rdf:type owl:Class ;
+       
+       rdfs:subClassOf :Page .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Subject
 
-wdmOWL2:Subject rdf:type owl:Class .
+:Subject rdf:type owl:Class .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Submit
 
-wdmOWL2:Submit rdf:type owl:Class ;
-               
-               rdfs:subClassOf wdmOWL2:Input .
+:Submit rdf:type owl:Class ;
+        
+        rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Tel
 
-wdmOWL2:Tel rdf:type owl:Class ;
-            
-            rdfs:subClassOf wdmOWL2:Input .
+:Tel rdf:type owl:Class ;
+     
+     rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Text
 
-wdmOWL2:Text rdf:type owl:Class ;
-             
-             rdfs:subClassOf wdmOWL2:Input .
+:Text rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Textarea
 
-wdmOWL2:Textarea rdf:type owl:Class ;
-                 
-                 rdfs:subClassOf wdmOWL2:FormElement .
+:Textarea rdf:type owl:Class ;
+          
+          rdfs:subClassOf :FormElement .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Time
 
-wdmOWL2:Time rdf:type owl:Class ;
-             
-             rdfs:subClassOf wdmOWL2:Input .
+:Time rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Url
 
-wdmOWL2:Url rdf:type owl:Class ;
-            
-            rdfs:subClassOf wdmOWL2:Input .
+:Url rdf:type owl:Class ;
+     
+     rdfs:subClassOf :Input .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Visit
 
-wdmOWL2:Visit rdf:type owl:Class .
+:Visit rdf:type owl:Class .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Visitor
 
-wdmOWL2:Visitor rdf:type owl:Class .
+:Visitor rdf:type owl:Class .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Website
 
-wdmOWL2:Website rdf:type owl:Class .
+:Website rdf:type owl:Class .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Week
 
-wdmOWL2:Week rdf:type owl:Class ;
-             
-             rdfs:subClassOf wdmOWL2:Input .
+:Week rdf:type owl:Class ;
+      
+      rdfs:subClassOf :Input .
 
 
 
