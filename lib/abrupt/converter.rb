@@ -26,7 +26,8 @@ module Abrupt
     attr_accessor :hsh, :values, :result, :format
 
     def initialize(hsh, options)
-      @format = options[:format].to_sym || :turtle
+      options ||= { format: :turtle }
+      @format = options[:format].to_sym
       @hsh = hsh.deep_symbolize_keys
       # extend given vocabulary
       @result = Repository.load('assets/owl/wdm_vocabulary.owl')
@@ -62,14 +63,7 @@ module Abrupt
     end
 
     def owl
-      prefixes = {
-          wdm: WDM.to_s,
-          rdf: RDF.to_s,
-          rdfs: RDFS.to_s,
-          xsd: XSD.to_s,
-          owl: OWL.to_s,
-      }
-      @result.dump @format, prefixes: prefixes
+      @result.dump @format, prefixes: PREFIXES
     end
 
     def self.from_xml(file)
@@ -118,6 +112,7 @@ module Abrupt
     end
 
     def append_user_data(file)
+      return unless file.is_a?(String)
       return unless File.exist?(file)
       xml = Nokogiri::XML(File.read(file))
       result = {}

@@ -16,6 +16,13 @@ end
 module Abrupt
   WDM = RDF::Vocabulary.new('http://wba.cs.hs-rm.de/wdm-service/wdmOWL/')
   DELIMITER = '#'
+  PREFIXES = {
+      wdm: WDM.to_s,
+      rdf: RDF.to_s,
+      rdfs: RDF::RDFS.to_s,
+      xsd: RDF::XSD.to_s,
+      owl: RDF::OWL.to_s
+  }
 
   def self.root
     File.dirname __dir__
