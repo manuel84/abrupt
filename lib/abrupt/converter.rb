@@ -30,7 +30,7 @@ module Abrupt
       @format = options[:format].to_sym
       @hsh = hsh.deep_symbolize_keys
       # extend given vocabulary
-      @result = Repository.load('assets/owl/wdm_vocabulary.owl')
+      @result = Repository.load('assets/voc/wdm.ttl')
       domain = RDF::URI("#{WDM}Website/#{hsh[:website][:domain]}")
       @result << Statement.new(domain, RDF.type, WDM.Website)
       perform
