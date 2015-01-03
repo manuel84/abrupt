@@ -62,7 +62,14 @@ module Abrupt
     end
 
     def owl
-      @result.dump @format
+      prefixes = {
+          wdm: WDM.to_s,
+          rdf: RDF.to_s,
+          rdfs: RDFS.to_s,
+          xsd: XSD.to_s,
+          owl: OWL.to_s,
+      }
+      @result.dump @format, prefixes: prefixes
     end
 
     def self.from_xml(file)
