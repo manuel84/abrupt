@@ -1,0 +1,80 @@
+# wdm:required(?formelement, true), wdm:required(?formelement, false) -> Problem(?formelement)
+
+@prefix : <http://www.w3.org/2007/rif#> .
+@prefix wdm: <http://wba.cs.hs-rm.de/wdm-service/wdmOWL/> .
+@prefix rif: <http://www.w3.org/2007/rif#> .
+@prefix func: <http://www.w3.org/2007/rif-builtin-function#> .
+@prefix pred: <http://www.w3.org/2007/rif-builtin-predicate#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+
+[]      a rif:Document;
+        rif:directives ();
+        rif:payload wdm:rule-required1 .
+
+wdm:rule-required1 a rif:Group;
+    rif:sentences (
+    [
+        a rif:Forall;
+        rif:formula [
+            a rif:Implies;
+            rif:if [
+                a rif:And;
+                rif:formulas (
+                [
+                    a rif:Atom;
+                    rif:args (
+                    [
+                        a rif:Var;
+                        rif:varname "formelement"
+                    ]
+                    [
+                        a rif:Const;
+                        rif:value "true"^^xsd:boolean
+                    ]
+                    ); # endargs
+                    rif:op [
+                        a rif:Const;
+                        rif:constIRI "http://wba.cs.hs-rm.de/wdm-service/wdmOWL/required"^^xsd:anyURI
+                    ] # endop
+                ]
+                [
+                    a rif:Atom;
+                    rif:args (
+                    [
+                        a rif:Var;
+                        rif:varname "formelement"
+                    ]
+                    [
+                        a rif:Const;
+                        rif:value "false"^^xsd:boolean
+                    ]
+                    ); # endargs
+                    rif:op [
+                        a rif:Const;
+                        rif:constIRI "http://wba.cs.hs-rm.de/wdm-service/wdmOWL/required"^^xsd:anyURI
+                    ] # endop
+                ]
+                ) # endformulas "and"
+            ]; # endif
+            rif:then [
+                a rif:Atom;
+                rif:args (
+                [
+                    a rif:Var;
+                    rif:varname "formelement"
+                ]
+                ); # endargs
+                rif:op [
+                    a rif:Const;
+                    :constIRI "http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Problem"^^xsd:anyURI
+                ]
+            ] # endthen
+        ];
+        rif:vars (
+        [
+            a rif:Var;
+            rif:varname "formelement"
+        ]
+        ) # endvars
+    ] # end sentence
+    ) .

@@ -45,6 +45,7 @@ module Abrupt
     hsh = Converter.from_xml(file)
     converter = Converter.new(hsh, args[1])
     converter.append_user_data(args.first) if args.first
+    converter.append_rules
     puts converter.owl
   end
 end

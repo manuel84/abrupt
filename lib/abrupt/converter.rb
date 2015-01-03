@@ -62,7 +62,17 @@ module Abrupt
     end
 
     def owl
-      @result.dump @format
+      prefixes = {
+          wdm: WDM.to_s,
+          rdf: RDF.to_s,
+          rdfs: RDFS.to_s,
+          xsd: RDF::XSD.to_s,
+          owl: RDF::OWL.to_s,
+          rif: RDF::Vocabulary('http://www.w3.org/2007/rif#'),
+          pred: RDF::Vocabulary('http://www.w3.org/2007/rif-builtin-predicate#'),
+          func: RDF::Vocabulary('http://www.w3.org/2007/rif-builtin-function#')
+      }
+      @result.dump @format, prefixes: prefixes
     end
 
     def self.from_xml(file)
@@ -125,6 +135,12 @@ module Abrupt
         end
       end
       result
+    end
+
+    def append_rules
+      graph = RDF::Graph.new
+      graph.from_ttl(File.read('assets/rules/required_false_true_implies_problem.rif'))
+      add_to_result graph.statements
     end
   end
 end
