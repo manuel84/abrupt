@@ -130,7 +130,8 @@ module Abrupt
     end
 
     def append_rules
-      Transformation::Rif.new('assets/rules/xxx.rif').owl
+      rif = Transformation::Rif.new('assets/rules/xxx.rif')
+      puts rif.owl.dump(:turtle, prefixes: rif.prefixes)
     end
   end
 end
