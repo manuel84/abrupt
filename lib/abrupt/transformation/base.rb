@@ -31,7 +31,6 @@ module Abrupt
         @uri = uri.to_a.map(&:remove_last_slashes)
         @values = values
         @result = []
-        @md5 = Digest::MD5
       end
 
       # rubocop:disable all
@@ -84,11 +83,12 @@ module Abrupt
 
       def add_individuals
         add_individual
-        return unless @values[keyname]
+        return @result unless @values[keyname]
         @values[keyname].each do |k, v|
           s = k.to_s.eql?('language') ? "#{keyname}Language" : k
           add_data_property s, v
         end
+        @result
       end
 
       # Returns the class name

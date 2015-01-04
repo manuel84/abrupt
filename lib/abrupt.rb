@@ -9,6 +9,10 @@ class String
   def remove_last_slashes
     gsub(/([\/]*)$/, '')
   end
+
+  def append_last_slash
+    gsub(/([^\/])$/, '\1/')
+  end
 end
 
 # This module is cool

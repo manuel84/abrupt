@@ -6,7 +6,7 @@ module Abrupt
       # documentation see 'http://wba.cs.hs-rm.de/AbRUPt/service/subject/'
       class Subject < Base
         def add_individuals
-          return unless @values[keyname]
+          return @result unless @values[keyname]
           klass = class_name # Subject
           @values[keyname][:words].each do |word|
             uri = RDF::URI("#{WDM}#{klass}/#{word}")
@@ -14,6 +14,7 @@ module Abrupt
                 [Statement.new(uri, RDF.type, WDM[klass]),
                  Statement.new(resolve_parent_uri, WDM["has#{klass}"], uri)]
           end
+          @result
         end
       end
     end

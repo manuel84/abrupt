@@ -9,18 +9,23 @@ module Abrupt
         attr_accessor :form_uri
 
         def add_individuals
-          return unless @values[keyname]
-          form_id = md5.hexdigest(@values[keyname].to_s)
+          return @result unless @values[keyname]
+          form_id = Digest::MD5.hexdigest(@values[keyname].to_s)
           @uri = ['Form', form_id]
           add_individual
           @parent_uri += @uri
           @values[keyname].each do |input_type, inputs|
-            [inputs].flatten.compact.each do |input|
-              form_element_id = input[:id] || md5.hexdigest(input.to_s)
-              @uri = [input_type.to_s.camelcase, form_element_id]
-              add_individual
-              add_data_properties input
-            end
+            add_individuals_for_inputs(inputs, input_type)
+          end
+          @result
+        end
+
+        def add_individuals_for_inputs(inputs, input_type)
+          [inputs].flatten.compact.each do |input|
+            form_element_id = input[:id] || Digest::MD5.hexdigest(input.to_s)
+            @uri = [input_type.to_s.camelcase, form_element_id]
+            add_individual
+            add_data_properties input
           end
         end
 

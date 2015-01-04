@@ -29,12 +29,19 @@ module Abrupt
       @format = options[:format].to_sym || :turtle
       hsh = self.class.from_xml(hsh) unless hsh.is_a?(Hash)
       @hsh = hsh.deep_symbolize_keys
-      # extend given vocabulary
+      load_repository # extend given vocabulary
+      add_domain # @hsh[:website][:domain] a Website .
+      perform
+    end
+
+    def load_repository
       voc_file = File.join Abrupt.root, 'assets', 'voc', 'wdm.ttl'
       @result = Repository.load(voc_file)
-      domain = RDF::URI("#{WDM}Website/#{hsh[:website][:domain]}")
+    end
+
+    def add_domain
+      domain = RDF::URI("#{WDM}Website/#{@hsh[:website][:domain]}")
       @result << Statement.new(domain, RDF.type, WDM.Website)
-      perform
     end
 
     def self.xml(hsh)
@@ -67,13 +74,11 @@ module Abrupt
     end
 
     def perform
+      website = ['Website', @hsh[:website][:domain]]
       @hsh[:website][:url].each do |url|
-        page_name = url[:name].gsub(/([^\/])$/, '\1/') # append /
-        website = ['Website', @hsh[:website][:domain]]
-        page = ['Page', page_name]
+        page = ['Page', url[:name].append_last_slash]
         page_transformator = Transformation::Base.new(website, page)
-        page_transformator.add_individuals # add Page
-        add_to_result page_transformator.result
+        add_to_result page_transformator.add_individuals # add Page
         next unless url[:state]
         perform_states url[:state], website + page
       end

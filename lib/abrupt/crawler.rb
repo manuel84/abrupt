@@ -47,21 +47,26 @@ module Abrupt
     # @return [JSON] result
     def crawl(uri = nil)
       Abrupt.log '.'
-      uri ||= @uri.to_str.gsub(/([^\/])$/, '\1/') # extend with / if not
+      uri ||= @uri.to_str.append_last_slash
       unless @result[uri]
         html = fetch_html(uri)
         @result[uri] ||= {}
         @result[uri] = perform_services(html) if html
-        # determine uris on this page
-        new_uris = if @result[uri][:link]
-                     @result[uri][:link]['a'].map { |link| link['href'] }
-                   else
-                     []
-                   end
-        new_uris.select! { |url| same_host?(url) } # filter
-        new_uris.uniq.each { |url| crawl(url) } if @follow_links
+        # new_uris.select! { |url| same_host?(url) } # filter
+        uris_with_same_host(uri).uniq.each { |url| crawl(url) } if @follow_links
       end
       Service::Base.transform_hash(@result)
+    end
+
+    # TODO: maybe as class method
+    def uris_with_same_host(uri)
+      if @result[uri][:link] && @result[uri][:link]['a']
+        @result[uri][:link]['a'].to_a.map do |link|
+          link['href'] if same_host?(link['href'])
+        end.compact
+      else
+        []
+      end
     end
 
     def fetch_html(uri)
