@@ -1,7 +1,7 @@
 # Abrupt
-[![Build Status](https://travis-ci.org/manuel84/abrupt.svg?branch=master)](https://travis-ci.org/manuel84/abrupt){target="_blank"}
-[![Code Climate](https://codeclimate.com/github/manuel84/abrupt/badges/gpa.svg)](https://codeclimate.com/github/manuel84/abrupt){target="_blank"}
-[![Test Coverage](https://codeclimate.com/github/manuel84/abrupt/badges/coverage.svg)](https://codeclimate.com/github/manuel84/abrupt){target="_blank"}
+[![Build Status](https://travis-ci.org/manuel84/abrupt.svg?branch=master)](https://travis-ci.org/manuel84/abrupt)
+[![Code Climate](https://codeclimate.com/github/manuel84/abrupt/badges/gpa.svg)](https://codeclimate.com/github/manuel84/abrupt)
+[![Test Coverage](https://codeclimate.com/github/manuel84/abrupt/badges/coverage.svg)](https://codeclimate.com/github/manuel84/abrupt)
 
 Tools for the AbRUPt project, see [http://wba.cs.hs-rm.de/AbRUPt/service/](http://wba.cs.hs-rm.de/AbRUPt/service/)
 
