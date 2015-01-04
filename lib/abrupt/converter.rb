@@ -26,32 +26,15 @@ module Abrupt
     attr_accessor :hsh, :values, :result, :format
 
     def initialize(hsh, options)
-      options ||= { format: :turtle }
-      @format = options[:format].to_sym
+      @format = options[:format].to_sym || :turtle
+      hsh = self.class.from_xml(hsh) unless hsh.is_a?(Hash)
       @hsh = hsh.deep_symbolize_keys
       # extend given vocabulary
-      @result = Repository.load('assets/voc/wdm.ttl')
+      voc_file = File.join Abrupt.root, 'assets', 'voc', 'wdm.ttl'
+      @result = Repository.load(voc_file)
       domain = RDF::URI("#{WDM}Website/#{hsh[:website][:domain]}")
       @result << Statement.new(domain, RDF.type, WDM.Website)
       perform
-    end
-
-    def self.transform_hash(hsh)
-      uri = Addressable::URI.parse(hsh.keys.first).normalize
-      result = {
-          website: {
-              domain: "#{uri.scheme}://#{uri.host}",
-              url: []
-          }
-      }
-      hsh.each_with_index do |(key, value), _index|
-        page = {
-            name: key,
-            state: value
-        }
-        result[:website][:url] << page
-      end
-      result
     end
 
     def self.xml(hsh)
@@ -127,6 +110,16 @@ module Abrupt
         end
       end
       result
+    end
+
+    def append_rules
+      rules_dir = File.join Abrupt.root, 'assets', 'rules', '*'
+      Dir.glob(rules_dir).each do |rule_directory|
+        Dir.glob(File.join(rule_directory, '*')).each do |rule_file|
+          rule = Repository.load(rule_file)
+          add_to_result(rule.statements)
+        end
+      end
     end
   end
 end

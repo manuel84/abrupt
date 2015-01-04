@@ -14,6 +14,7 @@ end
 module Abrupt
   # Crawler for a website including all followed urls
   # with performing abrupt services
+  # BETA!!!
   class Crawler
     SERVICE_MAPPING = {
         r: Service::Readability,
@@ -60,7 +61,7 @@ module Abrupt
         new_uris.select! { |url| same_host?(url) } # filter
         new_uris.uniq.each { |url| crawl(url) } if @follow_links
       end
-      Converter.transform_hash(@result).deep_symbolize_keys
+      Service::Base.transform_hash(@result)
     end
 
     def fetch_html(uri)

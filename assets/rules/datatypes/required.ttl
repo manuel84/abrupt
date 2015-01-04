@@ -5,13 +5,11 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
+
 [
     a owl:Restriction;
     rdfs:subClassOf wdm:Problem;
-    owl:onProperty wdm:readability;
-    owl:someValuesFrom [
-        a rdfs:Datatype;
-        owl:onDatatype xsd:decimal;
-        owl:withRestrictions ([ xsd:minInclusive 7.0])
-    ]
+    owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger;
+    owl:onDataRange xsd:boolean;
+    owl:onProperty wdm:required
 ] .

@@ -52,6 +52,24 @@ module Abrupt
           nil
         end
       end
+
+      def self.transform_hash(hsh)
+        uri = Addressable::URI.parse(hsh.keys.first).normalize
+        result = {
+            website: {
+                domain: "#{uri.scheme}://#{uri.host}",
+                url: []
+            }
+        }
+        hsh.each_with_index do |(key, value), _index|
+          page = {
+              name: key,
+              state: value
+          }
+          result[:website][:url] << page
+        end
+        result.deep_symbolize_keys
+      end
     end
   end
 end
