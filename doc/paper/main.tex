@@ -133,7 +133,7 @@ Damit verdeutlicht sich einfach, dass das Schlussfolgern über die Aussagenlogik
 
 Eine Erweiterung der Aussagenlogik stellt die Prädikatenlogik dar.
 In der Prädikatenlogik werden Elementaraussagen hinsichtlich ihrer Struktur untersucht.
-Mit Quantoren \texit{forall, exist} und Prädikaten lassen sich Aussagen über Existenz und Gültigkeit aller Individuen stellen.
+Mit Quantoren \texit{forall, exist} und Prädikaten lassen sich Aussagen über die Existenz eines und Gültigkeit aller Individuen stellen.
 
 Bsp. Prädikat
 
@@ -152,7 +152,35 @@ forall x: !Checkbox(x) und (!istPflichtfeld(x) oder istPflichtfeld(x))
 exits x,name: Website(x) und name(x, name)
 \end{equation}
 
+Somit lassen sich wesentlich mächtigere Aussagen treffen, die mit der Aussagenlogik allein nicht möglich sind.
+Dies hat allerdings auch Asuwirkungen auf die Laufzeit des Schlussfolgerungs.
+Das Entscheidungsverfahren für die Prädikatenlogik ist unentscheidbar.
 
+Eine entscheidbare Untermenge der Prädikatenlogik erster Stufe bieten die Beschreibungslogiken.
+Im Wesentlichen enthält eine Beschreibungslogik die Operatoren der Aussagenlogik (Negation, und, oder), ein- und zweistellige Prädikate sowie eine eingeschränkte Quantifizierung.
+Sie umfassen Individuen, Eigenschaften und Klassen, wobei keine Klassen von Klassen möglich sind.
+Normalerweie wird die Wissensbasis dabei in 2 Teile separiert:
+
+TBox: Terminlogisches Wissen (Terminoligical Box)
+Definiert das Vokabular in einem Anwendungsbereich (Terminologie, Grundvokabular), d.h. allgemeine Zusammenhange zwischen Objekten des Anwendungsbereichs.
+Das Grundvokabular besteht aus Konzepten (einstellige Prädikate) und Rollen (zweistellige Prädikate)
+
+ABox (Assertional Box)
+Annahmen (assertions) über einzelne Objekte ausgedrückt mit
+Hilfe des Grundvokabulars.
+
+Axiome der Beschreibungslogik in OWL 2 RL
+intersectionOf C1 |^| ... Cn
+unionOf C1 |_| ... Cn
+complementOf negC
+oneOf {a1} |_| ... {an}
+allValuesFrom Forall P.C
+someValuesFrom Exist P.C
+maxCardinality lte n P
+subClassOf C1 =_ C2
+equivalentClass C1 = C2
+disjointWith C1 =_ negC2
+sameIndividualAs {a1} = {a2}
 
 - Prädikatenlogik mit Beispiel (Unentscheidbarkeit)
 
