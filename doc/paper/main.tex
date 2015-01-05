@@ -114,17 +114,12 @@ B = & \textnormal{Checkbox A ist ein Pflichtfeld}
 \end{split}
 \end{align}
 
-\lstinputlisting[breaklines=true,language=ttl]{listings/propositional_logic.ttl} 
-
 Aus der oben genannten Regel (1), folgt, dass die Checkbox mit dem Namen \textit{agb} ein Pflichtfeld ist.
 Eine gängige Darstellung solcher Regeln erfolgt durch Trennung der Prämisse und Konklusion mit einem Bruchstrich:
 
 \begin{equation}
 \frac{A, A \to B}{B}
 \end{equation}
-
- 
-\lstinputlisting[breaklines=true,language=ttl]{listings/propositional_logic_infered.ttl} 
 
 Über Wahrheitstafeln können jegliche (zusammengesetzte) Aussagen auf deren Wahrheitsgehalt überprüft werden.
 Damit verdeutlicht sich einfach, dass das Schlussfolgern über die Aussagenlogik ein entscheidbares Problem darstellt.
@@ -168,43 +163,76 @@ ABox (Assertional Box)
 Annahmen (assertions) über einzelne Objekte ausgedrückt mit
 Hilfe des Grundvokabulars.
 
+Mit dem RL-Profil aus OWL 2 (\cite{owl2rl}) existiert eine Sprache, die die gleiche Mächtigkeit wie die Beschreibungslogik (ALC...) besitzt und demnach für das Reasoning in entscheidbarer Komplexität bestens geeignet ist. 
+OWL 2 ist zu dem Empfehlung des W3C und es existieren bereits einige Reasoner-Implementierungen. 
+Die bekanntesten derzeit sind Fact++, Hermit, KAON2 und Pellet.
+
 Axiome der Beschreibungslogik in OWL 2 RL
-\textit{intersectionOf} $ C_1 \sqcap ... \sqcap C_n$\\
-\textit{unionOf} $C_1 \sqcup ... \sqcup C_n$\\
-\textit{complementOf} $\neg C$\\
-\textit{oneOf} $ \{a_1\} \sqcup ... \sqcup \{a_n\}$\\
-\textit{allValuesFrom} $\forall P.C$\\
-\textit{someValuesFrom} $\exists P.C$\\
-\textit{maxCardinality} $ \leq n P$\\
-\textit{subClassOf} $ C_1 \sqsubseteq C_2 $\\
-\textit{equivalentClass} $ C_1 \equiv C_2 $\\
-\textit{disjointWith} $C_1 \sqsubseteq \neg C_2$\\
-\textit{sameIndividualAs} $ \{a_1\} \ sqsubseteq \{a_2\} $
+\begin{table}[h]
+\begin{tabular}{|l|l|}
+\hline
+\textit{intersectionOf} & $ C_1 \sqcap ... \sqcap C_n$\\ \hline
+\textit{unionOf} & $C_1 \sqcup ... \sqcup C_n$\\ \hline
+\textit{complementOf} & $\neg C$\\ \hline
+\textit{oneOf} & $ \{a_1\} \sqcup ... \sqcup \{a_n\}$\\ \hline
+\textit{allValuesFrom} & $\forall P.C$\\ \hline
+\textit{someValuesFrom} & $\exists P.C$\\ \hline
+\textit{maxCardinality} & $ \leq n P$\\ \hline
+\textit{subClassOf} & $ C_1 \sqsubseteq C_2 $\\ \hline
+\textit{equivalentClass} & $ C_1 \equiv C_2 $\\ \hline
+\textit{disjointWith} & $C_1 \sqsubseteq \neg C_2$\\ \hline
+\textit{sameIndividualAs} & $ \{a_1\} \ sqsubseteq \{a_2\} $\\ \hline
+\end{tabular}
+\end{table}
 
-- Prädikatenlogik mit Beispiel (Unentscheidbarkeit)
+Die exemplarisch genannten Regeln für die beschriebenen Logiken lassen sich somit in OWL 2 RL wie folgt ausdrücken.
 
-- Beschreibungslogik (Einschränkungen bez. Prädikatenlogik, Entscheidbarkeit, OWL 2 RL)
+\lstinputlisting[breaklines=true,language=ttl]{listings/propositional_logic_rule.ttl}
 
-\# TODO maybe section 2, nach Einleitung
+\lstinputlisting[breaklines=true,language=ttl]{listings/propositional_logic_infered.ttl}
+
+\lstinputlisting[breaklines=true,language=ttl]{listings/description_logic_rule.ttl}
+
+\lstinputlisting[breaklines=true,language=ttl]{listings/description_logic_infered.ttl}
+
 \section{Implementierung}
 
-\subsection{Anpassungen und Erweiterung der Arbeit von Brieger}
+\subsection{Anpassungen und Erweiterung des OWL-Converters}
 \# TODO
 
-- Entfernen der Klassenhierarchie, da nicht intuitiv.
+In der Bachelor-Arbeit \cite{Brieger} wurde bereits untersucht inwieweit das Analyse-Tool \cite{url_abrupt} verwendet werden kann um eine objektive Beurteilung über die Benutzerfreundlichkeit einer Webseite geben zu können. 
+Die Arbeit zeigt gute Ansätze und setzt auf die Konvertierung der erhobenen Daten in ein OWL-Dokument um anschließend mit einem durchdachten Regelsystem Schlussfolgerungen ziehen kann. 
+Das Programm ist als Webseite gestaltet und kann lediglich die Webseiten-Daten umwandeln, die Integration der Webseiten-Besucherdaten ist nicht integriert. 
+Auch die Integration in nachfolgende Projekte erweist sich durch den wenig modularen Aufbau als eher schwierig. 
+Mit Einbezug der Ergebnisse aus \cite{Martin} konnte eine Konzept für eine sinnvolle Aufbereitung der Daten gezeigt werden. 
+Es ist OWL-Converter entstanden, der erhobene \textit{AbRUPT}-Daten im XML-Format in ein OWL-Dokument transformiert.
 
-- Erweitern der Object- und Dataproperties um Restriktionen und Eigenschaften (maxCardinality, functional, transitivity...)
+\#TODO:warum eigentlich wdm-service?
 
-- Anpassen der Ontology IRI aus unique Gründen (Vermeiden doppeltes )
-
-- IRI-Aufbau: {wdm}/{type}/{page}{id}
-
-- Inferbeispiel
-
+Einige wichtige Aspekte wurden in dieser Arbeit geändert. 
+Die Ontologie für den \textit{wdm-service} wurde von Grund auf intuitiver gestaltet und um die Konzepte der Webseiten-Besucherdaten erweitert (Fig. onto-Graph). 
+Dabei wurde ebenso auf sinnvolle Konsistenzeigenschaften sowie Inferenz-Regeln zurückgegriffen, die auf Usabilty-Probleme schlussfolgern. (Abschnit Regeln)
+Ein Problem ergab sich für die Eindeutigkeit von Webseiten-Elementen, die nicht kontextbasiert benannt wurden. 
+Mit dem an \textit{REST} angelehnten URI-Aufbau, den Kontext in eingebetteter Struktur ergeben sich global einheitlich URIs. 
+Ein Formular-Element kann somit auf mehreren Webseiten mit gleicher Id, Name und sonstigen Attributen existieren und wird nicht zu dem selben OWL-Element konvertiert. 
+Beispielsweise liegt dann das Input-Textelement des Namens für ein Kontaktformular innerhalb von Formular (Form = \textit{kontaktformular}), Seitenstatus (State = \textit{state5}), Seiten-URL (Page = \textit{http://www.rikscha−mainz.de/Kontakt}) und der zugehörigen Website (Website = \textit{http://www.rikscha−mainz.de}).
+Das sieht zunächst nicht sehr lesbar aus, ist aber aufgrund möglicher sehr großer Datenbestände unvermeidbar. 
+\lstinputlisting[breaklines=true,language=ttl]{listings/unique_nested_uris.ttl}
+ 
 - Errorstruktur
 Problem
 \subsection{Das abrupt-Gem (Converter-Lib + Binary)}
+Für die Neugestaltung des Konvertierung-Tools fiel die Wahl der Technolgie auf das offizielle Paketsystem von Ruby \textit{RubyGems}. 
+Zum einen ist die Unterstützung für RDF/OWL durch \cite{ruby-rdf} ausgezeichnet und zum Anderen erweisen sich noch weitere wesentliche Vorteile:
+\begin{itemize}
+\item{Benutzung durch Kommandozeilentool}
+\item{Modularer Aufbau}
+\item{Ausgezeichnete Unittest-Unterstützung}
+\item{Wiederverwendbarkeit durch Einbindung als RubyGem Bibliothek oder des Kommandozeilentools}
+\end{itemize}
 \# TODO
+
+
 
 - T-Box mit Protege (Vokabular + Regeln)
 
@@ -213,8 +241,8 @@ Problem
 \newpage
 
 \section{Schließen auf Probleme mit Inferenz-Regeln}
-\subsection{Triple-Pattern-Rules}
 \subsection{Inkonsistenz-Regeln}
+\subsection{Produktions-Regeln}
 \subsection{Listen-Regeln}
 \subsection{Datentyp-Regeln}
 
@@ -238,17 +266,9 @@ neuer Converter:
 - Rubygem: Kommandozeilentool, aber auch Code einbettbar in Ruby Web-Projekt
 
 
+\nocite{url_dl_primer}
 
-
-
-\begin{thebibliography}{4}
-
-\bibitem{url_abrupt}AbRUPt,
-Letzter Zugriff: 12. Dezember 2014\\
-\url{http://wba.cs.hs-rm.de/AbRUPt/service/}
-\bibitem{url_dl_primer}A Description Logic Primer\\
-\url{http://arxiv.org/pdf/1201.4089v3.pdf}
-
-\end{thebibliography}
+\bibliography{literature}
+\bibliographystyle{alpha}
 
 \end{document}

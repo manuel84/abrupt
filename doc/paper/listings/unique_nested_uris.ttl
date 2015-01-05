@@ -1,0 +1,10 @@
+@prefix wdm: <http://wba.cs.hs-rm.de/wdm-service/wdmOWL/> .
+
+wdm:Website/http://www.rikscha-mainz.de/Page/http://www.rikscha-mainz.de/Kontakt/State/state5/Form/kontaktformular/Text/name a wdm:Text;
+   wdm:class "text";
+   wdm:id "name";
+   wdm:maxlength 60;
+   wdm:name "name";
+   wdm:placeholder "Vorname Nachname";
+   wdm:size 40;
+   wdm:type "text" .
