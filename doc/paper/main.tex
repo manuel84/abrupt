@@ -101,7 +101,7 @@ Durch die Konvertierung, Modellierung und Entwicklung eines durchdachtes Regelsy
 
 \# [WiP]
 
-Mit der Aussagenlogik lassen sich beschränkt Formeln aufstellen. Sie entsprechen in der Programmierung dem Datentyp \texit{Boolean}, also Elementarussagen, die verknüpft und negiert erscheinen und deren Wahrheitsgehalt \texit{Wahr} oder \texit{falsch} ist.
+Mit der Aussagenlogik lassen sich beschränkt Formeln aufstellen. Sie entsprechen in der Programmierung dem Datentyp \textit{Boolean}, also Elementarussagen, die verknüpft und negiert erscheinen und deren Wahrheitsgehalt \textit{Wahr} oder \textit{falsch} ist.
 
 \begin{align}
 \begin{split}
@@ -116,7 +116,7 @@ B = & \textnormal{Checkbox A ist ein Pflichtfeld}
 
 \lstinputlisting[breaklines=true,language=ttl]{listings/propositional_logic.ttl} 
 
-Aus der oben genannten Regel (1), folgt, dass die Checkbox mit dem Namen \texit{agb} ein Pflichtfeld ist.
+Aus der oben genannten Regel (1), folgt, dass die Checkbox mit dem Namen \textit{agb} ein Pflichtfeld ist.
 Eine gängige Darstellung solcher Regeln erfolgt durch Trennung der Prämisse und Konklusion mit einem Bruchstrich:
 
 \begin{equation}
@@ -133,23 +133,22 @@ Damit verdeutlicht sich einfach, dass das Schlussfolgern über die Aussagenlogik
 
 Eine Erweiterung der Aussagenlogik stellt die Prädikatenlogik dar.
 In der Prädikatenlogik werden Elementaraussagen hinsichtlich ihrer Struktur untersucht.
-Mit Quantoren \texit{forall, exist} und Prädikaten lassen sich Aussagen über die Existenz eines und Gültigkeit aller Individuen stellen.
+Mit Quantoren \textit{forall, exist} und Prädikaten lassen sich Aussagen über die Existenz eines und Gültigkeit aller Individuen stellen.
 
 Bsp. Prädikat
 
 \begin{equation}
-istPflichtfeld(A)
+istPflichtfeld(x)
 \end{equation}
 
 Bsp. Quantor
 
 \begin{equation}
-forall x: !Checkbox(x) und (!istPflichtfeld(x) oder istPflichtfeld(x))
+\forall x. \neg Checkbox(x) \land (\neg istPflichtfeld(x) \lor istPflichtfeld(x))
 \end{equation}
 
 \begin{equation}
-
-exits x,name: Website(x) und name(x, name)
+\exists x\exists y. Website(x) \land name(x, y)
 \end{equation}
 
 Somit lassen sich wesentlich mächtigere Aussagen treffen, die mit der Aussagenlogik allein nicht möglich sind.
@@ -170,17 +169,17 @@ Annahmen (assertions) über einzelne Objekte ausgedrückt mit
 Hilfe des Grundvokabulars.
 
 Axiome der Beschreibungslogik in OWL 2 RL
-intersectionOf C1 |^| ... Cn
-unionOf C1 |_| ... Cn
-complementOf negC
-oneOf {a1} |_| ... {an}
-allValuesFrom Forall P.C
-someValuesFrom Exist P.C
-maxCardinality lte n P
-subClassOf C1 =_ C2
-equivalentClass C1 = C2
-disjointWith C1 =_ negC2
-sameIndividualAs {a1} = {a2}
+\textit{intersectionOf} $ C_1 \sqcap ... \sqcap C_n$\\
+\textit{unionOf} $C_1 \sqcup ... \sqcup C_n$\\
+\textit{complementOf} $\neg C$\\
+\textit{oneOf} $ \{a_1\} \sqcup ... \sqcup \{a_n\}$\\
+\textit{allValuesFrom} $\forall P.C$\\
+\textit{someValuesFrom} $\exists P.C$\\
+\textit{maxCardinality} $ \leq n P$\\
+\textit{subClassOf} $ C_1 \sqsubseteq C_2 $\\
+\textit{equivalentClass} $ C_1 \equiv C_2 $\\
+\textit{disjointWith} $C_1 \sqsubseteq \neg C_2$\\
+\textit{sameIndividualAs} $ \{a_1\} \ sqsubseteq \{a_2\} $
 
 - Prädikatenlogik mit Beispiel (Unentscheidbarkeit)
 
