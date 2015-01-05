@@ -101,7 +101,7 @@ Durch die Konvertierung, Modellierung und Entwicklung eines durchdachtes Regelsy
 
 \# [WiP]
 
-Mit der Aussagenlogik lassen sich beschränkt Formeln aufstellen. Sie entsprechen in der Programmierung dem Datentyp "Boolean", also Elementarussagen, die verknüpft und negiert erscheinen und deren Wahrheitsgehalt Wahr oder falsch ist.
+Mit der Aussagenlogik lassen sich beschränkt Formeln aufstellen. Sie entsprechen in der Programmierung dem Datentyp \texit{Boolean}, also Elementarussagen, die verknüpft und negiert erscheinen und deren Wahrheitsgehalt \texit{Wahr} oder \texit{falsch} ist.
 
 \begin{align}
 \begin{split}
@@ -116,7 +116,8 @@ B = & \textnormal{Checkbox A ist ein Pflichtfeld}
 
 \lstinputlisting[breaklines=true,language=ttl]{listings/propositional_logic.ttl} 
 
-Aus der oben genannten Regel (1), kann gefolgert werden, dass die Checkbox mit dem Namen "agb" ein Pflichtfeld ist. Eine gängige Darstellung solcher Regeln erfolgt durch Trennung der Prämisse und Konklusion mit einem Bruchstrich:
+Aus der oben genannten Regel (1), folgt, dass die Checkbox mit dem Namen \texit{agb} ein Pflichtfeld ist.
+Eine gängige Darstellung solcher Regeln erfolgt durch Trennung der Prämisse und Konklusion mit einem Bruchstrich:
 
 \begin{equation}
 \frac{A, A \to B}{B}
@@ -125,17 +126,37 @@ Aus der oben genannten Regel (1), kann gefolgert werden, dass die Checkbox mit d
  
 \lstinputlisting[breaklines=true,language=ttl]{listings/propositional_logic_infered.ttl} 
 
-Über Wahrheitstafeln können jegliche (zusammengesetzte) Aussagen auf deren Wahrheitsgehalt überprüft werden. Damit verdeutlicht sich einfach, dass das Schlussfolgern über die Aussagenlogik ein entscheidbares Problem darstellt.
+Über Wahrheitstafeln können jegliche (zusammengesetzte) Aussagen auf deren Wahrheitsgehalt überprüft werden.
+Damit verdeutlicht sich einfach, dass das Schlussfolgern über die Aussagenlogik ein entscheidbares Problem darstellt.
 
 \# TODO:
+
+Eine Erweiterung der Aussagenlogik stellt die Prädikatenlogik dar.
+In der Prädikatenlogik werden Elementaraussagen hinsichtlich ihrer Struktur untersucht.
+Mit Quantoren \texit{forall, exist} und Prädikaten lassen sich Aussagen über Existenz und Gültigkeit aller Individuen stellen.
+
+Bsp. Prädikat
+
+\begin{equation}
+istPflichtfeld(A)
+\end{equation}
+
+Bsp. Quantor
+
+\begin{equation}
+forall x: !Checkbox(x) und (!istPflichtfeld(x) oder istPflichtfeld(x))
+\end{equation}
+
+\begin{equation}
+
+exits x,name: Website(x) und name(x, name)
+\end{equation}
+
+
 
 - Prädikatenlogik mit Beispiel (Unentscheidbarkeit)
 
 - Beschreibungslogik (Einschränkungen bez. Prädikatenlogik, Entscheidbarkeit, OWL 2 RL)
-
-\newpage
-
-\section{Website-Usability und der \textit{AbRUPt}-Web-Service}
 
 \# TODO maybe section 2, nach Einleitung
 \section{Implementierung}
