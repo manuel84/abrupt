@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'rdf-rdfxml', '~> 1.1'
   spec.add_runtime_dependency 'rdf-raptor', '~> 1.2'
   spec.add_runtime_dependency 'json-schema', '~> 2.4'
+  spec.add_runtime_dependency 'activesupport', '~> 4.1.7'
 
   spec.add_development_dependency 'bundler', '~> 1.6'
   spec.add_development_dependency 'rake', '~> 10.3'

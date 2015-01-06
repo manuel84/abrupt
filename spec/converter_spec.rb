@@ -1,20 +1,17 @@
 require 'spec_helper'
 describe Abrupt::Converter, :vcr do
+  let(:subject) { Abrupt::Converter.new('spec/fixtures/rikscha_min.xml') }
   context '#from_xml' do
     it 'should convert to hash with customized datatypes' do
       crawled_hash = FactoryGirl.attributes_for(:rikscha_website_data)
       crawled_hash = crawled_hash.deep_symbolize_keys[:data]
-      filename = 'spec/fixtures/rikscha_min.xml'
-      readed_hash = Abrupt::Converter.from_xml filename
-      expect(readed_hash).to eql(crawled_hash)
+      expect(subject.hsh).to eql(crawled_hash)
     end
 
     it 'should validates with json schema' do
-      filename = 'spec/fixtures/rikscha_min.xml'
       schema_filename = 'assets/schema/schema.json'
-      readed_hash = Abrupt::Converter.from_xml filename
       expect do
-        JSON::Validator.validate!(schema_filename, readed_hash.to_json)
+        JSON::Validator.validate!(schema_filename, subject.hsh.to_json)
       end.not_to raise_error
     end
   end

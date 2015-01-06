@@ -3,7 +3,7 @@ require 'rest_client'
 require 'gyoku'
 require 'rdf'
 require 'linkeddata'
-require 'active_support/core_ext/hash'
+require 'active_support/core_ext'
 Dir[File.dirname(__FILE__) + '/transformation/*.rb',
     File.dirname(__FILE__) + '/transformation/website/*.rb',
     File.dirname(__FILE__) + '/transformation/client/*.rb'].each do |file|
@@ -15,19 +15,11 @@ module Abrupt
   # Converter
   class Converter
     include RDF
-    TRANSFORMATIONS =
-        [Transformation::Website::Readability,
-         Transformation::Website::Input,
-         Transformation::Website::Subject,
-         Transformation::Website::Complexity,
-         Transformation::Website::Link,
-         Transformation::Website::Picture]
-
     attr_accessor :hsh, :values, :result, :format
 
-    def initialize(hsh, options)
-      @format = options[:format].to_sym || :turtle
-      hsh = self.class.from_xml(hsh) unless hsh.is_a?(Hash)
+    def initialize(hsh, options = {})
+      @format = options[:format].try(:to_sym) || :turtle
+      hsh = from_xml(hsh) unless hsh.is_a?(Hash)
       @hsh = hsh.deep_symbolize_keys
       load_repository # extend given vocabulary
       add_domain # @hsh[:website][:domain] a Website .
@@ -56,12 +48,21 @@ module Abrupt
       @result.dump @format, prefixes: PREFIXES
     end
 
-    def self.from_xml(file)
+    def website_transformations
+      Transformation::Website::Base.subclasses
+    end
+
+    def client_transformations
+      Transformation::Client::Base.subclasses
+    end
+
+    def from_xml(file)
       xml = Nokogiri::XML(File.read(file))
       hsh = Hash.from_xml(xml.to_s).deep_symbolize_keys!
-      hsh[:website][:url].each_with_index do |value, state|
-        TRANSFORMATIONS.each do |trafo|
-          hsh[:website][:url][state] = trafo.customize_to_schema(value)
+      hsh[:website][:url].each_with_index do |value, i|
+        website_transformations.each do |transformation_class|
+          hsh[:website][:url][i] =
+              transformation_class.customize_to_schema(value)
         end
       end
       hsh
@@ -91,10 +92,9 @@ module Abrupt
         state_uri = parent_uri + state
         # MAYBE empty?
         add_to_result Transformation::Base.new(parent_uri, state).result
-        TRANSFORMATIONS.each do |trafo|
-          t = trafo.new(state_uri, nil, value)
-          t.add_individuals
-          add_to_result t.result
+        website_transformations.each do |transformation_class|
+          t = transformation_class.new(state_uri, nil, value)
+          add_to_result t.add_individuals
         end
       end
     end
@@ -104,17 +104,18 @@ module Abrupt
       return unless File.exist?(file)
       xml = Nokogiri::XML(File.read(file))
       result = {}
-      xml.css('visitor').each do |visitor|
-        visitor.css('pages page').each do |page|
-          transformator = Transformation::Client::Visit.new(
+      xml.css('visitor').each { |visitor| append_pages_for_visitor(visitor) }
+      result
+    end
+
+    def append_pages_for_visitor(visitor)
+      visitor.css('pages page').each do |page|
+        client_transformations.each do |transformation_class|
+          transformator = transformation_class.create(
               @hsh[:website][:domain], page, visitor)
-          transformator.add_individuals
-          # add Visitor
-          # add properties
-          add_to_result transformator.result
+          add_to_result transformator.add_individuals
         end
       end
-      result
     end
 
     def append_rules
