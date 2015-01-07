@@ -9,11 +9,9 @@ module Abrupt
           # @result << Statement.new(uri, RDF.type, WDM[klass])
           # add_object_property(parent_uri, type, child_uri)
           # add_data_property(type, value, name = @values[:name])
-          @values.children.each do |action|
-            unless action.text?
-              pp action.name
-              pp action.attributes.values.map { |v| [v.name, v.value] }
-            end
+          @values.each do |_i, attr|
+            # pp attr.name
+            # pp attr.value
           end
           @result
         end

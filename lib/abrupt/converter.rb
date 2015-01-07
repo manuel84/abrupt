@@ -21,14 +21,9 @@ module Abrupt
       @format = options[:format].try(:to_sym) || :turtle
       hsh = from_xml(hsh) unless hsh.is_a?(Hash)
       @hsh = hsh.deep_symbolize_keys
-      load_repository # extend given vocabulary
+      @result = Repository.load(VOC_FILE)
       add_domain # @hsh[:website][:domain] a Website .
       perform
-    end
-
-    def load_repository
-      voc_file = File.join Abrupt.root, 'assets', 'voc', 'wdm.ttl'
-      @result = Repository.load(voc_file)
     end
 
     def add_domain
@@ -100,11 +95,17 @@ module Abrupt
     end
 
     def append_user_data(file)
-      return unless file.is_a?(String)
-      return unless File.exist?(file)
+      return unless file.is_a?(String) && File.exist?(file)
       xml = Nokogiri::XML(File.read(file))
       result = {}
-      xml.css('visitor').each { |visitor| append_pages_for_visitor(visitor) }
+      xml.css('visitor').each do |visitor|
+        ip = visitor.css('ip').text
+        next unless ip
+        add_to_result Transformation::Client::Visitor.new(
+                          ['Website', @hsh[:website][:domain]],
+                          ['Visitor', ip], visitor).add_individuals
+        append_pages_for_visitor(visitor)
+      end
       result
     end
 
@@ -119,8 +120,7 @@ module Abrupt
     end
 
     def append_rules
-      rules_dir = File.join Abrupt.root, 'assets', 'rules', '*'
-      Dir.glob(rules_dir).each do |rule_directory|
+      Dir.glob(RULES_DIR).each do |rule_directory|
         Dir.glob(File.join(rule_directory, '*')).each do |rule_file|
           rule = Repository.load(rule_file)
           add_to_result(rule.statements)

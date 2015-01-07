@@ -19,6 +19,8 @@ end
 # @abstract
 module Abrupt
   WDM = RDF::Vocabulary.new('http://wba.cs.hs-rm.de/wdm-service/wdmOWL/')
+  VOC_FILE = File.join File.dirname(__dir__), 'assets', 'voc', 'wdm.ttl'
+  RULES_DIR = File.join File.dirname(__dir__), 'assets', 'rules', '*'
   DELIMITER = '#'
   PREFIXES = {
       wdm: WDM.to_s,
