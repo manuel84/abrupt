@@ -1,0 +1,10 @@
+wdm:RequiredFormElement rdf:type owl:Class ;
+
+                        owl:equivalentClass [ rdf:type owl:Restriction ;
+                                              owl:onProperty wdm:name ;
+                                              owl:hasValue "agb"
+                                            ] .
+
+# not possible to infer a property from a class
+# nicht möglich eine Rolle aus einer Klasse zu folgern.
+# C(x) -> P(X, true)
