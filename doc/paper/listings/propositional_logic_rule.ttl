@@ -1,3 +1,15 @@
 a Checkbox
 name agb
 -> required true
+
+[
+    a owl:Restriction;
+    owl:onProperty wdm:name;
+    owl:hasValue "agb";
+    rdfs:subClassOf wdm:RequiredFormElement
+] .
+
+wdm:required-true rdfs:samePropertyAs wdm:required;
+    rdfs:domain wdm:RequiredFormElement;
+    rdfs:range true^^boolean .
+

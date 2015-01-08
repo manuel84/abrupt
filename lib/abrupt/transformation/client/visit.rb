@@ -3,22 +3,23 @@ module Abrupt
   module Transformation
     module Client
       # Transformation clas for client visit data
-      class PageVisit < Base
-        def self.create(domain, page, visitor)
-          # TODO: could them be transformatted via json schema?
-          page_path = page.css('uri').text
-          ip = visitor.css('ip').text
-          time = visitor.css('entertime').text
-          url_time = ::Abrupt.format_time(time)
-          new(['Website', domain, 'Page', domain + page_path, 'Visitor', ip],
-              ['Visit', url_time], visitor)
-        end
-
+      class Visit < Base
         def add_individuals
-          @values[:name] = @values.css('ip').text
+          @values[:name] = @uri.last
           super
+          @values.children.each do |prop|
+            add_property(prop) if prop.children.count == 1
+          end
           add_individuals_for_view
           @result
+        end
+
+        def add_property(prop)
+          if prop.name.eql?('uri')
+            parent_uri_string = "#{WDM}#{(@parent_uri[0..-2] + ['Page', prop.text]).join('/')}"
+            add_object_property(RDF::URI(parent_uri_string), 'Visit', resolve_uri) # Page hasVisit visit
+          end
+          add_data_property(prop.name, prop.text)
         end
 
         def add_individuals_for_view
@@ -33,7 +34,6 @@ module Abrupt
                                    [view.name.capitalize, time],
                                    view.attributes)
           @result += page_view.add_individuals
-          add_object_property(resolve_uri, 'PageView', page_view.resolve_uri)
         end
       end
     end

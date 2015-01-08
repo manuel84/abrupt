@@ -30,7 +30,7 @@ module Abrupt
       owl: RDF::OWL.to_s
   }
 
-  TIME_INPUT_FORMAT = '%d/%b/%Y:%H:%M:%S' # TODO: DO DRY
+  TIME_INPUT_FORMAT = '%d/%b/%Y:%H:%M:%S'
   TIME_OUTPUT_FORMAT = '%Y-%m-%d_%H%M%S'
 
   def self.format_time(time)

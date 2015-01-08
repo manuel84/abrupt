@@ -54,12 +54,11 @@ module Abrupt
     def from_xml(file)
       xml = Nokogiri::XML(File.read(file))
       hsh = Hash.from_xml(xml.to_s).deep_symbolize_keys!
-      if hsh[:website] && hsh[:website][:url]
-        hsh[:website][:url].each_with_index do |value, i|
-          website_transformations.each do |transformation_class|
-            hsh[:website][:url][i] =
-                transformation_class.customize_to_schema(value)
-          end
+      return hsh unless hsh[:website] && hsh[:website][:url]
+      hsh[:website][:url].each_with_index do |value, i|
+        website_transformations.each do |transformation_class|
+          hsh[:website][:url][i] =
+              transformation_class.customize_to_schema(value)
         end
       end
       hsh
@@ -100,22 +99,27 @@ module Abrupt
       return unless file.is_a?(String) && File.exist?(file)
       xml = Nokogiri::XML(File.read(file))
       result = {}
-      xml.css('visitor').each do |visitor|
-        ip = visitor.css('ip').text
+      xml.css('visitor').each do |values|
+        ip = values.css('ip').text
         next unless ip
-        add_to_result Transformation::Client::Visitor.new(
-                          ['Website', @hsh[:website][:domain]],
-                          ['Visitor', ip], visitor).add_individuals
+        visitor = Transformation::Client::Visitor.new(
+            ['Website', @hsh[:website][:domain]],
+            ['Visitor', ip], values)
+        add_to_result visitor.add_individuals
         append_pages_for_visitor(visitor)
       end
       result
     end
 
     def append_pages_for_visitor(visitor)
-      visitor.css('pages page').each do |page|
+      visitor.values.css('pages page').each do |page|
         client_transformations.each do |transformation_class|
-          transformator = transformation_class.create(
-              @hsh[:website][:domain], page, visitor)
+          time = page.css('entertime').text
+          url_time = ::Abrupt.format_time(time)
+          transformator = transformation_class.new(
+              visitor.parent_uri + visitor.uri,
+              ['Visit', url_time], page
+          )
           add_to_result transformator.add_individuals
         end
       end

@@ -1,17 +1,20 @@
-require_relative 'page_visit'
 # @author Manuel Dudda
 module Abrupt
   module Transformation
     module Client
       # Transformation clas for client visit data
-      class PageView < PageVisit
+      class PageView < Transformation::Base
         def add_individuals
           datetime = @values['datetime']
           return @result unless datetime
           @values[:name] = ::Abrupt.format_time(datetime)
-          add_individual
+          super
           @values.each do |_i, attr|
-            add_data_property(attr.name, attr.value) unless attr.is_a?(String)
+            next if attr.is_a?(String)
+            name = attr.name.eql?('name') ? 'inputname' : attr.name
+            value = attr.name.eql?('datetime') ?
+                DateTime.strptime(attr.value, TIME_INPUT_FORMAT) : attr.value
+            add_data_property(name, value)
           end
           @result
         end
