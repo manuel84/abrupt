@@ -108,7 +108,8 @@
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasForm
 
-:hasForm rdf:type owl:ObjectProperty ;
+:hasForm rdf:type owl:InverseFunctionalProperty ,
+                  owl:ObjectProperty ;
          
          rdfs:range :Form ;
          
