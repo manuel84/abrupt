@@ -54,10 +54,12 @@ module Abrupt
     def from_xml(file)
       xml = Nokogiri::XML(File.read(file))
       hsh = Hash.from_xml(xml.to_s).deep_symbolize_keys!
-      hsh[:website][:url].each_with_index do |value, i|
-        website_transformations.each do |transformation_class|
-          hsh[:website][:url][i] =
-              transformation_class.customize_to_schema(value)
+      if hsh[:website] && hsh[:website][:url]
+        hsh[:website][:url].each_with_index do |value, i|
+          website_transformations.each do |transformation_class|
+            hsh[:website][:url][i] =
+                transformation_class.customize_to_schema(value)
+          end
         end
       end
       hsh

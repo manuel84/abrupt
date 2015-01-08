@@ -120,7 +120,8 @@ module Abrupt
         end
       end
 
-      def resolve_uri(name)
+      def resolve_uri(name = nil)
+        name ||= @uri.last
         RDF::URI(resolve_parent_uri_part + '/' + resolve_uri_part(name))
       end
 

@@ -6,12 +6,12 @@ module Abrupt
       # Transformation clas for client visit data
       class PageView < PageVisit
         def add_individuals
-          # @result << Statement.new(uri, RDF.type, WDM[klass])
-          # add_object_property(parent_uri, type, child_uri)
-          # add_data_property(type, value, name = @values[:name])
+          datetime = @values['datetime']
+          return @result unless datetime
+          @values[:name] = ::Abrupt.format_time(datetime)
+          add_individual
           @values.each do |_i, attr|
-            # pp attr.name
-            # pp attr.value
+            add_data_property(attr.name, attr.value) unless attr.is_a?(String)
           end
           @result
         end
