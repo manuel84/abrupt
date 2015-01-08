@@ -32,11 +32,12 @@ class AbruptApp
       c.option '--format STRING', String, 'Specifies the output format, possible [turtle|rdfxml|ntriples] (default=turtle)'
       c.action do |args, options|
         options.default :format => 'turtle' # default turtle syntax output
-        case args.count
+        result = case args.count
         when 0 then puts "arg error"
         when 1 then Abrupt.convert args.first, options.__hash__
         else Abrupt.convert args.first, args[1], options.__hash__
         end
+        puts result.dump Abrupt::Converter.instance.format, prefixes: Abrupt::PREFIXES
       end
     end
 

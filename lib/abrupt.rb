@@ -33,8 +33,12 @@ module Abrupt
   TIME_INPUT_FORMAT = '%d/%b/%Y:%H:%M:%S'
   TIME_OUTPUT_FORMAT = '%Y-%m-%d_%H%M%S'
 
+  def self.parse_time(time)
+    DateTime.strptime(time, TIME_INPUT_FORMAT)
+  end
+
   def self.format_time(time)
-    Time.strptime(time, TIME_INPUT_FORMAT).strftime(TIME_OUTPUT_FORMAT)
+    parse_time(time).strftime(TIME_OUTPUT_FORMAT)
   end
 
   def self.root
@@ -62,9 +66,10 @@ module Abrupt
   end
 
   def self.convert(file, *args)
-    converter = Converter.new(file, args[1])
+    converter = Converter.instance
+    converter.init(file, args[1])
     converter.append_user_data(args.first) if args.first
     converter.append_rules
-    puts converter.owl
+    converter.result
   end
 end

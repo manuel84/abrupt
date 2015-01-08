@@ -407,23 +407,25 @@
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasVisit
 
-:hasVisit rdf:type owl:InverseFunctionalProperty ,
-                   owl:ObjectProperty ;
+:hasVisit rdf:type owl:ObjectProperty ;
           
-          rdfs:domain :Page ;
+          rdfs:range :Visit ;
           
-          rdfs:range :Visit .
+          rdfs:domain [ rdf:type owl:Class ;
+                        owl:unionOf ( :Page
+                                      :Visitor
+                                    )
+                      ] .
 
 
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasVisitor
 
-:hasVisitor rdf:type owl:FunctionalProperty ,
-                     owl:ObjectProperty ;
+:hasVisitor rdf:type owl:ObjectProperty ;
             
-            rdfs:domain :Visit ;
+            rdfs:range :Visitor ;
             
-            rdfs:range :Visitor .
+            rdfs:domain :Website .
 
 
 

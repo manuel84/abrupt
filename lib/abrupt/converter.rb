@@ -1,4 +1,5 @@
 # @author Manuel Dudda
+require 'singleton'
 require 'rest_client'
 require 'gyoku'
 require 'rdf'
@@ -14,21 +15,29 @@ end
 module Abrupt
   # Converter
   class Converter
+    include Singleton
     include RDF
     attr_accessor :hsh, :values, :result, :format
 
-    def initialize(hsh, options = {})
+    def init(hsh, options = {})
       @format = options[:format].try(:to_sym) || :turtle
-      hsh = from_xml(hsh) unless hsh.is_a?(Hash)
-      @hsh = hsh.deep_symbolize_keys
+      init_hsh(hsh)
       @result = Repository.load(VOC_FILE)
-      add_domain # @hsh[:website][:domain] a Website .
+      domain = RDF::URI("#{WDM}Website/#{@hsh[:website][:domain]}")
+      @result << Statement.new(domain, RDF.type, WDM.Website)
       perform
     end
 
-    def add_domain
-      domain = RDF::URI("#{WDM}Website/#{@hsh[:website][:domain]}")
-      @result << Statement.new(domain, RDF.type, WDM.Website)
+    def init_hsh(hsh)
+      hsh = from_xml(hsh) unless hsh.is_a?(Hash)
+      @hsh = hsh.deep_symbolize_keys
+      return unless @hsh[:website]
+      @hsh[:website][:url].each_with_index do |value, i|
+        website_transformations.each do |transformation_class|
+          @hsh[:website][:url][i] =
+              transformation_class.customize_to_schema(value)
+        end
+      end
     end
 
     def self.xml(hsh)
@@ -37,10 +46,6 @@ module Abrupt
 
     def self.json(hsh)
       hsh.to_json
-    end
-
-    def owl
-      @result.dump @format, prefixes: PREFIXES
     end
 
     def website_transformations
@@ -53,15 +58,7 @@ module Abrupt
 
     def from_xml(file)
       xml = Nokogiri::XML(File.read(file))
-      hsh = Hash.from_xml(xml.to_s).deep_symbolize_keys!
-      return hsh unless hsh[:website] && hsh[:website][:url]
-      hsh[:website][:url].each_with_index do |value, i|
-        website_transformations.each do |transformation_class|
-          hsh[:website][:url][i] =
-              transformation_class.customize_to_schema(value)
-        end
-      end
-      hsh
+      Hash.from_xml(xml.to_s)
     end
 
     def add_to_result(statements)
@@ -98,7 +95,6 @@ module Abrupt
     def append_user_data(file)
       return unless file.is_a?(String) && File.exist?(file)
       xml = Nokogiri::XML(File.read(file))
-      result = {}
       xml.css('visitor').each do |values|
         ip = values.css('ip').text
         next unless ip
@@ -108,7 +104,7 @@ module Abrupt
         add_to_result visitor.add_individuals
         append_pages_for_visitor(visitor)
       end
-      result
+      @result
     end
 
     def append_pages_for_visitor(visitor)

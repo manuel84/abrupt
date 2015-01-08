@@ -12,8 +12,11 @@ module Abrupt
           @values.each do |_i, attr|
             next if attr.is_a?(String)
             name = attr.name.eql?('name') ? 'inputname' : attr.name
-            value = attr.name.eql?('datetime') ?
-                DateTime.strptime(attr.value, TIME_INPUT_FORMAT) : attr.value
+            value = if attr.name.eql?('datetime')
+                      Abrupt.parse_time(attr.value)
+                    else
+                      attr.value
+                    end
             add_data_property(name, value)
           end
           @result
