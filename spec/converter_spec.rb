@@ -1,6 +1,9 @@
 require 'spec_helper'
 describe Abrupt::Converter, :vcr do
-  let(:subject) { Abrupt::Converter.new('spec/fixtures/rikscha_min.xml') }
+  let(:subject) do
+    Abrupt::Converter.instance.init('spec/fixtures/rikscha_min.xml')
+    Abrupt::Converter.instance
+  end
   context '#from_xml' do
     it 'should convert to hash with customized datatypes' do
       crawled_hash = FactoryGirl.attributes_for(:rikscha_website_data)
