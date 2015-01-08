@@ -191,8 +191,6 @@
 :hasPage rdf:type owl:InverseFunctionalProperty ,
                   owl:ObjectProperty ;
          
-         rdfs:comment "A page belongs to one website. Because of this restriction the whole URL is saved as name. The domain, path, query and fragment can be reasoned by the URL." ;
-         
          rdfs:range :Page ;
          
          rdfs:domain :Website .
