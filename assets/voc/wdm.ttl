@@ -351,7 +351,8 @@
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasVisit
 
-:hasVisit rdf:type owl:ObjectProperty ;
+:hasVisit rdf:type owl:InverseFunctionalProperty ,
+                   owl:ObjectProperty ;
           
           rdfs:domain :Page ;
           
@@ -361,7 +362,8 @@
 
 ###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasVisitor
 
-:hasVisitor rdf:type owl:ObjectProperty ;
+:hasVisitor rdf:type owl:FunctionalProperty ,
+                     owl:ObjectProperty ;
             
             rdfs:domain :Visit ;
             
