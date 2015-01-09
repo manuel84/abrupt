@@ -105,7 +105,7 @@ module Abrupt
       end
 
       def resolve_parent_uri_part
-        "#{WDM}#{@parent_uri.join('/')}"
+        "#{VOC}#{@parent_uri.join('/')}"
       end
 
       def resolve_parent_uri
@@ -128,16 +128,17 @@ module Abrupt
       def add_individual(name = @values[:name], klass = nil)
         klass ||= @uri.empty? ? class_name : @uri.first
         uri = resolve_uri(name)
-        @result << Statement.new(uri, RDF.type, WDM[klass])
-        @result << Statement.new(resolve_parent_uri, WDM["has#{klass}"], uri)
+        @result << Statement.new(uri, RDF.type, VOC[klass])
+        @result << Statement.new(resolve_parent_uri, VOC["has#{klass}"], uri)
       end
 
       def add_data_property(type, value, name = @values[:name])
-        @result << Statement.new(resolve_uri(name), WDM[type], value)
+        @result << Statement.new(resolve_uri(name), VOC[type], value)
       end
 
       def add_object_property(parent_uri, type, child_uri)
-        @result << Statement.new(parent_uri, WDM["has#{type}"], child_uri)
+        parent_uri = RDF::URI(parent_uri) if parent_uri.is_a?(String)
+        @result << Statement.new(parent_uri, VOC["has#{type}"], child_uri)
       end
     end
   end

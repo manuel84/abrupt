@@ -19,7 +19,7 @@ module Abrupt
           when 'uri'
             uri = [@parent_uri[1], prop.text].map(&:remove_last_slashes)
             parent_uri_path = (@parent_uri[0..-3] + ['Page', uri.join])
-            parent_uri = RDF::URI("#{WDM}#{parent_uri_path.join('/')}")
+            parent_uri = "#{VOC}#{parent_uri_path.join('/')}"
             # Page hasVisit visit
             add_object_property(parent_uri, 'Visit', resolve_uri)
           when 'size' # TODO: transform via customize_to_schema

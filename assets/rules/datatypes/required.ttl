@@ -1,15 +1,15 @@
-@prefix wdm: <http://wba.cs.hs-rm.de/wdm-service/wdmOWL/> .
+@prefix : <http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/> .
+@base <http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-
 [
     a owl:Restriction;
-    rdfs:subClassOf wdm:Problem;
+    rdfs:subClassOf :Problem;
     owl:minQualifiedCardinality "2"^^xsd:nonNegativeInteger;
     owl:onDataRange xsd:boolean;
-    owl:onProperty wdm:required
+    owl:onProperty :required
 ] .

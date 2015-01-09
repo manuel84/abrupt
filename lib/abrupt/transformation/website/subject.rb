@@ -9,10 +9,10 @@ module Abrupt
           return @result unless @values[keyname]
           klass = class_name # Subject
           @values[keyname][:words].each do |word|
-            uri = RDF::URI("#{WDM}#{klass}/#{word}")
+            uri = RDF::URI("#{VOC}#{klass}/#{word}")
             @result +=
-                [Statement.new(uri, RDF.type, WDM[klass]),
-                 Statement.new(resolve_parent_uri, WDM["has#{klass}"], uri)]
+                [Statement.new(uri, RDF.type, VOC[klass]),
+                 Statement.new(resolve_parent_uri, VOC["has#{klass}"], uri)]
           end
           @result
         end

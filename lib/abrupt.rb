@@ -18,12 +18,12 @@ end
 # This module is cool
 # @abstract
 module Abrupt
-  WDM = RDF::Vocabulary.new('http://wba.cs.hs-rm.de/wdm-service/wdmOWL/')
-  VOC_FILE = File.join File.dirname(__dir__), 'assets', 'voc', 'wdm.ttl'
+  VOC = RDF::Vocabulary.new('http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/')
+  VOC_FILE = File.join File.dirname(__dir__), 'assets', 'voc', 'tbox.ttl'
   RULES_DIR = File.join File.dirname(__dir__), 'assets', 'rules', '*'
-  DELIMITER = '#'
+  DELIMITER = '/'
   PREFIXES = {
-      wdm: WDM.to_s,
+      wdm: VOC.to_s,
       rdf: RDF.to_s,
       rdfs: RDF::RDFS.to_s,
       xsd: RDF::XSD.to_s,

@@ -23,8 +23,8 @@ module Abrupt
       @format = options[:format].try(:to_sym) || :turtle
       init_hsh(hsh)
       @result = Repository.load(VOC_FILE)
-      domain = RDF::URI("#{WDM}Website/#{@hsh[:website][:domain]}")
-      @result << Statement.new(domain, RDF.type, WDM.Website)
+      domain = RDF::URI("#{VOC}Website/#{@hsh[:website][:domain]}")
+      @result << Statement.new(domain, RDF.type, VOC.Website)
       perform
     end
 
