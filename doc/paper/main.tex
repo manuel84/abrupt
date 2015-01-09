@@ -263,6 +263,14 @@ Zum einen ist die Unterstützung für RDF/OWL durch \cite{ruby-rdf} ausgezeichne
 \newpage
 
 \section{Schließen auf Probleme mit Inferenz-Regeln}
+Die formale Beschreibungssprache OWL 2 ist eine Empfehlung des W3C vom 11. Dezember 2012 für die Beschreibung von Ontologien. 
+Primär geht es darum Modellierungen einer Domäne vorzunehmen, sodass Mensch und Maschine die Bedeutung verarbeiten können. 
+OWL 2 basiert technisch auf RDF und RDFS und geht dabei über die Ausdrucksmächtigkeit wiet hinaus. 
+Es is somit auch dokumentenbasiert, was die Erstellung und Verteilung gegenüber einem Binärformat enorm vereinfacht. 
+Um die richtige Balance zwischen Ausdrucksstärke und Entscheidbarkeit bzw. Performance zu gewährleisten gibt es 3 verschiedene Sprachebenen. 
+Hier wird der Fokus auf die 2. Sprachebene OWL 2 DL gelegt, für die widerrum 3 Profile existieren. 
+Das OWL 2 RL Profil wird auf Anwendungen, die eine skalierbares Reasoning verlangen, ohne dabei zu viel Ausdruckskraft zu verlieren, ausgerichtet. 
+
 \subsection{Inkonsistenz-Regeln}
 
 \lstinputlisting[breaklines=true,language=ttl, caption=Regel xx]{listings/inconsistency_rule.ttl}
@@ -295,6 +303,7 @@ neuer Converter:
 
 - Rubygem: Kommandozeilentool, aber auch Code einbettbar in Ruby Web-Projekt
 
+\section{Fazit}
 
 \nocite{url_dl_primer}
 
