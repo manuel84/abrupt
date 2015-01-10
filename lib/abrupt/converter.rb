@@ -24,6 +24,7 @@ module Abrupt
       init_hsh(hsh)
       @result = Repository.load(VOC_FILE)
       @uri = URI(@hsh[:website][:domain])
+      init_website
       perform
     end
 
@@ -38,7 +39,7 @@ module Abrupt
       @hsh = hsh.deep_symbolize_keys
       return unless @hsh[:website]
       @hsh[:website][:url].each_with_index do |value, i|
-        website_transformations.each do |transformation_class|
+        Transformation::Website::Base.subclasses.each do |transformation_class|
           @hsh[:website][:url][i] =
               transformation_class.customize_to_schema(value)
         end
@@ -53,14 +54,6 @@ module Abrupt
       hsh.to_json
     end
 
-    def website_transformations
-      Transformation::Website::Base.subclasses
-    end
-
-    def client_transformations
-      Transformation::Client::Base.subclasses
-    end
-
     def from_xml(file)
       xml = Nokogiri::XML(File.read(file))
       Hash.from_xml(xml.to_s)
@@ -71,7 +64,7 @@ module Abrupt
     end
 
     def perform
-      website = ['Website', @uri]
+      website = ['Website', @uri.to_s]
       @hsh[:website][:url].each do |url|
         page = ['Page', url[:name].append_last_slash]
         page_transformator = Transformation::Base.new(website, page)
@@ -87,7 +80,7 @@ module Abrupt
         state = ['State', value[:name]]
         # MAYBE empty?
         add_to_result Transformation::Base.new(parent_uri, state).result
-        website_transformations.each do |transformation_class|
+        Transformation::Website::Base.subclasses.each do |transformation_class|
           t = transformation_class.new(parent_uri + state, nil, value)
           add_to_result t.add_individuals
         end
@@ -101,7 +94,7 @@ module Abrupt
         ip = values.css('ip').text
         next unless ip
         visitor = Transformation::Client::Visitor.new(
-            ['Website', @uri], ['Visitor', ip], values)
+            ['Website', @uri.to_s], ['Visitor', ip], values)
         add_to_result visitor.add_individuals
         append_pages_for_visitor(visitor)
       end
@@ -110,7 +103,7 @@ module Abrupt
 
     def append_pages_for_visitor(visitor)
       visitor.values.css('pages page').each do |page|
-        client_transformations.each do |transformation_class|
+        Transformation::Client::Base.subclasses.each do |transformation_class|
           time = page.css('entertime').text
           url_time = ::Abrupt.format_time(time)
           transformator = transformation_class.new(

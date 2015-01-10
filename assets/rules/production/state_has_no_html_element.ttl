@@ -6,19 +6,16 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-:NonRequiredFormElement owl:intersectionOf
-    (:FormElement
-    [
-        a owl:Restriction;
-        owl:onProperty :required;
-        owl:allValuesFrom owl:Nothing
-    ]
-) .
+# nicht mit Oberrolen möglich
+# [ a owl:Restriction ;
+#     rdfs:subClassOf abrupt:Problem ;
+#     owl:onProperty abrupt:hasHtmlElement ;
+#     owl:cardinality 0
+# ] .
 
-[
-    a owl:Restriction;
-    rdfs:subClassOf :NonRequiredFormElement;
-    owl:onDataRange xsd:boolean;
-    owl:onProperty :required;
-    owl:hasValue false
+
+[ a owl:Restriction ;
+     rdfs:subClassOf :Problem ;
+     owl:onProperty :hasLink ;
+     owl:cardinality 0
 ] .

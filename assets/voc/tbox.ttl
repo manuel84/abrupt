@@ -151,7 +151,9 @@
          
          rdfs:range :Form ;
          
-         rdfs:domain :Page .
+         rdfs:domain :Page ;
+         
+         rdfs:subPropertyOf :hasHtmlElement .
 
 
 
@@ -163,7 +165,9 @@
                 
                 rdfs:domain :Form ;
                 
-                rdfs:range :FormElement .
+                rdfs:range :FormElement ;
+                
+                rdfs:subPropertyOf :hasHtmlElement .
 
 
 
@@ -174,6 +178,20 @@
            rdfs:range :Hidden ;
            
            rdfs:subPropertyOf :hasFormElement .
+
+
+
+###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasHtmlElement
+
+:hasHtmlElement rdf:type owl:ObjectProperty ;
+                
+                rdfs:range :HtmlElement ;
+                
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( :Form
+                                            :Page
+                                          )
+                            ] .
 
 
 
@@ -194,7 +212,9 @@
          
          rdfs:range :Link ;
          
-         rdfs:domain :Page .
+         rdfs:domain :Page ;
+         
+         rdfs:subPropertyOf :hasHtmlElement .
 
 
 
@@ -268,7 +288,9 @@
             
             rdfs:domain :Page ;
             
-            rdfs:range :Picture .
+            rdfs:range :Picture ;
+            
+            rdfs:subPropertyOf :hasHtmlElement .
 
 
 
@@ -1552,7 +1574,9 @@
 
 ###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/HtmlElement
 
-:HtmlElement rdf:type owl:Class .
+:HtmlElement rdf:type owl:Class ;
+             
+             owl:disjointWith :Page .
 
 
 
