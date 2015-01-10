@@ -17,16 +17,20 @@ module Abrupt
   class Converter
     include Singleton
     include RDF
-    attr_accessor :hsh, :values, :result, :format
+    attr_accessor :hsh, :values, :result, :format, :uri
 
     def init(hsh, options = {})
       @format = options[:format].try(:to_sym) || :turtle
       init_hsh(hsh)
       @result = Repository.load(VOC_FILE)
-      domain = RDF::URI("#{VOC}Website/#{@hsh[:website][:domain]}")
-      @result << Statement.new(domain, RDF.type, VOC.Website)
-      @result << Statement.new(domain, VOC.hostName, domain.host)
+      @uri = URI(@hsh[:website][:domain])
       perform
+    end
+
+    def init_website
+      domain = RDF::URI("#{VOC}Website/#{@uri}")
+      @result << Statement.new(domain, RDF.type, VOC.Website)
+      @result << Statement.new(domain, VOC.hostName, @uri.host)
     end
 
     def init_hsh(hsh)
@@ -63,13 +67,11 @@ module Abrupt
     end
 
     def add_to_result(statements)
-      statements.each do |stmt|
-        @result << stmt
-      end
+      statements.each { |stmt| @result << stmt }
     end
 
     def perform
-      website = ['Website', @hsh[:website][:domain]]
+      website = ['Website', @uri]
       @hsh[:website][:url].each do |url|
         page = ['Page', url[:name].append_last_slash]
         page_transformator = Transformation::Base.new(website, page)
@@ -83,11 +85,10 @@ module Abrupt
       states = states.is_a?(Array) ? states : [states]
       states.each do |value|
         state = ['State', value[:name]]
-        state_uri = parent_uri + state
         # MAYBE empty?
         add_to_result Transformation::Base.new(parent_uri, state).result
         website_transformations.each do |transformation_class|
-          t = transformation_class.new(state_uri, nil, value)
+          t = transformation_class.new(parent_uri + state, nil, value)
           add_to_result t.add_individuals
         end
       end
@@ -100,8 +101,7 @@ module Abrupt
         ip = values.css('ip').text
         next unless ip
         visitor = Transformation::Client::Visitor.new(
-            ['Website', @hsh[:website][:domain]],
-            ['Visitor', ip], values)
+            ['Website', @uri], ['Visitor', ip], values)
         add_to_result visitor.add_individuals
         append_pages_for_visitor(visitor)
       end
