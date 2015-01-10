@@ -13,3 +13,19 @@
     owl:onProperty :required;
     owl:hasValue true
 ] .
+
+[
+    a owl:Restriction;
+    rdfs:subClassOf :RequiredFormElement;
+    owl:onDataRange xsd:string;
+    owl:onProperty :name;
+    owl:hasValue "agb"
+] .
+
+[
+    a owl:Restriction;
+    rdfs:subClassOf :RequiredFormElement;
+    owl:onDataRange xsd:string;
+    owl:onProperty :name;
+    owl:hasValue "toc"
+] .

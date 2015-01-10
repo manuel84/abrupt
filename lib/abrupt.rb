@@ -23,7 +23,7 @@ module Abrupt
   RULES_DIR = File.join File.dirname(__dir__), 'assets', 'rules', '*'
   DELIMITER = '/'
   PREFIXES = {
-      wdm: VOC.to_s,
+      abrupt: VOC.to_s,
       rdf: RDF.to_s,
       rdfs: RDF::RDFS.to_s,
       xsd: RDF::XSD.to_s,

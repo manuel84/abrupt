@@ -25,6 +25,7 @@ module Abrupt
       @result = Repository.load(VOC_FILE)
       domain = RDF::URI("#{VOC}Website/#{@hsh[:website][:domain]}")
       @result << Statement.new(domain, RDF.type, VOC.Website)
+      @result << Statement.new(domain, VOC.hostName, domain.host)
       perform
     end
 

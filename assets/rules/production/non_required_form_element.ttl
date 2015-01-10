@@ -17,13 +17,9 @@
 [
     a owl:Restriction;
     rdfs:subClassOf :NonRequiredElement;
-    owl:onDataRange xsd:boolean;
     owl:onProperty :required;
-    owl:qualifiedCardinality 0
+    owl:maxCardinality 0
 ] .
 
-[
-    a owl:Class;
-    owl:subClassOf :NonRequiredFormElement;
-    owl:intersectionOf (:NonRequiredElement :FormElement)
-] .
+:NonRequiredFormElement a owl:Class;
+ owl:intersectionOf ( :FormElement :NonRequiredElement ).
