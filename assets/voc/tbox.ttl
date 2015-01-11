@@ -361,9 +361,13 @@
 :hasState rdf:type owl:IrreflexiveProperty ,
                    owl:ObjectProperty ;
           
-          rdfs:domain :Page ;
+          rdfs:range :State ;
           
-          rdfs:range :State .
+          rdfs:domain [ rdf:type owl:Class ;
+                        owl:unionOf ( :Page
+                                      :Website
+                                    )
+                      ] .
 
 
 
