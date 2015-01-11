@@ -27,16 +27,18 @@
 
 \usepackage{listings}
 
-
-\usepackage{xcolor}       
-\definecolor{olivegreen}{rgb}{0.2,0.8,0.5}
+\usepackage{xcolor}  
 \definecolor{grey}{rgb}{0.5,0.5,0.5}
 \lstdefinelanguage{ttl}{
 sensitive=true,
 morecomment=[l][\color{grey}]{@},
-morecomment=[l][\color{olivegreen}]{\#},
-morestring=[b][\color{blue}]\",
-}
+morecomment=[l][\color{black}]{\#},
+morestring=[b][\color{black}]\",
+numbers=left,
+frame=shadowbox,
+basicstyle=\scriptsize\ttfamily,
+tabsize=2,
+}     
 
 
 \urldef{\mailsa}\path|manuel.b.dudda@student.hs-rm.de|    
@@ -184,25 +186,6 @@ OWL 2 ist zu dem Empfehlung des W3C und es existieren bereits einige Reasoner-Im
 Die bekanntesten derzeit sind Fact++, Hermit, KAON2 und Pellet.
 
 Axiome der Beschreibungslogik, Prädikatenlogik in OWL 2 RL
-\begin{table}[h]
-\begin{tabular}{|l|l|l|}
-\hline
-Prädikatenlogik erster Stufe & Beschreibungslogik ACL & OWL 2 RL \\ \hline
-$ C_1 \sqcap ... \sqcap C_n $ & $ C_1 \sqcap ... \sqcap C_n $ & \textit{intersectionOf} \\ \hline
-$ C_1 \sqcup ... \sqcup C_n $ & $ C_1 \sqcup ... \sqcup C_n $ & \textit{unionOf} \\ \hline
-$ \neg C $ & $ \neg C $ & \textit{complementOf} \\ \hline
-$ \{a_1\} \sqcup ... \sqcup \{a_n\} $ & $ \{a_1\} \sqcup ... \sqcup \{a_n\} $ & \textit{oneOf} \\ \hline
-$ \forall P.C $ & $ \forall P.C $ & \textit{allValuesFrom} \\ \hline
-$ \exists P.C $ & $ \exists P.C $ & \textit{someValuesFrom} \\ \hline
-$ \leq n P $ & $ \leq n P $ & \textit{maxCardinality} \\ \hline
-$ C_1 \sqsubseteq C_2 $ & $ C_1 \sqsubseteq C_2 $ & \textit{subClassOf} \\ \hline
-$ C_1 \equiv C_2 $ & $ C_1 \equiv C_2 $ & \textit{equivalentClass} \\ \hline
-$ C_1 \sqsubseteq \neg C_2 $ & $ C_1 \sqsubseteq \neg C_2 $ & \textit{disjointWith} \\ \hline
-$ \{a_1\} \ sqsubseteq \{a_2\} $ & $ \{a_1\} \ sqsubseteq \{a_2\} $ & \textit{sameIndividualAs} \\ \hline
-\end{tabular}
-\label{table:description_logic}
-\caption{Syntax der Beschreibungslogik und Entsprechung in der Prädikatenlogik sowie in OWL 2 RL}
-\end{table}
 
 Die exemplarisch genannten Regeln für die beschriebenen Logiken lassen sich somit in OWL 2 RL wie folgt ausdrücken.
 
@@ -269,7 +252,33 @@ OWL 2 basiert technisch auf RDF und RDFS und geht dabei über die Ausdrucksmäch
 Es is somit auch dokumentenbasiert, was die Erstellung und Verteilung gegenüber einem Binärformat enorm vereinfacht. 
 Um die richtige Balance zwischen Ausdrucksstärke und Entscheidbarkeit bzw. Performance zu gewährleisten gibt es 3 verschiedene Sprachebenen. 
 Hier wird der Fokus auf die 2. Sprachebene OWL 2 DL gelegt, für die widerrum 3 Profile existieren. 
-Das OWL 2 RL Profil wird auf Anwendungen, die eine skalierbares Reasoning verlangen, ohne dabei zu viel Ausdruckskraft zu verlieren, ausgerichtet. 
+Das OWL 2 RL Profil ist auf Anwendungen, die ein skalierbares Reasoning verlangen, ohne dabei zu viel Ausdruckskraft zu verlieren, ausgerichtet. 
+Die Ausdrucksmächtigkeit entspricht dabei direkt der Beschreibungslogiken. 
+Je nach Anwendung der Axiome ergibt sich das jeweilige Profil, es wird nicht für das Dokumenten vorab definiert. 
+Man ist daher darauf bedacht auf gewisse OWL-Axioma zu verzichten um nicht in das ungewünschte Profil reinzurutschen.
+\begin{table}[h]
+\begin{tabular}{|l|l|l|}
+\hline
+Prädikatenlogik erster Stufe & Beschreibungslogik ACL & OWL 2 RL \\ \hline
+$ C_1 \sqcap ... \sqcap C_n $ & $ C_1 \sqcap ... \sqcap C_n $ & \textit{intersectionOf} \\ \hline
+$ C_1 \sqcup ... \sqcup C_n $ & $ C_1 \sqcup ... \sqcup C_n $ & \textit{unionOf} \\ \hline
+$ \neg C $ & $ \neg C $ & \textit{complementOf} \\ \hline
+$ \{a_1\} \sqcup ... \sqcup \{a_n\} $ & $ \{a_1\} \sqcup ... \sqcup \{a_n\} $ & \textit{oneOf} \\ \hline
+$ \forall P.C $ & $ \forall P.C $ & \textit{allValuesFrom} \\ \hline
+$ \exists P.C $ & $ \exists P.C $ & \textit{someValuesFrom} \\ \hline
+$ \geq n P $ & $ \geq n P $ & \textit{minCardinality} \\ \hline
+$ \leq n P $ & $ \leq n P $ & \textit{maxCardinality} \\ \hline
+$ C_1 \sqsubseteq C_2 $ & $ C_1 \sqsubseteq C_2 $ & \textit{subClassOf} \\ \hline
+$ C_1 \equiv C_2 $ & $ C_1 \equiv C_2 $ & \textit{equivalentClass} \\ \hline
+$ C_1 \sqsubseteq \neg C_2 $ & $ C_1 \sqsubseteq \neg C_2 $ & \textit{disjointWith} \\ \hline
+$ \{a_1\} \sqsubseteq \{a_2\} $ & $ \{a_1\} \sqsubseteq \{a_2\} $ & \textit{sameIndividualAs} \\ \hline
+\end{tabular}
+\label{table:description_logic}
+\caption{Syntax der Beschreibungslogik und Entsprechung in der Prädikatenlogik sowie in OWL 2 RL}
+\end{table}
+
+Eine vernünftige Unterteilung der Axiome ist in \cite{owl2rif} gegeben. 
+
 
 \subsection{Inkonsistenz-Regeln}
 
