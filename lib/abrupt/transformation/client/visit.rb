@@ -25,7 +25,7 @@ module Abrupt
           when 'size' # TODO: transform via customize_to_schema
             prop.name = 'contentlength'
           end
-          add_data_property(prop.name, prop.text)
+          add_data_property(prop.name, CGI.escape(prop.text))
         end
 
         def add_individuals_for_view

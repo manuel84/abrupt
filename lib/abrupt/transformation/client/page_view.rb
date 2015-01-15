@@ -15,7 +15,7 @@ module Abrupt
             value = if attr.name.eql?('datetime')
                       Abrupt.parse_time(attr.value)
                     else
-                      attr.value
+                      CGI.escape(attr.value)
                     end
             add_data_property(name, value)
           end
