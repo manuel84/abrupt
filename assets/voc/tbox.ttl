@@ -1,12 +1,12 @@
-@prefix : <http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/> .
+@prefix : <http://wba.cs.hs-rm.de/wdm-service/wdmOWL/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/> .
+@base <http://wba.cs.hs-rm.de/wdm-service/wdmOWL/> .
 
-<http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/> rdf:type owl:Ontology .
+<http://wba.cs.hs-rm.de/wdm-service/wdmOWL/> rdf:type owl:Ontology .
 
 
 #################################################################
@@ -16,7 +16,7 @@
 #################################################################
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasBaseColor
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasBaseColor
 
 :hasBaseColor rdf:type owl:IrreflexiveProperty ,
                        owl:ObjectProperty ;
@@ -27,7 +27,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasBlur
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasBlur
 
 :hasBlur rdf:type owl:ObjectProperty ;
          
@@ -39,7 +39,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasButton
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasButton
 
 :hasButton rdf:type owl:ObjectProperty ;
            
@@ -49,7 +49,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasCheckbox
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasCheckbox
 
 :hasCheckbox rdf:type owl:ObjectProperty ;
              
@@ -59,7 +59,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasColor
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasColor
 
 :hasColor rdf:type owl:ObjectProperty ;
           
@@ -69,7 +69,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasContent
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasContent
 
 :hasContent rdf:type owl:ObjectProperty ;
             
@@ -81,7 +81,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasDate
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasDate
 
 :hasDate rdf:type owl:ObjectProperty ;
          
@@ -91,7 +91,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasDatetime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasDatetime
 
 :hasDatetime rdf:type owl:ObjectProperty ;
              
@@ -101,7 +101,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasDatetime-local
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasDatetime-local
 
 :hasDatetime-local rdf:type owl:ObjectProperty ;
                    
@@ -111,7 +111,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasEmail
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasEmail
 
 :hasEmail rdf:type owl:ObjectProperty ;
           
@@ -121,7 +121,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasFile
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasFile
 
 :hasFile rdf:type owl:ObjectProperty ;
          
@@ -131,7 +131,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasFocus
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasFocus
 
 :hasFocus rdf:type owl:ObjectProperty ;
           
@@ -143,7 +143,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasForm
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasForm
 
 :hasForm rdf:type owl:InverseFunctionalProperty ,
                   owl:IrreflexiveProperty ,
@@ -157,7 +157,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasFormElement
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasFormElement
 
 :hasFormElement rdf:type owl:InverseFunctionalProperty ,
                          owl:IrreflexiveProperty ,
@@ -171,7 +171,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasHidden
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasHidden
 
 :hasHidden rdf:type owl:ObjectProperty ;
            
@@ -181,7 +181,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasHtmlElement
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasHtmlElement
 
 :hasHtmlElement rdf:type owl:ObjectProperty ;
                 
@@ -195,7 +195,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasImage
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasImage
 
 :hasImage rdf:type owl:ObjectProperty ;
           
@@ -205,7 +205,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasLink
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasLink
 
 :hasLink rdf:type owl:IrreflexiveProperty ,
                   owl:ObjectProperty ;
@@ -218,7 +218,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasMonth
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasMonth
 
 :hasMonth rdf:type owl:ObjectProperty ;
           
@@ -228,7 +228,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasNumber
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasNumber
 
 :hasNumber rdf:type owl:ObjectProperty ;
            
@@ -238,7 +238,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasOption
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasOption
 
 :hasOption rdf:type owl:ObjectProperty ;
            
@@ -248,7 +248,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasPage
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasPage
 
 :hasPage rdf:type owl:InverseFunctionalProperty ,
                   owl:IrreflexiveProperty ,
@@ -260,7 +260,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasPageView
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasPageView
 
 :hasPageView rdf:type owl:IrreflexiveProperty ,
                       owl:ObjectProperty ;
@@ -271,7 +271,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasPassword
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasPassword
 
 :hasPassword rdf:type owl:ObjectProperty ;
              
@@ -281,7 +281,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasPicture
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasPicture
 
 :hasPicture rdf:type owl:IrreflexiveProperty ,
                      owl:ObjectProperty ;
@@ -294,7 +294,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasRadio
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasRadio
 
 :hasRadio rdf:type owl:ObjectProperty ;
           
@@ -304,7 +304,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasRange
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasRange
 
 :hasRange rdf:type owl:ObjectProperty ;
           
@@ -314,7 +314,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasReset
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasReset
 
 :hasReset rdf:type owl:ObjectProperty ;
           
@@ -324,7 +324,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasScroll
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasScroll
 
 :hasScroll rdf:type owl:ObjectProperty ;
            
@@ -336,7 +336,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasSearch
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasSearch
 
 :hasSearch rdf:type owl:ObjectProperty ;
            
@@ -346,7 +346,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasSelect
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasSelect
 
 :hasSelect rdf:type owl:ObjectProperty ;
            
@@ -356,7 +356,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasState
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasState
 
 :hasState rdf:type owl:IrreflexiveProperty ,
                    owl:ObjectProperty ;
@@ -371,7 +371,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasSubject
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasSubject
 
 :hasSubject rdf:type owl:IrreflexiveProperty ,
                      owl:ObjectProperty ;
@@ -382,7 +382,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasSubmit
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasSubmit
 
 :hasSubmit rdf:type owl:ObjectProperty ;
            
@@ -392,7 +392,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasTel
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasTel
 
 :hasTel rdf:type owl:ObjectProperty ;
         
@@ -402,7 +402,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasText
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasText
 
 :hasText rdf:type owl:ObjectProperty ;
          
@@ -412,7 +412,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasTextarea
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasTextarea
 
 :hasTextarea rdf:type owl:ObjectProperty ;
              
@@ -422,7 +422,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasTime
 
 :hasTime rdf:type owl:ObjectProperty ;
          
@@ -432,7 +432,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasUrl
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasUrl
 
 :hasUrl rdf:type owl:ObjectProperty ;
         
@@ -442,7 +442,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasVisit
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasVisit
 
 :hasVisit rdf:type owl:IrreflexiveProperty ,
                    owl:ObjectProperty ;
@@ -457,7 +457,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasVisitor
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasVisitor
 
 :hasVisitor rdf:type owl:IrreflexiveProperty ,
                      owl:ObjectProperty ;
@@ -468,7 +468,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hasWeek
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasWeek
 
 :hasWeek rdf:type owl:ObjectProperty ;
          
@@ -487,7 +487,7 @@
 #################################################################
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/bigwords
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/bigwords
 
 :bigwords rdf:type owl:DatatypeProperty ;
           
@@ -497,7 +497,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/blue
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/blue
 
 :blue rdf:type owl:DatatypeProperty ;
       
@@ -507,7 +507,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/classLimit
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/classLimit
 
 :classLimit rdf:type owl:DatatypeProperty ;
             
@@ -517,7 +517,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/client
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/client
 
 :client rdf:type owl:DatatypeProperty ;
         
@@ -527,7 +527,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/colorfulness
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/colorfulness
 
 :colorfulness rdf:type owl:DatatypeProperty ;
               
@@ -537,7 +537,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/cols
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/cols
 
 :cols rdf:type owl:DatatypeProperty ;
       
@@ -547,7 +547,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/datetime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/datetime
 
 :datetime rdf:type owl:DatatypeProperty ;
           
@@ -557,7 +557,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/depth
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/depth
 
 :depth rdf:type owl:DatatypeProperty ;
        
@@ -567,7 +567,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/duration
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/duration
 
 :duration rdf:type owl:DatatypeProperty ;
           
@@ -577,7 +577,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/frequency
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/frequency
 
 :frequency rdf:type owl:DatatypeProperty ;
            
@@ -585,7 +585,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/geometry
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/geometry
 
 :geometry rdf:type owl:DatatypeProperty ;
           
@@ -595,7 +595,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/green
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/green
 
 :green rdf:type owl:DatatypeProperty ;
        
@@ -605,7 +605,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/horizontalBalance
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/horizontalBalance
 
 :horizontalBalance rdf:type owl:DatatypeProperty ;
                    
@@ -615,7 +615,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/horizontalSymmetry
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/horizontalSymmetry
 
 :horizontalSymmetry rdf:type owl:DatatypeProperty ;
                     
@@ -625,7 +625,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/host
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/host
 
 :host rdf:type owl:DatatypeProperty ;
       
@@ -635,7 +635,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hostName
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hostName
 
 :hostName rdf:type owl:DatatypeProperty ;
           
@@ -645,7 +645,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/href
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/href
 
 :href rdf:type owl:DatatypeProperty ;
       
@@ -655,7 +655,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/hue
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hue
 
 :hue rdf:type owl:DatatypeProperty ;
      
@@ -665,7 +665,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/id
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/id
 
 :id rdf:type owl:DatatypeProperty ;
     
@@ -675,7 +675,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/imageType
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/imageType
 
 :imageType rdf:type owl:DatatypeProperty ;
            
@@ -685,7 +685,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/imgAreaInPixelSquared
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/imgAreaInPixelSquared
 
 :imgAreaInPixelSquared rdf:type owl:DatatypeProperty ;
                        
@@ -695,7 +695,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/imgDocumentTagPercentage
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/imgDocumentTagPercentage
 
 :imgDocumentTagPercentage rdf:type owl:DatatypeProperty ;
                           
@@ -705,7 +705,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/imgDocumentTagRatio
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/imgDocumentTagRatio
 
 :imgDocumentTagRatio rdf:type owl:DatatypeProperty ;
                      
@@ -715,7 +715,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/inputname
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/inputname
 
 :inputname rdf:type owl:DatatypeProperty ;
            
@@ -725,7 +725,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/ip
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/ip
 
 :ip rdf:type owl:DatatypeProperty ;
     
@@ -735,7 +735,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/matrix
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/matrix
 
 :matrix rdf:type owl:DatatypeProperty ;
         
@@ -745,7 +745,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/maxBaseColorProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxBaseColorProcessTime
 
 :maxBaseColorProcessTime rdf:type owl:DatatypeProperty ;
                          
@@ -755,7 +755,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/maxCheckboxProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxCheckboxProcessTime
 
 :maxCheckboxProcessTime rdf:type owl:DatatypeProperty ;
                         
@@ -765,7 +765,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/maxColorProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxColorProcessTime
 
 :maxColorProcessTime rdf:type owl:DatatypeProperty ;
                      
@@ -775,7 +775,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/maxDateProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxDateProcessTime
 
 :maxDateProcessTime rdf:type owl:DatatypeProperty ;
                     
@@ -785,7 +785,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/maxEmailProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxEmailProcessTime
 
 :maxEmailProcessTime rdf:type owl:DatatypeProperty ;
                      
@@ -795,7 +795,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/maxLinkProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxLinkProcessTime
 
 :maxLinkProcessTime rdf:type owl:DatatypeProperty ;
                     
@@ -805,7 +805,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/maxPageProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxPageProcessTime
 
 :maxPageProcessTime rdf:type owl:DatatypeProperty ;
                     
@@ -815,7 +815,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/maxPasswordProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxPasswordProcessTime
 
 :maxPasswordProcessTime rdf:type owl:DatatypeProperty ;
                         
@@ -825,7 +825,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/maxPictureProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxPictureProcessTime
 
 :maxPictureProcessTime rdf:type owl:DatatypeProperty ;
                        
@@ -835,7 +835,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/maxRadioProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxRadioProcessTime
 
 :maxRadioProcessTime rdf:type owl:DatatypeProperty ;
                      
@@ -845,7 +845,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/maxRangeProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxRangeProcessTime
 
 :maxRangeProcessTime rdf:type owl:DatatypeProperty ;
                      
@@ -855,7 +855,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/maxSelectProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxSelectProcessTime
 
 :maxSelectProcessTime rdf:type owl:DatatypeProperty ;
                       
@@ -865,7 +865,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/maxSubjectProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxSubjectProcessTime
 
 :maxSubjectProcessTime rdf:type owl:DatatypeProperty ;
                        
@@ -875,7 +875,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/maxSubjectsProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxSubjectsProcessTime
 
 :maxSubjectsProcessTime rdf:type owl:DatatypeProperty ;
                         
@@ -885,7 +885,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/maxTextProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxTextProcessTime
 
 :maxTextProcessTime rdf:type owl:DatatypeProperty ;
                     
@@ -895,7 +895,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/maxTextareaProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxTextareaProcessTime
 
 :maxTextareaProcessTime rdf:type owl:DatatypeProperty ;
                         
@@ -905,7 +905,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/maxWebsiteProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxWebsiteProcessTime
 
 :maxWebsiteProcessTime rdf:type owl:DatatypeProperty ;
                        
@@ -915,7 +915,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/maxlength
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxlength
 
 :maxlength rdf:type owl:DatatypeProperty ;
            
@@ -925,7 +925,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/mimeType
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/mimeType
 
 :mimeType rdf:type owl:DatatypeProperty ;
           
@@ -935,7 +935,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/mimetype
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/mimetype
 
 :mimetype rdf:type owl:DatatypeProperty ;
           
@@ -945,7 +945,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/minBaseColorProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minBaseColorProcessTime
 
 :minBaseColorProcessTime rdf:type owl:DatatypeProperty ;
                          
@@ -955,7 +955,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/minCheckboxProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minCheckboxProcessTime
 
 :minCheckboxProcessTime rdf:type owl:DatatypeProperty ;
                         
@@ -965,7 +965,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/minColorProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minColorProcessTime
 
 :minColorProcessTime rdf:type owl:DatatypeProperty ;
                      
@@ -975,7 +975,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/minDateProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minDateProcessTime
 
 :minDateProcessTime rdf:type owl:DatatypeProperty ;
                     
@@ -985,7 +985,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/minEmailProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minEmailProcessTime
 
 :minEmailProcessTime rdf:type owl:DatatypeProperty ;
                      
@@ -995,7 +995,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/minLinkProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minLinkProcessTime
 
 :minLinkProcessTime rdf:type owl:DatatypeProperty ;
                     
@@ -1005,7 +1005,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/minPageProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minPageProcessTime
 
 :minPageProcessTime rdf:type owl:DatatypeProperty ;
                     
@@ -1015,7 +1015,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/minPasswordProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minPasswordProcessTime
 
 :minPasswordProcessTime rdf:type owl:DatatypeProperty ;
                         
@@ -1025,7 +1025,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/minPictureProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minPictureProcessTime
 
 :minPictureProcessTime rdf:type owl:DatatypeProperty ;
                        
@@ -1035,7 +1035,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/minRadioProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minRadioProcessTime
 
 :minRadioProcessTime rdf:type owl:DatatypeProperty ;
                      
@@ -1045,7 +1045,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/minRangeProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minRangeProcessTime
 
 :minRangeProcessTime rdf:type owl:DatatypeProperty ;
                      
@@ -1055,7 +1055,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/minSelectProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minSelectProcessTime
 
 :minSelectProcessTime rdf:type owl:DatatypeProperty ;
                       
@@ -1065,7 +1065,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/minSubjectProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minSubjectProcessTime
 
 :minSubjectProcessTime rdf:type owl:DatatypeProperty ;
                        
@@ -1075,7 +1075,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/minSubjectsProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minSubjectsProcessTime
 
 :minSubjectsProcessTime rdf:type owl:DatatypeProperty ;
                         
@@ -1085,7 +1085,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/minTextProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minTextProcessTime
 
 :minTextProcessTime rdf:type owl:DatatypeProperty ;
                     
@@ -1095,7 +1095,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/minTextareaProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minTextareaProcessTime
 
 :minTextareaProcessTime rdf:type owl:DatatypeProperty ;
                         
@@ -1105,7 +1105,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/minWebsiteProcessTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/minWebsiteProcessTime
 
 :minWebsiteProcessTime rdf:type owl:DatatypeProperty ;
                        
@@ -1115,7 +1115,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/name
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/name
 
 :name rdf:type owl:DatatypeProperty ;
       
@@ -1125,7 +1125,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/nontextArea
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/nontextArea
 
 :nontextArea rdf:type owl:DatatypeProperty ;
              
@@ -1135,7 +1135,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/numberOfImageAreas
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/numberOfImageAreas
 
 :numberOfImageAreas rdf:type owl:DatatypeProperty ;
                     
@@ -1145,7 +1145,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/numberOfLeaves
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/numberOfLeaves
 
 :numberOfLeaves rdf:type owl:DatatypeProperty ;
                 
@@ -1155,7 +1155,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/numberOfTextGroups
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/numberOfTextGroups
 
 :numberOfTextGroups rdf:type owl:DatatypeProperty ;
                     
@@ -1165,7 +1165,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/pageHeightInPixel
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pageHeightInPixel
 
 :pageHeightInPixel rdf:type owl:DatatypeProperty ;
                    
@@ -1175,7 +1175,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/pageLanguage
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pageLanguage
 
 :pageLanguage rdf:type owl:DatatypeProperty ;
               
@@ -1185,7 +1185,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/pageName
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pageName
 
 :pageName rdf:type owl:DatatypeProperty ;
           
@@ -1195,7 +1195,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/pageSizeInPixelSquared
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pageSizeInPixelSquared
 
 :pageSizeInPixelSquared rdf:type owl:DatatypeProperty ;
                         
@@ -1205,7 +1205,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/pageWidthInPixel
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pageWidthInPixel
 
 :pageWidthInPixel rdf:type owl:DatatypeProperty ;
                   
@@ -1215,7 +1215,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/palette
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/palette
 
 :palette rdf:type owl:DatatypeProperty ;
          
@@ -1225,7 +1225,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/pictureFileName
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pictureFileName
 
 :pictureFileName rdf:type owl:DatatypeProperty ;
                  
@@ -1235,7 +1235,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/plaintext
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/plaintext
 
 :plaintext rdf:type owl:DatatypeProperty ;
            
@@ -1245,7 +1245,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/priority
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/priority
 
 :priority rdf:type owl:DatatypeProperty ;
           
@@ -1255,7 +1255,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/readability
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/readability
 
 :readability rdf:type owl:DatatypeProperty ;
              
@@ -1265,7 +1265,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/readabilityLanguage
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/readabilityLanguage
 
 :readabilityLanguage rdf:type owl:DatatypeProperty ;
                      
@@ -1275,7 +1275,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/red
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/red
 
 :red rdf:type owl:DatatypeProperty ;
      
@@ -1285,7 +1285,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/required
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/required
 
 :required rdf:type owl:DatatypeProperty ;
           
@@ -1295,7 +1295,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/rows
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/rows
 
 :rows rdf:type owl:DatatypeProperty ;
       
@@ -1305,7 +1305,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/sentences
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/sentences
 
 :sentences rdf:type owl:DatatypeProperty ;
            
@@ -1315,7 +1315,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/size
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/size
 
 :size rdf:type owl:DatatypeProperty ;
       
@@ -1325,7 +1325,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/state
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/state
 
 :state rdf:type owl:DatatypeProperty ;
        
@@ -1335,7 +1335,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/subjectLanguage
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/subjectLanguage
 
 :subjectLanguage rdf:type owl:DatatypeProperty ;
                  
@@ -1345,7 +1345,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/syllables
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/syllables
 
 :syllables rdf:type owl:DatatypeProperty ;
            
@@ -1355,7 +1355,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/textArea
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/textArea
 
 :textArea rdf:type owl:DatatypeProperty ;
           
@@ -1365,7 +1365,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/textReadingTime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/textReadingTime
 
 :textReadingTime rdf:type owl:DatatypeProperty ;
                  
@@ -1375,7 +1375,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/username
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/username
 
 :username rdf:type owl:DatatypeProperty ;
           
@@ -1385,7 +1385,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/value
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/value
 
 :value rdf:type owl:DatatypeProperty ;
        
@@ -1393,7 +1393,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/vicramComplexity
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/vicramComplexity
 
 :vicramComplexity rdf:type owl:DatatypeProperty ;
                   
@@ -1403,7 +1403,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/visualComplexity
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/visualComplexity
 
 :visualComplexity rdf:type owl:DatatypeProperty ;
                   
@@ -1413,7 +1413,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/websiteName
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/websiteName
 
 :websiteName rdf:type owl:DatatypeProperty ;
              
@@ -1423,7 +1423,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/wordLimit
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/wordLimit
 
 :wordLimit rdf:type owl:DatatypeProperty ;
            
@@ -1433,7 +1433,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/words
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/words
 
 :words rdf:type owl:DatatypeProperty ;
        
@@ -1452,7 +1452,7 @@
 #################################################################
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/BaseColor
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/BaseColor
 
 :BaseColor rdf:type owl:Class ;
            
@@ -1460,7 +1460,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Blur
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Blur
 
 :Blur rdf:type owl:Class ;
       
@@ -1468,7 +1468,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Button
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Button
 
 :Button rdf:type owl:Class ;
         
@@ -1476,7 +1476,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Checkbox
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Checkbox
 
 :Checkbox rdf:type owl:Class ;
           
@@ -1484,7 +1484,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Color
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Color
 
 :Color rdf:type owl:Class ;
        
@@ -1492,7 +1492,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Content
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Content
 
 :Content rdf:type owl:Class ;
          
@@ -1500,7 +1500,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Date
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Date
 
 :Date rdf:type owl:Class ;
       
@@ -1508,7 +1508,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Datetime
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Datetime
 
 :Datetime rdf:type owl:Class ;
           
@@ -1516,7 +1516,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Datetime-local
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Datetime-local
 
 :Datetime-local rdf:type owl:Class ;
                 
@@ -1524,7 +1524,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Email
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Email
 
 :Email rdf:type owl:Class ;
        
@@ -1532,7 +1532,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/File
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/File
 
 :File rdf:type owl:Class ;
       
@@ -1540,7 +1540,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Focus
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Focus
 
 :Focus rdf:type owl:Class ;
        
@@ -1548,7 +1548,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Form
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Form
 
 :Form rdf:type owl:Class ;
       
@@ -1558,7 +1558,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/FormElement
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/FormElement
 
 :FormElement rdf:type owl:Class ;
              
@@ -1568,7 +1568,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Hidden
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Hidden
 
 :Hidden rdf:type owl:Class ;
         
@@ -1576,7 +1576,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/HtmlElement
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/HtmlElement
 
 :HtmlElement rdf:type owl:Class ;
              
@@ -1584,7 +1584,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Image
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Image
 
 :Image rdf:type owl:Class ;
        
@@ -1592,7 +1592,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Input
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Input
 
 :Input rdf:type owl:Class ;
        
@@ -1600,7 +1600,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Link
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Link
 
 :Link rdf:type owl:Class ;
       
@@ -1610,7 +1610,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Month
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Month
 
 :Month rdf:type owl:Class ;
        
@@ -1618,7 +1618,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Number
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Number
 
 :Number rdf:type owl:Class ;
         
@@ -1626,7 +1626,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Option
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Option
 
 :Option rdf:type owl:Class ;
         
@@ -1634,7 +1634,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Page
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Page
 
 :Page rdf:type owl:Class ;
       
@@ -1644,13 +1644,13 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/PageView
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/PageView
 
 :PageView rdf:type owl:Class .
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Password
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Password
 
 :Password rdf:type owl:Class ;
           
@@ -1658,7 +1658,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Picture
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Picture
 
 :Picture rdf:type owl:Class ;
          
@@ -1666,13 +1666,13 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Problem
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Problem
 
 :Problem rdf:type owl:Class .
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Radio
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Radio
 
 :Radio rdf:type owl:Class ;
        
@@ -1680,7 +1680,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Range
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Range
 
 :Range rdf:type owl:Class ;
        
@@ -1688,7 +1688,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Reset
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Reset
 
 :Reset rdf:type owl:Class ;
        
@@ -1696,7 +1696,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Scroll
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Scroll
 
 :Scroll rdf:type owl:Class ;
         
@@ -1704,7 +1704,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Search
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Search
 
 :Search rdf:type owl:Class ;
         
@@ -1712,7 +1712,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Select
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Select
 
 :Select rdf:type owl:Class ;
         
@@ -1720,7 +1720,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/State
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/State
 
 :State rdf:type owl:Class ;
        
@@ -1728,13 +1728,13 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Subject
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Subject
 
 :Subject rdf:type owl:Class .
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Submit
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Submit
 
 :Submit rdf:type owl:Class ;
         
@@ -1742,7 +1742,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Tel
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Tel
 
 :Tel rdf:type owl:Class ;
      
@@ -1750,7 +1750,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Text
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Text
 
 :Text rdf:type owl:Class ;
       
@@ -1758,7 +1758,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Textarea
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Textarea
 
 :Textarea rdf:type owl:Class ;
           
@@ -1766,7 +1766,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Time
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Time
 
 :Time rdf:type owl:Class ;
       
@@ -1774,7 +1774,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Url
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Url
 
 :Url rdf:type owl:Class ;
      
@@ -1782,19 +1782,19 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Visit
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Visit
 
 :Visit rdf:type owl:Class .
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Visitor
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Visitor
 
 :Visitor rdf:type owl:Class .
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Website
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Website
 
 :Website rdf:type owl:Class ;
          
@@ -1803,7 +1803,7 @@
 
 
 
-###  http://www.cs.hs-rm.de/~mdudd001/abrupt/v1/Week
+###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Week
 
 :Week rdf:type owl:Class ;
       
@@ -1812,5 +1812,5 @@
 
 
 
-###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+###  Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net
 
