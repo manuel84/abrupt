@@ -12,7 +12,7 @@ module Abrupt
           @values.each do |_i, attr|
             next if attr.is_a?(String)
             name = attr.name.eql?('name') ? 'inputname' : attr.name
-            value = if attr.name.eql?('datetime')
+            value = if name.eql?('datetime')
                       Abrupt.parse_time(attr.value)
                     else
                       CGI.escape(attr.value)

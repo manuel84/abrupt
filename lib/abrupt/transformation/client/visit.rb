@@ -15,17 +15,21 @@ module Abrupt
         end
 
         def add_property(prop)
-          case prop.name
-          when 'uri'
-            uri = [@parent_uri[1], prop.text].map(&:remove_last_slashes)
-            parent_uri_path = (@parent_uri[0..-3] + ['Page', uri.join])
-            parent_uri = "#{VOC}#{parent_uri_path.join('/')}"
-            # Page hasVisit visit
-            add_object_property(parent_uri, 'Visit', resolve_uri)
-          when 'size' # TODO: transform via customize_to_schema
-            prop.name = 'contentlength'
-          end
-          add_data_property(prop.name, CGI.escape(prop.text))
+          value = prop.text
+          name = case prop.name
+                 when 'uri'
+                   uri = [@parent_uri[1], value].map(&:remove_last_slashes)
+                   parent_uri_path = (@parent_uri[0..-3] + ['Page', uri.join])
+                   parent_uri = "#{VOC}#{parent_uri_path.join('/')}"
+                   # Page hasVisit visit
+                   add_object_property(parent_uri, 'Visit', resolve_uri)
+                   prop.name
+                 when 'size' # TODO: transform via customize_to_schema
+                   'contentlength'
+                 else
+                   prop.name
+                 end
+          add_data_property(name, CGI.escape(value))
         end
 
         def add_individuals_for_view
