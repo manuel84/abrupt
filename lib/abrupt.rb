@@ -18,7 +18,7 @@ end
 # This module is cool
 # @abstract
 module Abrupt
-  VOC = RDF::Vocabulary.new('http://wba.cs.hs-rm.de/wdm-service/wdmOWL/')
+  VOC = RDF::Vocabulary.new('http://wba.cs.hs-rm.de/AbRUPt')
   VOC_FILE = File.join File.dirname(__dir__), 'assets', 'voc', 'tbox.ttl'
   RULES_DIR = File.join File.dirname(__dir__), 'assets', 'rules', '*'
   DELIMITER = '/'

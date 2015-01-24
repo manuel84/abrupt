@@ -24,7 +24,8 @@ Or install it yourself as:
 For converting owl file from xml use: 
 
 ```shell
-abrupt convert spec/fixtures/rikscha_Result.xml spec/fixtures/rikscha.ohneBilder.2013-04-30_2013-08-17.xml > output.ttl
+ abrupt convert spec/fixtures/rikscha_Result_min.xml spec/fixtures/rikscha.ohneBilder.2013-04-30_2013-08-17_min.xml --output tmp/out.ttl --forma
+t turtle
 ```
 
 ## Contributing
