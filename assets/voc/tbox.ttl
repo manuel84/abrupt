@@ -1,12 +1,12 @@
-@prefix : <http://wba.cs.hs-rm.de/wdm-service/wdmOWL/> .
+@prefix : <http://wba.cs.hs-rm.de/AbRUPt/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://wba.cs.hs-rm.de/wdm-service/wdmOWL/> .
+@base <http://wba.cs.hs-rm.de/AbRUPt/> .
 
-<http://wba.cs.hs-rm.de/wdm-service/wdmOWL/> rdf:type owl:Ontology .
+<http://wba.cs.hs-rm.de/AbRUPt/> rdf:type owl:Ontology .
 
 
 #################################################################
@@ -16,465 +16,465 @@
 #################################################################
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasBaseColor
+###  http://wba.cs.hs-rm.de/AbRUPt/hasBaseColor
 
-:hasBaseColor rdf:type owl:IrreflexiveProperty ,
-                       owl:ObjectProperty ;
-              
-              rdfs:range :BaseColor ;
-              
-              rdfs:domain :Page .
+<http://wba.cs.hs-rm.de/AbRUPt/hasBaseColor> rdf:type owl:IrreflexiveProperty ,
+                                                      owl:ObjectProperty ;
+                                             
+                                             rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/BaseColor> ;
+                                             
+                                             rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasBlur
+###  http://wba.cs.hs-rm.de/AbRUPt/hasBlur
 
-:hasBlur rdf:type owl:ObjectProperty ;
-         
-         rdfs:range :Blur ;
-         
-         rdfs:domain :Visit ;
-         
-         rdfs:subPropertyOf :hasPageView .
+<http://wba.cs.hs-rm.de/AbRUPt/hasBlur> rdf:type owl:ObjectProperty ;
+                                        
+                                        rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Blur> ;
+                                        
+                                        rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Visit> ;
+                                        
+                                        rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasPageView> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasButton
+###  http://wba.cs.hs-rm.de/AbRUPt/hasButton
 
-:hasButton rdf:type owl:ObjectProperty ;
-           
-           rdfs:range :Button ;
-           
-           rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasButton> rdf:type owl:ObjectProperty ;
+                                          
+                                          rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Button> ;
+                                          
+                                          rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasCheckbox
+###  http://wba.cs.hs-rm.de/AbRUPt/hasCheckbox
 
-:hasCheckbox rdf:type owl:ObjectProperty ;
-             
-             rdfs:range :Checkbox ;
-             
-             rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasCheckbox> rdf:type owl:ObjectProperty ;
+                                            
+                                            rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Checkbox> ;
+                                            
+                                            rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasColor
+###  http://wba.cs.hs-rm.de/AbRUPt/hasColor
 
-:hasColor rdf:type owl:ObjectProperty ;
-          
-          rdfs:range :Color ;
-          
-          rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasColor> rdf:type owl:ObjectProperty ;
+                                         
+                                         rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Color> ;
+                                         
+                                         rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasContent
+###  http://wba.cs.hs-rm.de/AbRUPt/hasContent
 
-:hasContent rdf:type owl:ObjectProperty ;
-            
-            rdfs:range :Content ;
-            
-            rdfs:domain :Visit ;
-            
-            rdfs:subPropertyOf :hasPageView .
+<http://wba.cs.hs-rm.de/AbRUPt/hasContent> rdf:type owl:ObjectProperty ;
+                                           
+                                           rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Content> ;
+                                           
+                                           rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Visit> ;
+                                           
+                                           rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasPageView> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasDate
+###  http://wba.cs.hs-rm.de/AbRUPt/hasDate
 
-:hasDate rdf:type owl:ObjectProperty ;
-         
-         rdfs:range :Date ;
-         
-         rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasDate> rdf:type owl:ObjectProperty ;
+                                        
+                                        rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Date> ;
+                                        
+                                        rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasDatetime
+###  http://wba.cs.hs-rm.de/AbRUPt/hasDatetime
 
-:hasDatetime rdf:type owl:ObjectProperty ;
-             
-             rdfs:range :Datetime ;
-             
-             rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasDatetime> rdf:type owl:ObjectProperty ;
+                                            
+                                            rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Datetime> ;
+                                            
+                                            rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasDatetime-local
+###  http://wba.cs.hs-rm.de/AbRUPt/hasDatetime-local
 
-:hasDatetime-local rdf:type owl:ObjectProperty ;
-                   
-                   rdfs:range :Datetime-local ;
-                   
-                   rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasDatetime-local> rdf:type owl:ObjectProperty ;
+                                                  
+                                                  rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Datetime-local> ;
+                                                  
+                                                  rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasEmail
+###  http://wba.cs.hs-rm.de/AbRUPt/hasEmail
 
-:hasEmail rdf:type owl:ObjectProperty ;
-          
-          rdfs:range :Email ;
-          
-          rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasEmail> rdf:type owl:ObjectProperty ;
+                                         
+                                         rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Email> ;
+                                         
+                                         rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasFile
+###  http://wba.cs.hs-rm.de/AbRUPt/hasFile
 
-:hasFile rdf:type owl:ObjectProperty ;
-         
-         rdfs:range :File ;
-         
-         rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasFile> rdf:type owl:ObjectProperty ;
+                                        
+                                        rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/File> ;
+                                        
+                                        rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasFocus
+###  http://wba.cs.hs-rm.de/AbRUPt/hasFocus
 
-:hasFocus rdf:type owl:ObjectProperty ;
-          
-          rdfs:range :Focus ;
-          
-          rdfs:domain :Visit ;
-          
-          rdfs:subPropertyOf :hasPageView .
+<http://wba.cs.hs-rm.de/AbRUPt/hasFocus> rdf:type owl:ObjectProperty ;
+                                         
+                                         rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Focus> ;
+                                         
+                                         rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Visit> ;
+                                         
+                                         rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasPageView> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasForm
+###  http://wba.cs.hs-rm.de/AbRUPt/hasForm
 
-:hasForm rdf:type owl:InverseFunctionalProperty ,
-                  owl:IrreflexiveProperty ,
-                  owl:ObjectProperty ;
-         
-         rdfs:range :Form ;
-         
-         rdfs:domain :Page ;
-         
-         rdfs:subPropertyOf :hasHtmlElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasForm> rdf:type owl:InverseFunctionalProperty ,
+                                                 owl:IrreflexiveProperty ,
+                                                 owl:ObjectProperty ;
+                                        
+                                        rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Form> ;
+                                        
+                                        rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                        
+                                        rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasHtmlElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasFormElement
+###  http://wba.cs.hs-rm.de/AbRUPt/hasFormElement
 
-:hasFormElement rdf:type owl:InverseFunctionalProperty ,
-                         owl:IrreflexiveProperty ,
-                         owl:ObjectProperty ;
-                
-                rdfs:domain :Form ;
-                
-                rdfs:range :FormElement ;
-                
-                rdfs:subPropertyOf :hasHtmlElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> rdf:type owl:InverseFunctionalProperty ,
+                                                        owl:IrreflexiveProperty ,
+                                                        owl:ObjectProperty ;
+                                               
+                                               rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Form> ;
+                                               
+                                               rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/FormElement> ;
+                                               
+                                               rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasHtmlElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasHidden
+###  http://wba.cs.hs-rm.de/AbRUPt/hasHidden
 
-:hasHidden rdf:type owl:ObjectProperty ;
-           
-           rdfs:range :Hidden ;
-           
-           rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasHidden> rdf:type owl:ObjectProperty ;
+                                          
+                                          rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Hidden> ;
+                                          
+                                          rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasHtmlElement
+###  http://wba.cs.hs-rm.de/AbRUPt/hasHtmlElement
 
-:hasHtmlElement rdf:type owl:ObjectProperty ;
-                
-                rdfs:range :HtmlElement ;
-                
-                rdfs:domain [ rdf:type owl:Class ;
-                              owl:unionOf ( :Form
-                                            :Page
-                                          )
-                            ] .
+<http://wba.cs.hs-rm.de/AbRUPt/hasHtmlElement> rdf:type owl:ObjectProperty ;
+                                               
+                                               rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/HtmlElement> ;
+                                               
+                                               rdfs:domain [ rdf:type owl:Class ;
+                                                             owl:unionOf ( <http://wba.cs.hs-rm.de/AbRUPt/Form>
+                                                                           <http://wba.cs.hs-rm.de/AbRUPt/Page>
+                                                                         )
+                                                           ] .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasImage
+###  http://wba.cs.hs-rm.de/AbRUPt/hasImage
 
-:hasImage rdf:type owl:ObjectProperty ;
-          
-          rdfs:range :Image ;
-          
-          rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasImage> rdf:type owl:ObjectProperty ;
+                                         
+                                         rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Image> ;
+                                         
+                                         rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasLink
+###  http://wba.cs.hs-rm.de/AbRUPt/hasLink
 
-:hasLink rdf:type owl:IrreflexiveProperty ,
-                  owl:ObjectProperty ;
-         
-         rdfs:range :Link ;
-         
-         rdfs:domain :Page ;
-         
-         rdfs:subPropertyOf :hasHtmlElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasLink> rdf:type owl:IrreflexiveProperty ,
+                                                 owl:ObjectProperty ;
+                                        
+                                        rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Link> ;
+                                        
+                                        rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                        
+                                        rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasHtmlElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasMonth
+###  http://wba.cs.hs-rm.de/AbRUPt/hasMonth
 
-:hasMonth rdf:type owl:ObjectProperty ;
-          
-          rdfs:range :Month ;
-          
-          rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasMonth> rdf:type owl:ObjectProperty ;
+                                         
+                                         rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Month> ;
+                                         
+                                         rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasNumber
+###  http://wba.cs.hs-rm.de/AbRUPt/hasNumber
 
-:hasNumber rdf:type owl:ObjectProperty ;
-           
-           rdfs:range :Number ;
-           
-           rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasNumber> rdf:type owl:ObjectProperty ;
+                                          
+                                          rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Number> ;
+                                          
+                                          rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasOption
+###  http://wba.cs.hs-rm.de/AbRUPt/hasOption
 
-:hasOption rdf:type owl:ObjectProperty ;
-           
-           rdfs:range :Option ;
-           
-           rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasOption> rdf:type owl:ObjectProperty ;
+                                          
+                                          rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Option> ;
+                                          
+                                          rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasPage
+###  http://wba.cs.hs-rm.de/AbRUPt/hasPage
 
-:hasPage rdf:type owl:InverseFunctionalProperty ,
-                  owl:IrreflexiveProperty ,
-                  owl:ObjectProperty ;
-         
-         rdfs:range :Page ;
-         
-         rdfs:domain :Website .
+<http://wba.cs.hs-rm.de/AbRUPt/hasPage> rdf:type owl:InverseFunctionalProperty ,
+                                                 owl:IrreflexiveProperty ,
+                                                 owl:ObjectProperty ;
+                                        
+                                        rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                        
+                                        rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Website> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasPageView
+###  http://wba.cs.hs-rm.de/AbRUPt/hasPageView
 
-:hasPageView rdf:type owl:IrreflexiveProperty ,
-                      owl:ObjectProperty ;
-             
-             rdfs:range :PageView ;
-             
-             rdfs:domain :Visit .
+<http://wba.cs.hs-rm.de/AbRUPt/hasPageView> rdf:type owl:IrreflexiveProperty ,
+                                                     owl:ObjectProperty ;
+                                            
+                                            rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/PageView> ;
+                                            
+                                            rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Visit> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasPassword
+###  http://wba.cs.hs-rm.de/AbRUPt/hasPassword
 
-:hasPassword rdf:type owl:ObjectProperty ;
-             
-             rdfs:range :Password ;
-             
-             rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasPassword> rdf:type owl:ObjectProperty ;
+                                            
+                                            rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Password> ;
+                                            
+                                            rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasPicture
+###  http://wba.cs.hs-rm.de/AbRUPt/hasPicture
 
-:hasPicture rdf:type owl:IrreflexiveProperty ,
-                     owl:ObjectProperty ;
-            
-            rdfs:domain :Page ;
-            
-            rdfs:range :Picture ;
-            
-            rdfs:subPropertyOf :hasHtmlElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasPicture> rdf:type owl:IrreflexiveProperty ,
+                                                    owl:ObjectProperty ;
+                                           
+                                           rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                           
+                                           rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Picture> ;
+                                           
+                                           rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasHtmlElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasRadio
+###  http://wba.cs.hs-rm.de/AbRUPt/hasRadio
 
-:hasRadio rdf:type owl:ObjectProperty ;
-          
-          rdfs:range :Radio ;
-          
-          rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasRadio> rdf:type owl:ObjectProperty ;
+                                         
+                                         rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Radio> ;
+                                         
+                                         rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasRange
+###  http://wba.cs.hs-rm.de/AbRUPt/hasRange
 
-:hasRange rdf:type owl:ObjectProperty ;
-          
-          rdfs:range :Range ;
-          
-          rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasRange> rdf:type owl:ObjectProperty ;
+                                         
+                                         rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Range> ;
+                                         
+                                         rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasReset
+###  http://wba.cs.hs-rm.de/AbRUPt/hasReset
 
-:hasReset rdf:type owl:ObjectProperty ;
-          
-          rdfs:range :Reset ;
-          
-          rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasReset> rdf:type owl:ObjectProperty ;
+                                         
+                                         rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Reset> ;
+                                         
+                                         rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasScroll
+###  http://wba.cs.hs-rm.de/AbRUPt/hasScroll
 
-:hasScroll rdf:type owl:ObjectProperty ;
-           
-           rdfs:range :Scroll ;
-           
-           rdfs:domain :Visit ;
-           
-           rdfs:subPropertyOf :hasPageView .
+<http://wba.cs.hs-rm.de/AbRUPt/hasScroll> rdf:type owl:ObjectProperty ;
+                                          
+                                          rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Scroll> ;
+                                          
+                                          rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Visit> ;
+                                          
+                                          rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasPageView> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasSearch
+###  http://wba.cs.hs-rm.de/AbRUPt/hasSearch
 
-:hasSearch rdf:type owl:ObjectProperty ;
-           
-           rdfs:range :Search ;
-           
-           rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasSearch> rdf:type owl:ObjectProperty ;
+                                          
+                                          rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Search> ;
+                                          
+                                          rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasSelect
+###  http://wba.cs.hs-rm.de/AbRUPt/hasSelect
 
-:hasSelect rdf:type owl:ObjectProperty ;
-           
-           rdfs:range :Select ;
-           
-           rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasSelect> rdf:type owl:ObjectProperty ;
+                                          
+                                          rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Select> ;
+                                          
+                                          rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasState
+###  http://wba.cs.hs-rm.de/AbRUPt/hasState
 
-:hasState rdf:type owl:IrreflexiveProperty ,
-                   owl:ObjectProperty ;
-          
-          rdfs:range :State ;
-          
-          rdfs:domain [ rdf:type owl:Class ;
-                        owl:unionOf ( :Page
-                                      :Website
-                                    )
-                      ] .
+<http://wba.cs.hs-rm.de/AbRUPt/hasState> rdf:type owl:IrreflexiveProperty ,
+                                                  owl:ObjectProperty ;
+                                         
+                                         rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/State> ;
+                                         
+                                         rdfs:domain [ rdf:type owl:Class ;
+                                                       owl:unionOf ( <http://wba.cs.hs-rm.de/AbRUPt/Page>
+                                                                     <http://wba.cs.hs-rm.de/AbRUPt/Website>
+                                                                   )
+                                                     ] .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasSubject
+###  http://wba.cs.hs-rm.de/AbRUPt/hasSubject
 
-:hasSubject rdf:type owl:IrreflexiveProperty ,
-                     owl:ObjectProperty ;
-            
-            rdfs:domain :Page ;
-            
-            rdfs:range :Subject .
+<http://wba.cs.hs-rm.de/AbRUPt/hasSubject> rdf:type owl:IrreflexiveProperty ,
+                                                    owl:ObjectProperty ;
+                                           
+                                           rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                           
+                                           rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Subject> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasSubmit
+###  http://wba.cs.hs-rm.de/AbRUPt/hasSubmit
 
-:hasSubmit rdf:type owl:ObjectProperty ;
-           
-           rdfs:range :Submit ;
-           
-           rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasSubmit> rdf:type owl:ObjectProperty ;
+                                          
+                                          rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Submit> ;
+                                          
+                                          rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasTel
+###  http://wba.cs.hs-rm.de/AbRUPt/hasTel
 
-:hasTel rdf:type owl:ObjectProperty ;
-        
-        rdfs:range :Tel ;
-        
-        rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasTel> rdf:type owl:ObjectProperty ;
+                                       
+                                       rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Tel> ;
+                                       
+                                       rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasText
+###  http://wba.cs.hs-rm.de/AbRUPt/hasText
 
-:hasText rdf:type owl:ObjectProperty ;
-         
-         rdfs:range :Text ;
-         
-         rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasText> rdf:type owl:ObjectProperty ;
+                                        
+                                        rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Text> ;
+                                        
+                                        rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasTextarea
+###  http://wba.cs.hs-rm.de/AbRUPt/hasTextarea
 
-:hasTextarea rdf:type owl:ObjectProperty ;
-             
-             rdfs:range :Textarea ;
-             
-             rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasTextarea> rdf:type owl:ObjectProperty ;
+                                            
+                                            rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Textarea> ;
+                                            
+                                            rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasTime
+###  http://wba.cs.hs-rm.de/AbRUPt/hasTime
 
-:hasTime rdf:type owl:ObjectProperty ;
-         
-         rdfs:range :Time ;
-         
-         rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasTime> rdf:type owl:ObjectProperty ;
+                                        
+                                        rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Time> ;
+                                        
+                                        rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasUrl
+###  http://wba.cs.hs-rm.de/AbRUPt/hasUrl
 
-:hasUrl rdf:type owl:ObjectProperty ;
-        
-        rdfs:range :Url ;
-        
-        rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasUrl> rdf:type owl:ObjectProperty ;
+                                       
+                                       rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Url> ;
+                                       
+                                       rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasVisit
+###  http://wba.cs.hs-rm.de/AbRUPt/hasVisit
 
-:hasVisit rdf:type owl:IrreflexiveProperty ,
-                   owl:ObjectProperty ;
-          
-          rdfs:range :Visit ;
-          
-          rdfs:domain [ rdf:type owl:Class ;
-                        owl:unionOf ( :Page
-                                      :Visitor
-                                    )
-                      ] .
+<http://wba.cs.hs-rm.de/AbRUPt/hasVisit> rdf:type owl:IrreflexiveProperty ,
+                                                  owl:ObjectProperty ;
+                                         
+                                         rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Visit> ;
+                                         
+                                         rdfs:domain [ rdf:type owl:Class ;
+                                                       owl:unionOf ( <http://wba.cs.hs-rm.de/AbRUPt/Page>
+                                                                     <http://wba.cs.hs-rm.de/AbRUPt/Visitor>
+                                                                   )
+                                                     ] .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasVisitor
+###  http://wba.cs.hs-rm.de/AbRUPt/hasVisitor
 
-:hasVisitor rdf:type owl:IrreflexiveProperty ,
-                     owl:ObjectProperty ;
-            
-            rdfs:range :Visitor ;
-            
-            rdfs:domain :Website .
+<http://wba.cs.hs-rm.de/AbRUPt/hasVisitor> rdf:type owl:IrreflexiveProperty ,
+                                                    owl:ObjectProperty ;
+                                           
+                                           rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Visitor> ;
+                                           
+                                           rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Website> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hasWeek
+###  http://wba.cs.hs-rm.de/AbRUPt/hasWeek
 
-:hasWeek rdf:type owl:ObjectProperty ;
-         
-         rdfs:range :Week ;
-         
-         rdfs:subPropertyOf :hasFormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/hasWeek> rdf:type owl:ObjectProperty ;
+                                        
+                                        rdfs:range <http://wba.cs.hs-rm.de/AbRUPt/Week> ;
+                                        
+                                        rdfs:subPropertyOf <http://wba.cs.hs-rm.de/AbRUPt/hasFormElement> .
 
 
 
@@ -487,619 +487,619 @@
 #################################################################
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/bigwords
+###  http://wba.cs.hs-rm.de/AbRUPt/bigwords
 
-:bigwords rdf:type owl:DatatypeProperty ;
-          
-          rdfs:domain :Page ;
-          
-          rdfs:range xsd:integer .
+<http://wba.cs.hs-rm.de/AbRUPt/bigwords> rdf:type owl:DatatypeProperty ;
+                                         
+                                         rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                         
+                                         rdfs:range xsd:integer .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/blue
+###  http://wba.cs.hs-rm.de/AbRUPt/blue
 
-:blue rdf:type owl:DatatypeProperty ;
-      
-      rdfs:domain :BaseColor ;
-      
-      rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/blue> rdf:type owl:DatatypeProperty ;
+                                     
+                                     rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/BaseColor> ;
+                                     
+                                     rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/classLimit
+###  http://wba.cs.hs-rm.de/AbRUPt/classLimit
 
-:classLimit rdf:type owl:DatatypeProperty ;
-            
-            rdfs:domain :Subject ;
-            
-            rdfs:range xsd:integer .
+<http://wba.cs.hs-rm.de/AbRUPt/classLimit> rdf:type owl:DatatypeProperty ;
+                                           
+                                           rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Subject> ;
+                                           
+                                           rdfs:range xsd:integer .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/client
+###  http://wba.cs.hs-rm.de/AbRUPt/client
 
-:client rdf:type owl:DatatypeProperty ;
-        
-        rdfs:domain :Visitor ;
-        
-        rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/client> rdf:type owl:DatatypeProperty ;
+                                       
+                                       rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Visitor> ;
+                                       
+                                       rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/colorfulness
+###  http://wba.cs.hs-rm.de/AbRUPt/colorfulness
 
-:colorfulness rdf:type owl:DatatypeProperty ;
-              
-              rdfs:domain :Page ;
-              
-              rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/colorfulness> rdf:type owl:DatatypeProperty ;
+                                             
+                                             rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                             
+                                             rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/cols
+###  http://wba.cs.hs-rm.de/AbRUPt/cols
 
-:cols rdf:type owl:DatatypeProperty ;
-      
-      rdfs:domain :Textarea ;
-      
-      rdfs:range xsd:nonNegativeInteger .
+<http://wba.cs.hs-rm.de/AbRUPt/cols> rdf:type owl:DatatypeProperty ;
+                                     
+                                     rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Textarea> ;
+                                     
+                                     rdfs:range xsd:nonNegativeInteger .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/datetime
+###  http://wba.cs.hs-rm.de/AbRUPt/datetime
 
-:datetime rdf:type owl:DatatypeProperty ;
-          
-          rdfs:domain :PageView ;
-          
-          rdfs:range xsd:dateTime .
+<http://wba.cs.hs-rm.de/AbRUPt/datetime> rdf:type owl:DatatypeProperty ;
+                                         
+                                         rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/PageView> ;
+                                         
+                                         rdfs:range xsd:dateTime .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/depth
+###  http://wba.cs.hs-rm.de/AbRUPt/depth
 
-:depth rdf:type owl:DatatypeProperty ;
-       
-       rdfs:domain :Subject ;
-       
-       rdfs:range xsd:integer .
+<http://wba.cs.hs-rm.de/AbRUPt/depth> rdf:type owl:DatatypeProperty ;
+                                      
+                                      rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Subject> ;
+                                      
+                                      rdfs:range xsd:integer .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/duration
+###  http://wba.cs.hs-rm.de/AbRUPt/duration
 
-:duration rdf:type owl:DatatypeProperty ;
-          
-          rdfs:domain :Picture ;
-          
-          rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/duration> rdf:type owl:DatatypeProperty ;
+                                         
+                                         rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Picture> ;
+                                         
+                                         rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/frequency
+###  http://wba.cs.hs-rm.de/AbRUPt/frequency
 
-:frequency rdf:type owl:DatatypeProperty ;
-           
-           rdfs:range xsd:integer .
+<http://wba.cs.hs-rm.de/AbRUPt/frequency> rdf:type owl:DatatypeProperty ;
+                                          
+                                          rdfs:range xsd:integer .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/geometry
+###  http://wba.cs.hs-rm.de/AbRUPt/geometry
 
-:geometry rdf:type owl:DatatypeProperty ;
-          
-          rdfs:domain :Picture ;
-          
-          rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/geometry> rdf:type owl:DatatypeProperty ;
+                                         
+                                         rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Picture> ;
+                                         
+                                         rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/green
+###  http://wba.cs.hs-rm.de/AbRUPt/green
 
-:green rdf:type owl:DatatypeProperty ;
-       
-       rdfs:domain :BaseColor ;
-       
-       rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/green> rdf:type owl:DatatypeProperty ;
+                                      
+                                      rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/BaseColor> ;
+                                      
+                                      rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/horizontalBalance
+###  http://wba.cs.hs-rm.de/AbRUPt/horizontalBalance
 
-:horizontalBalance rdf:type owl:DatatypeProperty ;
-                   
-                   rdfs:domain :Page ;
-                   
-                   rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/horizontalBalance> rdf:type owl:DatatypeProperty ;
+                                                  
+                                                  rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                                  
+                                                  rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/horizontalSymmetry
+###  http://wba.cs.hs-rm.de/AbRUPt/horizontalSymmetry
 
-:horizontalSymmetry rdf:type owl:DatatypeProperty ;
-                    
-                    rdfs:domain :Page ;
-                    
-                    rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/horizontalSymmetry> rdf:type owl:DatatypeProperty ;
+                                                   
+                                                   rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                                   
+                                                   rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/host
+###  http://wba.cs.hs-rm.de/AbRUPt/host
 
-:host rdf:type owl:DatatypeProperty ;
-      
-      rdfs:domain :Visitor ;
-      
-      rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/host> rdf:type owl:DatatypeProperty ;
+                                     
+                                     rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Visitor> ;
+                                     
+                                     rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hostName
+###  http://wba.cs.hs-rm.de/AbRUPt/hostName
 
-:hostName rdf:type owl:DatatypeProperty ;
-          
-          rdfs:domain :Website ;
-          
-          rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/hostName> rdf:type owl:DatatypeProperty ;
+                                         
+                                         rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Website> ;
+                                         
+                                         rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/href
+###  http://wba.cs.hs-rm.de/AbRUPt/href
 
-:href rdf:type owl:DatatypeProperty ;
-      
-      rdfs:domain :Link ;
-      
-      rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/href> rdf:type owl:DatatypeProperty ;
+                                     
+                                     rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Link> ;
+                                     
+                                     rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/hue
+###  http://wba.cs.hs-rm.de/AbRUPt/hue
 
-:hue rdf:type owl:DatatypeProperty ;
-     
-     rdfs:domain :Page ;
-     
-     rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/hue> rdf:type owl:DatatypeProperty ;
+                                    
+                                    rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                    
+                                    rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/id
+###  http://wba.cs.hs-rm.de/AbRUPt/id
 
-:id rdf:type owl:DatatypeProperty ;
-    
-    rdfs:domain :HtmlElement ;
-    
-    rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/id> rdf:type owl:DatatypeProperty ;
+                                   
+                                   rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/HtmlElement> ;
+                                   
+                                   rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/imageType
+###  http://wba.cs.hs-rm.de/AbRUPt/imageType
 
-:imageType rdf:type owl:DatatypeProperty ;
-           
-           rdfs:domain :Picture ;
-           
-           rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/imageType> rdf:type owl:DatatypeProperty ;
+                                          
+                                          rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Picture> ;
+                                          
+                                          rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/imgAreaInPixelSquared
+###  http://wba.cs.hs-rm.de/AbRUPt/imgAreaInPixelSquared
 
-:imgAreaInPixelSquared rdf:type owl:DatatypeProperty ;
-                       
-                       rdfs:domain :Page ;
-                       
-                       rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/imgAreaInPixelSquared> rdf:type owl:DatatypeProperty ;
+                                                      
+                                                      rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                                      
+                                                      rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/imgDocumentTagPercentage
+###  http://wba.cs.hs-rm.de/AbRUPt/imgDocumentTagPercentage
 
-:imgDocumentTagPercentage rdf:type owl:DatatypeProperty ;
-                          
-                          rdfs:domain :Page ;
-                          
-                          rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/imgDocumentTagPercentage> rdf:type owl:DatatypeProperty ;
+                                                         
+                                                         rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                                         
+                                                         rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/imgDocumentTagRatio
+###  http://wba.cs.hs-rm.de/AbRUPt/imgDocumentTagRatio
 
-:imgDocumentTagRatio rdf:type owl:DatatypeProperty ;
-                     
-                     rdfs:domain :Page ;
-                     
-                     rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/imgDocumentTagRatio> rdf:type owl:DatatypeProperty ;
+                                                    
+                                                    rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                                    
+                                                    rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/inputname
+###  http://wba.cs.hs-rm.de/AbRUPt/inputname
 
-:inputname rdf:type owl:DatatypeProperty ;
-           
-           rdfs:domain :Content ;
-           
-           rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/inputname> rdf:type owl:DatatypeProperty ;
+                                          
+                                          rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Content> ;
+                                          
+                                          rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/ip
+###  http://wba.cs.hs-rm.de/AbRUPt/ip
 
-:ip rdf:type owl:DatatypeProperty ;
-    
-    rdfs:domain :Visitor ;
-    
-    rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/ip> rdf:type owl:DatatypeProperty ;
+                                   
+                                   rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Visitor> ;
+                                   
+                                   rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/matrix
+###  http://wba.cs.hs-rm.de/AbRUPt/matrix
 
-:matrix rdf:type owl:DatatypeProperty ;
-        
-        rdfs:domain :Page ;
-        
-        rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/matrix> rdf:type owl:DatatypeProperty ;
+                                       
+                                       rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                       
+                                       rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/maxlength
+###  http://wba.cs.hs-rm.de/AbRUPt/maxlength
 
-:maxlength rdf:type owl:DatatypeProperty ;
-           
-           rdfs:domain :FormElement ;
-           
-           rdfs:range xsd:nonNegativeInteger .
+<http://wba.cs.hs-rm.de/AbRUPt/maxlength> rdf:type owl:DatatypeProperty ;
+                                          
+                                          rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/FormElement> ;
+                                          
+                                          rdfs:range xsd:nonNegativeInteger .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/mimeType
+###  http://wba.cs.hs-rm.de/AbRUPt/mimeType
 
-:mimeType rdf:type owl:DatatypeProperty ;
-          
-          rdfs:domain :Picture ;
-          
-          rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/mimeType> rdf:type owl:DatatypeProperty ;
+                                         
+                                         rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Picture> ;
+                                         
+                                         rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/mimetype
+###  http://wba.cs.hs-rm.de/AbRUPt/mimetype
 
-:mimetype rdf:type owl:DatatypeProperty ;
-          
-          rdfs:domain :Picture ;
-          
-          rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/mimetype> rdf:type owl:DatatypeProperty ;
+                                         
+                                         rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Picture> ;
+                                         
+                                         rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/name
+###  http://wba.cs.hs-rm.de/AbRUPt/name
 
-:name rdf:type owl:DatatypeProperty ;
-      
-      rdfs:domain :FormElement ;
-      
-      rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/name> rdf:type owl:DatatypeProperty ;
+                                     
+                                     rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/FormElement> ;
+                                     
+                                     rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/nontextArea
+###  http://wba.cs.hs-rm.de/AbRUPt/nontextArea
 
-:nontextArea rdf:type owl:DatatypeProperty ;
-             
-             rdfs:domain :Page ;
-             
-             rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/nontextArea> rdf:type owl:DatatypeProperty ;
+                                            
+                                            rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                            
+                                            rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/numberOfImageAreas
+###  http://wba.cs.hs-rm.de/AbRUPt/numberOfImageAreas
 
-:numberOfImageAreas rdf:type owl:DatatypeProperty ;
-                    
-                    rdfs:domain :Page ;
-                    
-                    rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/numberOfImageAreas> rdf:type owl:DatatypeProperty ;
+                                                   
+                                                   rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                                   
+                                                   rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/numberOfLeaves
+###  http://wba.cs.hs-rm.de/AbRUPt/numberOfLeaves
 
-:numberOfLeaves rdf:type owl:DatatypeProperty ;
-                
-                rdfs:domain :Page ;
-                
-                rdfs:range xsd:integer .
+<http://wba.cs.hs-rm.de/AbRUPt/numberOfLeaves> rdf:type owl:DatatypeProperty ;
+                                               
+                                               rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                               
+                                               rdfs:range xsd:integer .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/numberOfTextGroups
+###  http://wba.cs.hs-rm.de/AbRUPt/numberOfTextGroups
 
-:numberOfTextGroups rdf:type owl:DatatypeProperty ;
-                    
-                    rdfs:domain :Page ;
-                    
-                    rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/numberOfTextGroups> rdf:type owl:DatatypeProperty ;
+                                                   
+                                                   rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                                   
+                                                   rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pageHeightInPixel
+###  http://wba.cs.hs-rm.de/AbRUPt/pageHeightInPixel
 
-:pageHeightInPixel rdf:type owl:DatatypeProperty ;
-                   
-                   rdfs:domain :Page ;
-                   
-                   rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/pageHeightInPixel> rdf:type owl:DatatypeProperty ;
+                                                  
+                                                  rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                                  
+                                                  rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pageLanguage
+###  http://wba.cs.hs-rm.de/AbRUPt/pageLanguage
 
-:pageLanguage rdf:type owl:DatatypeProperty ;
-              
-              rdfs:domain :Page ;
-              
-              rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/pageLanguage> rdf:type owl:DatatypeProperty ;
+                                             
+                                             rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                             
+                                             rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pageName
+###  http://wba.cs.hs-rm.de/AbRUPt/pageName
 
-:pageName rdf:type owl:DatatypeProperty ;
-          
-          rdfs:domain :Page ;
-          
-          rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/pageName> rdf:type owl:DatatypeProperty ;
+                                         
+                                         rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                         
+                                         rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pageSizeInPixelSquared
+###  http://wba.cs.hs-rm.de/AbRUPt/pageSizeInPixelSquared
 
-:pageSizeInPixelSquared rdf:type owl:DatatypeProperty ;
-                        
-                        rdfs:domain :Page ;
-                        
-                        rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/pageSizeInPixelSquared> rdf:type owl:DatatypeProperty ;
+                                                       
+                                                       rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                                       
+                                                       rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pageWidthInPixel
+###  http://wba.cs.hs-rm.de/AbRUPt/pageWidthInPixel
 
-:pageWidthInPixel rdf:type owl:DatatypeProperty ;
-                  
-                  rdfs:domain :Page ;
-                  
-                  rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/pageWidthInPixel> rdf:type owl:DatatypeProperty ;
+                                                 
+                                                 rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                                 
+                                                 rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/palette
+###  http://wba.cs.hs-rm.de/AbRUPt/palette
 
-:palette rdf:type owl:DatatypeProperty ;
-         
-         rdfs:domain :Page ;
-         
-         rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/palette> rdf:type owl:DatatypeProperty ;
+                                        
+                                        rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                        
+                                        rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/pictureFileName
+###  http://wba.cs.hs-rm.de/AbRUPt/pictureFileName
 
-:pictureFileName rdf:type owl:DatatypeProperty ;
-                 
-                 rdfs:domain :Picture ;
-                 
-                 rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/pictureFileName> rdf:type owl:DatatypeProperty ;
+                                                
+                                                rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Picture> ;
+                                                
+                                                rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/plaintext
+###  http://wba.cs.hs-rm.de/AbRUPt/plaintext
 
-:plaintext rdf:type owl:DatatypeProperty ;
-           
-           rdfs:domain :Link ;
-           
-           rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/plaintext> rdf:type owl:DatatypeProperty ;
+                                          
+                                          rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Link> ;
+                                          
+                                          rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/priority
+###  http://wba.cs.hs-rm.de/AbRUPt/priority
 
-:priority rdf:type owl:DatatypeProperty ;
-          
-          rdfs:domain :Problem ;
-          
-          rdfs:range xsd:nonNegativeInteger .
+<http://wba.cs.hs-rm.de/AbRUPt/priority> rdf:type owl:DatatypeProperty ;
+                                         
+                                         rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Problem> ;
+                                         
+                                         rdfs:range xsd:nonNegativeInteger .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/readability
+###  http://wba.cs.hs-rm.de/AbRUPt/readability
 
-:readability rdf:type owl:DatatypeProperty ;
-             
-             rdfs:domain :Page ;
-             
-             rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/readability> rdf:type owl:DatatypeProperty ;
+                                            
+                                            rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                            
+                                            rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/readabilityLanguage
+###  http://wba.cs.hs-rm.de/AbRUPt/readabilityLanguage
 
-:readabilityLanguage rdf:type owl:DatatypeProperty ;
-                     
-                     rdfs:domain :Page ;
-                     
-                     rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/readabilityLanguage> rdf:type owl:DatatypeProperty ;
+                                                    
+                                                    rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                                    
+                                                    rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/red
+###  http://wba.cs.hs-rm.de/AbRUPt/red
 
-:red rdf:type owl:DatatypeProperty ;
-     
-     rdfs:domain :BaseColor ;
-     
-     rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/red> rdf:type owl:DatatypeProperty ;
+                                    
+                                    rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/BaseColor> ;
+                                    
+                                    rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/required
+###  http://wba.cs.hs-rm.de/AbRUPt/required
 
-:required rdf:type owl:DatatypeProperty ;
-          
-          rdfs:domain :FormElement ;
-          
-          rdfs:range xsd:boolean .
+<http://wba.cs.hs-rm.de/AbRUPt/required> rdf:type owl:DatatypeProperty ;
+                                         
+                                         rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/FormElement> ;
+                                         
+                                         rdfs:range xsd:boolean .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/rows
+###  http://wba.cs.hs-rm.de/AbRUPt/rows
 
-:rows rdf:type owl:DatatypeProperty ;
-      
-      rdfs:domain :Textarea ;
-      
-      rdfs:range xsd:nonNegativeInteger .
+<http://wba.cs.hs-rm.de/AbRUPt/rows> rdf:type owl:DatatypeProperty ;
+                                     
+                                     rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Textarea> ;
+                                     
+                                     rdfs:range xsd:nonNegativeInteger .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/sentences
+###  http://wba.cs.hs-rm.de/AbRUPt/sentences
 
-:sentences rdf:type owl:DatatypeProperty ;
-           
-           rdfs:domain :Page ;
-           
-           rdfs:range xsd:integer .
+<http://wba.cs.hs-rm.de/AbRUPt/sentences> rdf:type owl:DatatypeProperty ;
+                                          
+                                          rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                          
+                                          rdfs:range xsd:integer .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/size
+###  http://wba.cs.hs-rm.de/AbRUPt/size
 
-:size rdf:type owl:DatatypeProperty ;
-      
-      rdfs:domain :Input ;
-      
-      rdfs:range xsd:nonNegativeInteger .
+<http://wba.cs.hs-rm.de/AbRUPt/size> rdf:type owl:DatatypeProperty ;
+                                     
+                                     rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Input> ;
+                                     
+                                     rdfs:range xsd:nonNegativeInteger .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/state
+###  http://wba.cs.hs-rm.de/AbRUPt/state
 
-:state rdf:type owl:DatatypeProperty ;
-       
-       rdfs:domain :Page ;
-       
-       rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/state> rdf:type owl:DatatypeProperty ;
+                                      
+                                      rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                      
+                                      rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/subjectLanguage
+###  http://wba.cs.hs-rm.de/AbRUPt/subjectLanguage
 
-:subjectLanguage rdf:type owl:DatatypeProperty ;
-                 
-                 rdfs:domain :Subject ;
-                 
-                 rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/subjectLanguage> rdf:type owl:DatatypeProperty ;
+                                                
+                                                rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Subject> ;
+                                                
+                                                rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/syllables
+###  http://wba.cs.hs-rm.de/AbRUPt/syllables
 
-:syllables rdf:type owl:DatatypeProperty ;
-           
-           rdfs:domain :Page ;
-           
-           rdfs:range xsd:integer .
+<http://wba.cs.hs-rm.de/AbRUPt/syllables> rdf:type owl:DatatypeProperty ;
+                                          
+                                          rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                          
+                                          rdfs:range xsd:integer .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/textArea
+###  http://wba.cs.hs-rm.de/AbRUPt/textArea
 
-:textArea rdf:type owl:DatatypeProperty ;
-          
-          rdfs:domain :Page ;
-          
-          rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/textArea> rdf:type owl:DatatypeProperty ;
+                                         
+                                         rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                         
+                                         rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/textReadingTime
+###  http://wba.cs.hs-rm.de/AbRUPt/textReadingTime
 
-:textReadingTime rdf:type owl:DatatypeProperty ;
-                 
-                 rdfs:domain :Page ;
-                 
-                 rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/textReadingTime> rdf:type owl:DatatypeProperty ;
+                                                
+                                                rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                                
+                                                rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/username
+###  http://wba.cs.hs-rm.de/AbRUPt/username
 
-:username rdf:type owl:DatatypeProperty ;
-          
-          rdfs:domain :Visitor ;
-          
-          rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/username> rdf:type owl:DatatypeProperty ;
+                                         
+                                         rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Visitor> ;
+                                         
+                                         rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/value
+###  http://wba.cs.hs-rm.de/AbRUPt/value
 
-:value rdf:type owl:DatatypeProperty ;
-       
-       rdfs:domain :FormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/value> rdf:type owl:DatatypeProperty ;
+                                      
+                                      rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/FormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/vicramComplexity
+###  http://wba.cs.hs-rm.de/AbRUPt/vicramComplexity
 
-:vicramComplexity rdf:type owl:DatatypeProperty ;
-                  
-                  rdfs:domain :State ;
-                  
-                  rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/vicramComplexity> rdf:type owl:DatatypeProperty ;
+                                                 
+                                                 rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/State> ;
+                                                 
+                                                 rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/visualComplexity
+###  http://wba.cs.hs-rm.de/AbRUPt/visualComplexity
 
-:visualComplexity rdf:type owl:DatatypeProperty ;
-                  
-                  rdfs:domain :Page ;
-                  
-                  rdfs:range xsd:decimal .
+<http://wba.cs.hs-rm.de/AbRUPt/visualComplexity> rdf:type owl:DatatypeProperty ;
+                                                 
+                                                 rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                                 
+                                                 rdfs:range xsd:decimal .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/websiteName
+###  http://wba.cs.hs-rm.de/AbRUPt/websiteName
 
-:websiteName rdf:type owl:DatatypeProperty ;
-             
-             rdfs:domain :Website ;
-             
-             rdfs:range xsd:string .
+<http://wba.cs.hs-rm.de/AbRUPt/websiteName> rdf:type owl:DatatypeProperty ;
+                                            
+                                            rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Website> ;
+                                            
+                                            rdfs:range xsd:string .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/wordLimit
+###  http://wba.cs.hs-rm.de/AbRUPt/wordLimit
 
-:wordLimit rdf:type owl:DatatypeProperty ;
-           
-           rdfs:domain :Subject ;
-           
-           rdfs:range xsd:integer .
+<http://wba.cs.hs-rm.de/AbRUPt/wordLimit> rdf:type owl:DatatypeProperty ;
+                                          
+                                          rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Subject> ;
+                                          
+                                          rdfs:range xsd:integer .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/words
+###  http://wba.cs.hs-rm.de/AbRUPt/words
 
-:words rdf:type owl:DatatypeProperty ;
-       
-       rdfs:domain :Page ;
-       
-       rdfs:range xsd:integer .
+<http://wba.cs.hs-rm.de/AbRUPt/words> rdf:type owl:DatatypeProperty ;
+                                      
+                                      rdfs:domain <http://wba.cs.hs-rm.de/AbRUPt/Page> ;
+                                      
+                                      rdfs:range xsd:integer .
 
 
 
@@ -1112,365 +1112,365 @@
 #################################################################
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/BaseColor
+###  http://wba.cs.hs-rm.de/AbRUPt/BaseColor
 
-:BaseColor rdf:type owl:Class ;
-           
-           owl:disjointWith :Page .
+<http://wba.cs.hs-rm.de/AbRUPt/BaseColor> rdf:type owl:Class ;
+                                          
+                                          owl:disjointWith <http://wba.cs.hs-rm.de/AbRUPt/Page> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Blur
+###  http://wba.cs.hs-rm.de/AbRUPt/Blur
 
-:Blur rdf:type owl:Class ;
-      
-      rdfs:subClassOf :PageView .
+<http://wba.cs.hs-rm.de/AbRUPt/Blur> rdf:type owl:Class ;
+                                     
+                                     rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/PageView> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Button
+###  http://wba.cs.hs-rm.de/AbRUPt/Button
 
-:Button rdf:type owl:Class ;
-        
-        rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Button> rdf:type owl:Class ;
+                                       
+                                       rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Checkbox
+###  http://wba.cs.hs-rm.de/AbRUPt/Checkbox
 
-:Checkbox rdf:type owl:Class ;
-          
-          rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Checkbox> rdf:type owl:Class ;
+                                         
+                                         rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Color
+###  http://wba.cs.hs-rm.de/AbRUPt/Color
 
-:Color rdf:type owl:Class ;
-       
-       rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Color> rdf:type owl:Class ;
+                                      
+                                      rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Content
+###  http://wba.cs.hs-rm.de/AbRUPt/Content
 
-:Content rdf:type owl:Class ;
-         
-         rdfs:subClassOf :PageView .
+<http://wba.cs.hs-rm.de/AbRUPt/Content> rdf:type owl:Class ;
+                                        
+                                        rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/PageView> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Date
+###  http://wba.cs.hs-rm.de/AbRUPt/Date
 
-:Date rdf:type owl:Class ;
-      
-      rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Date> rdf:type owl:Class ;
+                                     
+                                     rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Datetime
+###  http://wba.cs.hs-rm.de/AbRUPt/Datetime
 
-:Datetime rdf:type owl:Class ;
-          
-          rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Datetime> rdf:type owl:Class ;
+                                         
+                                         rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Datetime-local
+###  http://wba.cs.hs-rm.de/AbRUPt/Datetime-local
 
-:Datetime-local rdf:type owl:Class ;
-                
-                rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Datetime-local> rdf:type owl:Class ;
+                                               
+                                               rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Email
+###  http://wba.cs.hs-rm.de/AbRUPt/Email
 
-:Email rdf:type owl:Class ;
-       
-       rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Email> rdf:type owl:Class ;
+                                      
+                                      rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/File
+###  http://wba.cs.hs-rm.de/AbRUPt/File
 
-:File rdf:type owl:Class ;
-      
-      rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/File> rdf:type owl:Class ;
+                                     
+                                     rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Focus
+###  http://wba.cs.hs-rm.de/AbRUPt/Focus
 
-:Focus rdf:type owl:Class ;
-       
-       rdfs:subClassOf :PageView .
+<http://wba.cs.hs-rm.de/AbRUPt/Focus> rdf:type owl:Class ;
+                                      
+                                      rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/PageView> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Form
+###  http://wba.cs.hs-rm.de/AbRUPt/Form
 
-:Form rdf:type owl:Class ;
-      
-      rdfs:subClassOf :HtmlElement ;
-      
-      owl:disjointWith :Page .
+<http://wba.cs.hs-rm.de/AbRUPt/Form> rdf:type owl:Class ;
+                                     
+                                     rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/HtmlElement> ;
+                                     
+                                     owl:disjointWith <http://wba.cs.hs-rm.de/AbRUPt/Page> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/FormElement
+###  http://wba.cs.hs-rm.de/AbRUPt/FormElement
 
-:FormElement rdf:type owl:Class ;
-             
-             rdfs:subClassOf :HtmlElement ;
-             
-             owl:disjointWith :Page .
+<http://wba.cs.hs-rm.de/AbRUPt/FormElement> rdf:type owl:Class ;
+                                            
+                                            rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/HtmlElement> ;
+                                            
+                                            owl:disjointWith <http://wba.cs.hs-rm.de/AbRUPt/Page> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Hidden
+###  http://wba.cs.hs-rm.de/AbRUPt/Hidden
 
-:Hidden rdf:type owl:Class ;
-        
-        rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Hidden> rdf:type owl:Class ;
+                                       
+                                       rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/HtmlElement
+###  http://wba.cs.hs-rm.de/AbRUPt/HtmlElement
 
-:HtmlElement rdf:type owl:Class ;
-             
-             owl:disjointWith :Page .
+<http://wba.cs.hs-rm.de/AbRUPt/HtmlElement> rdf:type owl:Class ;
+                                            
+                                            owl:disjointWith <http://wba.cs.hs-rm.de/AbRUPt/Page> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Image
+###  http://wba.cs.hs-rm.de/AbRUPt/Image
 
-:Image rdf:type owl:Class ;
-       
-       rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Image> rdf:type owl:Class ;
+                                      
+                                      rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Input
+###  http://wba.cs.hs-rm.de/AbRUPt/Input
 
-:Input rdf:type owl:Class ;
-       
-       rdfs:subClassOf :FormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/Input> rdf:type owl:Class ;
+                                      
+                                      rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/FormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Link
+###  http://wba.cs.hs-rm.de/AbRUPt/Link
 
-:Link rdf:type owl:Class ;
-      
-      rdfs:subClassOf :HtmlElement ;
-      
-      owl:disjointWith :Page .
+<http://wba.cs.hs-rm.de/AbRUPt/Link> rdf:type owl:Class ;
+                                     
+                                     rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/HtmlElement> ;
+                                     
+                                     owl:disjointWith <http://wba.cs.hs-rm.de/AbRUPt/Page> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Month
+###  http://wba.cs.hs-rm.de/AbRUPt/Month
 
-:Month rdf:type owl:Class ;
-       
-       rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Month> rdf:type owl:Class ;
+                                      
+                                      rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Number
+###  http://wba.cs.hs-rm.de/AbRUPt/Number
 
-:Number rdf:type owl:Class ;
-        
-        rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Number> rdf:type owl:Class ;
+                                       
+                                       rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Option
+###  http://wba.cs.hs-rm.de/AbRUPt/Option
 
-:Option rdf:type owl:Class ;
-        
-        rdfs:subClassOf :FormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/Option> rdf:type owl:Class ;
+                                       
+                                       rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/FormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Page
+###  http://wba.cs.hs-rm.de/AbRUPt/Page
 
-:Page rdf:type owl:Class ;
-      
-      owl:disjointWith :Picture ,
-                       :Subject ,
-                       :Website .
+<http://wba.cs.hs-rm.de/AbRUPt/Page> rdf:type owl:Class ;
+                                     
+                                     owl:disjointWith <http://wba.cs.hs-rm.de/AbRUPt/Picture> ,
+                                                      <http://wba.cs.hs-rm.de/AbRUPt/Subject> ,
+                                                      <http://wba.cs.hs-rm.de/AbRUPt/Website> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/PageView
+###  http://wba.cs.hs-rm.de/AbRUPt/PageView
 
-:PageView rdf:type owl:Class .
+<http://wba.cs.hs-rm.de/AbRUPt/PageView> rdf:type owl:Class .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Password
+###  http://wba.cs.hs-rm.de/AbRUPt/Password
 
-:Password rdf:type owl:Class ;
-          
-          rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Password> rdf:type owl:Class ;
+                                         
+                                         rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Picture
+###  http://wba.cs.hs-rm.de/AbRUPt/Picture
 
-:Picture rdf:type owl:Class ;
-         
-         rdfs:subClassOf :HtmlElement .
+<http://wba.cs.hs-rm.de/AbRUPt/Picture> rdf:type owl:Class ;
+                                        
+                                        rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/HtmlElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Problem
+###  http://wba.cs.hs-rm.de/AbRUPt/Problem
 
-:Problem rdf:type owl:Class .
+<http://wba.cs.hs-rm.de/AbRUPt/Problem> rdf:type owl:Class .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Radio
+###  http://wba.cs.hs-rm.de/AbRUPt/Radio
 
-:Radio rdf:type owl:Class ;
-       
-       rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Radio> rdf:type owl:Class ;
+                                      
+                                      rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Range
+###  http://wba.cs.hs-rm.de/AbRUPt/Range
 
-:Range rdf:type owl:Class ;
-       
-       rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Range> rdf:type owl:Class ;
+                                      
+                                      rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Reset
+###  http://wba.cs.hs-rm.de/AbRUPt/Reset
 
-:Reset rdf:type owl:Class ;
-       
-       rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Reset> rdf:type owl:Class ;
+                                      
+                                      rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Scroll
+###  http://wba.cs.hs-rm.de/AbRUPt/Scroll
 
-:Scroll rdf:type owl:Class ;
-        
-        rdfs:subClassOf :PageView .
+<http://wba.cs.hs-rm.de/AbRUPt/Scroll> rdf:type owl:Class ;
+                                       
+                                       rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/PageView> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Search
+###  http://wba.cs.hs-rm.de/AbRUPt/Search
 
-:Search rdf:type owl:Class ;
-        
-        rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Search> rdf:type owl:Class ;
+                                       
+                                       rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Select
+###  http://wba.cs.hs-rm.de/AbRUPt/Select
 
-:Select rdf:type owl:Class ;
-        
-        rdfs:subClassOf :FormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/Select> rdf:type owl:Class ;
+                                       
+                                       rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/FormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/State
+###  http://wba.cs.hs-rm.de/AbRUPt/State
 
-:State rdf:type owl:Class ;
-       
-       rdfs:subClassOf :Page .
+<http://wba.cs.hs-rm.de/AbRUPt/State> rdf:type owl:Class ;
+                                      
+                                      rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Page> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Subject
+###  http://wba.cs.hs-rm.de/AbRUPt/Subject
 
-:Subject rdf:type owl:Class .
+<http://wba.cs.hs-rm.de/AbRUPt/Subject> rdf:type owl:Class .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Submit
+###  http://wba.cs.hs-rm.de/AbRUPt/Submit
 
-:Submit rdf:type owl:Class ;
-        
-        rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Submit> rdf:type owl:Class ;
+                                       
+                                       rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Tel
+###  http://wba.cs.hs-rm.de/AbRUPt/Tel
 
-:Tel rdf:type owl:Class ;
-     
-     rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Tel> rdf:type owl:Class ;
+                                    
+                                    rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Text
+###  http://wba.cs.hs-rm.de/AbRUPt/Text
 
-:Text rdf:type owl:Class ;
-      
-      rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Text> rdf:type owl:Class ;
+                                     
+                                     rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Textarea
+###  http://wba.cs.hs-rm.de/AbRUPt/Textarea
 
-:Textarea rdf:type owl:Class ;
-          
-          rdfs:subClassOf :FormElement .
+<http://wba.cs.hs-rm.de/AbRUPt/Textarea> rdf:type owl:Class ;
+                                         
+                                         rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/FormElement> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Time
+###  http://wba.cs.hs-rm.de/AbRUPt/Time
 
-:Time rdf:type owl:Class ;
-      
-      rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Time> rdf:type owl:Class ;
+                                     
+                                     rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Url
+###  http://wba.cs.hs-rm.de/AbRUPt/Url
 
-:Url rdf:type owl:Class ;
-     
-     rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Url> rdf:type owl:Class ;
+                                    
+                                    rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Visit
+###  http://wba.cs.hs-rm.de/AbRUPt/Visit
 
-:Visit rdf:type owl:Class .
+<http://wba.cs.hs-rm.de/AbRUPt/Visit> rdf:type owl:Class .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Visitor
+###  http://wba.cs.hs-rm.de/AbRUPt/Visitor
 
-:Visitor rdf:type owl:Class .
+<http://wba.cs.hs-rm.de/AbRUPt/Visitor> rdf:type owl:Class .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Website
+###  http://wba.cs.hs-rm.de/AbRUPt/Website
 
-:Website rdf:type owl:Class ;
-         
-         owl:hasKey ( :hostName
-                    ) .
+<http://wba.cs.hs-rm.de/AbRUPt/Website> rdf:type owl:Class ;
+                                        
+                                        owl:hasKey ( <http://wba.cs.hs-rm.de/AbRUPt/hostName>
+                                                   ) .
 
 
 
-###  http://wba.cs.hs-rm.de/wdm-service/wdmOWL/Week
+###  http://wba.cs.hs-rm.de/AbRUPt/Week
 
-:Week rdf:type owl:Class ;
-      
-      rdfs:subClassOf :Input .
+<http://wba.cs.hs-rm.de/AbRUPt/Week> rdf:type owl:Class ;
+                                     
+                                     rdfs:subClassOf <http://wba.cs.hs-rm.de/AbRUPt/Input> .
 
 
 
 
-###  Generated by the OWL API (version 3.5.0) http://owlapi.sourceforge.net
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
 
