@@ -1,7 +1,7 @@
 require 'spec_helper'
 describe Abrupt::Converter, :vcr do
   let(:subject) do
-    Abrupt::Converter.instance.init('spec/fixtures/rikscha_min.xml')
+    Abrupt::Converter.instance.init('spec/fixtures/rikscha_Result_min.xml')
     Abrupt::Converter.instance
   end
   context '#from_xml' do
