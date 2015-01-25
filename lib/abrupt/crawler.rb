@@ -9,7 +9,7 @@ require 'addressable/uri'
     picture
     link
     absolute_url).each do |f|
-  require "abrupt/service/#{f}"
+  require_relative "service/#{f}"
 end
 module Abrupt
   # Crawler for a website including all followed urls

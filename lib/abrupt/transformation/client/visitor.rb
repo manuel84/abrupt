@@ -6,10 +6,10 @@ module Abrupt
       class Visitor < Transformation::Base
         def add_individuals
           return @result unless @values
-          @values[:name] = @values.css('ip').text
+          @values[:name] = @values[:ip]
           super
-          @values.children.each do |prop|
-            add_data_property(prop.name, prop.text) if prop.children.count == 1
+          @values.each do |key, value|
+            add_data_property(key, value) if value.is_a?(String)
           end
           @result
         end

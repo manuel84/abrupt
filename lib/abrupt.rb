@@ -15,10 +15,17 @@ class String
   end
 end
 
+# Extension for all objects
+class Object
+  def ensure_to_a
+    [self].flatten.compact
+  end
+end
+
 # This module is cool
 # @abstract
 module Abrupt
-  VOC = RDF::Vocabulary.new('http://wba.cs.hs-rm.de/AbRUPt')
+  VOC = RDF::Vocabulary.new('http://wba.cs.hs-rm.de/AbRUPt/')
   VOC_FILE = File.join File.dirname(__dir__), 'assets', 'voc', 'tbox.ttl'
   RULES_DIR = File.join File.dirname(__dir__), 'assets', 'rules', '*'
   DELIMITER = '/'
@@ -67,9 +74,10 @@ module Abrupt
 
   def self.convert(file, *args)
     converter = Converter.instance
-    converter.init(file, args[1])
+    converter.init(args[1])
+    # converter.append_website_data(file)
     converter.append_user_data(args.first) if args.first
-    converter.append_rules
+    # converter.append_rules
     converter.result
   end
 end

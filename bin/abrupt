@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'commander'
-require 'abrupt'
+require_relative '../lib/abrupt'
 
 class AbruptApp
   include Commander::Methods

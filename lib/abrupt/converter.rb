@@ -20,10 +20,13 @@ module Abrupt
     include RDF
     attr_accessor :hsh, :values, :result, :format, :uri
 
-    def init(hsh, options = {})
+    def init(options = {})
       @format = options[:format].try(:to_sym) || :turtle
-      init_hsh(hsh)
       @result = Repository.load(VOC_FILE)
+    end
+
+    def append_website_data(hsh)
+      init_hsh(hsh)
       @uri = URI(@hsh[:website][:domain])
       init_website
       perform
@@ -90,9 +93,9 @@ module Abrupt
 
     def append_user_data(file)
       return unless file.is_a?(String) && File.exist?(file)
-      xml = Nokogiri::XML(File.read(file))
-      xml.css('visitor').each do |values|
-        ip = values.css('ip').text
+      xml = Hash.from_xml(File.read(file)).deep_symbolize_keys
+      xml[:database][:visitor].each do |values|
+        ip = values[:ip]
         next unless ip
         visitor = Transformation::Client::Visitor.new(
             ['Website', @uri.to_s], ['Visitor', ip], values)
@@ -103,13 +106,13 @@ module Abrupt
     end
 
     def append_pages_for_visitor(visitor)
-      visitor.values.css('pages page').each do |page|
+      pages = visitor.values[:pages][:page].ensure_to_a
+      pages.each do |page|
+        time = ::Abrupt.format_time(page[:entertime])
         Transformation::Client::Base.subclasses.each do |transformation_class|
-          time = page.css('entertime').text
-          url_time = ::Abrupt.format_time(time)
           transformator = transformation_class.new(
               visitor.parent_uri + visitor.uri,
-              ['Visit', url_time], page
+              ['Visit', time], page
           )
           add_to_result transformator.add_individuals
         end

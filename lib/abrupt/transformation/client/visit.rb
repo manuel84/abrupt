@@ -7,42 +7,47 @@ module Abrupt
         def add_individuals
           @values[:name] = @uri.last
           super
-          @values.children.each do |prop|
-            add_property(prop) if prop.children.count == 1
+          @values.each do |key, value|
+            add_property(key, value) if value
           end
           add_individuals_for_view
           @result
         end
 
-        def add_property(prop)
-          value = prop.text
-          name = case prop.name
+        def add_property(key, value)
+          enumerable = value.is_a?(Hash) || value.is_a?(Array)
+          return if enumerable # value.is_a?(Enumerable)
+          name = case key
                  when 'uri'
                    uri = [@parent_uri[1], value].map(&:remove_last_slashes)
                    parent_uri_path = (@parent_uri[0..-3] + ['Page', uri.join])
                    parent_uri = "#{VOC}#{parent_uri_path.join('/')}"
                    # Page hasVisit visit
                    add_object_property(parent_uri, 'Visit', resolve_uri)
-                   prop.name
+                   key
                  when 'size' # TODO: transform via customize_to_schema
                    'contentlength'
                  else
-                   prop.name
+                   key
                  end
           add_data_property(name, CGI.escape(value))
         end
 
         def add_individuals_for_view
-          @values.css('view').children.each do |view|
-            add_page_view(view) unless view.text?
+          page_views = @values[:view]
+          return unless page_views
+          page_views.each do |type, view|
+            [view].flatten.each do |attributes|
+              add_page_view(type.to_s.capitalize, attributes)
+            end
           end
         end
 
-        def add_page_view(view)
-          time = ::Abrupt.format_time(view.attributes['datetime'].value)
+        def add_page_view(type, attributes)
+          time = ::Abrupt.format_time(attributes[:datetime])
           page_view = PageView.new(@parent_uri + @uri,
-                                   [view.name.capitalize, time],
-                                   view.attributes)
+                                   [type, time],
+                                   attributes)
           @result += page_view.add_individuals
         end
       end
