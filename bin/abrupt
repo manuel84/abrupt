@@ -31,9 +31,11 @@ class AbruptApp
       c.description = 'Converts and merges xml files to owl'
       c.option '--format STRING', String, 'Specifies the output format, possible [turtle|rdfxml|ntriples] (default=turtle)'
       c.option '--output STRING', String, 'Specifies an output file'
+      c.option '--assertions', String, 'Specifies the included assertions, possible [tbox,user,website,rules] (default=tbox,user,website,rules)'
       c.action do |args, options|
         format = RDF::Format.for(options.output) unless options.format
         options.default :format => 'turtle' # default turtle syntax output
+        options.default :assertions => 'tbox,user,website,rules'
         format ||= RDF::Format.for(options.format.to_sym)
         result = case args.count
         when 0 then puts "arg error"

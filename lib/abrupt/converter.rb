@@ -22,7 +22,11 @@ module Abrupt
 
     def init(options = {})
       @format = options[:format].try(:to_sym) || :turtle
-      @result = Repository.load(VOC_FILE)
+      @result = Repository.new
+    end
+
+    def append_tbox
+      @result << Repository.load(VOC_FILE)
     end
 
     def append_website_data(hsh)
@@ -39,7 +43,7 @@ module Abrupt
     end
 
     def init_hsh(hsh)
-      hsh = from_xml(hsh) unless hsh.is_a?(Hash)
+      hsh = Hash.from_xml(File.read(hsh)) unless hsh.is_a?(Hash)
       @hsh = hsh.deep_symbolize_keys
       return unless @hsh[:website]
       @hsh[:website][:url].each_with_index do |value, i|
@@ -56,11 +60,6 @@ module Abrupt
 
     def self.json(hsh)
       hsh.to_json
-    end
-
-    def from_xml(file)
-      xml = Nokogiri::XML(File.read(file))
-      Hash.from_xml(xml.to_s)
     end
 
     def add_to_result(statements)
