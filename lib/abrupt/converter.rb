@@ -93,7 +93,7 @@ module Abrupt
     def append_user_data(file)
       return unless file.is_a?(String) && File.exist?(file)
       xml = Hash.from_xml(File.read(file)).deep_symbolize_keys
-      xml[:database][:visitor].each do |values|
+      xml[:database][:visitor].ensure_to_a.each do |values|
         ip = values[:ip]
         next unless ip
         visitor = Transformation::Client::Visitor.new(

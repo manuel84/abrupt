@@ -24,7 +24,6 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'gyoku', '~> 1.2'
   spec.add_runtime_dependency 'rdf', '~> 1.1'
   spec.add_runtime_dependency 'linkeddata', '~> 1.1'
-  # spec.add_runtime_dependency  'rdf-turtle'
   spec.add_runtime_dependency 'rdf-rdfxml', '~> 1.1'
   spec.add_runtime_dependency 'rdf-raptor', '~> 1.2'
   spec.add_runtime_dependency 'json-schema', '~> 2.4'

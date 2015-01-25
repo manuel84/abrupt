@@ -74,12 +74,12 @@ module Abrupt
 
   def self.convert(file, *args)
     converter = Converter.instance
-    assertions = args[:assertions]
+    assertions = args.last[:assertions].split ','
     converter.init(args[1]) # options
-    converter.append_tbox if assertions.include?(:tbox)
-    converter.append_website_data(file) if assertions.include?(:website)
-    converter.append_user_data(args.first) if assertions.include?(:user)
-    converter.append_rules if assertions.include?(:rules)
+    converter.append_tbox if assertions.include?('tbox')
+    converter.append_website_data(file) if assertions.include?('website')
+    converter.append_user_data(args.first) if assertions.include?('user')
+    converter.append_rules if assertions.include?('rules')
     converter.result
   end
 end
