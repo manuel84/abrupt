@@ -4,6 +4,7 @@ require 'rest_client'
 require 'gyoku'
 require 'rdf'
 require 'linkeddata'
+require 'active_support'
 require 'active_support/core_ext'
 Dir[File.dirname(__FILE__) + '/transformation/*.rb',
     File.dirname(__FILE__) + '/transformation/website/*.rb',
