@@ -1,4 +1,5 @@
 # Abrupt
+[![Gem Version](https://badge.fury.io/rb/abrupt.svg)](http://badge.fury.io/rb/abrupt)
 [![Build Status](https://travis-ci.org/manuel84/abrupt.svg?branch=master)](https://travis-ci.org/manuel84/abrupt)
 [![Code Climate](https://codeclimate.com/github/manuel84/abrupt/badges/gpa.svg)](https://codeclimate.com/github/manuel84/abrupt)
 [![Test Coverage](https://codeclimate.com/github/manuel84/abrupt/badges/coverage.svg)](https://codeclimate.com/github/manuel84/abrupt)
@@ -24,7 +25,7 @@ Or install it yourself as:
 For converting owl file from xml use: 
 
 ```shell
- abrupt convert spec/fixtures/rikscha_Result_min.xml spec/fixtures/rikscha.ohneBilder.2013-04-30_2013-08-17_min.xml --output tmp/out.ttl --format turtle
+abrupt convert spec/fixtures/rikscha_Result_min.xml spec/fixtures/rikscha.ohneBilder.2013-04-30_2013-08-17_min.xml --output tmp/out.ttl --format turtle
 ```
 
 ## Contributing
