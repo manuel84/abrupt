@@ -555,6 +555,16 @@
 
 
 
+###  http://wba.cs.hs-rm.de/AbRUPt/contentlength
+
+:contentlength rdf:type owl:DatatypeProperty ;
+               
+               rdfs:domain :Visit ;
+               
+               rdfs:range xsd:string .
+
+
+
 ###  http://wba.cs.hs-rm.de/AbRUPt/contrast
 
 :contrast rdf:type owl:DatatypeProperty ;
@@ -607,7 +617,7 @@
            
            rdfs:domain :Visit ;
            
-           rdfs:range xsd:dateTime .
+           rdfs:range xsd:string .
 
 
 
@@ -617,7 +627,7 @@
            
            rdfs:domain :Visit ;
            
-           rdfs:range xsd:int .
+           rdfs:range xsd:string .
 
 
 
@@ -988,8 +998,6 @@
 ###  http://wba.cs.hs-rm.de/AbRUPt/phpsessionid
 
 :phpsessionid rdf:type owl:DatatypeProperty ;
-              
-              rdfs:domain :Visit ;
               
               rdfs:range xsd:string .
 

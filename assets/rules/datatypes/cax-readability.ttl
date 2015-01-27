@@ -13,6 +13,6 @@
     owl:someValuesFrom [
         a rdfs:Datatype;
         owl:onDatatype xsd:decimal;
-        owl:withRestrictions ([ xsd:minInclusive 7.0])
+        owl:withRestrictions ([ xsd:minInclusive 5.2])
     ]
 ] .

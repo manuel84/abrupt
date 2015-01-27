@@ -7,6 +7,7 @@ module Abrupt
         def add_individuals
           @values[:name] = @uri.last
           super
+          @values.delete :name
           @values.each do |key, value|
             add_property(key, value) if value
           end
@@ -18,14 +19,14 @@ module Abrupt
           enumerable = value.is_a?(Hash) || value.is_a?(Array)
           return if enumerable # value.is_a?(Enumerable)
           name = case key
-                 when 'uri'
+                 when :uri
                    uri = [@parent_uri[1], value].map(&:remove_last_slashes)
                    parent_uri_path = (@parent_uri[0..-3] + ['Page', uri.join])
                    parent_uri = "#{VOC}#{parent_uri_path.join('/')}"
                    # Page hasVisit visit
                    add_object_property(parent_uri, 'PageVisit', resolve_uri)
                    key
-                 when 'size' # TODO: transform via customize_to_schema
+                 when :size # TODO: transform via customize_to_schema
                    'contentlength'
                  else
                    key

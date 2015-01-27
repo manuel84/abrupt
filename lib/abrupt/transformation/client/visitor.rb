@@ -8,6 +8,7 @@ module Abrupt
           return @result unless @values
           @values[:name] = @values[:ip]
           super
+          @values.delete :name
           @values.each do |key, value|
             add_data_property(key, value) if value.is_a?(String)
           end
