@@ -38,14 +38,17 @@ class AbruptApp
         options.default :assertions => 'tbox,user,website,rules'
         format ||= RDF::Format.for(options.format.to_sym)
         result = case args.count
-        when 0 then puts "arg error"
-        when 1 then Abrupt.convert args.first, options.__hash__
-        else Abrupt.convert args.first, args[1], options.__hash__
-        end
+                 when 0 then
+                   puts "arg error"
+                 when 1 then
+                   Abrupt.convert args.first, options.__hash__
+                 else
+                   Abrupt.convert args.first, args[1], options.__hash__
+                 end
         if options.output
           output_file = File.open(options.output, 'w')
           format.writer.new(output_file, prefixes: Abrupt::PREFIXES) do |writer|
-           writer << result
+            writer << result
           end
         else
           puts result.dump Abrupt::Converter.instance.format, prefixes: Abrupt::PREFIXES

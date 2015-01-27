@@ -76,15 +76,15 @@ module Abrupt
     converter = Converter.instance
     assertions = args.last[:assertions].split ','
     converter.init(args[1]) # options
-    append file, assertions
+    append file, args.first, assertions
     converter.result
   end
 
-  def self.append(file, assertions)
+  def self.append(file, user_file, assertions)
     converter = Converter.instance
     converter.append_tbox if assertions.include?('tbox')
     converter.append_website_data(file) if assertions.include?('website')
-    converter.append_user_data(args.first) if assertions.include?('user')
+    converter.append_user_data(user_file) if assertions.include?('user')
     converter.append_rules if assertions.include?('rules')
   end
 end
