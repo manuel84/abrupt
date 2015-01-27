@@ -23,7 +23,7 @@ module Abrupt
                    parent_uri_path = (@parent_uri[0..-3] + ['Page', uri.join])
                    parent_uri = "#{VOC}#{parent_uri_path.join('/')}"
                    # Page hasVisit visit
-                   add_object_property(parent_uri, 'Visit', resolve_uri)
+                   add_object_property(parent_uri, 'PageVisit', resolve_uri)
                    key
                  when 'size' # TODO: transform via customize_to_schema
                    'contentlength'
