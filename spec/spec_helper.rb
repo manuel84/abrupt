@@ -23,4 +23,5 @@ RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
   config.filter_run_excluding dev: true
   config.filter_run_excluding beta: true
+  config.filter_run_excluding broken_on_ci: true
 end

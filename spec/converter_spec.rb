@@ -4,8 +4,8 @@ describe Abrupt::Converter, :vcr do
   let(:website_repo_file) { 'spec/fixtures/rikscha-mainz.ttl' }
   before(:each) { Abrupt::Converter.instance.init }
 
-  context '#append_website_data', broken_on_ci: true do
-    it 'should convert to hash with customized datatypes' do
+  context '#append_website_data' do
+    it 'should convert to hash with customized datatypes', broken_on_ci: true do
       crawled_hash = FactoryGirl.attributes_for(:rikscha_website_data)
       crawled_hash = crawled_hash.deep_symbolize_keys[:data]
       Abrupt::Converter.instance.append_website_data(website_data_file)
