@@ -167,7 +167,7 @@ Das Entscheidungsverfahren für die Prädikatenlogik ist unentscheidbar.
 Eine entscheidbare Untermenge der Prädikatenlogik erster Stufe bieten die Beschreibungslogiken.
 Im Wesentlichen enthält eine Beschreibungslogik die Operatoren der Aussagenlogik (\(\land, \lor, \neg\)), ein- und zweistellige Prädikate sowie eine eingeschränkte Quantifizierung.
 Sie umfassen Individuen (Objekte), Rollen (2-stellige Prädikate) und Klassen (1-stellige Prädikate), wobei keine Metamodellierung (Klassen von Klassen) möglich ist.
-Normalerweise wird die Wissensbasis dabei in 2 Teile separiert. 
+Normalerweise wird die Wissensbasis dabei in 2 Teile separiert, \textit{TBox} und \textit{ABox}. 
 Das Terminoligische Wissen (\textit{TBox}) beschreibt die Struktur möglicher Welten. 
 Es stellt Begriffe zur Beschreibung von Sachverhalten bereit. 
 So definiert es das Vokabular in einem Anwendungsbereich. 
@@ -178,8 +178,8 @@ Hilfe des Grundvokabulars.
 
 Die Syntax ist stark an die Prädikatenlogik angelehnt. 
 Es gibt jedoch wesentliche Unterschiede. 
-Hervorzuheben ist der Wegfall der Implikation \(\to\). 
-Während in der Prädikatenlogik auch Rollenaxiome rechterhand der Implikation stehen kann, sind bei Beschreibungslogiken nur Klassen in Subsumptionen möglich \(C_1 \sqsubseteq C_2\).
+Hervorzuheben ist der Wegfall der Implikation (\(\to\)). 
+Während in der Prädikatenlogik auch Rollenaxiome rechterhand der Implikation stehen können (\eqref{eq:fol_predicate1}), sind bei Beschreibungslogiken nur Klassen in Subsumptionen möglich \(C_1 \sqsubseteq C_2\).
 Nur ein Teil der Prädikatenlogik ist demnach adäquat in eine Beschreibungslogik zu übersetzen, man spricht in diesem Fall von DL-safe Regeln. 
 Eine Auflistung der Syntax und der Entsprechung in Prädikatenlogik sowie OWL finden Sie in \ref{table:description_logic}
 \\
@@ -188,11 +188,12 @@ Sie hat ein gute Balance zwischen Ausdrucksfähigkeit und Berechenbarkeits-/Vera
 OWL 2 ist zu dem Empfehlung des W3C und es existieren bereits einige Reasoner-Implementierungen. 
 Die bekanntesten derzeit sind Fact++, Hermit, KAON2 und Pellet.
 
+
 Axiome der Beschreibungslogik, Prädikatenlogik in OWL 2 RL
 
 Die exemplarisch genannten Regeln für die beschriebenen Logiken lassen sich somit in OWL 2 RL wie folgt ausdrücken.
 
-\lstinputlisting[breaklines=true,language=ttl, caption=Regel xx]{listings/propositional_logic_rule.ttl}
+\lstinputlisting[breaklines=true,language=ttl, caption=Regel ]{listings/propositional_logic_rule.ttl}
 
 \lstinputlisting[breaklines=true,language=ttl, caption=Regel xx]{listings/propositional_logic_infered.ttl}
 
@@ -207,16 +208,14 @@ Die exemplarisch genannten Regeln für die beschriebenen Logiken lassen sich som
 In der Bachelor-Arbeit \cite{Brieger} wurde bereits untersucht inwieweit das Analyse-Tool \textit{AbRUPt} \cite{url_abrupt} verwendet werden kann um eine objektive Beurteilung über die Benutzerfreundlichkeit einer Webseite geben zu können. 
 Die Arbeit zeigt gute Ansätze und setzt auf die Konvertierung der erhobenen Daten in ein OWL-Dokument. 
 Mit einem anschließenden Projekt können mit einem durchdachten Regelsystem Schlussfolgerungen gezogenwerden. 
-Das Programm ist als HTML-Dienst gestaltet und kann lediglich die Webseiten-Daten aus \textit{AbRUPt} umwandeln, die Integration der Webseiten-Besucherdaten ist noch nicht integriert. 
+Das Programm ist als Dienst mit HTML-Oberfläche gestaltet und kann lediglich die Webseiten-Daten aus \textit{AbRUPt} umwandeln, die Integration der Webseiten-Besucherdaten ist noch nicht berücksichtigt. 
 Auch die Integration in nachfolgende Projekte erweist sich durch den wenig modularen Aufbau als eher schwierig. 
-Mit Einbezug der Ergebnisse aus \cite{Martin} konnte eine Konzept für eine sinnvolle Aufbereitung der Daten gezeigt werden. 
+Mit Einbezug der Ergebnisse aus \cite{Martin} konnte ein Konzept für eine sinnvolle Aufbereitung der Daten gezeigt werden. 
 Es ist OWL-Converter entstanden, der erhobene \textit{AbRUPt}-Daten von einem XML-Format in ein OWL-Dokument transformiert.
 
-\#TODO:warum eigentlich wdm-service?
-\\
 
-Einige wichtige Aspekte wurden in dieser Arbeit geändert. 
-Die Ontologie für den \textit{wdm-service} wurde von Grund auf intuitiver gestaltet und um die Konzepte der Webseiten-Besucherdaten erweitert (Fig. onto-Graph). 
+Einige wichtige Aspekte wurden gegenüber dieser Arbeit geändert. 
+Die Ontologie für den \textit{AbRUPt-Service} wurde von Grund auf intuitiver gestaltet und um die Konzepte der Webseiten-Besucherdaten erweitert (Fig. onto-Graph). 
 Dabei wurde ebenso auf sinnvolle Konsistenzeigenschaften sowie Inferenz-Regeln zurückgegriffen, die auf Usabilty-Probleme schlussfolgern. (Abschnit Regeln)
 Ein Problem ergab sich für die Eindeutigkeit von Webseiten-Elementen, die nicht kontextbasiert benannt wurden. 
 Mit dem an \textit{REST} angelehnten URI-Aufbau ergeben sich global einheitlich URIs.
@@ -226,7 +225,9 @@ Beispielsweise liegt dann das Input-Textelement des Namens für ein Kontaktformu
 Das sieht zunächst nicht sehr lesbar aus, ist aber unvermeidbar aufgrund möglicher großer Datenbestände. 
 \lstinputlisting[breaklines=true,language=ttl, caption=Nested URIs]{listings/unique_nested_uris.ttl}
  
-\#TODO: Erweiterung Struktur um Problem-Klasse
+Für die Einstufung von Problemen gibt es die Klasse \textit{Problem}. 
+Durch geeignete Abfragen, bspw. mit Sparql (sparql-ref), kann nach dem Reasoning die Liste aller möglichen Probleme abgerufen werden. 
+Wie bereits angesprochen können dabei Elemente dazugehören, die aus einem subjektiven Erscheinungsbild annehmbar als Problem ignoriert werden können.
 
 \subsection{Das abrupt-Gem (Converter-Lib + Binary)}
 Für die Neugestaltung des Konvertierung-Tools fiel die Wahl der Technolgie auf \textit{RubyGems}, dem offiziellen Paketsystem von Ruby . 
@@ -285,9 +286,30 @@ Eine vernünftige Unterteilung der Axiome ist in \cite{owl2rif} gegeben.
 
 \subsection{Inkonsistenz-Regeln}
 
+Für Rollenaxiome können mittels einfacher Regeln Definitions- und Wertebereich festgelegt werden. 
+Für den Wertebereich, also der Festlegung der Klassenzugehörigkeit des 2. Parameters von Rollen ergibt sich Formel \eqref{eq:dl_domain} sowie dessen Darstellung in OWL (Listung xx).
+
+\begin{figure}
+\begin{equation}
+\top \sqsubseteq \forall\ name\ Dataytpe(xsd:string)
+\label{eq:dl_domain}
+\end{equation}
+\caption{Beschreibungslogik: Wertebereich-Regel für Rollen}
+\end{figure}
+
+
 \lstinputlisting[breaklines=true,language=ttl, caption=Regel xx]{listings/inconsistency_rule.ttl}
 
 \subsection{Produktions-Regeln}
+
+Durch Inferenzen entstehen neue Klassenzugehörigkeiten. 
+\begin{figure}
+\begin{equation}
+..
+\label{eq:dl_infered}
+\end{equation}
+\caption{Beschreibungslogik: Produktionsregel}
+\end{figure}
 
 \lstinputlisting[breaklines=true,language=ttl, caption=Regel xx]{listings/production_rule.ttl}
 
@@ -295,6 +317,9 @@ Eine vernünftige Unterteilung der Axiome ist in \cite{owl2rif} gegeben.
 \subsection{Datentyp-Regeln}
 
 \lstinputlisting[breaklines=true,language=ttl, caption=Regel xx]{listings/datatype_rule.ttl}
+
+
+Schwöchen von OWL/Erweiterung
 
 \section{Zusammenfassung \& Ausblick}
 alter Converter:
