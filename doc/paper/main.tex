@@ -17,12 +17,14 @@
 
 
 \documentclass[runningheads,a4paper]{llncs}
+\usepackage[pdftex]{graphicx}
 \usepackage[utf8x]{inputenc}
-\usepackage{amssymb}
+\usepackage[T1]{fontenc} 
+\usepackage{mathtools}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage{wasysym}
 
 \setcounter{tocdepth}{3}
-\usepackage{graphicx}
-\usepackage{mathtools}
 \usepackage{url}
 
 \usepackage{listings}
@@ -103,24 +105,24 @@ Durch die Konvertierung, Modellierung und Entwicklung eines durchdachtes Regelsy
 
 \# [WiP]
 
-Mit der Aussagenlogik lassen sich beschränkt Formeln aufstellen. Sie entsprechen in der Programmierung dem Datentyp \textit{Boolean}, also Elementarussagen, die verknüpft und negiert erscheinen und deren Wahrheitsgehalt \textit{Wahr} oder \textit{falsch} ist.
+Mit der Aussagenlogik lassen sich in ihrer Mächtigkeit beschränkte Formeln aufstellen. Sie entsprechen in der Programmierung dem Datentyp \textit{Boolean}, also Elementarussagen, die verknüpft und negiert erscheinen und deren Wahrheitsgehalt \textit{Wahr} oder \textit{falsch} ist.
 
 \begin{figure}
 \begin{align}
 \begin{split}
 A &= \textnormal{Die Checkbox hat den Namen \textit{agb}.}\\
 B &= \textnormal{Die Checkbox ist kein Pflichtfeld.}\\
-A \to C &= \textnormal{Die Checkbox mit Namen \textit{agb} ist ein Pflichtfeld.}\\
-(A \to C) \land B &= \textnormal{Es liegt ein Usability-Problem vor.}
+A \to C &= \textnormal{Die Checkbox hat den Namen \textit{agb}, also ist sie ein Pflichtfeld.}\\
+(A \to C) \land B &= \textnormal{\lightning\ Es liegt ein Problem vor.}
 \label{eq:propositional_logic}
 \end{split}
 \end{align}
-\caption{Aussagenlogische Formlen}
+\caption{Aussagenlogische Formeln}
 \end{figure}
-
+ 
 Aus den oben genannten Aussagen \eqref{eq:propositional_logic}, folgt, dass die Checkbox mit dem Namen \textit{agb} ein Pflichtfeld ist (\(A \to C)\). 
 Diese ist allerdings nicht als solches ausgezeichnet (\(B\)). 
-Aus dieser Inkonsistenzeigenschaft ergibt sich ein Problem (\(A \land C\)). 
+Aus dieser Inkonsistenzeigenschaft ergibt sich ein Problem (\(A \to C) \land B\). 
 Die Aussage \((A \to C)\) könnte genauso als die Negation von \(B\) definiert werden. 
 Es ergäbe sich daraus eine Kontradiktion \((\neg B \land B)\), einer Formel die stets zu \textit{falsch} ausgewertet wird. 
 Über Wahrheitstafeln können jegliche (zusammengesetzte) Aussagen auf deren Wahrheitsgehalt überprüft werden. 
@@ -129,54 +131,55 @@ Damit verdeutlicht sich einfach, dass das Schlussfolgern über die aussagenlogis
 
 Eine Erweiterung der Aussagenlogik stellt die Prädikatenlogik dar.
 In der Prädikatenlogik werden Elementaraussagen hinsichtlich ihrer Struktur untersucht.
-Mit Prdäikaten können Rolleneigenschaften über Individuen festgelegt werden, bspw. für den Namen eines Individuums \textit{x} kann gelten $HasName(x, 'agb')$.  
-Quantoren geben an, von wie vielen Individuen eine Aussage erfüllt wird, so kann die Aussage über die Existenz eines Individuums \textit{x} mit dem Namen \textit{agb} getroffen werden $\exists x. HasName(x, 'agb')$.
+Mit Prädikaten können Eigenschaften über Individuen festgelegt werden. 
+Die Anzahl der Stellen im Prädikat ist dabei nicht beschränkt, so können mit 1-stelligen Prädikaten Zugehörikeiten \eqref{eq:fol_predicate1}, mit 2-stelligen Rolleneigenschaften \eqref{eq:fol_predicate1} modelliert werden  
+Quantoren geben an, von wie vielen Individuen eine Aussage erfüllt wird, so kann die Aussage über die Existenz eines Individuums getroffen werden \eqref{eq:fol_quantors}.
 % \renewcommand{\figurename}{Fig.}
 \begin{figure}
 \begin{equation}
-istPflichtfeld(x)
-\label{eq:fol_predicate}
+RequiredFormElement(x)
+\label{eq:fol_predicate1}
 \end{equation}
-\caption{Prädikatenlogik erster Stufe: Prädikat}
+\caption{Prädikatenlogik erster Stufe: 1-stelliges Prädikat als Klasse}
 \end{figure}
 
 \begin{figure}
 \begin{equation}
-\forall x. \neg Checkbox(x) \land (\neg istPflichtfeld(x) \lor istPflichtfeld(x))
-\label{eq:fol_quantors1}
+hasName(x, \textnormal{agb})
+\label{eq:fol_predicate2}
 \end{equation}
-\caption{Prädikatenlogik erster Stufe: All-Quatnor}
+\caption{Prädikatenlogik erster Stufe: 2-stelliges Prädikat als Rolleneigenschaft}
 \end{figure}
 
 \begin{figure}
 \begin{equation}
-\exists x\exists y. Website(x) \land name(x, y)
-\label{eq:fol_quantors2}
+\forall x\exists y. TextInput(x) \to HasName(x, y)
+\label{eq:fol_quantors}
 \end{equation}
-\caption{Prädikatenlogik erster Stufe: Existenz-Quantor}
+\caption{Prädikatenlogik erster Stufe: Quantoren als Existenz-Aussagen}
 \end{figure}
 
 Somit lassen sich wesentlich mächtigere Aussagen treffen, die mit der Aussagenlogik allein nicht möglich sind.
-Dies hat allerdings auch Asuwirkungen auf die Laufzeit des Schlussfolgerns.
+Das hat allerdings auch Asuwirkungen auf die Laufzeit des Schlussfolgerns.
 Das Entscheidungsverfahren für die Prädikatenlogik ist unentscheidbar. 
 \\
 
 Eine entscheidbare Untermenge der Prädikatenlogik erster Stufe bieten die Beschreibungslogiken.
-Im Wesentlichen enthält eine Beschreibungslogik die Operatoren der Aussagenlogik (Negation, und, oder), ein- und zweistellige Prädikate sowie eine eingeschränkte Quantifizierung.
-Sie umfassen Individuen (Objekte), Rollen (2-stellige Prädikate) und Konzepte (Klassen), wobei keine Klassen von Klassen möglich sind.
-Normalerweie wird die Wissensbasis dabei in 2 Teile separiert. 
+Im Wesentlichen enthält eine Beschreibungslogik die Operatoren der Aussagenlogik (\(\land, \lor, \neg\)), ein- und zweistellige Prädikate sowie eine eingeschränkte Quantifizierung.
+Sie umfassen Individuen (Objekte), Rollen (2-stellige Prädikate) und Klassen (1-stellige Prädikate), wobei keine Metamodellierung (Klassen von Klassen) möglich ist.
+Normalerweise wird die Wissensbasis dabei in 2 Teile separiert. 
 Das Terminoligische Wissen (\textit{TBox}) beschreibt die Struktur möglicher Welten. 
 Es stellt Begriffe zur Beschreibung von Sachverhalten bereit. 
 So definiert es das Vokabular in einem Anwendungsbereich. 
-Das Grundvokabular besteht aus Konzepten (einstellige Prädikate) und Rollen (zweistellige Prädikate). 
-Das Assertionales Wissen beschreibt die Sachverhalte, die in einer bestimmten Welt gelten. 
+Das Grundvokabular besteht aus den Klassen (einstellige Prädikate) und Rollendefinitionen (zweistellige Prädikate). 
+Das Assertionale Wissen beschreibt die Sachverhalte, die in einer bestimmten Welt gelten. 
 Es existieren Annahmen (assertions) über einzelne Objekte ausgedrückt mit
 Hilfe des Grundvokabulars.
 
 Die Syntax ist stark an die Prädikatenlogik angelehnt. 
 Es gibt jedoch wesentliche Unterschiede. 
 Hervorzuheben ist der Wegfall der Implikation \(\to\). 
-Während in der Prädikatenlogik auch Rollenaxiome rechterhand der Implikation stehen kann, sind bei Beschreibungslogiken nur Konzepte in Subsumptionen möglich \(C_1 \sqsubseteq C_2\).
+Während in der Prädikatenlogik auch Rollenaxiome rechterhand der Implikation stehen kann, sind bei Beschreibungslogiken nur Klassen in Subsumptionen möglich \(C_1 \sqsubseteq C_2\).
 Nur ein Teil der Prädikatenlogik ist demnach adäquat in eine Beschreibungslogik zu übersetzen, man spricht in diesem Fall von DL-safe Regeln. 
 Eine Auflistung der Syntax und der Entsprechung in Prädikatenlogik sowie OWL finden Sie in \ref{table:description_logic}
 \\
