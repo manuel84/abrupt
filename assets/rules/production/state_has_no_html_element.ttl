@@ -13,9 +13,8 @@
 #     owl:cardinality 0
 # ] .
 
-
-[ a owl:Restriction ;
-     rdfs:subClassOf :Problem ;
-     owl:onProperty :hasLink ;
-     owl:cardinality 0
-] .
+:State rdfs:subClassOf [
+     a owl:Restriction;
+     owl:onProperty :hasLink;
+     owl:someValuesFrom :Link
+  ] .
