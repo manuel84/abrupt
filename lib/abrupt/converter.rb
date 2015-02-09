@@ -96,8 +96,8 @@ module Abrupt
       xml[:database][:visitor].ensure_to_a.each do |values|
         ip = values[:ip]
         next unless ip
-        visitor = Transformation::Client::Visitor.new(
-            ['Website', @uri.to_s], ['Visitor', ip], values)
+        visitor = Transformation::Client::Visitor.new(['Website', @uri.to_s],
+                                                      ['Visitor', ip], values)
         add_to_result visitor.add_individuals
         append_pages_for_visitor(visitor)
       end
@@ -108,12 +108,11 @@ module Abrupt
       pages = visitor.values[:pages][:page].ensure_to_a
       pages.each do |page|
         time = ::Abrupt.format_time(page[:entertime])
-        Transformation::Client::Base.subclasses.each do |transformation_class|
-          transformator = transformation_class.new(
-              visitor.parent_uri + visitor.uri,
-              ['Visit', time], page
+        Transformation::Client::Base.subclasses.each do |transformer_class|
+          transformer = transformer_class.new(visitor.parent_uri + visitor.uri,
+                                              ['Visit', time], page
           )
-          add_to_result transformator.add_individuals
+          add_to_result transformer.add_individuals
         end
       end
     end
