@@ -231,35 +231,40 @@ Wie bereits angesprochen können dabei Elemente dazugehören, die aus einem subj
 
 \subsection{Das abrupt-Gem (Converter-Lib + Binary)}
 Für die Neugestaltung des Konvertierung-Tools fiel die Wahl der Technolgie auf \textit{RubyGems}, dem offiziellen Paketsystem von Ruby . 
-Zum einen ist die Unterstützung für RDF/OWL durch \cite{ruby-rdf} ausgezeichnet und zum Anderen erweisen sich noch weitere wesentliche Vorteile:
+Zum einen ist die Unterstützung \cite{ruby-rdf} für RDF/OWL ausgezeichnet und zum Anderen erweisen sich noch weitere wesentliche Vorteile:
 \begin{itemize}
 \item{Benutzung durch Kommandozeilentool}
 \item{Modularer Aufbau}
-\item{Ausgezeichnete Unittest-Unterstützung}
+\item{Ausgezeichnete Komponententest-Unterstützung}
 \item{Wiederverwendbarkeit durch Einbindung als RubyGem Bibliothek oder des Kommandozeilentools}
 \item{Flexibilität der Eingabe und Ausgabe (bestimmte Services, nur Abrupt/ohne Benutzerdaten, tutrle, rdfxml, n3}
 \end{itemize}
 
-\#TODO: Grundstruktur/Vokabular als Ausgangsbasis, eigenes mit Protege entwicketes OWL-Dok
-- Regeln einzelne OWL-Dokumente
-- Converter modular aufgebaut (jeder Service readability, ... eigene Klasse)
-- JSON-Schema für die Datentypsicherheit
-- Webseiten-Benutzerdaten
-- Kommandozeilentool help (Params, output)
+Das terminologische Wissen (TBox) ist in einem OWL-Dokument gesichert, sodass es separat mit Protege entwickelt und in die Software einfach eingebunden wird. 
+Da es sich ausschließlich um statische Inhalte handelt, erweist sich dies als sinnvoll. 
+Zur Hervorhebung und Veranschaulichung von nicht-trivialen Regeln existieren weitere OWL-Dokumente, die als Ordnerinhalte der Software hinzugefügt werden. 
+Mit dem Befehl \cite{ruby-rdf} lässt sich Konvertierung starten. 
+Zunächst werden die statischen Inhalten in ein RDF-Repsoitory geladen. 
+Das Assertionale Wissen (ABox) entsteht aus der Transformation der Eingabedaten. 
+Die Eingabedaten liegen in der Regel in 2 XML-Dokumenten vor - den Website- und den Besucher-Daten.
+Für jeden Kontentyp existiert eine Schema-Datei, die für die nötige Datentypkonvertierung sorgt. 
+Dadurch werden aus den XML-Rohdaten die nötigen Werte umgewandelt, bspw. Integer, Date, Decimal, ...
+Anschließend erstellt eine zugewiesene Transformater-Klasse aus den XML-Daten die RDF-Statements zu dem RDF-Repository hinzu. 
+Der Aufbau der Software ist somit sehr modular, individuell anpassbar, durch Oberklassen generisch und übersichtlich.
 
 \newpage
 
 \section{Schließen auf Probleme mit Inferenz-Regeln}
 Die formale Beschreibungssprache OWL 2 ist eine Empfehlung des W3C vom 11. Dezember 2012 für die Beschreibung von Ontologien. 
 Primär geht es darum Modellierungen einer Domäne vorzunehmen, sodass Mensch und Maschine die Bedeutung verarbeiten können. 
-OWL 2 basiert technisch auf RDF und RDFS und geht dabei über die Ausdrucksmächtigkeit wiet hinaus. 
+OWL 2 basiert technisch auf RDF und RDFS und geht dabei über die Ausdrucksmächtigkeit weit hinaus. 
 Es is somit auch dokumentenbasiert, was die Erstellung und Verteilung gegenüber einem Binärformat enorm vereinfacht. 
 Um die richtige Balance zwischen Ausdrucksstärke und Entscheidbarkeit bzw. Performance zu gewährleisten gibt es 3 verschiedene Sprachebenen. 
-Hier wird der Fokus auf die 2. Sprachebene OWL 2 DL gelegt, für die widerrum 3 Profile existieren. 
+In dieser Arbeit wird der Fokus auf die 2. Sprachebene OWL 2 DL gelegt, für welche es 3 Profile existiert. 
 Das OWL 2 RL Profil ist auf Anwendungen, die ein skalierbares Reasoning verlangen, ohne dabei zu viel Ausdruckskraft zu verlieren, ausgerichtet. 
-Die Ausdrucksmächtigkeit entspricht dabei direkt der Beschreibungslogiken. 
-Je nach Anwendung der Axiome ergibt sich das jeweilige Profil, es wird nicht für das Dokumenten vorab definiert. 
-Man ist daher darauf bedacht auf gewisse OWL-Axioma zu verzichten um nicht in das ungewünschte Profil reinzurutschen.
+Die Ausdrucksmächtigkeit entspricht dabei der Beschreibungslogiken SHOIN(D). 
+Je nach Anwendung der Axiome ergibt sich das jeweilige Profil, es wird nicht für das Dokument definiert. 
+Man ist daher darauf bedacht auf gewisse OWL-Axiome zu verzichten um nicht in ein ungewünschtes Profil zu gelangen.
 \begin{table}[h]
 \begin{tabular}{|l|l|l|}
 \hline

@@ -22,6 +22,46 @@ Or install it yourself as:
 
 ## Usage
 
+### Help
+```shell
+abrupt -h
+  NAME:
+
+    Abrupt
+
+  DESCRIPTION:
+
+    Automated Reasoning for Web Usability Problems
+
+  COMMANDS:
+
+    convert              Converts and merges xml files to owl
+    crawl                Crawls a website
+    help                 Display global or [command] help documentation
+
+  GLOBAL OPTIONS:
+
+    -h, --help
+        Display help documentation
+
+    -v, --version
+        Display version information
+
+    -t, --trace
+        Display backtrace when an error occurs
+
+  AUTHOR:
+
+    Manuel Dudda <manuelddudda@redpeppix.de>
+
+  SOURCE CODE:
+
+    https://github.com/manuel84/abrupt
+```
+
+
+### Example
+
 For converting owl file from xml use: 
 
 ```shell
