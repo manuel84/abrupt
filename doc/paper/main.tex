@@ -113,7 +113,7 @@ Mit der Aussagenlogik lassen sich in ihrer Mächtigkeit beschränkte Formeln auf
 A &= \textnormal{Die Checkbox hat den Namen \textit{agb}.}\\
 B &= \textnormal{Die Checkbox ist kein Pflichtfeld.}\\
 A \to C &= \textnormal{Die Checkbox hat den Namen \textit{agb}, also ist sie ein Pflichtfeld.}\\
-(A \to C) \land B &= \textnormal{\lightning\ Es liegt ein Problem vor.}
+(A \to C) \land B &= \textnormal{\lightning\ (Es liegt ein Problem vor.)}
 \label{eq:propositional_logic}
 \end{split}
 \end{align}
@@ -137,7 +137,7 @@ Quantoren geben an, von wie vielen Individuen eine Aussage erfüllt wird, so kan
 % \renewcommand{\figurename}{Fig.}
 \begin{figure}
 \begin{equation}
-RequiredFormElement(x)
+TextInput(x)
 \label{eq:fol_predicate1}
 \end{equation}
 \caption{Prädikatenlogik erster Stufe: 1-stelliges Prädikat als Klasse}
@@ -153,7 +153,7 @@ hasName(x, \textnormal{agb})
 
 \begin{figure}
 \begin{equation}
-\forall x\exists y. TextInput(x) \to HasName(x, y)
+\forall x\exists y. TextInput(x) \to hasName(x, y)
 \label{eq:fol_quantors}
 \end{equation}
 \caption{Prädikatenlogik erster Stufe: Quantoren als Existenz-Aussagen}
@@ -181,25 +181,14 @@ Es gibt jedoch wesentliche Unterschiede.
 Hervorzuheben ist der Wegfall der Implikation (\(\to\)). 
 Während in der Prädikatenlogik auch Rollenaxiome rechterhand der Implikation stehen können (\eqref{eq:fol_predicate1}), sind bei Beschreibungslogiken nur Klassen in Subsumptionen möglich \(C_1 \sqsubseteq C_2\).
 Nur ein Teil der Prädikatenlogik ist demnach adäquat in eine Beschreibungslogik zu übersetzen, man spricht in diesem Fall von DL-safe Regeln. 
-Eine Auflistung der Syntax und der Entsprechung in Prädikatenlogik sowie OWL finden Sie in \ref{table:description_logic}
+
+Eine Auflistung der Syntax und der Entsprechung in Prädikatenlogik sowie OWL finden Sie in \ref{table:description_logic}.
 \\
-Mit dem RL-Profil aus OWL 2 (\cite{owl2rl}) gibt es eine Sprache, die die gleiche Mächtigkeit wie die Beschreibungslogik (ALC...) besitzt und demnach für das Reasoning in entscheidbarer Komplexität bestens geeignet ist.
+Mit dem RL-Profil aus OWL 2 \cite{owl2rl} gibt es eine Sprache, die die gleiche Mächtigkeit wie die Beschreibungslogik (\(\mathcal{SHOIN}(D))\) besitzt und demnach für das Reasoning in entscheidbarer Komplexität bestens geeignet ist.
 Sie hat ein gute Balance zwischen Ausdrucksfähigkeit und Berechenbarkeits-/Verarbeitungseigenschaften.
 OWL 2 ist zu dem Empfehlung des W3C und es existieren bereits einige Reasoner-Implementierungen. 
 Die bekanntesten derzeit sind Fact++, Hermit, KAON2 und Pellet.
 
-
-Axiome der Beschreibungslogik, Prädikatenlogik in OWL 2 RL
-
-Die exemplarisch genannten Regeln für die beschriebenen Logiken lassen sich somit in OWL 2 RL wie folgt ausdrücken.
-
-\lstinputlisting[breaklines=true,language=ttl, caption=Regel ]{listings/propositional_logic_rule.ttl}
-
-\lstinputlisting[breaklines=true,language=ttl, caption=Regel xx]{listings/propositional_logic_infered.ttl}
-
-\lstinputlisting[breaklines=true,language=ttl, caption=Regel xx]{listings/description_logic_rule.ttl}
-
-\lstinputlisting[breaklines=true,language=ttl, caption=Regel xx]{listings/description_logic_infered.ttl}
 
 \section{Implementierung}
 
@@ -256,13 +245,13 @@ Der Aufbau der Software ist somit sehr modular, individuell anpassbar, durch Obe
 
 \section{Schließen auf Probleme mit Inferenz-Regeln}
 Die formale Beschreibungssprache OWL 2 ist eine Empfehlung des W3C vom 11. Dezember 2012 für die Beschreibung von Ontologien. 
-Primär geht es darum Modellierungen einer Domäne vorzunehmen, sodass Mensch und Maschine die Bedeutung verarbeiten können. 
+Primär geht es darum Modellierungen einer Weltanschauung (Domäne) vorzunehmen, sodass Mensch und Maschine die Bedeutung verarbeiten können. 
 OWL 2 basiert technisch auf RDF und RDFS und geht dabei über die Ausdrucksmächtigkeit weit hinaus. 
-Es is somit auch dokumentenbasiert, was die Erstellung und Verteilung gegenüber einem Binärformat enorm vereinfacht. 
-Um die richtige Balance zwischen Ausdrucksstärke und Entscheidbarkeit bzw. Performance zu gewährleisten gibt es 3 verschiedene Sprachebenen. 
+Es ist dokumentenbasiert, was die Erstellung und Verteilung gegenüber einem Binärformat enorm vereinfacht. 
+Um die richtige Balance zwischen Ausdrucksstärke und Entscheidbarkeit bzw. Performance zu gewährleisten gibt es 3 verschiedene Sprachebenen - Lite, DL und Full. 
 In dieser Arbeit wird der Fokus auf die 2. Sprachebene OWL 2 DL gelegt, für welche es 3 Profile existiert. 
 Das OWL 2 RL Profil ist auf Anwendungen, die ein skalierbares Reasoning verlangen, ohne dabei zu viel Ausdruckskraft zu verlieren, ausgerichtet. 
-Die Ausdrucksmächtigkeit entspricht dabei der Beschreibungslogiken SHOIN(D). 
+Die Ausdrucksmächtigkeit entspricht dabei der Beschreibungslogiken \(\mathcal{SHOIN}(D)\). 
 Je nach Anwendung der Axiome ergibt sich das jeweilige Profil, es wird nicht für das Dokument definiert. 
 Man ist daher darauf bedacht auf gewisse OWL-Axiome zu verzichten um nicht in ein ungewünschtes Profil zu gelangen.
 \begin{table}[h]
@@ -292,39 +281,62 @@ Eine vernünftige Unterteilung der Axiome ist in \cite{owl2rif} gegeben.
 \subsection{Inkonsistenz-Regeln}
 
 Für Rollenaxiome können mittels einfacher Regeln Definitions- und Wertebereich festgelegt werden. 
-Für den Wertebereich, also der Festlegung der Klassenzugehörigkeit des 2. Parameters von Rollen ergibt sich Formel \eqref{eq:dl_domain} sowie dessen Darstellung in OWL (Listung xx).
+Für den Wertebereich, also der Festlegung der Klassenzugehörigkeit des 2. Parameters von Rollen ergibt sich Formel \eqref{eq:dl_range} sowie dessen Darstellung in OWL 2 RL (Listing \ref{range_owl}).
 
 \begin{figure}
 \begin{equation}
-\top \sqsubseteq \forall\ name\ Dataytpe(xsd:string)
-\label{eq:dl_domain}
+\top \sqsubseteq \forall\ name\ Dataytpe(\textit{xsd:string})
+\label{eq:dl_range}
 \end{equation}
 \caption{Beschreibungslogik: Wertebereich-Regel für Rollen}
 \end{figure}
 
-
-\lstinputlisting[breaklines=true,language=ttl, caption=Regel xx]{listings/inconsistency_rule.ttl}
+\lstinputlisting[breaklines=true,language=ttl, caption=Wertebereich-Regel für Rollen in OWL 2 RL,label=range_owl]{listings/inconsistency_rule.ttl}
 
 \subsection{Produktions-Regeln}
 
 Durch Inferenzen entstehen neue Klassenzugehörigkeiten. 
+Aus Einbahnstraßenseiten (Seiten ohne Links) entstehen Problemfälle (Listing \ref{production_owl}). 
 \begin{figure}
 \begin{equation}
-..
+State\ \sqcap \leq 0\ hasLink.Link \sqsubseteq Problem
 \label{eq:dl_infered}
 \end{equation}
 \caption{Beschreibungslogik: Produktionsregel}
 \end{figure}
 
-\lstinputlisting[breaklines=true,language=ttl, caption=Regel xx]{listings/production_rule.ttl}
+\lstinputlisting[breaklines=true,language=ttl, caption=Produktionsregel in OWL 2 RL,label=production_owl]{listings/production_rule.ttl}
 
 \subsection{Listen-Regeln}
+Durch Listenregeln können Sammlungen genutzt werden um Restriktionen aufzubauen oder durch Kettenregeln Hilfsrollen zu aktivieren (\eqref{eq:dl_list}, Listing \ref{list_owl}).
+
+\begin{figure}
+\begin{equation}
+hasPage \circ hasState \sqsubseteq hasStateThorugh
+\label{eq:dl_list}
+\end{equation}
+\caption{Beschreibungslogik: Kettenregel}
+\end{figure}
+
+\lstinputlisting[breaklines=true,language=ttl, caption=Kettenregl in OWL 2 RL,label=list_owl]{listings/list_rule.ttl}
+
 \subsection{Datentyp-Regeln}
+Als mächtigstes Werkzeug erweisen sich die Datentypregeln, die es erlauben, aus Zahlenbereichseinschränkungen und Datentypdefinitionen Probleme abzuleiten. 
+Der Lesbarkeitsindex einer Seite sollte einen definierten Wert nicht überschreiten um nicht als zu komplex zu gelten (\eqref{eq:dl_datatype}, Listing \ref{datatype_owl}).
 
-\lstinputlisting[breaklines=true,language=ttl, caption=Regel xx]{listings/datatype_rule.ttl}
+
+\begin{figure}
+\begin{equation}
+readability \geq 8.0\ Datatype(\textit{xsd:decimal}) \sqsubseteq Problem
+\label{eq:dl_datatype}
+\end{equation}
+\caption{Beschreibungslogik: Datentypregel}
+\end{figure}
+
+\lstinputlisting[breaklines=true,language=ttl, caption=Datentypregel in OWL 2 RL,label=datatype_owl]{listings/datatype_rule.ttl}
 
 
-Schwöchen von OWL/Erweiterung
+Schwächen von OWL/Erweiterung
 
 \section{Zusammenfassung \& Ausblick}
 alter Converter:

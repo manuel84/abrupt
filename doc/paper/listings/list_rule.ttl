@@ -1,0 +1,2 @@
+:hasStateThrough a owl:ObjectProperty;
+    owl:propertyChainAxiom ( :hasPage :hasState ) .

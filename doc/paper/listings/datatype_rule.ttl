@@ -1,0 +1,10 @@
+[
+    a owl:Restriction;
+    rdfs:subClassOf :Problem;
+    owl:onProperty :readability;
+    owl:someValuesFrom [
+        a rdfs:Datatype;
+        owl:onDatatype xsd:decimal;
+        owl:withRestrictions ([ xsd:minInclusive 8.0])
+    ]
+] .

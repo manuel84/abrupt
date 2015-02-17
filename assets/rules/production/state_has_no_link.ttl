@@ -11,8 +11,8 @@
     owl:intersectionOf ( :State
     [   a owl:Restriction ;
         owl:onProperty :hasLink ;
-        owl:onClass :State;
-        owl:qualifiedCardinality 0;
+        owl:onClass :Link;
+        owl:maxQualifiedCardinality 0;
     ]
     )
 ] .
