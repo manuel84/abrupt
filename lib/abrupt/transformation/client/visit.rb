@@ -2,12 +2,13 @@
 module Abrupt
   module Transformation
     module Client
-      # Transformation clas for client visit data
+      # Transformation class for client visit data
       class Visit < Base
         def add_individuals
           @values[:name] = @uri.last
           super
           @values.delete :name
+          add_visit_duration
           @values.each do |key, value|
             add_property(key, value) if value
           end
@@ -23,7 +24,7 @@ module Abrupt
                    uri = [@parent_uri[1], value].map(&:remove_last_slashes)
                    parent_uri_path = (@parent_uri[0..-3] + ['Page', uri.join])
                    parent_uri = "#{VOC}#{parent_uri_path.join('/')}"
-                   # Page hasVisit visit
+                   # Page hasPageVisit visit
                    add_object_property(parent_uri, 'PageVisit', resolve_uri)
                    key
                  when :size # TODO: transform via customize_to_schema
@@ -50,6 +51,15 @@ module Abrupt
                                    [type, time],
                                    attributes)
           @result += page_view.add_individuals
+        end
+
+        def add_visit_duration
+          leavetime = Abrupt.parse_time(@values[:leavetime])
+          enterteime = Abrupt.parse_time(@values[:entertime])
+          if leavetime && enterteime # maybe no recognized leavetime
+            visit_duration = (leavetime - enterteime).to_f # in seconds
+            add_data_property('visitDuration', visit_duration)
+          end
         end
       end
     end

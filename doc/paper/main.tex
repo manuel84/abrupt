@@ -336,6 +336,7 @@ readability \geq 8.0\ Datatype(\textit{xsd:decimal}) \sqsubseteq Problem
 \lstinputlisting[breaklines=true,language=ttl, caption=Datentypregel in OWL 2 RL,label=datatype_owl]{listings/datatype_rule.ttl}
 
 \subsection{Erweiterungen}
+Die Implementierung durch einen Regelsatz mit OWL 2 RL ist eine ansehnliche Vorgehensweise für das Auffinden von Problemen. 
 Für viele Anwendungsfälle muss man dennoch auf Erweiterungen zurückgreifen. 
 Die Beschreibungslogik \(\mathcal{SHOIN}(D)\) weist zwar eine vernünftige Mächtigkeit auf, lässt dabei gegenüber konventioneller Programmiersprachen die Arithmetik völligst außer Acht. 
 So ist es nicht möglich Summen über Elemente, Durchschnittswerte, Minima und Maxima zu ermitteln. 
@@ -344,10 +345,23 @@ Das größte Element ist also direkt ablesbar, weil kein anderes größeres Elem
 In der Wissensdatenbank beschrieben durch OWL 2 gilt diese Annahme nicht. 
 Durch die fundierte Basis der Prädikatenlogik arbeitet OWL 2 RL auf der Annahme einer offenen Welt (Open World Assumption). 
 Dies bedeutet, dass alles was nicht explizit als wahr beweisen werden kann, nicht automatisch als falsch bezeichnet wird. 
-Das größte Element ist also direkt ablesbar, weil ein anderes größeres (abgeleitetes) Element dieses übersteigen könnte. 
+Das größte Element ist also nicht direkt ablesbar, weil ein anderes größeres (abgeleitetes) Element dieses übersteigen könnte. 
 Eine Summe über alle Besucherzeiten kann nicht erfasst werden, wenn davon ausgegangen werden kann, dass neue Besuche hinzukommen können.
+Das Überwinden dieses Problems stellt eine große Herausforderung dar, für die zur Zeit lediglich Lösungsansätze existieren. 
 
-Schwächen von OWL/Erweiterung
+In vielen Punkten geradlinig und elegant ist die Kombination aus OWL und RuleML -- SWRL. 
+SWRL ist eine vom W3C entwickelte Spezifikation für eine Regelsprache in OWL mit einer großen Einschränkung, sie ist unentscheidbar. 
+Mittels sogenannter DL-safe Regeln, also Regeln, welche die Einrschänkungen der Beschreibungslogiken einhalten, bietet SWRL die Entscheidbarkeit von OWL 2 RL (PTime) und die Mächtigkeit der Beschreibungslogiken inkl. arithmetischer Funktionen. 
+
+SWRL ist kein direkter Bestandteil von OWL 2 RL und funktioniert als Sprach-Erweiterung. 
+Sie wird dennoch von vielen Reasonern unterstützt.
+
+Will man ohne Erweiterung für OWL 2 RL auskommen, müssen Vorkehrungen bereits in der Vorverarbeitung getroffen werden, die die Einschränkungen der offenen Weltannahme aushebeln. 
+Auf gängige Arithmetik \(+, -, *, / AVG(), SUM() \) kann in der unterliegenden Programmiersprache zurückgegriffen werden.
+Dabei werden die eingelesen Daten in der Vorverarbeitung somit als abgeschlossen angenommen.
+Die Besuchsdauer einer Seite wird durch einfache Differenz () ermittelt und als weiteres Wissen der ABox hinzugefügt.
+
+\lstinputlisting[breaklines=true,language=ruby, caption=Erweiterung der TBox in der Vorverarbeitung,label=list_rb]{listings/add_visit_duration.rb}
 
 \section{Zusammenfassung \& Ausblick}
 Gegenüber konventionellen Programmierparadigmen

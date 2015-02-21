@@ -41,7 +41,7 @@ module Abrupt
   TIME_OUTPUT_FORMAT = '%Y-%m-%d_%H%M%S'
 
   def self.parse_time(time)
-    DateTime.strptime(time, TIME_INPUT_FORMAT)
+    DateTime.strptime(time, TIME_INPUT_FORMAT) rescue nil
   end
 
   def self.format_time(time)
