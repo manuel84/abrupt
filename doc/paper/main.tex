@@ -17,6 +17,7 @@
 
 
 \documentclass[runningheads,a4paper]{llncs}
+\usepackage[ngerman]{babel}
 \usepackage[pdftex]{graphicx}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc} 
@@ -192,8 +193,6 @@ Die bekanntesten derzeit sind Fact++, Hermit, KAON2 und Pellet.
 
 \section{Implementierung}
 
-\subsection{Anpassungen und Erweiterung des OWL-Converters}
-
 In der Bachelor-Arbeit \cite{Brieger} wurde bereits untersucht inwieweit das Analyse-Tool \textit{AbRUPt} \cite{url_abrupt} verwendet werden kann um eine objektive Beurteilung über die Benutzerfreundlichkeit einer Webseite geben zu können. 
 Die Arbeit zeigt gute Ansätze und setzt auf die Konvertierung der erhobenen Daten in ein OWL-Dokument. 
 Mit einem anschließenden Projekt können mit einem durchdachten Regelsystem Schlussfolgerungen gezogenwerden. 
@@ -202,6 +201,7 @@ Auch die Integration in nachfolgende Projekte erweist sich durch den wenig modul
 Mit Einbezug der Ergebnisse aus \cite{Martin} konnte ein Konzept für eine sinnvolle Aufbereitung der Daten gezeigt werden. 
 Es ist OWL-Converter entstanden, der erhobene \textit{AbRUPt}-Daten von einem XML-Format in ein OWL-Dokument transformiert.
 
+\subsection{Anpassungen und Erweiterung des OWL-Converters}
 
 Einige wichtige Aspekte wurden gegenüber dieser Arbeit geändert. 
 Die Ontologie für den \textit{AbRUPt-Service} wurde von Grund auf intuitiver gestaltet und um die Konzepte der Webseiten-Besucherdaten erweitert (Fig. onto-Graph). 
@@ -335,10 +335,22 @@ readability \geq 8.0\ Datatype(\textit{xsd:decimal}) \sqsubseteq Problem
 
 \lstinputlisting[breaklines=true,language=ttl, caption=Datentypregel in OWL 2 RL,label=datatype_owl]{listings/datatype_rule.ttl}
 
+\subsection{Erweiterungen}
+Für viele Anwendungsfälle muss man dennoch auf Erweiterungen zurückgreifen. 
+Die Beschreibungslogik \(\mathcal{SHOIN}(D)\) weist zwar eine vernünftige Mächtigkeit auf, lässt dabei gegenüber konventioneller Programmiersprachen die Arithmetik völligst außer Acht. 
+So ist es nicht möglich Summen über Elemente, Durchschnittswerte, Minima und Maxima zu ermitteln. 
+In konventionellen Datenbanken gilt die Annahme der Weltabgeschlossenheit (Closed World Assumption), man kann aus den vorhandenen Daten ableiten, welche Daten nicht vorhanden sind. 
+Das größte Element ist also direkt ablesbar, weil kein anderes größeres Element dieses übersteigt. 
+In der Wissensdatenbank beschrieben durch OWL 2 gilt diese Annahme nicht. 
+Durch die fundierte Basis der Prädikatenlogik arbeitet OWL 2 RL auf der Annahme einer offenen Welt (Open World Assumption). 
+Dies bedeutet, dass alles was nicht explizit als wahr beweisen werden kann, nicht automatisch als falsch bezeichnet wird. 
+Das größte Element ist also direkt ablesbar, weil ein anderes größeres (abgeleitetes) Element dieses übersteigen könnte. 
+Eine Summe über alle Besucherzeiten kann nicht erfasst werden, wenn davon ausgegangen werden kann, dass neue Besuche hinzukommen können.
 
 Schwächen von OWL/Erweiterung
 
 \section{Zusammenfassung \& Ausblick}
+Gegenüber konventionellen Programmierparadigmen
 alter Converter:
 
 - ~ 2000 Zeilen, kein Testcode
@@ -358,6 +370,17 @@ neuer Converter:
 - Rubygem: Kommandozeilentool, aber auch Code einbettbar in Ruby Web-Projekt
 
 \section{Fazit}
+
+Die Implementierung durch einen Regelsatz ist eine ansehnliche Vorgehensweise für das Auffinden von Problemen. 
+Es generiert aus dem vorhandenen Wissen neues Wissen und setzt dabei auf einen unkonventionellen Programmieransatz. 
+Das Wissen und die Regeln sind deskriptiv in einem Dokument beschrieben. 
+
+
+
+\begin{itemize}
+    \item{Regeln und Wissen sind deskriptiv in einem Dokument beschrieben}
+    \item{}    
+\end{itemize}
 
 \nocite{url_dl_primer}
 
