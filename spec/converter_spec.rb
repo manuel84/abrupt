@@ -25,7 +25,7 @@ describe Abrupt::Converter, :vcr do
   context 'converting' do
     it 'from hash to the correct repo' do
       pending 'dev'
-      crawled_hash = FactoryGirl.attributes_for(:rikscha_converted)
+      crawled_hash = FactoryGirl.attributes_for(:rikscha_website_data)
       converted_repo = Abrupt::Converter.to_repository crawled_hash
       expected_repo = RDF::Repository.load(website_repo_file)
       expect(converted_repo).to be_isomorphic_with(expected_repo)
