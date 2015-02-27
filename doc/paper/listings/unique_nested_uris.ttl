@@ -1,10 +1,10 @@
-@prefix wdm: <http://wba.cs.hs-rm.de/wdm-service/wdmOWL/> .
+@prefix abrupt: <http://wba.cs.hs-rm.de/AbRUPt/> .
 
-wdm:Website/http://www.rikscha-mainz.de/Page/http://www.rikscha-mainz.de/Kontakt/State/state5/Form/kontaktformular/Text/name a wdm:Text;
-   wdm:class "text";
-   wdm:id "name";
-   wdm:maxlength 60;
-   wdm:name "name";
-   wdm:placeholder "Vorname Nachname";
-   wdm:size 40;
-   wdm:type "text" .
+abrupt:Website/http://www.rikscha-mainz.de/Page/http://www.rikscha-mainz.de/Kontakt/State/state5/Form/kontaktformular/Text/name a abrupt:Text;
+   abrupt:class "text";
+   abrupt:id "name";
+   abrupt:maxlength 60;
+   abrupt:name "name";
+   abrupt:placeholder "Vorname Nachname";
+   abrupt:size 40;
+   abrupt:type "text" .

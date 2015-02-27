@@ -38,11 +38,36 @@ morecomment=[l][\color{grey}]{@},
 morecomment=[l][\color{black}]{\#},
 morestring=[b][\color{black}]\",
 numbers=left,
-frame=shadowbox,
+%frame=shadowbox,
 basicstyle=\scriptsize\ttfamily,
 tabsize=2,
 }     
 
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+ 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
 
 \urldef{\mailsa}\path|manuel.b.dudda@student.hs-rm.de|    
 \newcommand{\keywords}[1]{\par\addvspace\baselineskip
@@ -56,7 +81,7 @@ tabsize=2,
 \title{Schließen auf Usability-Probleme mit OWL 2 RL}
 
 % a short form should be given in case it is too long for the running head
-\titlerunning{TODO: }
+% \titlerunning{Schließen auf Usability-Probleme mit OWL 2 RL}
 
 % the name(s) of the author(s) follow(s) next
 %
@@ -66,7 +91,7 @@ tabsize=2,
 %
 \author{Manuel Dudda}
 %
-\authorrunning{TODO:}
+% \authorrunning{Schließen auf Usability-Probleme mit OWL 2 RL}
 % (feature abused for this document to repeat the title also on left hand pages)
 
 % the affiliations are given next; don't give your e-mail address
@@ -89,7 +114,7 @@ Campus Unter den Eichen 5
 \tocauthor{Authors' Instructions}
 \maketitle
 
-
+\renewcommand{\abstractname}{Abstract}
 \begin{abstract}
 Die Usability von Internetauftritten wird größtenteils subjektiv wahrgenommen. 
 Es existiert zwar eine Normierung durch die ISO für die Anforderungen an die Gebrauchstauglichkeit einer Software (EN ISO 9241-11), diese trifft jedoch nur sehr wage Aussagen und orientiert sich stark am respektiven Nutzungskontext. 
@@ -103,8 +128,6 @@ Durch die Konvertierung, Modellierung und Entwicklung eines durchdachtes Regelsy
 \# TODO
 \newpage
 \section{Logik und Berechenbarkeit}
-
-\# [WiP]
 
 Mit der Aussagenlogik lassen sich in ihrer Mächtigkeit beschränkte Formeln aufstellen. Sie entsprechen in der Programmierung dem Datentyp \textit{Boolean}, also Elementarussagen, die verknüpft und negiert erscheinen und deren Wahrheitsgehalt \textit{Wahr} oder \textit{falsch} ist.
 
@@ -359,12 +382,13 @@ Sie wird dennoch von vielen Reasonern unterstützt.
 Will man ohne Erweiterung für OWL 2 RL auskommen, müssen Vorkehrungen bereits in der Vorverarbeitung getroffen werden, die die Einschränkungen der offenen Weltannahme aushebeln. 
 Auf gängige Arithmetik \(+, -, *, / AVG(), SUM() \) kann in der unterliegenden Programmiersprache zurückgegriffen werden.
 Dabei werden die eingelesen Daten in der Vorverarbeitung somit als abgeschlossen angenommen.
-Die Besuchsdauer einer Seite wird durch einfache Differenz () ermittelt und als weiteres Wissen der ABox hinzugefügt.
+Die Besuchsdauer einer Seite wird durch einfache Differenz (Listing 1.6) ermittelt und als weiteres Wissen der ABox hinzugefügt.
 
-\lstinputlisting[breaklines=true,language=ruby, caption=Erweiterung der TBox in der Vorverarbeitung,label=list_rb]{listings/add_visit_duration.rb}
+\lstinputlisting[breaklines=true,language=Ruby, caption=Erweiterung der TBox in der Vorverarbeitung,label=list_rb]{listings/add_visit_duration.rb}
 
 \section{Zusammenfassung \& Ausblick}
-Gegenüber konventionellen Programmierparadigmen
+\# TODO
+
 alter Converter:
 
 - ~ 2000 Zeilen, kein Testcode
@@ -384,7 +408,7 @@ neuer Converter:
 - Rubygem: Kommandozeilentool, aber auch Code einbettbar in Ruby Web-Projekt
 
 \section{Fazit}
-
+\# TODO
 Die Implementierung durch einen Regelsatz ist eine ansehnliche Vorgehensweise für das Auffinden von Problemen. 
 Es generiert aus dem vorhandenen Wissen neues Wissen und setzt dabei auf einen unkonventionellen Programmieransatz. 
 Das Wissen und die Regeln sind deskriptiv in einem Dokument beschrieben. 
