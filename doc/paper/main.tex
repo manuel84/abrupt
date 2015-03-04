@@ -126,6 +126,7 @@ Das "{}AbRUPt"{}-System der Hochschule RheinMain ist in der Lage viele dieser Me
 Durch die Konvertierung, Modellierung und Entwicklung eines durchdachtes Regelsystem in der semantischen Ontologiesprache OWL 2 RL ensteht ein System, welches automatisiert Folgerungen auf Usability-Probleme ermöglicht.
 \end{abstract}
 
+\newpage
 
 \section{Einleitung}
 Die Gestaltungsvielfalt von Webseiten hat sich seit der Freigabe des Internets für die kommerzielle Nutzung (ca. 1990) rasant weiterentwickelt. 
@@ -134,8 +135,10 @@ Mittlerweile gehört die Webseite zum Aushängeschild eines jeden Unternehmens.
 Das Aussehen muss dabei häufig zur Unternehmensphilosphie passen, das sogenannte Cooperate Design sorgt für eine visuelle Identität, um sich von anderen Unternehmen zu unterschieden. 
 Dazu gehören Schriftbild, Farben, Logos, und vieles mehr.
 Des Weiteren wurden jede Menge Web-Dienste entwickelt, die den Webseiten mehr Interaktivität einräumen. 
-Viele Webanwendungen ähneln komplexer Software, die eine grafische Benutzeroberfläche im Browser zur Verfügung stellen.
-Für die Benutzerfreundlichkeit gibt es eine DIN-Norm, die folgende Anforderungen an die Software stellt.
+Webanwendungen ähneln komplexer Software, die eine grafische Benutzeroberfläche im Browser zur Verfügung stellen.
+Für die Benutzerfreundlichkeit gibt es eine ISO-Norm, die folgende Anforderungen an die Software stellt:
+
+\begin{quote}
 Die Gebrauchstauglichkeit einer Software ist von ihrem Nutzungskontext (beinhalten den Benutzer, die Arbeitsaufgabe, die Arbeitsmittel wie z.B. Hardware oder Software sowie die physische und soziale Umgebung) abhängig, in dem sie eingesetzt wird. 
 Im Teil 11 der ISO 9241 werden drei Leitkriterien für die Gebrauchstauglichkeit einer Software bestimmt:
 \begin{itemize}
@@ -143,30 +146,38 @@ Im Teil 11 der ISO 9241 werden drei Leitkriterien für die Gebrauchstauglichkeit
 \item{Effizienz der Handhabung des Systems,}
 \item{Zufriedenheit der Nutzer einer Software.}
 \end{itemize}
-Hier wird deutlich, dass es keine objektive Bestimmung von Gebrauchstauglichkeit gibt, sondern diese stark vom Nutzungskontext abhängt. 
+
+
+\end{quote}
+
+Es wird deutlich, dass es keine objektive Bestimmung von Gebrauchstauglichkeit gibt, sondern diese stark vom Nutzungskontext abhängt. 
 Insbesondere spielt die Zielgruppe dabei eine Rolle. 
 Handelt es sich um ein jüngeres Publikum, die man mit einfacher Sprache zu erreichen versucht oder um Fachpublikum, für die komplexere Texte unabdingbar sind?
 Welche kulturellen Gegebenheiten sind zu beachten? 
 Das Farbverständnis der Chinesen beispielweise weicht der westlichen Welt stark ab, so ist weiß die Farbe der Trauer.
 Ob eine Software dementsprechend gebrauchstauglich ist oder nicht, ist demnach nur subjektiv von Menschen bewertbar.
 Dennoch gibt es auch Merkmale, die allgemeingültig als mögliche Probleme eingestuft werden können:
+
 \begin{itemize}
 \item{Schlechte Kontrastverhältnisse}
 \item{Seiten ohne/mit zu vielen Links}
 \item{Unausgeglichenes Bild/Text-Verhältnis}
-\item{Diskrepanzen zwischen erwarteter und tatsähcliher Eingabezeit in Formularen}
+\item{Diskrepanzen zwischen erwarteter und tatsächliher Formular-Eingabezeiten}
 \item{Texte mit schlechtem Lesbarkeitsindex anhand \cite{lesbarkeit}}
 \item{Inkonsistenzen in der HTML-Struktur}
 \end{itemize}
+
 Der Online-Service AbRUPt (\cite{url_abrupt}) von der Hochschule RheinMain bietet die Möglichkeit viele dieser Merkmale über eine Web-Schnittstelle zu erfassen. 
 Mit der Bachelor-Thesis \cite{Brieger} wurde gezeigt, wie man diese Schnittstelle anwendet und daraus ein Konstrukt für eine mögliche Datenauswertung entwickelt.
 Diese Arbeit beschäftigt sich mit der Weiterentwicklung des darin beschrieben Converters und dessen Datenuswertung (Abb. \ref{fig:converter}).
+
 \begin{figure}
 \caption{Funktionsweise des Converters}
 \centering
 \includegraphics[width=0.7\textwidth]{figures/converter}
 \label{fig:converter}
 \end{figure}
+
 Die Daten liegen zunächst im XML-Format vor und werden in OWL konvertiert.
 Mittels OWL-basierter Regeln wird überprüft, ob eine aussagekräftige Datenauswertung möglich ist.
 Es wird dabei besonderer Wert auf das OWL-Profil {}"RL{}" gelegt, um Performance-Schwachstellen zu vermeiden.
@@ -472,12 +483,12 @@ Man kann das Tool mittels Kommandozeiletool (Listing 22) ausführen oder in ein 
 \section{Fazit \& Ausblick}
 \label{sec:fazit}
 Die Implementierung durch einen Regelsatz ist eine anschauliche Vorgehensweise für das Auffinden von Problemen. 
-Ohne die Vorverarbeitung des Converters sind der Arbeit allerdings Grenzen gesetzt.
-Für das Überwinden der Grenzen, die in einer offenen Weltannahme (Open World Assumption) entstehen, müssen die Eingabedaten vor der Konvertierung als geschlossen angenommen werden um vernünftiges Hilfswissen zu generieren.
+Ohne die Vorverarbeitung des Converters sind der Arbeit allerdings aufgrund der Open World Assumption Grenzen gesetzt.
+Für das Überwinden der Grenzen, die in einer offenen Weltannahme entstehen, müssen die Eingabedaten vor der Konvertierung als geschlossen angenommen werden um vernünftiges Hilfswissen zu generieren.
 Nur so ist man mit OWL 2 RL in der Lage mit einem Regelsatz auf Probleme zu schließen.
 Die Generierung von Regeln ist nicht immer ganz einfach, da mit der Beschreibungslogik eine abgespeckte Mächtigkeit zur Verfügung steht. 
 Dies zwingt den Entwickler oft zu einem bestimmten Lösungsweg.
-Anders als in konventionellen Programmierparadigmen gibt es wenige Lösungswege.
+Anders als in konventionellen Programmierparadigmen gibt es nur wenige Lösungswege.
 Dafür ist das Regelwerk Bestandteil des OWL-Dokuments und ist als solches für Mensch und Maschine lesbar und einfach austauschbar.
 Man spart und verteilt Rechenzeit, da das Schlussfolgern, die eigentliche Programmausführung, auf dem jeweiligen Rechner stattfinden kann.
 Der Converter muss in der Regel mit großen Dateien umgehen können.
