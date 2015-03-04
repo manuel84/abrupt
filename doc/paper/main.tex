@@ -446,39 +446,48 @@ Die Besuchsdauer einer Seite wird durch einfache Differenz (Listing 1.6) ermitte
 
 \lstinputlisting[breaklines=true,language=Ruby, caption=Erweiterung der TBox in der Vorverarbeitung,label=list_rb]{listings/add_visit_duration.rb}
 
-\section{Zusammenfassung \& Ausblick}
-\# TODO
+\section{Zusammenfassung}
+Die Struktur des Converters wurde im Wesentlichen überarbeitet.
+Es wurde viel Wert auf die intuitive Verwirklichung des Grundvokabulars der AbRUPt-Ontologie gelegt (Abb. \ref{fig:onto}).
 
-alter Converter:
+\begin{figure}
+\caption{Funktionsweise des Converters}
+\centering
+\includegraphics[width=0.7\textwidth]{figures/tbox}
+\label{fig:onto}
+\end{figure}
 
-- ~ 2000 Zeilen, kein Testcode
+Außerdem wurde der Graph um die Konzepte der Besucherdaten erweitert.
+Der vorherige Converte war wenig modular und umfasste ca. 2000 Zeilen in nur 4 Dateien.
+Die Konfiguration war im Code eingebettet, sodass der Code insgesamt nciht sehr gut wartbar ist.
+Die Neuimplementierung sieht einen wesentlichen modulareren Aufbau vor, sodass Anpassungen in der Vorverarbeitung effizient einsetzbar ist.
+Sie berücksichtigt außerdem die Transformation der Daten in die korrekten Datentypen (Integer, Decimal, Boolean, ...).
+Das Grundvokabular ist komplett separat entwickelt und wird in die Konvertierung miteinbezogen.
+Dadurch ist der Zugriff vereinfacht und mittels eigener Entwicklungstools die Ontologie als Graph darstellbar.
+Trotz der vielen Anpassungen und Erweiterungen umfasst der Quellcode nun gerade mal ca. 900 Zeilen und 15 Klassen inkl. rudimentären Testcode.
+Man kann das Tool mittels Kommandozeiletool (Listing 22) ausführen oder in ein Ruby-Projekt als Bibliothek einbinden.
 
-- in nur 4 Klassen
+\lstinputlisting[breaklines=true,language=Bash, caption=Beispielnutzung des Kommandozeilentools,label=list_rb]{listings/abrupt_usage.sh}
 
-- Konfigurationen hartgecodet, schlecht wartbar
-\\
-neuer Converter:
+\section{Fazit \& Ausblick}
+\label{sec:fazit}
+Die Implementierung durch einen Regelsatz ist eine anschauliche Vorgehensweise für das Auffinden von Problemen. 
+Ohne die Vorverarbeitung des Converters sind der Arbeit allerdings Grenzen gesetzt.
+Für das Überwinden der Grenzen, die in einer offenen Weltannahme (Open World Assumption) entstehen, müssen die Eingabedaten vor der Konvertierung als geschlossen angenommen werden um vernünftiges Hilfswissen zu generieren.
+Nur so ist man mit OWL 2 RL in der Lage mit einem Regelsatz auf Probleme zu schließen.
+Die Generierung von Regeln ist nicht immer ganz einfach, da mit der Beschreibungslogik eine abgespeckte Mächtigkeit zur Verfügung steht. 
+Dies zwingt den Entwickler oft zu einem bestimmten Lösungsweg.
+Anders als in konventionellen Programmierparadigmen gibt es wenige Lösungswege.
+Dafür ist das Regelwerk Bestandteil des OWL-Dokuments und ist als solches für Mensch und Maschine lesbar und einfach austauschbar.
+Man spart und verteilt Rechenzeit, da das Schlussfolgern, die eigentliche Programmausführung, auf dem jeweiligen Rechner stattfinden kann.
+Der Converter muss in der Regel mit großen Dateien umgehen können.
+In der Entwicklung wurden Webseitendaten mit über 300 KB und Besucherdaten aus mit über 2 MB verwendet.
+Durch das Umwandeln und Ergänzen der Daten in das OWL-Dokument entsteht darus eine turtle-Datei mit über 30 MB.
+Dies entspricht einer Vergrößerung der Daten um den Faktor 15.
+Dementsprechend ist die momentane Verarbeitungszeit auch sehr lange.
+Der Flaschenhals liegt bei der Serialisierung des RDF-Grpahen durch die Ruby-Bibliothek {}"rdf-raptor{}".
 
-- nur 800 Zeilen inkl. Crawlr (beta), Testcode
 
-- Vokabular (T-Box) ausgelagert
-
-- höchstens 130 Zeilen pro Klasse
-
-- Rubygem: Kommandozeilentool, aber auch Code einbettbar in Ruby Web-Projekt
-
-\section{Fazit}
-\# TODO
-Die Implementierung durch einen Regelsatz ist eine ansehnliche Vorgehensweise für das Auffinden von Problemen. 
-Es generiert aus dem vorhandenen Wissen neues Wissen und setzt dabei auf einen unkonventionellen Programmieransatz. 
-Das Wissen und die Regeln sind deskriptiv in einem Dokument beschrieben. 
-
-
-
-\begin{itemize}
-    \item{Regeln und Wissen sind deskriptiv in einem Dokument beschrieben}
-    \item{}    
-\end{itemize}
 
 \nocite{url_dl_primer}
 
