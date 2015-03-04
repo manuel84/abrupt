@@ -52,7 +52,7 @@ abrupt -h
 
   AUTHOR:
 
-    Manuel Dudda <manuelddudda@redpeppix.de>
+    Manuel Dudda <dudda@paij.com>
 
   SOURCE CODE:
 
