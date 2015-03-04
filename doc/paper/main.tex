@@ -160,11 +160,28 @@ Dennoch gibt es auch Merkmale, die allgemeingültig als mögliche Probleme einge
 \end{itemize}
 Der Online-Service AbRUPt (\cite{url_abrupt}) von der Hochschule RheinMain bietet die Möglichkeit viele dieser Merkmale über eine Web-Schnittstelle zu erfassen. 
 Mit der Bachelor-Thesis \cite{Brieger} wurde gezeigt, wie man diese Schnittstelle anwendet und daraus ein Konstrukt für eine mögliche Datenauswertung entwickelt.
-
-
+Diese Arbeit beschäftigt sich mit der Weiterentwicklung des darin beschrieben Converters und dessen Datenuswertung (Abb. \ref{fig:converter}).
+\begin{figure}
+\caption{Funktionsweise des Converters}
+\centering
+\includegraphics[width=0.7\textwidth]{figures/converter}
+\label{fig:converter}
+\end{figure}
+Die Daten liegen zunächst im XML-Format vor und werden in OWL konvertiert.
+Mittels OWL-basierter Regeln wird überprüft, ob eine aussagekräftige Datenauswertung möglich ist.
+Es wird dabei besonderer Wert auf das OWL-Profil {}"RL{}" gelegt, um Performance-Schwachstellen zu vermeiden.
+Das OWL 2-RL Profil basiert auf dem funiderten Grundlagen der Beschreibungslogiken (\ref{sec:desclogic}.
 
 \newpage
 \section{Logik und Berechenbarkeit}
+\label{sec:logic}
+
+Es gibt verschiedene Arten von formalen Logiken, die sich in ihrer Struktur und Mächtigkeit unterscheiden.
+Für triviale Anwendungsfälle reicht meistens die Verknüpfung von strukturlosen Elementaraussagen aus.
+Komplexere Aussagen lassen sich nur mit mächtigeren Logiken ausdrücken, für dessen automatiserten Schlussfolgerungen allerdings auch größere Auwände entstehen.
+
+\subsection{Aussagenlogik}
+\label{sec:aussagenlogik}
 
 Mit der Aussagenlogik lassen sich in ihrer Mächtigkeit beschränkte Formeln aufstellen. Sie entsprechen in der Programmierung dem Datentyp \textit{Boolean}, also Elementarussagen, die verknüpft und negiert erscheinen und deren Wahrheitsgehalt \textit{Wahr} oder \textit{falsch} ist.
 
@@ -189,6 +206,9 @@ Es ergäbe sich daraus eine Kontradiktion \((\neg B \land B)\), einer Formel die
 Über Wahrheitstafeln können jegliche (zusammengesetzte) Aussagen auf deren Wahrheitsgehalt überprüft werden. 
 Damit verdeutlicht sich einfach, dass das Schlussfolgern über die aussagenlogische Formeln ein entscheidbares Problem darstellt.
 \\
+
+\subsection{Prädikatenlogik}
+\label{sec:prediactelogic}
 
 Eine Erweiterung der Aussagenlogik stellt die Prädikatenlogik dar.
 In der Prädikatenlogik werden Elementaraussagen hinsichtlich ihrer Struktur untersucht.
@@ -224,6 +244,9 @@ Somit lassen sich wesentlich mächtigere Aussagen treffen, die mit der Aussagenl
 Das hat allerdings auch Asuwirkungen auf die Laufzeit des Schlussfolgerns.
 Das Entscheidungsverfahren für die Prädikatenlogik ist unentscheidbar. 
 \\
+
+\subsection{Beschreibungslogiken}
+\label{sec:desclogic}
 
 Eine entscheidbare Untermenge der Prädikatenlogik erster Stufe bieten die Beschreibungslogiken.
 Im Wesentlichen enthält eine Beschreibungslogik die Operatoren der Aussagenlogik (\(\land, \lor, \neg\)), ein- und zweistellige Prädikate sowie eine eingeschränkte Quantifizierung.
