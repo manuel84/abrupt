@@ -9,7 +9,7 @@ class AbruptApp
   def run
     program :name, 'Abrupt'
     program :version, Abrupt::VERSION
-    program :help, 'Author', 'Manuel Dudda <manuelddudda@redpeppix.de>'
+    program :help, 'Author', 'Manuel Dudda <dudda@paij.com>'
     program :help, 'Source Code', 'https://github.com/manuel84/abrupt'
     program :description, 'Automated Reasoning for Web Usability Problems'
 
