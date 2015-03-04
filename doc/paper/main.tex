@@ -24,6 +24,7 @@
 \usepackage{mathtools}
 \usepackage{amsfonts,amsmath,amssymb}
 \usepackage{wasysym}
+\usepackage{natbib}
 
 \setcounter{tocdepth}{3}
 \usepackage{url}
@@ -73,7 +74,9 @@ tabsize=2,
 \newcommand{\keywords}[1]{\par\addvspace\baselineskip
 \noindent\keywordname\enspace\ignorespaces#1}
 
+
 \begin{document}
+
 
 \mainmatter  % start of an individual contribution
 
@@ -129,9 +132,9 @@ Die Gestaltungsvielfalt von Webseiten hat sich seit der Freigabe des Internets f
 Anfangs bot nur eine kleine Anzahl von Institutionen, Firmen, Regierungen spärliche Informationen meist im Form von einfachen Texten an. 
 Mittlerweile gehört die Webseite zum Aushängeschild eines jeden Unternehmens. 
 Das Aussehen muss dabei häufig zur Unternehmensphilosphie passen, das sogenannte Cooperate Design sorgt für eine visuelle Identität, um sich von anderen Unternehmen zu unterschieden. 
-Dazu gehören das Schriftbild, die Farben, Logos, und vieles mehr.
+Dazu gehören Schriftbild, Farben, Logos, und vieles mehr.
 Des Weiteren wurden jede Menge Web-Dienste entwickelt, die den Webseiten mehr Interaktivität einräumen. 
-Viele Webanwendungen ähneln komplexer Software, die eine grafische Benutzeroberfläche mit Drag \& Drop im Browser zur Verfügung stellen.
+Viele Webanwendungen ähneln komplexer Software, die eine grafische Benutzeroberfläche im Browser zur Verfügung stellen.
 Für die Benutzerfreundlichkeit gibt es eine DIN-Norm, die folgende Anforderungen an die Software stellt.
 Die Gebrauchstauglichkeit einer Software ist von ihrem Nutzungskontext (beinhalten den Benutzer, die Arbeitsaufgabe, die Arbeitsmittel wie z.B. Hardware oder Software sowie die physische und soziale Umgebung) abhängig, in dem sie eingesetzt wird. 
 Im Teil 11 der ISO 9241 werden drei Leitkriterien für die Gebrauchstauglichkeit einer Software bestimmt:
@@ -140,7 +143,25 @@ Im Teil 11 der ISO 9241 werden drei Leitkriterien für die Gebrauchstauglichkeit
 \item{Effizienz der Handhabung des Systems,}
 \item{Zufriedenheit der Nutzer einer Software.}
 \end{itemize}
-Hier wird deutlich, dass es keine objektive Bestimmung von Gebrauchstauglichkeit gibt, sondern diese stark vom Nutzungskontext abhängt.
+Hier wird deutlich, dass es keine objektive Bestimmung von Gebrauchstauglichkeit gibt, sondern diese stark vom Nutzungskontext abhängt. 
+Insbesondere spielt die Zielgruppe dabei eine Rolle. 
+Handelt es sich um ein jüngeres Publikum, die man mit einfacher Sprache zu erreichen versucht oder um Fachpublikum, für die komplexere Texte unabdingbar sind?
+Welche kulturellen Gegebenheiten sind zu beachten? 
+Das Farbverständnis der Chinesen beispielweise weicht der westlichen Welt stark ab, so ist weiß die Farbe der Trauer.
+Ob eine Software dementsprechend gebrauchstauglich ist oder nicht, ist demnach nur subjektiv von Menschen bewertbar.
+Dennoch gibt es auch Merkmale, die allgemeingültig als mögliche Probleme eingestuft werden können:
+\begin{itemize}
+\item{Schlechte Kontrastverhältnisse}
+\item{Seiten ohne/mit zu vielen Links}
+\item{Unausgeglichenes Bild/Text-Verhältnis}
+\item{Diskrepanzen zwischen erwarteter und tatsähcliher Eingabezeit in Formularen}
+\item{Texte mit schlechtem Lesbarkeitsindex anhand \cite{lesbarkeit}}
+\item{Inkonsistenzen in der HTML-Struktur}
+\end{itemize}
+Der Online-Service AbRUPt (\cite{url_abrupt}) von der Hochschule RheinMain bietet die Möglichkeit viele dieser Merkmale über eine Web-Schnittstelle zu erfassen. 
+Mit der Bachelor-Thesis \cite{Brieger} wurde gezeigt, wie man diese Schnittstelle anwendet und daraus ein Konstrukt für eine mögliche Datenauswertung entwickelt.
+
+
 
 \newpage
 \section{Logik und Berechenbarkeit}
