@@ -502,6 +502,8 @@ In \cite{subject} ist die Funktionsweise zur Klassifizierung von Themengebieten 
 Durch geeignete Filter und Selektion von Wörtern und deren Häufigkeit kann mittels dem Datenbestand von Wikipedia eine aussagenkräftige Auswahl an Schlagwörtern vorhergesagt werden.
 Für die Feststellung von Diskrepanzen zwischen erwareteter und tatsächlicher Bearbeitungsdauer von Web-Formularen liefert \cite{web_forms} zeitliche Richtwerte.
 Durch Analysen ergeben sich erwartete Bearbeitungszeiten kategorisiert nach Eingabetyp und Eingabegerät, bspw. Input-Elemente auf mobilen Endgeräten oder Desktop-PCs.
+Für das Schlussfolgern ist die Wahl eines geeigneten Reasoners nich nicht getroffen.
+Eine Übersicht sowie Ansätze für Hybrid-Lösungen aus Tableau und Resolution gibt \cite{hybrid_reasoning}.
 
 
 \section{Zusammenfassung}
@@ -534,18 +536,27 @@ Ohne die Vorverarbeitung des Converters sind der Arbeit allerdings aufgrund der 
 Für das Überwinden der Grenzen, die in einer offenen Weltannahme entstehen, müssen die Eingabedaten vor der Konvertierung als geschlossen angenommen werden um vernünftiges Hilfswissen zu generieren.
 Nur so ist man mit OWL 2 RL in der Lage mit einem Regelsatz auf Probleme zu schließen.
 Die Generierung von Regeln ist nicht immer ganz einfach, da mit der Beschreibungslogik eine abgespeckte Mächtigkeit zur Verfügung steht. 
-Dies zwingt den Entwickler oft zu einem bestimmten Lösungsweg.
+Diese zwingen den Entwickler oft zu einer bestimmte Vorgehensweise.
 Anders als in konventionellen Programmierparadigmen gibt es nur wenige Lösungswege.
 Dafür ist das Regelwerk Bestandteil des OWL-Dokuments und ist als solches für Mensch und Maschine lesbar und einfach austauschbar.
 Man spart und verteilt Rechenzeit, da das Schlussfolgern, die eigentliche Programmausführung, auf dem jeweiligen Rechner stattfinden kann.
+Theortisch ist es sogar eine Parallelisierung möglich.
 Der Converter muss in der Regel mit großen Dateien umgehen können.
 In der Entwicklung wurden Webseitendaten mit über 300 KB und Besucherdaten aus mit über 2 MB verwendet.
 Durch das Umwandeln und Ergänzen der Daten in das OWL-Dokument entsteht darus eine turtle-Datei mit über 30 MB.
 Dies entspricht einer Vergrößerung der Daten um den Faktor 15.
 Dementsprechend ist die momentane Verarbeitungszeit auch sehr lange.
 Der Flaschenhals liegt bei der Serialisierung des RDF-Grpahen durch die Ruby-Bibliothek {}"rdf-raptor{}" \cite{rdf-raptor}.
-
-
+Das Regelwerk ist noch relativ bescheiden und ausbaufähig.
+Für die Datentyp-Regeln fehlen noch Schwellwerte.
+Diese zu definieren ist nicht trivial, da Texte kontextbezogen unterschiedliche Ansprüche hervorbringen.
+Die Inkonsitenz-Regeln dagegen bieten bereits eine weitgehend Abdeckung. 
+In \cite{Brieger} wurde bereits eine Web-Benutzeroberfläche (GUI) gestaltet, die den (alten) Converter anwendet.
+Für die neuen Erweiterungen, insbesondere der Einfluss der Besucherdaten ist diese GUI noch nicht vorbereitet.
+Eine Konfigurationsmaske für die kontextbezogenen Schwellwerte wäre denkbar.
+Das Reasoning über das Dokument ist im Projekt nicht berücksichtigt und wird derzeit über properitäre Software vollzogen.
+Eine Hybrid-Lösung könnte eine geeignete Wahl sein um die jeweiligen Vorteile der Klassifizierungs-Strategien zu nutzen.
+Um die Software zu einem Gesamtprodukt zu komplettieren, besteht die Herausforderung der Vereinigung von Crawler, Converter, Reasoner und einer Eingabe- und Ausgabemaske.
 
 \nocite{url_dl_primer}
 
