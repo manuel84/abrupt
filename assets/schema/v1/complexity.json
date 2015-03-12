@@ -19,15 +19,15 @@
                             "properties": {
                                 "A_tag_With_Low_Contrast": {
                                     "description": "",
-                                    "type": "string"
+                                    "type": "integer"
                                 },
                                 "TextNodes_With_Low_Contrast": {
                                     "description": "",
-                                    "type": "string"
+                                    "type": "integer"
                                 },
                                 "paragrahps_with_too_long_lines": {
                                     "description": "",
-                                    "type": "string"
+                                    "type": "integer"
                                 }
                             }
                         }

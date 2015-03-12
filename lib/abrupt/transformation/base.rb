@@ -113,11 +113,7 @@ module Abrupt
       end
 
       def resolve_uri_part(name)
-        if @uri.empty?
-          "#{class_name}/#{name}"
-        else
-          "#{@uri.join('/')}"
-        end
+        @uri.empty? ? "#{class_name}/#{name}" : "#{@uri.join('/')}"
       end
 
       def resolve_uri(name = nil)
@@ -126,18 +122,20 @@ module Abrupt
       end
 
       def add_individual(name = @values[:name], klass = nil)
-        klass ||= @uri.empty? ? class_name : @uri.first
+        klass ||= (@uri.empty? ? class_name : @uri.first).to_s.camelize
         uri = resolve_uri(name)
         @result << Statement.new(uri, RDF.type, VOC[klass])
         @result << Statement.new(resolve_parent_uri, VOC["has#{klass}"], uri)
       end
 
       def add_data_property(type, value, name = @values[:name])
+        type = type.to_s.camelize(:lower)
         @result << Statement.new(resolve_uri(name), VOC[type], value)
       end
 
       def add_object_property(parent_uri, type, child_uri)
         parent_uri = RDF::URI(parent_uri) if parent_uri.is_a?(String)
+        type = type.to_s.camelize
         @result << Statement.new(parent_uri, VOC["has#{type}"], child_uri)
       end
     end

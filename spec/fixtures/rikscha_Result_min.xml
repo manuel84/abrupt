@@ -448,8 +448,8 @@
       <complexity>
         <contrast>
           <_1>
-            <A_tag_With_Low_Contrast>0</A_tag_With_Low_Contrast>
-            <TextNodes_With_Low_Contrast>0</TextNodes_With_Low_Contrast>
+            <A_tag_With_Low_Contrast>1</A_tag_With_Low_Contrast>
+            <TextNodes_With_Low_Contrast>1</TextNodes_With_Low_Contrast>
             <paragrahps_with_too_long_lines>0</paragrahps_with_too_long_lines>
           </_1>
         </contrast>

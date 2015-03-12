@@ -485,6 +485,36 @@
 #################################################################
 
 
+###  http://wba.cs.hs-rm.de/AbRUPt/aTagWithLowContrast
+
+:aTagWithLowContrast rdf:type owl:DatatypeProperty ;
+                     
+                     rdfs:domain :Page ;
+                     
+                     rdfs:range xsd:integer .
+
+
+
+###  http://wba.cs.hs-rm.de/AbRUPt/paragrahpsWithTooLongLines
+
+:paragrahpsWithTooLongLines rdf:type owl:DatatypeProperty ;
+                            
+                            rdfs:domain :Page ;
+                            
+                            rdfs:range xsd:integer .
+
+
+
+###  http://wba.cs.hs-rm.de/AbRUPt/textNodesWithLowContrast
+
+:textNodesWithLowContrast rdf:type owl:DatatypeProperty ;
+                          
+                          rdfs:domain :Page ;
+                          
+                          rdfs:range xsd:integer .
+
+
+
 ###  http://wba.cs.hs-rm.de/AbRUPt/bigwords
 
 :bigwords rdf:type owl:DatatypeProperty ;
@@ -562,16 +592,6 @@
                rdfs:domain :Visit ;
                
                rdfs:range xsd:string .
-
-
-
-###  http://wba.cs.hs-rm.de/AbRUPt/contrast
-
-:contrast rdf:type owl:DatatypeProperty ;
-          
-          rdfs:domain :Page ;
-          
-          rdfs:range xsd:string .
 
 
 

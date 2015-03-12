@@ -11,8 +11,18 @@ module Abrupt
           # flatten vicram complexity
           @values[keyname][:vicramComplexity] =
               @values[keyname][:vicram].delete(:complexity)
+          add_contrast_properties
           @values[keyname].delete :vicram
           super
+        end
+
+        def add_contrast_properties
+          contrast = @values[keyname][:contrast]
+          return unless contrast && contrast[:_1]
+          contrast[:_1].each do |type, value|
+            add_data_property(type, value)
+          end
+          @values[keyname].delete :contrast
         end
       end
     end
