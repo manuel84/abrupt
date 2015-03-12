@@ -167,8 +167,8 @@ Dennoch gibt es auch Merkmale, die allgemeingültig als mögliche Probleme einge
 \item{Inkonsistenzen in der HTML-Struktur}
 \end{itemize}
 
-Der Online-Service AbRUPt (\cite{url_abrupt}) von der Hochschule RheinMain bietet die Möglichkeit viele dieser Merkmale über eine Web-Schnittstelle zu erfassen. 
-Mit der Bachelor-Thesis \cite{Brieger} wurde gezeigt, wie man diese Schnittstelle anwendet und daraus ein Konstrukt für eine mögliche Datenauswertung entwickelt.
+Der Online-Service AbRUPt (\cite{abrupt}) von der Hochschule RheinMain bietet die Möglichkeit viele dieser Merkmale über eine Web-Schnittstelle zu erfassen. 
+In \cite{Brieger} wurde gezeigt, wie man diese Schnittstelle anwendet und daraus ein Konstrukt für eine mögliche Datenauswertung entwickelt.
 Diese Arbeit beschäftigt sich mit der Weiterentwicklung des darin beschrieben Converters und dessen Datenuswertung (Abb. \ref{fig:converter}).
 
 \begin{figure}
@@ -183,18 +183,32 @@ Mittels OWL-basierter Regeln wird überprüft, ob eine aussagekräftige Datenaus
 Es wird dabei besonderer Wert auf das OWL-Profil {}"RL{}" gelegt, um Performance-Schwachstellen zu vermeiden.
 Das OWL 2-RL Profil basiert auf dem funiderten Grundlagen der Beschreibungslogiken (\ref{sec:desclogic}.
 
+\section{Gliederung}
+\label{sec:structure}
+
+Im Abschnitt \ref{sec:logic} werden die theoretischen Grundlagen für das OWL 2 RL-Profil aufgearbeitet. 
+Um zu verstehen, wie sich eine Beschreibungslogik (\ref{sec:desclogic}) von der Aussagenlogik (\ref{sec:aussagenlogik}) abhebt werden kurze Beispiele gezeigt, wie sie auch in der Anwendung existieren könnten.
+Abschnitt \ref{sec:prediactelogic} zeigt, dass mächtigere Aussagen mit der Prädikatenlogik möglich sind und welche Einschränkungen in der Entscheidbarkeit daraus entstehen.
+Insgesamt stellt die Implementierung (\ref{sec:implementation}) des Converters eine Erweiterung vorheriger Arbeiten dar.
+Welche Anpassungen dabei vorgenommen wurden wird in \ref{sec:customization} beschrieben, welche Technologien in \ref{sec:technology}.
+Der wesentliche Bestandteil der Erweiterung besteht aus der Regelerstellung für das Schließen auf Probleme \ref{sec:reasoning}.
+Die Regeln sind in Inkonsistenz- \ref{sec:rule_inconsistency}, Produktions- \ref{sec:rule_production}, Listen- \ref{sec:rule_list} und Datentyp-Regeln \ref{sec:rule-datatype} unterteilt.
+Einige Herausforderungen können nur durch den Einsatz von Erweiterungen beschrieben in \ref{sec:extensions} gelöst werden.
+Verbundene Arbeiten werden in Abschnitt \ref{sec:related_work} erwähnt.
+Abschließend wird das Projekt in \ref{sec:conclusion} zusammengefasst, ein Ausblick gewährt sowie ein persönliches Fazit gezogen.
+
 \newpage
 \section{Logik und Berechenbarkeit}
 \label{sec:logic}
 
 Es gibt verschiedene Arten von formalen Logiken, die sich in ihrer Struktur und Mächtigkeit unterscheiden.
 Für triviale Anwendungsfälle reicht meistens die Verknüpfung von strukturlosen Elementaraussagen aus.
-Komplexere Aussagen lassen sich nur mit mächtigeren Logiken ausdrücken, für dessen automatiserten Schlussfolgerungen allerdings auch größere Auwände entstehen.
+Komplexere Aussagen lassen sich nur mit mächtigeren Logiken ausdrücken, für dessen automatiserten Schlussfolgerungen allerdings auch größere Aufwände entstehen.
 
 \subsection{Aussagenlogik}
 \label{sec:aussagenlogik}
 
-Mit der Aussagenlogik lassen sich in ihrer Mächtigkeit beschränkte Formeln aufstellen. Sie entsprechen in der Programmierung dem Datentyp \textit{Boolean}, also Elementarussagen, die verknüpft und negiert erscheinen und deren Wahrheitsgehalt \textit{Wahr} oder \textit{falsch} ist.
+Mit der Aussagenlogik lassen sich in ihrer Mächtigkeit beschränkte Formeln aufstellen \cite[p. 6,373]{foundations}. Sie entsprechen in der Programmierung dem Datentyp \textit{Boolean}, also Elementarussagen, die verknüpft und negiert erscheinen und deren Wahrheitsgehalt \textit{Wahr} oder \textit{falsch} ist.
 
 \begin{figure}
 \begin{align}
@@ -221,7 +235,7 @@ Damit verdeutlicht sich einfach, dass das Schlussfolgern über die aussagenlogis
 \subsection{Prädikatenlogik}
 \label{sec:prediactelogic}
 
-Eine Erweiterung der Aussagenlogik stellt die Prädikatenlogik dar.
+Eine Erweiterung der Aussagenlogik stellt die Prädikatenlogik dar \cite[p. 6,367--373]{foundations}.
 In der Prädikatenlogik werden Elementaraussagen hinsichtlich ihrer Struktur untersucht.
 Mit Prädikaten können Eigenschaften über Individuen festgelegt werden. 
 Die Anzahl der Stellen im Prädikat ist dabei nicht beschränkt, so können mit 1-stelligen Prädikaten Zugehörikeiten \eqref{eq:fol_predicate1}, mit 2-stelligen Rolleneigenschaften \eqref{eq:fol_predicate1} modelliert werden  
@@ -259,7 +273,7 @@ Das Entscheidungsverfahren für die Prädikatenlogik ist unentscheidbar.
 \subsection{Beschreibungslogiken}
 \label{sec:desclogic}
 
-Eine entscheidbare Untermenge der Prädikatenlogik erster Stufe bieten die Beschreibungslogiken.
+Eine entscheidbare Untermenge der Prädikatenlogik erster Stufe bieten die Beschreibungslogiken \cite{foundations}.
 Im Wesentlichen enthält eine Beschreibungslogik die Operatoren der Aussagenlogik (\(\land, \lor, \neg\)), ein- und zweistellige Prädikate sowie eine eingeschränkte Quantifizierung.
 Sie umfassen Individuen (Objekte), Rollen (2-stellige Prädikate) und Klassen (1-stellige Prädikate), wobei keine Metamodellierung (Klassen von Klassen) möglich ist.
 Normalerweise wird die Wissensbasis dabei in 2 Teile separiert, \textit{TBox} und \textit{ABox}. 
@@ -286,8 +300,9 @@ Die bekanntesten derzeit sind Fact++, Hermit, KAON2 und Pellet.
 
 
 \section{Implementierung}
+\label{sec:implementation}
 
-In der Bachelor-Arbeit \cite{Brieger} wurde bereits untersucht inwieweit das Analyse-Tool \textit{AbRUPt} \cite{url_abrupt} verwendet werden kann um eine objektive Beurteilung über die Benutzerfreundlichkeit einer Webseite geben zu können. 
+\cite{Brieger} untersuchte inwieweit das Analyse-Tool \cite{abrupt} verwendet werden kann um eine objektive Beurteilung über die Benutzerfreundlichkeit einer Webseite geben zu können. 
 Die Arbeit zeigt gute Ansätze und setzt auf die Konvertierung der erhobenen Daten in ein OWL-Dokument. 
 Mit einem anschließenden Projekt können mit einem durchdachten Regelsystem Schlussfolgerungen gezogenwerden. 
 Das Programm ist als Dienst mit HTML-Oberfläche gestaltet und kann lediglich die Webseiten-Daten aus \textit{AbRUPt} umwandeln, die Integration der Webseiten-Besucherdaten ist noch nicht berücksichtigt. 
@@ -296,6 +311,7 @@ Mit Einbezug der Ergebnisse aus \cite{Martin} konnte ein Konzept für eine sinnv
 Es ist OWL-Converter entstanden, der erhobene \textit{AbRUPt}-Daten von einem XML-Format in ein OWL-Dokument transformiert.
 
 \subsection{Anpassungen und Erweiterung des OWL-Converters}
+\label{sec:customization}
 
 Einige wichtige Aspekte wurden gegenüber dieser Arbeit geändert. 
 Die Ontologie für den \textit{AbRUPt-Service} wurde von Grund auf intuitiver gestaltet und um die Konzepte der Webseiten-Besucherdaten erweitert (Fig. onto-Graph). 
@@ -312,7 +328,9 @@ Für die Einstufung von Problemen gibt es die Klasse \textit{Problem}.
 Durch geeignete Abfragen, bspw. mit Sparql (sparql-ref), kann nach dem Reasoning die Liste aller möglichen Probleme abgerufen werden. 
 Wie bereits angesprochen können dabei Elemente dazugehören, die aus einem subjektiven Erscheinungsbild annehmbar als Problem ignoriert werden können.
 
-\subsection{Das abrupt-Gem (Converter-Lib + Binary)}
+\subsection{Eingesetzte Technologien}
+\label{sec:technology}
+
 Für die Neugestaltung des Konvertierung-Tools fiel die Wahl der Technolgie auf \textit{RubyGems}, dem offiziellen Paketsystem von Ruby . 
 Zum einen ist die Unterstützung \cite{ruby-rdf} für RDF/OWL ausgezeichnet und zum Anderen erweisen sich noch weitere wesentliche Vorteile:
 \begin{itemize}
@@ -338,6 +356,8 @@ Der Aufbau der Software ist somit sehr modular, individuell anpassbar, durch Obe
 \newpage
 
 \section{Schließen auf Probleme mit Inferenz-Regeln}
+\label{sec:reasoning}
+
 Die formale Beschreibungssprache OWL 2 ist eine Empfehlung des W3C vom 11. Dezember 2012 für die Beschreibung von Ontologien. 
 Primär geht es darum Modellierungen einer Weltanschauung (Domäne) vorzunehmen, sodass Mensch und Maschine die Bedeutung verarbeiten können. 
 OWL 2 basiert technisch auf RDF und RDFS und geht dabei über die Ausdrucksmächtigkeit weit hinaus. 
@@ -373,6 +393,7 @@ Eine vernünftige Unterteilung der Axiome ist in \cite{owl2rif} gegeben.
 
 
 \subsection{Inkonsistenz-Regeln}
+\label{sec:rule_inconsistency}
 
 Für Rollenaxiome können mittels einfacher Regeln Definitions- und Wertebereich festgelegt werden. 
 Für den Wertebereich, also der Festlegung der Klassenzugehörigkeit des 2. Parameters von Rollen ergibt sich Formel \eqref{eq:dl_range} sowie dessen Darstellung in OWL 2 RL (Listing \ref{range_owl}).
@@ -388,6 +409,7 @@ Für den Wertebereich, also der Festlegung der Klassenzugehörigkeit des 2. Para
 \lstinputlisting[breaklines=true,language=ttl, caption=Wertebereich-Regel für Rollen in OWL 2 RL,label=range_owl]{listings/inconsistency_rule.ttl}
 
 \subsection{Produktions-Regeln}
+\label{sec:rule_production}
 
 Durch Inferenzen entstehen neue Klassenzugehörigkeiten. 
 Aus Einbahnstraßenseiten (Seiten ohne Links) entstehen Problemfälle (Listing \ref{production_owl}). 
@@ -402,6 +424,8 @@ State\ \sqcap \leq 0\ hasLink.Link \sqsubseteq Problem
 \lstinputlisting[breaklines=true,language=ttl, caption=Produktionsregel in OWL 2 RL,label=production_owl]{listings/production_rule.ttl}
 
 \subsection{Listen-Regeln}
+\label{sec:rule_list}
+
 Durch Listenregeln können Sammlungen genutzt werden um Restriktionen aufzubauen oder durch Kettenregeln Hilfsrollen zu aktivieren (\eqref{eq:dl_list}, Listing \ref{list_owl}).
 
 \begin{figure}
@@ -415,6 +439,8 @@ hasPage \circ hasState \sqsubseteq hasStateThorugh
 \lstinputlisting[breaklines=true,language=ttl, caption=Kettenregl in OWL 2 RL,label=list_owl]{listings/list_rule.ttl}
 
 \subsection{Datentyp-Regeln}
+\label{sec:rule_datatype}
+
 Als mächtigstes Werkzeug erweisen sich die Datentypregeln, die es erlauben, aus Zahlenbereichseinschränkungen und Datentypdefinitionen Probleme abzuleiten. 
 Der Lesbarkeitsindex einer Seite sollte einen definierten Wert nicht überschreiten um nicht als zu komplex zu gelten (\eqref{eq:dl_datatype}, Listing \ref{datatype_owl}).
 
@@ -430,6 +456,8 @@ readability \geq 8.0\ Datatype(\textit{xsd:decimal}) \sqsubseteq Problem
 \lstinputlisting[breaklines=true,language=ttl, caption=Datentypregel in OWL 2 RL,label=datatype_owl]{listings/datatype_rule.ttl}
 
 \subsection{Erweiterungen}
+\label{sec:rule_extensions}
+
 Die Implementierung durch einen Regelsatz mit OWL 2 RL ist eine ansehnliche Vorgehensweise für das Auffinden von Problemen. 
 Für viele Anwendungsfälle muss man dennoch auf Erweiterungen zurückgreifen. 
 Die Beschreibungslogik \(\mathcal{SHOIN}(D)\) weist zwar eine vernünftige Mächtigkeit auf, lässt dabei gegenüber konventioneller Programmiersprachen die Arithmetik völligst außer Acht. 
@@ -457,7 +485,12 @@ Die Besuchsdauer einer Seite wird durch einfache Differenz (Listing 1.6) ermitte
 
 \lstinputlisting[breaklines=true,language=Ruby, caption=Erweiterung der TBox in der Vorverarbeitung,label=list_rb]{listings/add_visit_duration.rb}
 
+\section{Related Work}
+\label{sec:related_work}
+
 \section{Zusammenfassung}
+\label{sec:conclusion}
+
 Die Struktur des Converters wurde im Wesentlichen überarbeitet.
 Es wurde viel Wert auf die intuitive Verwirklichung des Grundvokabulars der AbRUPt-Ontologie gelegt (Abb. \ref{fig:onto}).
 
@@ -480,8 +513,6 @@ Man kann das Tool mittels Kommandozeiletool (Listing 22) ausführen oder in ein 
 
 \lstinputlisting[breaklines=true,language=Bash, caption=Beispielnutzung des Kommandozeilentools,label=list_rb]{listings/abrupt_usage.sh}
 
-\section{Fazit \& Ausblick}
-\label{sec:fazit}
 Die Implementierung durch einen Regelsatz ist eine anschauliche Vorgehensweise für das Auffinden von Problemen. 
 Ohne die Vorverarbeitung des Converters sind der Arbeit allerdings aufgrund der Open World Assumption Grenzen gesetzt.
 Für das Überwinden der Grenzen, die in einer offenen Weltannahme entstehen, müssen die Eingabedaten vor der Konvertierung als geschlossen angenommen werden um vernünftiges Hilfswissen zu generieren.
