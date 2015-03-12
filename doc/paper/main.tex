@@ -80,7 +80,6 @@ tabsize=2,
 
 \begin{document}
 
-
 \mainmatter  % start of an individual contribution
 
 % first the title is needed
@@ -170,7 +169,7 @@ Dennoch gibt es auch Merkmale, die allgemeingültig als mögliche Probleme einge
 \item{Inkonsistenzen in der HTML-Struktur}
 \end{itemize}
 
-Der Online-Service AbRUPt (\cite{abrupt}) von der Hochschule RheinMain bietet die Möglichkeit viele dieser Merkmale über eine Web-Schnittstelle zu erfassen. 
+Der Online-Service AbRUPt \cite{abrupt} von der Hochschule RheinMain bietet die Möglichkeit viele dieser Merkmale über eine Web-Schnittstelle zu erfassen. 
 In \cite{Brieger} wurde gezeigt, wie man diese Schnittstelle anwendet und daraus ein Konstrukt für eine mögliche Datenauswertung entwickelt.
 Diese Arbeit beschäftigt sich mit der Weiterentwicklung des darin beschrieben Converters und dessen Datenuswertung (Abb. \ref{fig:converter}).
 
@@ -184,7 +183,7 @@ Diese Arbeit beschäftigt sich mit der Weiterentwicklung des darin beschrieben C
 Die Daten liegen zunächst im XML-Format vor und werden in OWL konvertiert.
 Mittels OWL-basierter Regeln wird überprüft, ob eine aussagekräftige Datenauswertung möglich ist.
 Es wird dabei besonderer Wert auf das OWL-Profil {}"RL{}" gelegt, um Performance-Schwachstellen zu vermeiden.
-Das OWL 2-RL Profil basiert auf dem funiderten Grundlagen der Beschreibungslogiken (\ref{sec:desclogic}.
+Das OWL 2-RL Profil basiert auf dem funiderten Grundlagen der Beschreibungslogiken (\ref{sec:desclogic}).
 
 \section{Gliederung}
 \label{sec:structure}
@@ -193,10 +192,10 @@ Im Abschnitt \ref{sec:logic} werden die theoretischen Grundlagen für das OWL 2 
 Um zu verstehen, wie sich eine Beschreibungslogik (\ref{sec:desclogic}) von der Aussagenlogik (\ref{sec:aussagenlogik}) abhebt werden kurze Beispiele gezeigt, wie sie auch in der Anwendung existieren könnten.
 Abschnitt \ref{sec:prediactelogic} zeigt, dass mächtigere Aussagen mit der Prädikatenlogik möglich sind und welche Einschränkungen in der Entscheidbarkeit daraus entstehen.
 Insgesamt stellt die Implementierung (\ref{sec:implementation}) des Converters eine Erweiterung vorheriger Arbeiten dar.
-Welche Anpassungen dabei vorgenommen wurden wird in \ref{sec:customization} beschrieben, welche Technologien in \ref{sec:technology}.
-Der wesentliche Bestandteil der Erweiterung besteht aus der Regelerstellung für das Schließen auf Probleme \ref{sec:reasoning}.
-Die Regeln sind in Inkonsistenz- \ref{sec:rule_inconsistency}, Produktions- \ref{sec:rule_production}, Listen- \ref{sec:rule_list} und Datentyp-Regeln \ref{sec:rule-datatype} unterteilt.
-Einige Herausforderungen können nur durch den Einsatz von Erweiterungen beschrieben in \ref{sec:extensions} gelöst werden.
+Welche Anpassungen dabei vorgenommen wurden wird in Abschnitt \ref{sec:customization} beschrieben, welche Technologien in \ref{sec:technology}.
+Der wesentliche Bestandteil der Erweiterung besteht aus der Regelerstellung für das Schließen auf Probleme (\ref{sec:reasoning}).
+Die Regeln sind in Inkonsistenz- (\ref{sec:rule_inconsistency}), Produktions- (\ref{sec:rule_production}), Listen- \ref{sec:rule_list} und Datentyp-Regeln (\ref{sec:rule_datatype}) unterteilt.
+Einige Herausforderungen können nur durch den Einsatz von Erweiterungen beschrieben in \ref{sec:rule_extensions} gelöst werden.
 Verbundene Arbeiten werden in Abschnitt \ref{sec:related_work} erwähnt.
 Abschließend wird das Projekt in \ref{sec:conclusion} zusammengefasst, ein Ausblick gewährt sowie ein persönliches Fazit gezogen.
 
@@ -317,37 +316,38 @@ Es ist OWL-Converter entstanden, der erhobene \textit{AbRUPt}-Daten von einem XM
 \label{sec:customization}
 
 Einige wichtige Aspekte wurden gegenüber dieser Arbeit geändert. 
-Die Ontologie für den \textit{AbRUPt-Service} wurde von Grund auf intuitiver gestaltet und um die Konzepte der Webseiten-Besucherdaten erweitert (Fig. onto-Graph). 
-Dabei wurde ebenso auf sinnvolle Konsistenzeigenschaften sowie Inferenz-Regeln zurückgegriffen, die auf Usabilty-Probleme schlussfolgern. (Abschnit Regeln)
+Die Ontologie für den \textit{AbRUPt-Service} wurde von Grund auf intuitiver gestaltet und um die Konzepte der Webseiten-Besucherdaten erweitert (\ref{fig:onto}). 
+Dabei wurde ebenso auf sinnvolle Konsistenzeigenschaften sowie Inferenz-Regeln zurückgegriffen, die auf Usabilty-Probleme schlussfolgern. (\ref{sec:reasoning})
 Ein Problem ergab sich für die Eindeutigkeit von Webseiten-Elementen, die nicht kontextbasiert benannt wurden. 
-Mit dem an \textit{REST} angelehnten URI-Aufbau ergeben sich global einheitlich URIs.
-Dabei wird der Kontext in die URI-Struktur jeweils eingebettet. 
+Mit dem an \textit{REST} \cite{rest} angelehnten URI-Aufbau ergeben sich global einheitlich URIs.
+Dabei wird der Kontext in die URI-Struktur jeweils eingebettet (Listing \ref{listing:nested_uris}). 
 Ein Formular-Element kann somit auf mehreren Webseiten mit gleicher Id, Name und sonstigen Attributen koexistieren und wird nicht zu dem selben OWL-Element konvertiert. 
 Beispielsweise liegt dann das Input-Textelement des Namens für ein Kontaktformular innerhalb von Formular (Form = \textit{kontaktformular}), Seitenstatus (State = \textit{state5}), Seiten-URL (Page = \textit{http://www.rikscha−mainz.de/Kontakt}) und der zugehörigen Website (Website = \textit{http://www.rikscha−mainz.de}).
 Das sieht zunächst nicht sehr lesbar aus, ist aber unvermeidbar aufgrund möglicher großer Datenbestände. 
-\lstinputlisting[breaklines=true,language=ttl, caption=Nested URIs]{listings/unique_nested_uris.ttl}
+
+\lstinputlisting[breaklines=true,language=ttl, caption=Nested URIs, label=listing:nested_uris]{listings/unique_nested_uris.ttl}
  
 Für die Einstufung von Problemen gibt es die Klasse \textit{Problem}. 
-Durch geeignete Abfragen, bspw. mit Sparql (sparql-ref), kann nach dem Reasoning die Liste aller möglichen Probleme abgerufen werden. 
+Durch geeignete Abfragen, bspw. mit SPARQL \ref{sparql}, kann nach dem Reasoning die Liste aller möglichen Probleme abgerufen werden. 
 Wie bereits angesprochen können dabei Elemente dazugehören, die aus einem subjektiven Erscheinungsbild annehmbar als Problem ignoriert werden können.
 
 \subsection{Eingesetzte Technologien}
 \label{sec:technology}
 
 Für die Neugestaltung des Konvertierung-Tools fiel die Wahl der Technolgie auf \textit{RubyGems}, dem offiziellen Paketsystem von Ruby . 
-Zum einen ist die Unterstützung \cite{ruby-rdf} für RDF/OWL ausgezeichnet und zum Anderen erweisen sich noch weitere wesentliche Vorteile:
+Zum einen ist die Unterstützung durch ruby-rdf \cite{ruby-rdf} für RDF/OWL ausgezeichnet und zum Anderen erweisen sich noch weitere wesentliche Vorteile:
 \begin{itemize}
-\item{Benutzung durch Kommandozeilentool}
-\item{Modularer Aufbau}
-\item{Ausgezeichnete Komponententest-Unterstützung}
-\item{Wiederverwendbarkeit durch Einbindung als RubyGem Bibliothek oder des Kommandozeilentools}
-\item{Flexibilität der Eingabe und Ausgabe (bestimmte Services, nur Abrupt/ohne Benutzerdaten, tutrle, rdfxml, n3}
+    \item{Benutzung durch Kommandozeilentool}
+    \item{Modularer Aufbau}
+    \item{Ausgezeichnete Komponententest-Unterstützung}
+    \item{Wiederverwendbarkeit durch Einbindung als RubyGem Bibliothek oder des Kommandozeilentools}
+    \item{Flexibilität der Eingabe und Ausgabe (bestimmte Services, nur Abrupt/ohne Benutzerdaten, tutrle, rdfxml, n3}
 \end{itemize}
 
 Das terminologische Wissen (TBox) ist in einem OWL-Dokument gesichert, sodass es separat mit Protege entwickelt und in die Software einfach eingebunden wird. 
 Da es sich ausschließlich um statische Inhalte handelt, erweist sich dies als sinnvoll. 
 Zur Hervorhebung und Veranschaulichung von nicht-trivialen Regeln existieren weitere OWL-Dokumente, die als Ordnerinhalte der Software hinzugefügt werden. 
-Mit dem Befehl \cite{ruby-rdf} lässt sich Konvertierung starten. 
+Mit dem Befehl in Listing \ref{listing:cli} lässt sich Konvertierung starten. 
 Zunächst werden die statischen Inhalten in ein RDF-Repsoitory geladen. 
 Das Assertionale Wissen (ABox) entsteht aus der Transformation der Eingabedaten. 
 Die Eingabedaten liegen in der Regel in 2 XML-Dokumenten vor - den Website- und den Besucher-Daten.
@@ -361,7 +361,7 @@ Der Aufbau der Software ist somit sehr modular, individuell anpassbar, durch Obe
 \section{Schließen auf Probleme mit Inferenz-Regeln}
 \label{sec:reasoning}
 
-Die formale Beschreibungssprache OWL 2 ist eine Empfehlung des W3C vom 11. Dezember 2012 für die Beschreibung von Ontologien. 
+Die formale Beschreibungssprache OWL 2 ist eine Empfehlung des W3C \cite{owl2} vom 11. Dezember 2012 für die Beschreibung von Ontologien. 
 Primär geht es darum Modellierungen einer Weltanschauung (Domäne) vorzunehmen, sodass Mensch und Maschine die Bedeutung verarbeiten können. 
 OWL 2 basiert technisch auf RDF und RDFS und geht dabei über die Ausdrucksmächtigkeit weit hinaus. 
 Es ist dokumentenbasiert, was die Erstellung und Verteilung gegenüber einem Binärformat enorm vereinfacht. 
@@ -392,7 +392,8 @@ $ \{a_1\} \sqsubseteq \{a_2\} $ & $ \{a_1\} \sqsubseteq \{a_2\} $ & \textit{same
 \caption{Syntax der Beschreibungslogik und Entsprechung in der Prädikatenlogik sowie in OWL 2 RL}
 \end{table}
 
-Eine vernünftige Unterteilung der Axiome ist in \cite{owl2rif} gegeben. 
+Eine vernünftige Unterteilung der Axiome ist in \cite{web_primer}   gegeben. 
+Dort werden OWL 2 RL-Regeln in RIF \cite{owl2rif} beschrieben.
 
 
 \subsection{Inkonsistenz-Regeln}
@@ -461,21 +462,21 @@ readability \geq 8.0\ Datatype(\textit{xsd:decimal}) \sqsubseteq Problem
 \subsection{Erweiterungen}
 \label{sec:rule_extensions}
 
-Die Implementierung durch einen Regelsatz mit OWL 2 RL ist eine ansehnliche Vorgehensweise für das Auffinden von Problemen. 
+Die Implementierung durch einen Regelsatz mit OWL 2 RL \cite{owl2rl} ist eine ansehnliche Vorgehensweise für das Auffinden von Problemen. 
 Für viele Anwendungsfälle muss man dennoch auf Erweiterungen zurückgreifen. 
 Die Beschreibungslogik \(\mathcal{SHOIN}(D)\) weist zwar eine vernünftige Mächtigkeit auf, lässt dabei gegenüber konventioneller Programmiersprachen die Arithmetik völligst außer Acht. 
 So ist es nicht möglich Summen über Elemente, Durchschnittswerte, Minima und Maxima zu ermitteln. 
 In konventionellen Datenbanken gilt die Annahme der Weltabgeschlossenheit (Closed World Assumption), man kann aus den vorhandenen Daten ableiten, welche Daten nicht vorhanden sind. 
 Das größte Element ist also direkt ablesbar, weil kein anderes größeres Element dieses übersteigt. 
 In der Wissensdatenbank beschrieben durch OWL 2 gilt diese Annahme nicht. 
-Durch die fundierte Basis der Prädikatenlogik arbeitet OWL 2 RL auf der Annahme einer offenen Welt (Open World Assumption). 
+Durch die fundierte Basis der Prädikatenlogik arbeitet OWL 2 RL auf der Annahme einer offenen Welt (Open World Assumption, \cite[p. 194]{foundations}). 
 Dies bedeutet, dass alles was nicht explizit als wahr beweisen werden kann, nicht automatisch als falsch bezeichnet wird. 
 Das größte Element ist also nicht direkt ablesbar, weil ein anderes größeres (abgeleitetes) Element dieses übersteigen könnte. 
 Eine Summe über alle Besucherzeiten kann nicht erfasst werden, wenn davon ausgegangen werden kann, dass neue Besuche hinzukommen können.
 Das Überwinden dieses Problems stellt eine große Herausforderung dar, für die zur Zeit lediglich Lösungsansätze existieren. 
 
-In vielen Punkten geradlinig und elegant ist die Kombination aus OWL und RuleML -- SWRL. 
-SWRL ist eine vom W3C entwickelte Spezifikation für eine Regelsprache in OWL mit einer großen Einschränkung, sie ist unentscheidbar. 
+In vielen Punkten geradlinig und elegant ist die Kombination aus OWL und RuleML -- SWRL \cite{swrl}. 
+SWRL ist eine vom W3C entwickelte Spezifikation für eine Regelsprache in OWL 2 \cite{owl2} mit einer großen Einschränkung, sie ist unentscheidbar. 
 Mittels sogenannter DL-safe Regeln, also Regeln, welche die Einrschänkungen der Beschreibungslogiken einhalten, bietet SWRL die Entscheidbarkeit von OWL 2 RL (PTime) und die Mächtigkeit der Beschreibungslogiken inkl. arithmetischer Funktionen. 
 
 SWRL ist kein direkter Bestandteil von OWL 2 RL und funktioniert als Sprach-Erweiterung. 
@@ -484,9 +485,9 @@ Sie wird dennoch von vielen Reasonern unterstützt.
 Will man ohne Erweiterung für OWL 2 RL auskommen, müssen Vorkehrungen bereits in der Vorverarbeitung getroffen werden, die die Einschränkungen der offenen Weltannahme aushebeln. 
 Auf gängige Arithmetik \(+, -, *, / AVG(), SUM() \) kann in der unterliegenden Programmiersprache zurückgegriffen werden.
 Dabei werden die eingelesen Daten in der Vorverarbeitung somit als abgeschlossen angenommen.
-Die Besuchsdauer einer Seite wird durch einfache Differenz (Listing 1.6) ermittelt und als weiteres Wissen der ABox hinzugefügt.
+Die Besuchsdauer einer Seite wird durch einfache Differenz (\ref{listing:visit_duration}) ermittelt und als weiteres Wissen der ABox hinzugefügt.
 
-\lstinputlisting[breaklines=true,language=Ruby, caption=Erweiterung der TBox in der Vorverarbeitung,label=list_rb]{listings/add_visit_duration.rb}
+\lstinputlisting[breaklines=true,language=Ruby, caption=Erweiterung der TBox in der Vorverarbeitung,label=listing:visit_duration]{listings/add_visit_duration.rb}
 
 \section{Related Work}
 \label{sec:related_work}
@@ -512,9 +513,9 @@ Sie berücksichtigt außerdem die Transformation der Daten in die korrekten Date
 Das Grundvokabular ist komplett separat entwickelt und wird in die Konvertierung miteinbezogen.
 Dadurch ist der Zugriff vereinfacht und mittels eigener Entwicklungstools die Ontologie als Graph darstellbar.
 Trotz der vielen Anpassungen und Erweiterungen umfasst der Quellcode nun gerade mal ca. 900 Zeilen und 15 Klassen inkl. rudimentären Testcode.
-Man kann das Tool mittels Kommandozeiletool (Listing 22) ausführen oder in ein Ruby-Projekt als Bibliothek einbinden.
+Man kann das Tool mittels Kommandozeiletool (\ref{listing:cli}) ausführen oder in ein Ruby-Projekt als Bibliothek einbinden.
 
-\lstinputlisting[breaklines=true,language=Bash, caption=Beispielnutzung des Kommandozeilentools,label=list_rb]{listings/abrupt_usage.sh}
+\lstinputlisting[breaklines=true,language=Bash, caption=Beispielnutzung des Kommandozeilentools,label=listing:cli]{listings/abrupt_usage.sh}
 
 Die Implementierung durch einen Regelsatz ist eine anschauliche Vorgehensweise für das Auffinden von Problemen. 
 Ohne die Vorverarbeitung des Converters sind der Arbeit allerdings aufgrund der Open World Assumption Grenzen gesetzt.
