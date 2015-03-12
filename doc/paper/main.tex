@@ -30,6 +30,10 @@
 \usepackage{url}
 
 \usepackage{listings}
+\usepackage{chngcntr}
+\AtBeginDocument{\counterwithout{lstlisting}{section}}
+
+
 
 \usepackage{xcolor}  
 \definecolor{grey}{rgb}{0.5,0.5,0.5}
@@ -73,7 +77,6 @@ tabsize=2,
 \urldef{\mailsa}\path|manuel.b.dudda@student.hs-rm.de|    
 \newcommand{\keywords}[1]{\par\addvspace\baselineskip
 \noindent\keywordname\enspace\ignorespaces#1}
-
 
 \begin{document}
 
