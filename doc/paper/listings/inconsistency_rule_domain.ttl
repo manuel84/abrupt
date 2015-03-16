@@ -1,0 +1,1 @@
+abrupt:hasPage rdfs:range abrupt:Website .

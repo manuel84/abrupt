@@ -290,7 +290,7 @@ Hilfe des Grundvokabulars.
 Die Syntax ist stark an die Prädikatenlogik angelehnt. 
 Es gibt jedoch wesentliche Unterschiede. 
 Hervorzuheben ist der Wegfall der Implikation (\(\to\)). 
-Während in der Prädikatenlogik auch Rollenaxiome rechterhand der Implikation stehen können (\eqref{eq:fol_predicate1}), sind bei Beschreibungslogiken nur Klassen in Subsumptionen möglich \(C_1 \sqsubseteq C_2\).
+Während in der Prädikatenlogik auch Rollenaxiome rechterhand der Implikation stehen können \eqref{eq:fol_predicate1}, sind bei Beschreibungslogiken nur Klassen in Subsumptionen möglich \(C_1 \sqsubseteq C_2\).
 Nur ein Teil der Prädikatenlogik ist demnach adäquat in eine Beschreibungslogik zu übersetzen, man spricht in diesem Fall von DL-safe Regeln. 
 
 Eine Auflistung der Syntax und der Entsprechung in Prädikatenlogik sowie OWL finden Sie in \ref{table:description_logic}.
@@ -400,7 +400,20 @@ Dort werden OWL 2 RL-Regeln in RIF \cite{owl2rif} beschrieben.
 \label{sec:rule_inconsistency}
 
 Für Rollenaxiome können mittels einfacher Regeln Definitions- und Wertebereich festgelegt werden. 
-Für den Wertebereich, also der Festlegung der Klassenzugehörigkeit des 2. Parameters von Rollen ergibt sich Formel \eqref{eq:dl_range} sowie dessen Darstellung in OWL 2 RL (Listing \ref{range_owl}).
+Als Definitionsbereich wird die Klassenzugehörigkeit des 1. Parameters von Rollen bestimmt.
+Im Beispiel des Rollenaxioms \textit{hasPage} wird definiert, dass Seiten immer zu einer Website geören (Abb. \ref{eq:dl_domain}, Listing \ref{domain_owl}).
+
+\begin{figure}
+\begin{equation}
+\exists\ hasPage\ Thing \sqsubseteq\ Website
+\label{eq:dl_domain}
+\end{equation}
+\caption{Beschreibungslogik: Definitionsbereich-Regel für Rollen}
+\end{figure}
+
+\lstinputlisting[breaklines=true,language=ttl, caption=Definitionsbereich-Regel für Rollen in OWL 2 RL,label=domain_owl]{listings/inconsistency_rule_domain.ttl}
+
+Für den Wertebereich, also der Festlegung der Klassenzugehörigkeit des 2. Parameters von Rollen ergibt sich Formel \ref{eq:dl_range} sowie dessen Darstellung in OWL 2 RL (Listing \ref{range_owl}).
 
 \begin{figure}
 \begin{equation}
@@ -410,7 +423,7 @@ Für den Wertebereich, also der Festlegung der Klassenzugehörigkeit des 2. Para
 \caption{Beschreibungslogik: Wertebereich-Regel für Rollen}
 \end{figure}
 
-\lstinputlisting[breaklines=true,language=ttl, caption=Wertebereich-Regel für Rollen in OWL 2 RL,label=range_owl]{listings/inconsistency_rule.ttl}
+\lstinputlisting[breaklines=true,language=ttl, caption=Wertebereich-Regel für Rollen in OWL 2 RL,label=range_owl]{listings/inconsistency_rule_range.ttl}
 
 \subsection{Produktions-Regeln}
 \label{sec:rule_production}
@@ -430,7 +443,7 @@ State\ \sqcap \leq 0\ hasLink.Link \sqsubseteq Problem
 \subsection{Listen-Regeln}
 \label{sec:rule_list}
 
-Durch Listenregeln können Sammlungen genutzt werden um Restriktionen aufzubauen oder durch Kettenregeln Hilfsrollen zu aktivieren (\eqref{eq:dl_list}, Listing \ref{list_owl}).
+Durch Listenregeln können Sammlungen genutzt werden um Restriktionen aufzubauen oder durch Kettenregeln Hilfsrollen zu aktivieren (Abb. \ref{eq:dl_list}, Listing \ref{list_owl}).
 
 \begin{figure}
 \begin{equation}
@@ -446,7 +459,7 @@ hasPage \circ hasState \sqsubseteq hasStateThorugh
 \label{sec:rule_datatype}
 
 Als mächtigstes Werkzeug erweisen sich die Datentypregeln, die es erlauben, aus Zahlenbereichseinschränkungen und Datentypdefinitionen Probleme abzuleiten. 
-Der Lesbarkeitsindex einer Seite sollte einen definierten Wert nicht überschreiten um nicht als zu komplex zu gelten (\eqref{eq:dl_datatype}, Listing \ref{datatype_owl}).
+Der Lesbarkeitsindex einer Seite sollte einen definierten Wert nicht überschreiten um nicht als zu komplex zu gelten (Abb. \ref{eq:dl_datatype}, Listing \ref{datatype_owl}).
 
 
 \begin{figure}
@@ -454,10 +467,29 @@ Der Lesbarkeitsindex einer Seite sollte einen definierten Wert nicht überschrei
 readability \geq 8.0\ Datatype(\textit{xsd:decimal}) \sqsubseteq Problem
 \label{eq:dl_datatype}
 \end{equation}
-\caption{Beschreibungslogik: Datentypregel}
+\caption{Beschreibungslogik: Datentypregel für Lesbarkeitsindex}
 \end{figure}
 
 \lstinputlisting[breaklines=true,language=ttl, caption=Datentypregel in OWL 2 RL,label=datatype_owl]{listings/datatype_rule.ttl}
+
+Für die obere Schranke von HTML-Ankern mit niedriegen Kontrastverhältnissen empfiehlt es sich am besten keine dieser Form darszustellen.
+Dementsprechend ist die Anzahl auf kleiner als 1 beschränkt.
+Alle Werte darüber stellen ein Probelm dar (Abb. \ref{eq:dl_datatype2}, Listing \ref{datatype_owl2}).
+Gleiches gilt für Textknoten mit niedrigen Kontrast und Paragraphen mit zu vielen Zeilen.
+
+\begin{figure}
+\begin{equation}
+\begin{aligned}
+aTagWithLowContrast \geq 1\ Datatype(\textit{xsd:integer}) \sqsubseteq Problem \\
+textNodesWithLowContrast \geq 1\ Datatype(\textit{xsd:integer}) \sqsubseteq Problem \\
+paragrahpsWithTooLongLines \geq 1\ Datatype(\textit{xsd:integer}) \sqsubseteq Problem
+\label{eq:dl_datatype2}
+\end{aligned}
+\end{equation}
+\caption{Beschreibungslogik: Datentypregel für Kontrastverhältnisse}
+\end{figure}
+
+\lstinputlisting[breaklines=true,language=ttl, caption=Datentypregeln in OWL 2 RL,label=datatype_owl2]{listings/datatype_rule2.ttl}
 
 \subsection{Erweiterungen}
 \label{sec:rule_extensions}

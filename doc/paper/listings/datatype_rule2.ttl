@@ -1,0 +1,32 @@
+[
+    a owl:Restriction;
+    rdfs:subClassOf :Problem;
+    owl:onProperty :aTagWithLowContrast;
+    owl:someValuesFrom [
+        a rdfs:Datatype;
+        owl:onDatatype xsd:integer;
+        owl:withRestrictions ([ xsd:minInclusive 1])
+    ]
+] .
+
+[
+    a owl:Restriction;
+    rdfs:subClassOf :Problem;
+    owl:onProperty :textNodesWithLowContrast;
+    owl:someValuesFrom [
+        a rdfs:Datatype;
+        owl:onDatatype xsd:integer;
+        owl:withRestrictions ([ xsd:minInclusive 1])
+    ]
+] .
+
+[
+    a owl:Restriction;
+    rdfs:subClassOf :Problem;
+    owl:onProperty :paragrahpsWithTooLongLines;
+    owl:someValuesFrom [
+        a rdfs:Datatype;
+        owl:onDatatype xsd:integer;
+        owl:withRestrictions ([ xsd:minInclusive 1])
+    ]
+] .
