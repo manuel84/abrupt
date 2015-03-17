@@ -37,9 +37,9 @@ FactoryGirl.define do
                            :complexity =>
                                { :contrast =>
                                      { :_1 =>
-                                           { :A_tag_With_Low_Contrast => "0",
-                                             :TextNodes_With_Low_Contrast => "0",
-                                             :paragrahps_with_too_long_lines => "0" } },
+                                           { :A_tag_With_Low_Contrast => 0,
+                                             :TextNodes_With_Low_Contrast => 0,
+                                             :paragrahps_with_too_long_lines => 0 } },
                                  :vizweb =>
                                      { :numberOfLeaves => 1,
                                        :textArea => "0",
@@ -360,9 +360,9 @@ FactoryGirl.define do
                            :complexity =>
                                { :contrast =>
                                      { :_1 =>
-                                           { :A_tag_With_Low_Contrast => "0",
-                                             :TextNodes_With_Low_Contrast => "0",
-                                             :paragrahps_with_too_long_lines => "0" } },
+                                           { :A_tag_With_Low_Contrast => 1,
+                                             :TextNodes_With_Low_Contrast => 1,
+                                             :paragrahps_with_too_long_lines => 0 } },
                                  :vizweb =>
                                      { :numberOfLeaves => 17,
                                        :textArea => "0.0074666341145833",
