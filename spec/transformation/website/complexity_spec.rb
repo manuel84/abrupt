@@ -3,9 +3,9 @@ require_relative '../base_spec'
 describe Abrupt::Transformation::Website::Complexity do
   it_should_behave_like 'convertable object' do
     let(:expected_values) do
-      [{ contrast: { _1: { A_tag_With_Low_Contrast: '0',
-                           TextNodes_With_Low_Contrast: '0',
-                           paragrahps_with_too_long_lines: '0' } },
+      [{ contrast: { _1: { A_tag_With_Low_Contrast: 0,
+                           TextNodes_With_Low_Contrast: 0,
+                           paragrahps_with_too_long_lines: 0 } },
          vizweb: { numberOfLeaves: 1,
                    textArea: '0',
                    numberOfTextGroups: 0,
@@ -93,9 +93,9 @@ describe Abrupt::Transformation::Website::Complexity do
                    img_Tag: { img_Area_in_pixel_squared: 2730,
                               img_document_tag_percentage: 0.94267955801105,
                               img_document_tag_ratio: 106.08058608059 } } },
-       { contrast: { _1: { A_tag_With_Low_Contrast: '0',
-                           TextNodes_With_Low_Contrast: '0',
-                           paragrahps_with_too_long_lines: '0' } },
+       { contrast: { _1: { A_tag_With_Low_Contrast: 1,
+                           TextNodes_With_Low_Contrast: 1,
+                           paragrahps_with_too_long_lines: 0 } },
          vizweb: { numberOfLeaves: 17,
                    textArea: '0.0074666341145833',
                    numberOfTextGroups: 1,
