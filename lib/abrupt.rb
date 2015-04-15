@@ -7,11 +7,11 @@ require 'pp'
 # Extension for String class
 class String
   def remove_last_slashes
-    gsub(/([\/]*)$/, '')
+    gsub(%r{([\/]*)$}, '')
   end
 
   def append_last_slash
-    gsub(/([^\/])$/, '\1/')
+    gsub(%r{([^\/])$}, '\1/')
   end
 end
 
