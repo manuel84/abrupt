@@ -12,6 +12,7 @@ module Abrupt
           @values[keyname][:vicramComplexity] =
               @values[keyname][:vicram].delete(:complexity)
           add_contrast_properties
+          add_ratio_properties
           @values[keyname].delete :vicram
           super
         end
@@ -23,6 +24,24 @@ module Abrupt
             add_data_property(type, value)
           end
           @values[keyname].delete :contrast
+        end
+
+        def add_ratio_properties
+          ratios = @values[keyname].delete :ratios
+          add_page_sizes(ratios[:pageSize]) if ratios[:pageSize]
+          add_img_tag_infos(ratios[:img_Tag]) if ratios[:img_Tag]
+        end
+
+        def add_page_sizes(page_size)
+          page_size.each do |type, value|
+            add_data_property(type, value)
+          end
+        end
+
+        def add_img_tag_infos(img_tag)
+          img_tag.each do |type, value|
+            add_data_property(type, value)
+          end
         end
       end
     end

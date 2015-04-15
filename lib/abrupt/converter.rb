@@ -110,8 +110,7 @@ module Abrupt
         time = ::Abrupt.format_time(page[:entertime])
         Transformation::Client::Base.subclasses.each do |transformer_class|
           transformer = transformer_class.new(visitor.parent_uri + visitor.uri,
-                                              ['Visit', time], page
-          )
+                                              ['Visit', time], page)
           add_to_result transformer.add_individuals
         end
       end
