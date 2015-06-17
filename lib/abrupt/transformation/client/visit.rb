@@ -54,11 +54,11 @@ module Abrupt
         end
 
         def add_visit_duration
-          leavetime = Abrupt.parse_time(@values[:leavetime])
-          enterteime = Abrupt.parse_time(@values[:entertime])
-          return unless leavetime && enterteime # maybe no recognized leavetime
-          visit_duration = (leavetime - enterteime).to_f.round(8) # in seconds
-          add_data_property('visitDuration', visit_duration) if visit_duration > 0.0
+          leave_time = Abrupt.parse_time(@values[:leavetime])
+          enter_time = Abrupt.parse_time(@values[:entertime])
+          return unless leave_time && enter_time # maybe no recognized leavetime
+          duration = (leave_time - enter_time).to_f.round(8) # in seconds
+          add_data_property('visitDuration', duration) if duration > 0.0
         end
       end
     end
