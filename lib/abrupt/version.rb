@@ -3,5 +3,5 @@
 # The version number of the abprubt gem
 # @abstract
 module Abrupt
-  VERSION = '1.0.0'
+  VERSION = '1.0.1'
 end

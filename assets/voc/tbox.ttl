@@ -495,26 +495,6 @@
 
 
 
-###  http://wba.cs.hs-rm.de/AbRUPt/paragrahpsWithTooLongLines
-
-:paragrahpsWithTooLongLines rdf:type owl:DatatypeProperty ;
-                            
-                            rdfs:domain :Page ;
-                            
-                            rdfs:range xsd:integer .
-
-
-
-###  http://wba.cs.hs-rm.de/AbRUPt/textNodesWithLowContrast
-
-:textNodesWithLowContrast rdf:type owl:DatatypeProperty ;
-                          
-                          rdfs:domain :Page ;
-                          
-                          rdfs:range xsd:integer .
-
-
-
 ###  http://wba.cs.hs-rm.de/AbRUPt/bigwords
 
 :bigwords rdf:type owl:DatatypeProperty ;
@@ -1015,6 +995,16 @@
 
 
 
+###  http://wba.cs.hs-rm.de/AbRUPt/paragrahpsWithTooLongLines
+
+:paragrahpsWithTooLongLines rdf:type owl:DatatypeProperty ;
+                            
+                            rdfs:domain :Page ;
+                            
+                            rdfs:range xsd:integer .
+
+
+
 ###  http://wba.cs.hs-rm.de/AbRUPt/phpsessionid
 
 :phpsessionid rdf:type owl:DatatypeProperty ;
@@ -1183,6 +1173,16 @@
 
 
 
+###  http://wba.cs.hs-rm.de/AbRUPt/textNodesWithLowContrast
+
+:textNodesWithLowContrast rdf:type owl:DatatypeProperty ;
+                          
+                          rdfs:domain :Page ;
+                          
+                          rdfs:range xsd:integer .
+
+
+
 ###  http://wba.cs.hs-rm.de/AbRUPt/textReadingTime
 
 :textReadingTime rdf:type owl:DatatypeProperty ;
@@ -1247,7 +1247,7 @@
                
                rdfs:domain :Visit ;
                
-               rdfs:range xsd:decimal .
+               rdfs:range xsd:double .
 
 
 
