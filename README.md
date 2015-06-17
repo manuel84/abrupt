@@ -34,29 +34,29 @@ abrupt -h
     Automated Reasoning for Web Usability Problems
 
   COMMANDS:
-
-    convert              Converts and merges xml files to owl
-    crawl                Crawls a website
-    help                 Display global or [command] help documentation
+        
+    convert Converts and merges xml files to owl                
+    crawl   Crawls a website [BETA!]            
+    help    Display global or [command] help documentation      
 
   GLOBAL OPTIONS:
-
-    -h, --help
+        
+    -h, --help 
         Display help documentation
-
-    -v, --version
+        
+    -v, --version 
         Display version information
-
-    -t, --trace
+        
+    -t, --trace 
         Display backtrace when an error occurs
-
+          
   AUTHOR:
 
     Manuel Dudda <dudda@paij.com>
-
+  
   SOURCE CODE:
 
-    https://github.com/manuel84/abrupt
+    https://github.com/manuel84/abrupt  
 ```
 
 
