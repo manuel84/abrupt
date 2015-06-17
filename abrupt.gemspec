@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name = 'abrupt'
   spec.version = Abrupt::VERSION
   spec.authors = ['Manuel Dudda']
-  spec.email = ['dudda@paij.de']
+  spec.email = ['manuel.dudda@gmail.com']
   spec.summary = 'Tools for the AbRUPt project.'
   spec.description = 'Tools for the AbRUPt project.'
   spec.homepage = 'https://github.com/manuel84/abrupt'

@@ -75,7 +75,8 @@ module Abrupt
   def self.convert(file, *args)
     converter = Converter.instance
     assertions = args.last[:assertions].split ','
-    converter.init(args[1]) # options
+    assertions.delete 'website' if args.count <= 1
+    converter.init(args.last) # options
     append file, args.first, assertions
     converter.result
   end

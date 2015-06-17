@@ -15,7 +15,7 @@ class AbruptApp
 
     command :crawl do |c|
       c.syntax = 'abrupt crawl [options]'
-      c.description = 'Crawls a website'
+      c.description = 'Crawls a website [BETA!]'
       c.option '-nofollow', "don't follow links"
       c.option '--lang STRING', String, 'language'
       c.option '--services STRING', Array, 'riscpl'
@@ -27,7 +27,7 @@ class AbruptApp
     end
 
     command :convert do |c|
-      c.syntax = 'abrupt convert src_crawled_data src_user_data [options]'
+      c.syntax = 'abrupt convert src_crawled_data [src_user_data] [options]'
       c.description = 'Converts and merges xml files to owl'
       c.option '--format STRING', String, 'Specifies the output format, possible [turtle|rdfxml|ntriples] (default=turtle)'
       c.option '--output STRING', String, 'Specifies an output file'
